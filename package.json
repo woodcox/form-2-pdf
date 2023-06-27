@@ -35,7 +35,7 @@
     "lightningcss-cli": "^1.19.0",
     "purgecss": "^5.0.0",
     "sass": "^1.59.2",
-    "solid-js": "^1.6.14"
+    "solid-js": "^1.7.7"
   },
   "browserslist": [
     "> 0.2%",
