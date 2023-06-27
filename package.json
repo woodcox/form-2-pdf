@@ -32,7 +32,7 @@
     "esbuild-plugin-purgecss-2": "^1.0.1",
     "esbuild-plugin-solid": "^0.5.0",
     "glob-all": "^3.3.1",
-    "lightningcss-cli": "^1.19.0",
+    "lightningcss-cli": "^1.21.1",
     "purgecss": "^5.0.0",
     "sass": "^1.59.2",
     "solid-js": "^1.6.14"
