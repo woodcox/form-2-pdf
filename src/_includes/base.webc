@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><template @text="title" webc:nokeep></template></title>
+  <link rel="stylesheet" href="{{ '/app/style.css' | hash }}" />
+  <style @raw="getCss"></style>
+  <script type="module" defer src="{{ '/app/is-land.js' | hash }}"></script>
+</head>
+<body>
+  <header>
+    <h1><template @text="title" webc:nokeep></template></h1>
+  </header>
+  <main @html="content"></main>
+</body>
+</html>
