@@ -27,7 +27,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm i # npm update --save
+        run: npm update --save
         
       - name: Npm Build
         if: env.UPDATE_NPM != 'true'
@@ -53,7 +53,7 @@ jobs:
           
       - name: pull request on npm update
         if: env.UPDATE_NPM == 'true'
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Update dependencies
