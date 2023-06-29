@@ -4,14 +4,9 @@ on:
     branches:
       - main
 
-# Cancel a previous build if still running
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 # Conditional environmental if's      
 env:
-  UPDATE_NPM: true # false = deploy eleventy , true = update npm
+  UPDATE_NPM: false # false = deploy eleventy , true = update npm
 
 jobs:
   build_deploy_eleventy:
@@ -27,7 +22,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm update --save
+        run: npm i # npm update --save
         
       - name: Npm Build
         if: env.UPDATE_NPM != 'true'
