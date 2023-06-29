@@ -22,7 +22,12 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm i # npm update --save
+        if: env.UPDATE_NPM != 'true'
+        run: npm i  # npm update --save
+        
+      - name: Update dependencies
+        if: env.UPDATE_NPM == 'true'
+        run: npm update --save
         
       - name: Npm Build
         if: env.UPDATE_NPM != 'true'
@@ -60,3 +65,5 @@ jobs:
   
             [1]: https://github.com/peter-evans/create-pull-request
           branch: update-dependencies
+          add-paths: | # to update the package.json and package-lock.json
+            *.json
