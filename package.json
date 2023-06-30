@@ -28,7 +28,7 @@
     "@hyrious/esbuild-plugin-http": "^0.1.2",
     "@pdfme/generator": "1.2.6",
     "concurrently": "^7.6.0",
-    "esbuild": "^0.17.19",
+    "esbuild": "^0.18.10",
     "esbuild-plugin-manifest": "^0.5.0",
     "esbuild-plugin-purgecss-2": "^1.0.1",
     "esbuild-plugin-solid": "^0.5.0",
