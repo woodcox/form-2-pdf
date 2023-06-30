@@ -56,7 +56,7 @@ A more interesting example
 <p id="wordapp"></p>
 <script type="module" src="{{ '/app/fetch.js' | hash }}"></script>
 
-<div id="pdf"></div>
+<div id="pdfapp"></div>
 <script type="module" src="{{ '/app/render.js' | hash }}"></script>
 
 
