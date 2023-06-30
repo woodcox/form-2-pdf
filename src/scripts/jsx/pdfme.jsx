@@ -1,4 +1,4 @@
-import { Template, BLANK_PDF } from "@pdfme/generator2";
+import { Template, BLANK_PDF } from "@pdfme/generator";
 // import { Template, BLANK_PDF } from '@pdfme/ui'; <- Template types and BLANK_PDF can also be imported from @pdfme/ui.
 
 const template: Template = {
