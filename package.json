@@ -1,6 +1,6 @@
 {
-  "name": "11ty-solid-base",
-  "version": "1.1.0",
+  "name": "pdf-generator",
+  "version": "0.1",
   "description": "A minimal HTML5 template and the esbuild setup to compile your Solidjs app alongside 11ty.",
   "main": ".eleventy.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "@11ty/eleventy-plugin-webc": "^0.9.4",
     "@11ty/is-land": "^3.0.2",
     "@hyrious/esbuild-plugin-http": "^0.1.2",
+    "@pdfme/generator": "1.2.6",
     "concurrently": "^7.6.0",
     "esbuild": "^0.17.19",
     "esbuild-plugin-manifest": "^0.5.0",
