@@ -1,4 +1,4 @@
 import { render } from 'solid-js/web';
-import PdfmeGenerator from './pdf.jsx';
+import PdfmeGenerator from './pdfgen.jsx';
 
 render(() => <PdfmeGenerator />, document.getElementById('pdfapp'));
