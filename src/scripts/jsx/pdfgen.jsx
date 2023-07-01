@@ -45,7 +45,7 @@ function PdfmeGenerator() {
 
   return (
     <div class="pdfme-generator">
-      <button onClick={generatePdf}>Generate PDF</button>
+      <button onClick={generatePdf()}>Generate PDF</button>
     </div>
   );
 }
