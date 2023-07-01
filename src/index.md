@@ -8,6 +8,6 @@ title: 11ty-solid-base
 
 <menu></menu>
 
-## SolidJS & pdfme
+## SolidJS & pdfme!
 <div id="pdfapp"></div>
 <script type="module" src="{{ '/app/render.js' | hash }}"></script>
