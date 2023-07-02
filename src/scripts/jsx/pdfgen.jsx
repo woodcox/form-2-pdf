@@ -29,15 +29,15 @@ function PdfmeGenerator() {
     ],
   });
 
-  const [inputs, setInputs] = createSignal([{ a: 'a1', b: 'c1', c: 'f1' }]);
-  
+  const [inputs, setInputs] = createSignal({ a: 'a1', b: 'c1', c: 'f1' });
+
   async function generatePdf() {
     console.log(template());
     console.log(inputs());
 
     const pdf = await generate({
       template: template(),
-      inputs: inputs(),
+      inputs: [inputs()],
     });
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
     window.open(URL.createObjectURL(blob));
@@ -45,10 +45,36 @@ function PdfmeGenerator() {
 
   return (
     <div class="pdfme-generator">
+      <Form
+        template={template()}
+        inputs={inputs()}
+        onInputsChange={(newInputs) => setInputs(newInputs)}
+      />
       <button onClick={generatePdf}>Generate PDF</button>
     </div>
   );
 }
 
+function Form(props) {
+  return (
+    <form>
+      {Object.entries(props.template.schemas[0]).map(([property, config]) => (
+        <label>
+          {property}:
+          <input
+            type="text"
+            value={props.inputs[property]}
+            onChange={(e) =>
+              props.onInputsChange({
+                ...props.inputs,
+                [property]: e.target.value,
+              })
+            }
+          />
+        </label>
+      ))}
+    </form>
+  );
+}
 
 export default PdfmeGenerator;
