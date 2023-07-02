@@ -1,13 +1,8 @@
 ---
 layout: default.html
-title: 11ty-solid-base
+title: Proof of concept
 ---
 
-## Menu
-- [WebC]({{ '/webc/' }})
-
-<menu></menu>
-
-## SolidJS & pdfme!
+## 11ty, SolidJS & pdfme!
 <div id="pdfapp"></div>
 <script type="module" src="{{ '/app/render.js' | hash }}"></script>

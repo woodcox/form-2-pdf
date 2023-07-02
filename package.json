@@ -1,6 +1,6 @@
 {
   "name": "pdf-generator",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "A minimal HTML5 template and the esbuild setup to compile your Solidjs app alongside 11ty.",
   "main": ".eleventy.js",
   "scripts": {
@@ -27,7 +27,6 @@
     "@11ty/is-land": "^4.0.0",
     "@hyrious/esbuild-plugin-http": "^0.1.2",
     "@pdfme/generator": "1.2.6",
-    "@pdfme/ui": "1.2.6",
     "concurrently": "^8.2.0",
     "esbuild": "^0.18.11",
     "esbuild-plugin-manifest": "^0.6.0",
@@ -35,6 +34,7 @@
     "esbuild-plugin-solid": "^0.5.0",
     "glob-all": "^3.3.1",
     "lightningcss-cli": "^1.21.1",
+    "mvp.css": "1.13.0",
     "purgecss": "^5.0.0",
     "sass": "^1.63.6",
     "solid-js": "^1.7.7"
