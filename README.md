@@ -1,4 +1,4 @@
-# Pdf Generator
+# PdfMe-solid Generator
 Using:
   - [pdfMe](https://pdfme.com)
   - [Solid-js](https://solidjs.com)
