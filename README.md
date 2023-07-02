@@ -2,6 +2,8 @@
 Using:
   - [pdfMe](https://pdfme.com)
   - [Solid-js](https://solidjs.com)
+  - [esBuild](https://esbuild.github.io)
+  - [11ty](http://11ty.dev)
     
 ## Compile Solidjs to js
 Add `your_solid.jsx` file to the `src/scripts/jsx` or the `src/scripts/js` folders. Esbuild will output a minified js file. To configure esbuild modify `config/build/esbuild.js`.
