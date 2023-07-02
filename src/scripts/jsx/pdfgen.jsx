@@ -7,19 +7,19 @@ function PdfmeGenerator() {
     basePdf: BLANK_PDF,
     schemas: [
       {
-        a: {
+        Name: {
           type: 'text',
           position: { x: 0, y: 0 },
           width: 10,
           height: 10,
         },
-        b: {
+        Address: {
           type: 'text',
           position: { x: 10, y: 10 },
           width: 10,
           height: 10,
         },
-        c: {
+        Phone: {
           type: 'text',
           position: { x: 20, y: 20 },
           width: 10,
@@ -29,7 +29,7 @@ function PdfmeGenerator() {
     ],
   });
 
-  const [inputs, setInputs] = createSignal({ a: 'a1', b: 'c1', c: 'f1' });
+  const [inputs, setInputs] = createSignal({ Name: '', Address: '', Phone: '' });
 
   async function generatePdf() {
     console.log(template());
