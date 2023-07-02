@@ -44,7 +44,7 @@ function PdfmeGenerator() {
   }
 
   return (
-    <div>
+    <div class="pdfme-generator">
       <Form
         template={template()}
         inputs={inputs()}
