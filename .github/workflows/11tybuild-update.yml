@@ -42,7 +42,21 @@ jobs:
           add: '["*.json"]'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+      
+      - name: Verify Changed files
+        if: env.UPDATE_NPM != 'true'
+        uses: tj-actions/verify-changed-files@v16
+        id: verify-changed-files
+        with:
+          files: |
+             *.json
+
+      - name: Run step only when any of the above files change.
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          echo "Changed files: ${{ steps.verify-changed-files.outputs.changed_files }}"
+        # Outputs: "Changed files: new.txt test_directory/new.txt"
+        
       - name: Deploy
         if: env.UPDATE_NPM != 'true'
         uses: peaceiris/actions-gh-pages@v3
