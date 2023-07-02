@@ -54,7 +54,7 @@ module.exports = async () => {
     plugins: [
       purgecssPlugin({
         // For your production build. Add other content by using a glob-all pattern glob.sync(["dist/*.html", "dist/**/index.html"])
-        content: ["dist/index.html"]
+        content: glob.sync(["src/scripts/jsx/*.jsx","dist/index.html"])
       })
     ]
   })
