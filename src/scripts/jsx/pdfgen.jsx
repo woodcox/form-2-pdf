@@ -44,14 +44,14 @@ function PdfmeGenerator() {
   }
 
   return (
-    <div class="pdfme-generator">
+    <form>
       <Form
         template={template()}
         inputs={inputs()}
         onInputsChange={(newInputs) => setInputs(newInputs)}
       />
       <button onClick={generatePdf}>Generate PDF</button>
-    </div>
+    </form>
   );
 }
 
