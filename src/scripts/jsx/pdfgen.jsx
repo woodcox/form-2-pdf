@@ -32,19 +32,19 @@ function PdfmeGenerator() {
   const defaultValues = { Name: '', Address: '', Phone: '' }
   const [inputs, setInputs] = createSignal(defaultValues);
 
-  const generatePdf = createEffect(async () => {
+  async function generatePdf() {
     console.log(template());
     console.log(inputs());
 
     const pdf = await generate({
       template: template(),
-      inputs: inputs(),
+      inputs: [inputs()],
     });
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
     window.open(URL.createObjectURL(blob));
 
     setInputs(defaultValues); // Reset inputs to default state after pdf generated
-  });
+  }
 
   return (
     <div>
