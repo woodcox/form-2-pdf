@@ -67,6 +67,7 @@ function Form(props) {
           <input
             type="text"
             value={props.inputs[property]}
+            placeholder="{property}"
             onChange={(e) =>
               props.onInputsChange({
                 ...props.inputs,
