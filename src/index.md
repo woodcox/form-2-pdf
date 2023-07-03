@@ -17,7 +17,7 @@ title: Proof of concept
         </label>
         <label> 
           Phone:
-          <input type="text"/>
+          <input type="tel"/>
         </label>
       </form>
       <button type="button" disabled>Generate PDF</button>
