@@ -21,7 +21,7 @@ title: Proof of concept
         </label>
       </form>
       <button type="button" disabled>Generate PDF</button>
-  <<form-component>
+  </form-component>
   <template data-island="replace">
     <div id="pdfapp"></div>
     <script type="module" src="{{ '/app/render.js' | hash }}"></script>
