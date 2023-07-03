@@ -6,7 +6,7 @@ Using:
   - [11ty](http://11ty.dev)
     
 ## Compile Solidjs to js
-Add `your_solid.jsx` file to the `src/scripts/jsx` or the `src/scripts/js` folders. Esbuild will output a minified js file. To configure esbuild modify `config/build/esbuild.js`.
+Add `your_solid.jsx` file to the `src/scripts/jsx` or the `src/scripts/js` folders. Esbuild will output a minified js file. To configure esbuild modify `config/build/esbuild.js`. The `jsx` app entry point is configured to `render.jsx`. But you may wish to change this.
 
 ## Shortcode
 If you need to compile your js script inline, use this shortcode:
