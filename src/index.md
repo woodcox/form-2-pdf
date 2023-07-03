@@ -3,7 +3,7 @@ layout: default.html
 title: Proof of concept
 ---
 
-## Form to pdf file
+## Form to pdf
 <is-land on:visable>
   <form-component>
     <form>
