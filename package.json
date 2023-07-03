@@ -1,5 +1,5 @@
 {
-  "name": "pdf-generator",
+  "name": "form-2-pdf",
   "version": "0.1.0",
   "description": "A minimal HTML5 template and the esbuild setup to compile your Solidjs app alongside 11ty.",
   "main": ".eleventy.js",
@@ -12,8 +12,8 @@
     "prefix": "lightningcss --browserslist ./dist/app/*.css -o ./dist/app/*.css",
     "start": "NODE_ENV=dev conc --kill-others 'npm:dev:*'",
     "cloud": "npm run clean && npm run build:sass && NODE_ENV=staging ELEVENTY_ENV=staging npm run build:eleventy -- --incremental",
-    "build": "npm run clean && npm run build:sass && npm run prefix && NODE_ENV=staging ELEVENTY_ENV=staging npm run build:eleventy -- --incremental --pathprefix=generate-pdf",
-    "minify": "npm run clean && npm run build:sass && npm run prefix -- --minify && NODE_ENV=production ELEVENTY_ENV=prod npm run build:eleventy -- --incremental --pathprefix=generate-pdf"
+    "build": "npm run clean && npm run build:sass && npm run prefix && NODE_ENV=staging ELEVENTY_ENV=staging npm run build:eleventy -- --incremental --pathprefix=form-2-pdf",
+    "minify": "npm run clean && npm run build:sass && npm run prefix -- --minify && NODE_ENV=production ELEVENTY_ENV=prod npm run build:eleventy -- --incremental --pathprefix=form-2-pdf"
   },
   "repository": {
     "type": "git",
