@@ -3,7 +3,7 @@ layout: default.html
 title: Proof of concept
 ---
 
-## 11ty, SolidJS & pdfMe
+## Form to pdf file
 <is-land on:visable>
   <form-component>
     <form>
