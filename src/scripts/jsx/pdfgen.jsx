@@ -10,19 +10,19 @@ function PdfmeGenerator() {
         Name: {
           type: 'text',
           position: { x: 20, y: 20 },
-          width: 30,
+          width: 100,
           height: 10,
         },
         Address: {
           type: 'text',
           position: { x: 20, y: 30 },
-          width: 30,
+          width: 100,
           height: 10,
         },
         Phone: {
           type: 'text',
           position: { x: 20, y: 40 },
-          width: 30,
+          width: 100,
           height: 10,
         },
       },
