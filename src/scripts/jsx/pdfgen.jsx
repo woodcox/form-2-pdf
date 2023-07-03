@@ -16,7 +16,7 @@ function PdfmeGenerator() {
         Address: {
           type: 'text',
           position: { x: 20, y: 30 },
-          width: 100,
+          width: 140,
           height: 10,
         },
         Phone: {
@@ -28,20 +28,23 @@ function PdfmeGenerator() {
       },
     ],
   });
+  
+  const defaultValues = { Name: '', Address: '', Phone: '' }
+  const [inputs, setInputs] = createSignal(defaultValues);
 
-  const [inputs, setInputs] = createSignal({ Name: '', Address: '', Phone: '' });
-
-  async function generatePdf() {
+  const generatePdf = createEffect(async () => {
     console.log(template());
     console.log(inputs());
 
     const pdf = await generate({
       template: template(),
-      inputs: [inputs()],
+      inputs: inputs(),
     });
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
     window.open(URL.createObjectURL(blob));
-  }
+
+    setInputs(defaultValues); // Reset inputs to default state after pdf generated
+  });
 
   return (
     <div>
