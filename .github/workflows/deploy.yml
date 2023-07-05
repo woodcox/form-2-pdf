@@ -16,7 +16,7 @@ permissions:
   
 
 env:
-  PACKAGE_MANAGER: "npm"
+  PACKAGE_MANAGER: "bun"
   FILE_PATH: "."  #default
 
 jobs:
