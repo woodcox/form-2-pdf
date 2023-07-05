@@ -1,10 +1,12 @@
-# Form to Pdf Generator using pdfMe and SolidJS
+# Form to Pdf Generator using pdfMe and SolidJS!
 Using:
   - [pdfMe](https://pdfme.com)
   - [Solid-js](https://solidjs.com)
   - [esBuild](https://esbuild.github.io)
   - [11ty](http://11ty.dev)
-    
+
+See [pdfme.com](https://pdfme.com) for instructions on how to create the pdf. This is just a proof of concept.
+
 ## Compile Solidjs to js
 Add `your_solid.jsx` file to the `src/scripts/jsx` or the `src/scripts/js` folders. Esbuild will output a minified js file. To configure esbuild modify `config/build/esbuild.js`. The `jsx` app entry point is configured to `render.jsx`. But you may wish to change this.
 
