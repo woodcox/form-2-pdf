@@ -23,8 +23,8 @@ function PdfmeGenerator() {
           height: 10,
         },
         Phone: {
-          type: 'text',
-          position: { x: 20, y: 40 },
+          type: 'tel',
+          position: { x: 20, y: 600 },
           width: 100,
           height: 10,
         },
