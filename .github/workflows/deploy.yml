@@ -1,6 +1,4 @@
 name: Deploy to GitHub Pages
-description: "A composite action that prepares your 11ty App to be deployed to GitHub Pages"
-
 
 on:
   # Trigger the workflow every time you push to the `main` branch
@@ -15,11 +13,11 @@ permissions:
   pages: write
   id-token: write
 
-inputs:
-  path: "."  #default
+  
 
 env:
   PACKAGE_MANAGER: "npm"
+  FILE_PATH: "."  #default
 
 jobs:
   build:
@@ -58,7 +56,7 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "inputs.path/dist/"
+          path: "env.FILE_PATH/dist/"
 
 
   deploy:
