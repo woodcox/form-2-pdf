@@ -25,8 +25,15 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
+      
+      - name: Setup Bun
+        if: env.PACKAGE_MANAGER == 'bun'
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
 
       - name: Setup Node
+        if: env.PACKAGE_MANAGER == 'npm'
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -43,6 +50,15 @@ jobs:
         run: |
           cd ${{ env.FILE_PATH }}
           ${{ env.PACKAGE_MANAGER }} run minify
+          
+      - name: Commit buildmeta and manifest changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: "Update json files"
+          add: '["*.json"]'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v1
