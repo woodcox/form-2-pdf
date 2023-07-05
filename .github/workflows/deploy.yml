@@ -17,7 +17,7 @@ permissions:
 
 env:
   PACKAGE_MANAGER: "npm"
-  FILE_PATH: "form-2-pdf"  #default
+  FILE_PATH: "."  #default
 
 jobs:
   build:
