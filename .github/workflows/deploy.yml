@@ -16,7 +16,7 @@ permissions:
   
 
 env:
-  PACKAGE_MANAGER: "bun"
+  PACKAGE_MANAGER: "npm"
   FILE_PATH: "."  #default
 
 jobs:
@@ -25,12 +25,6 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
-      
-      - name: Setup Bun
-        if: env.PACKAGE_MANAGER == 'bun'
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
 
       - name: Setup Node
         if: env.PACKAGE_MANAGER == 'npm'
