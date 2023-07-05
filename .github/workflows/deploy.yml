@@ -39,24 +39,24 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: env.PACKAGE_MANAGER
+          cache: ${{ env.PACKAGE_MANAGER }}
 
       - name: Install
         shell: "bash"
         run: |
           cd inputs.path
-          env.PACKAGE_MANAGER install
+          ${{ env.PACKAGE_MANAGER }} install
 
       - name: Build
         shell: "bash"
         run: |
-          cd inputs.path
-          env.PACKAGE_MANAGER run minify
+          cd ${{ env.FILE_PATH }}
+          ${{ env.PACKAGE_MANAGER }} run minify
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "env.FILE_PATH/dist/"
+          path: "${{ env.FILE_PATH }}/dist/"
 
 
   deploy:
