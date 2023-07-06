@@ -20,7 +20,7 @@ title: Proof of concept
           <input type="tel"/>
         </label>
       </form>
-      <button type="button" disabled>Generate PDF</button>
+      <button type="button" disabled>Continue</button>
   </form-component>
   <template data-island="replace">
     <div id="pdfapp"></div>
