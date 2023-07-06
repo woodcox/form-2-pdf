@@ -56,6 +56,18 @@ function PdfmeGenerator() {
         inputs={inputs()}
         onInputsChange={(newInputs) => setInputs(newInputs)}
       />
+      <button popovertarget="pdf-popover">Continue</button>
+
+      <dialog id="pdf-popover">
+        <p></p>
+        <button onClick={generatePdf}>Generate PDF</button>
+        <button popovertarget="pdf-popover" popovertargetaction="hide">Cancel</button>
+      </dialog>
+    </div>
+  );
+}
+
+      
       <button onClick={generatePdf}>Generate PDF</button>
     </div>
   );
