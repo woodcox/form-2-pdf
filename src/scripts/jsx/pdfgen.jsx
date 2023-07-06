@@ -55,13 +55,13 @@ function PdfmeGenerator() {
         inputs={inputs()}
         onInputsChange={(newInputs) => setInputs(newInputs)}
       />
-      <button popovertarget="pdf-popover">Continue</button>
+      <button onClick="showDialog(pdfDialog)">Continue</button>
 
-      <div id="pdf-popover" popover>
+      <dialog id="pdfDialog">
         <p>Please generate your ceremony options as a pdf. Then email it to ....</p>
         <button onClick={generatePdf}>Generate PDF</button>
-        <button popovertarget="pdf-popover" popovertargetaction="hide">Cancel</button>
-      </div>
+        <button onClick="hideDialog(pdfDialog)">Cancel</button>
+      </dialog>
     </div>
   );
 }
