@@ -57,11 +57,11 @@ function PdfmeGenerator() {
       />
       <button popovertarget="pdf-popover">Continue</button>
 
-      <dialog id="pdf-popover">
+      <div id="pdf-popover">
         <p>Please click the button to generate your ceremony options as a pdf. Then email it to ....</p>
         <button onClick={generatePdf}>Generate PDF</button>
         <button popovertarget="pdf-popover" popovertargetaction="hide">Cancel</button>
-      </dialog>
+      </div>
     </div>
   );
 }
