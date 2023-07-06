@@ -50,17 +50,17 @@ function PdfmeGenerator() {
 
   return (
     <div>
-      <Form
+      <Form 
         template={template()}
         inputs={inputs()}
         onInputsChange={(newInputs) => setInputs(newInputs)}
       />
-      <button onClick="showDialog(pdfDialog)">Continue</button>
+      <button onclick="pdfDialog.showModal()">Continue</button>
 
       <dialog id="pdfDialog">
         <p>Please generate your ceremony options as a pdf. Then email it to ....</p>
-        <button onClick={generatePdf}>Generate PDF</button>
-        <button onClick="hideDialog(pdfDialog)">Cancel</button>
+        <button onclick={generatePdf}>Generate PDF</button>
+        <button autofocus type="reset" onclick="this.closest('pdfDialog').close('cancel')">Cancel</button>
       </dialog>
     </div>
   );
