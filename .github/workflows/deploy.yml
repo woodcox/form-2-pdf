@@ -51,6 +51,7 @@ jobs:
           default_author: github_actions
           message: "Update json files"
           add: '["*.json"]'
+          cwd: "${{ env.FILE_PATH }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
