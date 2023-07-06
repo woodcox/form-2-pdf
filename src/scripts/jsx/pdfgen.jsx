@@ -61,7 +61,7 @@ function PdfmeGenerator() {
         <article>
           <p>Please generate your ceremony options as a pdf. Then email it to ....</p>
           <button onclick={generatePdf}>Generate PDF</button>
-          <button autofocus type="reset" onclick="this.closest('dialog').close('cancel')">Cancel</button>
+          <button autofocus type="reset" onclick="this.closest('dialog').close('Cancel')">Cancel</button>
         </article>
       </dialog>
     </div>
