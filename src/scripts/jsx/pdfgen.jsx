@@ -58,11 +58,11 @@ function PdfmeGenerator() {
       <button onclick="pdfDialog.showModal()">Continue</button>
 
       <dialog id="pdfDialog">
-        <article>
+        <form>
           <p>Please generate your ceremony options as a pdf. Then email it to ....</p>
-          <button onclick={generatePdf}>Generate PDF</button>
-          <button style="--color-secondary" autofocus type="reset" onclick="this.closest('dialog').close('Cancel')">Cancel</button>
-        </article>
+          <button method="dialog" autofocus type="reset" onclick={generatePdf}>Generate PDF</button>
+          <button onclick="this.closest('dialog').close('Cancel')">Cancel</button>
+        </form>
       </dialog>
     </div>
   );
