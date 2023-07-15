@@ -1,0 +1,26 @@
+// https://moderncss.dev/modern-css-for-dynamic-component-based-architecture/
+
+.pagination-container {
+  container-type: inline-size;
+}
+
+@container (min-width: 25ch) {
+  .pagination-nav__label {
+    height: auto;
+    overflow: unset;
+    position: unset;
+    clip-path: unset;
+  }
+}
+
+@container (min-width: 40ch) {
+  .pagination-container:has(li:nth-child(11)) {
+    .pagination-list {
+      display: none;
+    }
+
+    .pagination-label {
+      display: block;
+    }
+  }
+}
