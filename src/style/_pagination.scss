@@ -14,7 +14,7 @@
 }
 
 @container (min-width: 40ch) {
-  .pagination-container:has(li:nth-child(11)) {
+  .pagination-container:has(li:nth-child(2)) {
     .pagination-list {
       display: none;
     }
