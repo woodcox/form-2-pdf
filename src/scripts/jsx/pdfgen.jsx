@@ -49,7 +49,7 @@ function PdfmeGenerator() {
   }
 
   return (
-    <div>
+    <div class="pagination-container" aria-label="Pagination">
       <Form 
         template={template()}
         inputs={inputs()}
@@ -75,6 +75,7 @@ function Form(props) {
         <label>
           {property}:
           <input
+            class="pagination-list"
             type="text"
             value={props.inputs[property]}
             onChange={(e) =>
