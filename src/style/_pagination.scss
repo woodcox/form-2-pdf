@@ -1,6 +1,6 @@
 // https://moderncss.dev/modern-css-for-dynamic-component-based-architecture/
 
-.pagination-container {
+/* .pagination-container {
   gap: 1rem;
   padding: 3rem 0;
   font-size: 1.65rem;
@@ -66,26 +66,26 @@
 .pagination-label {
   font-weight: bold;
   text-align: center;
-}
+} */
 
 /* Most narrow display */
-.pagination-list {
-  display: none;
-}
+// .pagination-list {
+//  display: none;
+//}
 
 /* Inclusively hidden so it is still read as a label by assistive tech */
-.pagination-nav__label {
+/* .pagination-nav__label {
   height: 1px;
   overflow: hidden;
   position: absolute;
   clip-path: inset(50%);
-}
+} */
 
 .pagination-container {
-  container-type: inline-size;
+  container-type: size;
 }
 
-@container (min-width: 25ch) {
+@container (min-height: 25cqh) {
   .pagination-nav__label {
     height: auto;
     overflow: unset;
@@ -94,7 +94,7 @@
   }
 }
 
-@container (min-width: 40ch) {
+@container (min-height: 40cqh) {
   .pagination-container:has(input:nth-child(2)) {
     .pagination-list {
       display: none;
