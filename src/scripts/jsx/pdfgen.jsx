@@ -39,7 +39,7 @@ function PdfmeGenerator() {
 
     const pdf = await generate({
       template: template(),
-      inputs: inputs(),
+      inputs: [inputs()],
     });
 
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
