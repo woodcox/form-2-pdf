@@ -21,7 +21,7 @@ function PdfmeGenerator() {
           position: { x: 20, y: 30 },
           width: 140,
           height: 10,
-          fieldType: 'text',
+          fieldType: 'tel',
           required: false,
         },
         Phone: {
