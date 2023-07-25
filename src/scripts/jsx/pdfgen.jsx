@@ -13,18 +13,24 @@ function PdfmeGenerator() {
           position: { x: 20, y: 20 },
           width: 100,
           height: 10,
+          fieldType: 'text',
+          required: true,
         },
         Address: {
           type: 'text',
           position: { x: 20, y: 30 },
           width: 140,
           height: 10,
+          fieldType: 'text',
+          required: false,
         },
         Phone: {
           type: 'text',
           position: { x: 20, y: 40 },
           width: 100,
           height: 10,
+          fieldType: 'text',
+          required: true,
         },
       },
     ],
@@ -76,7 +82,8 @@ function Form(props) {
           {property}:
           <input
             class="pagination-list"
-            type="text"
+            type={config.fieldType}
+            required={config.required}
             value={props.inputs[property]}
             onChange={(e) =>
               props.onInputsChange({
