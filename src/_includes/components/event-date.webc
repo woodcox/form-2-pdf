@@ -1,3 +1,4 @@
+<template webc:type="11ty" 11ty:type="liquid">
 <fieldset class="wc-fieldset">
   <legend class="wc-legend">Date of Birth</legend>
   <span class="wc-hint" id="mdHint">For example: January 19 2000</span>
@@ -41,3 +42,4 @@
     </div>
   </div>
 </fieldset>
+</template>
