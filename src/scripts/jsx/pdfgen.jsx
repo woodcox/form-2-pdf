@@ -26,15 +26,17 @@ function PdfmeGenerator() {
           width: 140,
           height: 10,
           fieldType: 'text',
+          errormessage: 'Enter your full address',
           required: false,
         },
         Phone: {
-          label: 'Phone number',
+          label: 'Telephone number',
           type: 'text',
           position: { x: 20, y: 40 },
           width: 100,
           height: 10,
           fieldType: 'tel',
+          errormessage: 'Enter a UK phone number',
           autocomplete: 'tel',
           required: true,
         },
@@ -77,7 +79,6 @@ function PdfmeGenerator() {
         inputs={inputs()}
         onInputsChange={(newInputs) => setInputs(newInputs)}
       />
-      <button onclick="pdfDialog.showModal()">Continue</button>
 
       <dialog id="pdfDialog">
         <form>
@@ -118,6 +119,7 @@ function Form(props) {
           />
         </label>
       ))}
+      <button type="submit" onclick="pdfDialog.showModal()">Continue</button>
     </form>
   );
 }
