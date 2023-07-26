@@ -1,6 +1,6 @@
-<template webc:type="11ty" 11ty:type="liquid">
+<template>
 <fieldset class="wc-fieldset">
-  <legend class="wc-legend">{% event-date %}</legend>
+  <legend class="wc-legend" @text="event-date-title"></legend>
   <span class="wc-hint" id="mdHint">For example: 19 January 2000</span>
   <div class="wc-event-date">
     <div class="wc-form-group wc-form-group--day">
