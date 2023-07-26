@@ -1,9 +1,9 @@
 <template webc:type="11ty" 11ty:type="liquid">
 <fieldset class="wc-fieldset">
-  <legend class="wc-legend">Date of Birth</legend>
-  <span class="wc-hint" id="mdHint">For example: January 19 2000</span>
+  <legend class="wc-legend">{% event %}</legend>
+  <span class="wc-hint" id="mdHint">For example: 19 January 2000</span>
   <div class="wc-event-date">
-    <div class="wc-form-group usa-form-group--day">
+    <div class="wc-form-group wc-form-group--day">
       <label class="wc-label" for="date_of_birth_day">Day</label>
       <input class="wc-input" aria-describedby="mdHint" id="date_of_birth_day" name="date_of_birth_day"
         maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" 
@@ -11,7 +11,7 @@
         {% elseif disabled_state == 'aria-disabled' %} aria-disabled="true" {%- endif %}
       />
     </div>
-    <div class="wc-form-group usa-form-group--month usa-form-group--select">
+    <div class="wc-form-group wc-form-group--month usa-form-group--select">
       <label class="wc-label" for="date_of_birth_month">Month</label>
       <select class="wc-select" id="date_of_birth_month" name="date_of_birth_month" aria-describedby="mdHint"
         {% if disabled_state == 'disabled' %} disabled
@@ -32,7 +32,7 @@
         <option value="12">12 - December</option>
       </select>
     </div>
-    <div class="wc-form-group usa-form-group--year">
+    <div class="wc-form-group wc-form-group--year">
       <label class="wc-label" for="date_of_birth_year">Year</label>
       <input class="wc-input" aria-describedby="mdHint" id="date_of_birth_year" name="date_of_birth_year"
         minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" 
@@ -44,8 +44,7 @@
 </fieldset>
 </template>
 
-<style>
-
+<style webc>
 .wc-event-date {
   display: flex;
 
