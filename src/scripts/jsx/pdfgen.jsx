@@ -9,47 +9,50 @@ function PdfmeGenerator() {
     schemas: [
       {
         Fullname: {
+          label: 'Full name',
           type: 'text',
           position: { x: 20, y: 20 },
           width: 100,
           height: 10,
-          label: 'Full name', 
           fieldType: 'text',
+          errormessage: 'Please enter your name',
           required: true,
           autofocus: true,
         },
         Address: {
+          label: 'Address',
           type: 'text',
           position: { x: 20, y: 30 },
           width: 140,
           height: 10,
-          label: 'Address',
           fieldType: 'text',
           required: false,
         },
         Phone: {
+          label: 'Phone number',
           type: 'text',
           position: { x: 20, y: 40 },
           width: 100,
           height: 10,
-          label: 'Phone number',
           fieldType: 'tel',
+          autocomplete: 'tel',
           required: true,
         },
         Date: {
+          label: 'Date of event',
           type: 'text',
           position: { x: 20, y: 50 },
           width: 100,
           height: 10,
-          label: 'Date of event',
           fieldType: 'date',
           required: true,
+          placeholder: 'dd/mm/yyyy',
         },
       },
     ],
   });
   
-  const defaultValues = { Fullname: '', Address: '', Phone: '' }
+  const defaultValues = { Fullname: '', Address: '', Phone: '', Date: '' }
   const [inputs, setInputs] = createSignal(defaultValues);
 
   async function generatePdf() {
@@ -92,13 +95,18 @@ function Form(props) {
     <form>
       {Object.entries(props.template.schemas[0]).map(([property, config]) => (
         <label for={property}>
-          {config.label}:
+          {config.label}
+          {!config.required && <span> (optional)</span>}:
           <input
             name={property}
             id={property}
             class="pagination-list"
             type={config.fieldType}
+            title={config.errormessage}
             required={config.required}
+            placeholder={config.placeholder}
+            pattern={config.pattern}
+            autocomplete={config.autocomplete}
             autofocus={config.autofocus}
             value={props.inputs[property]}
             onChange={(e) =>
