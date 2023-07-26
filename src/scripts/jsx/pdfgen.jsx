@@ -36,11 +36,20 @@ function PdfmeGenerator() {
           fieldType: 'text',
           required: true,
         },
+        Date: {
+          label: 'Date of event',
+          type: 'text',
+          position: { x: 20, y: 50 },
+          width: 100,
+          height: 10,
+          fieldType: 'date',
+          required: true,
+        },
       },
     ],
   });
   
-  const defaultValues = { Fullname: '', Address: '', Phone: '' }
+  const defaultValues = { Fullname: '', Address: '', Phone: '', Date: '' }
   const [inputs, setInputs] = createSignal(defaultValues);
 
   async function generatePdf() {
