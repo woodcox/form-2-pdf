@@ -15,6 +15,7 @@ function PdfmeGenerator() {
           height: 10,
           fieldType: 'text',
           required: true,
+          autofocus: true,
         },
         Address: {
           type: 'text',
@@ -84,6 +85,7 @@ function Form(props) {
             class="pagination-list"
             type={config.fieldType}
             required={config.required}
+            autofocus={config.autofocus}
             value={props.inputs[property]}
             onChange={(e) =>
               props.onInputsChange({
