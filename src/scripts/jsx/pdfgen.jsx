@@ -8,7 +8,8 @@ function PdfmeGenerator() {
     basePdf: BLANK_PDF,
     schemas: [
       {
-        Name: {
+        Fullname: {
+          label: 'Full name',
           type: 'text',
           position: { x: 20, y: 20 },
           width: 100,
@@ -18,6 +19,7 @@ function PdfmeGenerator() {
           autofocus: true,
         },
         Address: {
+          label: 'Address',
           type: 'text',
           position: { x: 20, y: 30 },
           width: 140,
@@ -26,6 +28,7 @@ function PdfmeGenerator() {
           required: false,
         },
         Phone: {
+          label: 'Phone number',
           type: 'text',
           position: { x: 20, y: 40 },
           width: 100,
@@ -37,7 +40,7 @@ function PdfmeGenerator() {
     ],
   });
   
-  const defaultValues = { Name: '', Address: '', Phone: '' }
+  const defaultValues = { Fullname: '', Address: '', Phone: '' }
   const [inputs, setInputs] = createSignal(defaultValues);
 
   async function generatePdf() {
@@ -79,9 +82,11 @@ function Form(props) {
   return (
     <form>
       {Object.entries(props.template.schemas[0]).map(([property, config]) => (
-        <label>
-          {property}:
+        <label for={property}>
+          {config.label}:
           <input
+            name={property}
+            id={property}
             class="pagination-list"
             type={config.fieldType}
             required={config.required}
