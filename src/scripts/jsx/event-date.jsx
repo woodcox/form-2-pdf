@@ -1,20 +1,21 @@
-<fieldset class="wc-fieldset">
-  <legend class="wc-legend" @text="event-date-title"></legend>
-  <span class="wc-hint" id="mdHint">For example: 19 January 2000</span>
-  <div class="wc-event-date">
-    <div class="wc-form-group wc-form-group--day">
-      <label class="wc-label" for="date_of_birth_day">Day</label>
-      <input class="wc-input" aria-describedby="mdHint" id="date_of_birth_day" name="date_of_birth_day"
+export default () => 
+<fieldset>
+  <legend>Ceremony Date Day:</legend>
+  <span id="mdHint">For example: 19 January 2000</span>
+  <div class="event-date">
+    <div class="form-group form-group--day">
+      <label for="date-day">Day:</label>
+      <input aria-describedby="mdHint" id="date-day" name="date-day"
         maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" 
-        {% if disabled_state == 'disabled' %} disabled
-        {% elseif disabled_state == 'aria-disabled' %} aria-disabled="true" {%- endif %}
+        //{% if disabled_state == 'disabled' %} disabled
+        //{% elseif disabled_state == 'aria-disabled' %} aria-disabled="true" {%- endif %}
       />
     </div>
-    <div class="wc-form-group wc-form-group--month usa-form-group--select">
-      <label class="wc-label" for="date_of_birth_month">Month</label>
-      <select class="wc-select" id="date_of_birth_month" name="date_of_birth_month" aria-describedby="mdHint"
-        {% if disabled_state == 'disabled' %} disabled
-        {% elseif disabled_state == 'aria-disabled' %} aria-disabled="true" {%- endif %}
+    <div class="form-group form-group--month form-group--select">
+      <label for="date-month">Month:</label>
+      <select id="date-month" name="date-month" aria-describedby="mdHint"
+        //{% if disabled_state == 'disabled' %} disabled
+        //{% elseif disabled_state == 'aria-disabled' %} aria-disabled="true" {%- endif %}
       >
         <option value>- Select -</option>
         <option value="1">01 - January</option>
@@ -31,12 +32,12 @@
         <option value="12">12 - December</option>
       </select>
     </div>
-    <div class="wc-form-group wc-form-group--year">
-      <label class="wc-label" for="date_of_birth_year">Year</label>
-      <input class="wc-input" aria-describedby="mdHint" id="date_of_birth_year" name="date_of_birth_year"
+    <div class="form-group form-group--year">
+      <label for="date-year">Year:</label>
+      <input aria-describedby="mdHint" id="date-year" name="date-year"
         minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" 
-        {% if disabled_state == 'disabled' %} disabled
-        {% elseif disabled_state == 'aria-disabled' %} aria-disabled="true" {%- endif %}
+        //{% if disabled_state == 'disabled' %} disabled
+        //{% elseif disabled_state == 'aria-disabled' %} aria-disabled="true" {%- endif %}
       />
     </div>
   </div>

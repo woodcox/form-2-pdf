@@ -1,5 +1,5 @@
 {
-  "render": "render-EDHCAMJ5.min.js",
-  "is-land": "is-land-MS3WLZSM.min.js",
-  "style": "style-G47BFVGZ.min.css"
+  "render": "render.js",
+  "is-land": "is-land.js",
+  "style": "style.css"
 }
