@@ -88,7 +88,6 @@ function PdfmeGenerator() {
         </form>
       </dialog>
     </div>
-    <event-date @event-date-title="Event Date"><></event-date>
   );
 }
 
