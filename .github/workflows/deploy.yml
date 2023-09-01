@@ -16,8 +16,8 @@ permissions:
   
 
 env:
-  PACKAGE_MANAGER: "npm"
   FILE_PATH: "."  #default
+  UPDATE_NPM: true # false = deploy eleventy , true = update npm
 
 jobs:
   build:
@@ -26,24 +26,23 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
 
-      - name: Setup Node
-        if: env.PACKAGE_MANAGER == 'npm'
+      - name: Setup Node 18.x
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: ${{ env.PACKAGE_MANAGER }}
+          cache: 'npm'
 
-      - name: Install
+      - name: Install dependecies
         shell: "bash"
         run: |
           cd ${{ env.FILE_PATH }}
-          ${{ env.PACKAGE_MANAGER }} install
+          npm install
 
       - name: Build
         shell: "bash"
         run: |
           cd ${{ env.FILE_PATH }}
-          ${{ env.PACKAGE_MANAGER }} run minify
+          npm run minify
           
       - name: Commit buildmeta and manifest changes
         uses: EndBug/add-and-commit@v9
@@ -59,7 +58,7 @@ jobs:
         shell: "bash"
         run: |
           cd ${{ env.FILE_PATH }}
-          ${{ env.PACKAGE_MANAGER }} run minify
+          npm run minify
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v2
