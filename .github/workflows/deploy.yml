@@ -45,17 +45,16 @@ jobs:
           
   build:
     needs: install
+    if: env.UPDATE_NPM != 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Build
-        if: env.UPDATE_NPM != 'true'
         shell: "bash"
         run: |
           cd ${{ env.FILE_PATH }}
           npm run minify
           
       - name: Commit buildmeta and manifest changes
-        if: env.UPDATE_NPM != 'true'
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
@@ -66,24 +65,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
       - name: Rebuild
-        if: env.UPDATE_NPM != 'true'
         shell: "bash"
         run: |
           cd ${{ env.FILE_PATH }}
           npm run minify
 
       - name: Upload Pages Artifact
-        if: env.UPDATE_NPM != 'true'
         uses: actions/upload-pages-artifact@v2
         with:
           path: "${{ env.FILE_PATH }}/dist/"
 
   update:
     needs: install
+    if: env.UPDATE_NPM == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: pull request on npm update
-        if: env.UPDATE_NPM == 'true'
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -102,6 +99,7 @@ jobs:
 
   deploy:
     needs: build
+    if: env.UPDATE_NPM != 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
