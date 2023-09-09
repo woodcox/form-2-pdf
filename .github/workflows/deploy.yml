@@ -33,19 +33,23 @@ jobs:
           cache: 'npm'
 
       - name: Install dependecies
+        id: install_dep
         if: env.UPDATE_NPM != 'true'
         shell: "bash"
         run: |
           cd ${{ env.FILE_PATH }}
           npm install
+        if: env.UPDATE_NPM == 'true'
+        run: exit 1
           
       - name: Update dependencies
+        id: update_dep
         if: env.UPDATE_NPM == 'true'
         run: npm update --save
           
   build:
     needs: install
-    if: env.UPDATE_NPM != 'true'
+    if: ${{ failure() && jobs.install.step.conclusion == 'failure' }}
     runs-on: ubuntu-latest
     steps:
       - name: Build
