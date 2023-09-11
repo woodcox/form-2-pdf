@@ -86,6 +86,8 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     steps:
+      - name: Debug Checkout
+        run: find .
       - name: pull request on npm update
         if: env.UPDATE_NPM == 'true'
         uses: peter-evans/create-pull-request@v5
