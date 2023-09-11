@@ -4,8 +4,7 @@ on:
   # Trigger the workflow every time you push to the `main` branch
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
   
@@ -87,7 +86,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Debug Checkout
-        run: find .
+        run: |
+          cd ${{ env.FILE_PATH }}
       - name: pull request on npm update
         if: env.UPDATE_NPM == 'true'
         uses: peter-evans/create-pull-request@v5
