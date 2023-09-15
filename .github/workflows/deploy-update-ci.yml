@@ -16,7 +16,7 @@ permissions:
 
 env:
   FILE_PATH: "."  #default
-  UPDATE_NPM: true # false = deploy eleventy , true = update npm
+  UPDATE_NPM: false # false = deploy eleventy , true = update npm
 
 jobs:
   install:
