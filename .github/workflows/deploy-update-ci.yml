@@ -14,8 +14,6 @@ permissions:
   pages: write
   id-token: write
 
-  
-
 env:
   FILE_PATH: "."  #default
   UPDATE_NPM: true # false = deploy eleventy , true = update npm
@@ -40,11 +38,6 @@ jobs:
         run: |
           cd ${{ env.FILE_PATH }}
           npm install
-          
-      - name: Update dependencies
-        id: update_dep
-        if: env.UPDATE_NPM == 'true'
-        run: npm update --save
           
   build:
     needs: install
@@ -85,9 +78,14 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - name: Debug Checkout
+      - name: Update dependencies
+        id: update_dep
+        if: env.UPDATE_NPM == 'true'
+        shell: "bash"
         run: |
           cd ${{ env.FILE_PATH }}
+          npm update --save
+        
       - name: pull request on npm update
         if: env.UPDATE_NPM == 'true'
         uses: peter-evans/create-pull-request@v5
