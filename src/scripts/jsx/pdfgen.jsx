@@ -74,7 +74,7 @@ function PdfmeGenerator() {
   }
 
   return (
-    <div class="pagination-container" aria-label="Pagination">
+    <div>
       <wc-date-input></wc-date-input>
       <Form 
         template={template()}
