@@ -6,14 +6,14 @@ on:
 
 # Conditional environmental if's      
 env:
-  UPDATE_NPM: false # false = deploy eleventy , true = update npm
+  UPDATE_NPM: true # false = deploy eleventy , true = update npm
 
 jobs:
   build_deploy_eleventy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js 18.x
         uses: actions/setup-node@v3
@@ -43,20 +43,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Verify Changed files
+      - name: Npm Rebuild # for buildmeta and manifest changes to take effect 
         if: env.UPDATE_NPM != 'true'
-        uses: tj-actions/verify-changed-files@v16
-        id: verify-changed-files
-        with:
-          files: |
-             *.json
-
-      - name: Run step only when any of the above files change.
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        # need to work out how to modify the js src and css link when the manifest.json changed
-        run: |
-          echo "Changed files: ${{ steps.verify-changed-files.outputs.changed_files }}"
-        # Outputs: "Changed files: new.txt test_directory/new.txt"
+        run: npm run minify
         
       - name: Deploy
         if: env.UPDATE_NPM != 'true'
