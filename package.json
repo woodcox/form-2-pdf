@@ -22,6 +22,7 @@
   "author": "woodcox",
   "license": "ISC",
   "devDependencies": {
+    "@annoyingmouse/wc-date-input": "^1.0.7",
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-webc": "^0.11.1",
     "@11ty/is-land": "^4.0.0",
