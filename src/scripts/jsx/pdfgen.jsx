@@ -75,7 +75,6 @@ function PdfmeGenerator() {
 
   return (
     <div>
-      <wc-date-input></wc-date-input>
       <Form 
         template={template()}
         inputs={inputs()}
