@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   # Trigger the workflow every time you push to the `main` branch
   push:
-    branches: [ test ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node 18.x
         uses: actions/setup-node@v3
@@ -32,12 +32,9 @@ jobs:
           cache: 'npm'
 
       - name: Install dependecies
-        id: install_dep
         if: env.UPDATE_NPM != 'true'
-        shell: "bash"
-        run: |
-          cd ${{ env.FILE_PATH }}
-          npm install
+        run: npm i # npm update --save
+
           
   build:
     needs: install
@@ -45,10 +42,7 @@ jobs:
     steps:
       - name: Build
         if: env.UPDATE_NPM != 'true'
-        shell: "bash"
-        run: |
-          cd ${{ env.FILE_PATH }}
-          npm run minify
+        run: npm run minify
           
       - name: Commit buildmeta and manifest changes
         if: env.UPDATE_NPM != 'true'
@@ -57,16 +51,12 @@ jobs:
           default_author: github_actions
           message: "Update json files"
           add: '["*.json"]'
-          cwd: "${{ env.FILE_PATH }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
       - name: Rebuild
         if: env.UPDATE_NPM != 'true'
-        shell: "bash"
-        run: |
-          cd ${{ env.FILE_PATH }}
-          npm run minify
+        run: npm run minify
 
       - name: Upload Pages Artifact
         if: env.UPDATE_NPM != 'true'
@@ -81,10 +71,7 @@ jobs:
       - name: Update dependencies
         id: update_dep
         if: env.UPDATE_NPM == 'true'
-        shell: "bash"
-        run: |
-          cd ${{ env.FILE_PATH }}
-          npm update --save
+        run: npm update --save
         
       - name: pull request on npm update
         if: env.UPDATE_NPM == 'true'
