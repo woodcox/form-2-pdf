@@ -19,6 +19,7 @@ const esbuildOpts = {
   allowOverwrite: !isProd,  // overwrite dist/app/style.css when in dev mode
   bundle: true,
   minify: isProd,
+  write: !isProd,
   treeShaking: isProd,
   outdir: './dist/app',
   sourcemap: !isProd,
