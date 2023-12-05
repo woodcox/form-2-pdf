@@ -55,7 +55,7 @@ function PdfmeGenerator() {
     ],
   });
   
-  const defaultValues = { Fullname: '', Address: '', Phone: '', Date: '' }
+  const defaultValues = { Fullname: '', Email: '', Phone: '', Date: '' }
   const [inputs, setInputs] = createSignal(defaultValues);
 
   async function generatePdf() {
