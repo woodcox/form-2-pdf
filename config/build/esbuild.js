@@ -19,7 +19,7 @@ const esbuildOpts = {
   allowOverwrite: !isProd,  // overwrite dist/app/style.css when in dev mode
   bundle: true,
   minify: isProd,
-  write: !isProd,
+  write: isDev,
   treeShaking: isProd,
   outdir: './dist/app',
   sourcemap: !isProd,
@@ -33,13 +33,14 @@ const esbuildOpts = {
       cache: cacheMap
     }),
     solidPlugin(),
-    gzipPlugin({
-      uncompressed: !isProd,
-      gzip: isProd,
+    // NEED TO WORK OUT HOW ONLY TO RUN GZIP IN PROD
+    //gzipPlugin({
+    //  uncompressed: isDev,
+    //  gzip: isProd,
       //onEnd: ({ outputFiles }) => {
         // outputFiles.forEach(({ path, contents }) => {})
       //}
-    }),
+    //}),
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
