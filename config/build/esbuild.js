@@ -32,7 +32,7 @@ const esbuildOpts = {
       cache: cacheMap
     }),
     solidPlugin(),
-    gzipPulgin({
+    gzipPlugin({
       uncompressed: !isProd,
       gzip: isProd,
       //onEnd: ({ outputFiles }) => {
