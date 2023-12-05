@@ -5,6 +5,7 @@ const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
 const isDev = process.env.ELEVENTY_ENV === 'dev' ? true : false;
 const { solidPlugin } = require('esbuild-plugin-solid');
 const manifestPlugin = require('esbuild-plugin-manifest');
+const gzipPlugin = require('@luncheon/esbuild-plugin-gzip');
 const { http, default_schemes } = require('@hyrious/esbuild-plugin-http');
 // cacheMap stores { url => contents }, you can easily persist it in file system - see https://github.com/hyrious/esbuild-plugin-http
 let cacheMap = new Map();
@@ -30,7 +31,14 @@ const esbuildOpts = {
       schemes: { default_schemes },
       cache: cacheMap
     }),
-    solidPlugin(), 
+    solidPlugin(),
+    gzipPulgin({
+      uncompressed: !isProd,
+      gzip: isProd,
+      //onEnd: ({ outputFiles }) => {
+        // outputFiles.forEach(({ path, contents }) => {})
+      //}
+    }),
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
