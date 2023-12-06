@@ -53,7 +53,7 @@ const esbuildOpts = {
 
 // If isProd include gzipPlugin. This is pushed into esBuildOpts.plugins because in dev/staging mode the esBuild's write api must be true. But the gzipPlugin requires it to be false.
 if (isProd) {
-  esbuildOpts.plugins.push(gzipPlugin({
+  esbuildOpts.plugins.unshift(gzipPlugin({
     uncompressed: !isProd,
     gzip: isProd,
     brotli: isProd,
