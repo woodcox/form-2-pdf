@@ -37,9 +37,9 @@ const esbuildOpts = {
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
-      useEntrypointKeys: true,
+      //useEntrypointKeys: true,
       shortNames: true,
-      extensionless: 'input',
+      extensionless: 'output',
       // Generate manifest.json - https://github.com/pellebjerkestrand/pokesite/blob/main/source/build/build-client.js
       generate: (entries) =>
         Object.fromEntries(
