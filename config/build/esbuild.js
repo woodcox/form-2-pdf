@@ -52,7 +52,7 @@ const esbuildOpts = {
   ]
 }
 
-// If isProd include gzipPlugin. This is pushed into esBuildOpts.plugins because in dev/staging mode the esBuild's write api must be true. But the gzipPlugin requires it to be false.
+/* If isProd include gzipPlugin. This is pushed into esBuildOpts.plugins because in dev/staging mode the esBuild's write api must be true. But the gzipPlugin requires it to be false.
 if (isProd) {
   esbuildOpts.plugins.push(gzipPlugin({
     uncompressed: !isProd,
@@ -60,6 +60,7 @@ if (isProd) {
     brotli: isProd,
   }));
 }
+*/
 
 module.exports = async () => {
   let ctx = await esbuild.context({
