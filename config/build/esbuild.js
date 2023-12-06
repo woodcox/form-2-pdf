@@ -19,7 +19,7 @@ const esbuildOpts = {
   allowOverwrite: !isProd,  // overwrite dist/app/style.css when in dev mode
   bundle: true,
   minify: isProd,
-  write: !isProd,
+  write: !isProd,  // this is required for the gzipPlugin to work
   treeShaking: isProd,
   outdir: './dist/app',
   sourcemap: !isProd,
@@ -34,9 +34,14 @@ const esbuildOpts = {
       cache: cacheMap
     }),
     solidPlugin(),
+    gzipPlugin({
+      uncompressed: !isProd,
+      gzip: isProd
+    }),
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
+      useEntrypointKeys: true,
       shortNames: true,
       extensionless: 'input',
       // Generate manifest.json - https://github.com/pellebjerkestrand/pokesite/blob/main/source/build/build-client.js
@@ -53,7 +58,7 @@ const esbuildOpts = {
 
 // If isProd include gzipPlugin. This is pushed into esBuildOpts.plugins because in dev/staging mode the esBuild's write api must be true. But the gzipPlugin requires it to be false.
 if (isProd) {
-  esbuildOpts.plugins.unshift(gzipPlugin({
+  esbuildOpts.plugins.push(gzipPlugin({
     uncompressed: !isProd,
     gzip: isProd,
     brotli: isProd,
