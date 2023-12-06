@@ -19,28 +19,21 @@ const esbuildOpts = {
   allowOverwrite: !isProd,  // overwrite dist/app/style.css when in dev mode
   bundle: true,
   minify: isProd,
-  write: isDev,
+  write: !isProd,
   treeShaking: isProd,
   outdir: './dist/app',
   sourcemap: !isProd,
   target: isProd ? 'es6' : 'esnext',
   metafile: true,
   plugins: [
-    // Runs develeopment build (skips purgingcss) if isProd = false when ELEVENTY_ENV != 'prod'
+    // To run development/staging build (skips purgingcss) if isProd = false when ELEVENTY_ENV != 'prod'. 
+    // This is implimented in the package.json scripts
     http({
       filter: (url) => true,
       schemes: { default_schemes },
       cache: cacheMap
     }),
     solidPlugin(),
-    // NEED TO WORK OUT HOW ONLY TO RUN GZIP IN PROD
-    //gzipPlugin({
-    //  uncompressed: isDev,
-    //  gzip: isProd,
-      //onEnd: ({ outputFiles }) => {
-        // outputFiles.forEach(({ path, contents }) => {})
-      //}
-    //}),
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
@@ -56,6 +49,15 @@ const esbuildOpts = {
         ),
       })
   ]
+}
+
+// If isProd include gzipPlugin. This is pushed into esBuildOpts.plugins because in dev/staging mode the esBuild's write api must be true. But the gzipPlugin requires it to be false.
+if (isProd) {
+  esbuildOpts.plugins.push(gzipPlugin({
+    uncompressed: !isProd,
+    gzip: isProd,
+    brotli: isProd,
+  }));
 }
 
 module.exports = async () => {
