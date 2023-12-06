@@ -19,7 +19,7 @@ const esbuildOpts = {
   allowOverwrite: !isProd,  // overwrite dist/app/style.css when in dev mode
   bundle: true,
   minify: isProd,
-  write: !isProd,  // this is required for the gzipPlugin to work
+  //write: !isProd,  // this is required for the gzipPlugin to work
   treeShaking: isProd,
   outdir: './dist/app',
   sourcemap: !isProd,
