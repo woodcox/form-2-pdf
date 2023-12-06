@@ -14,12 +14,12 @@ const path = require("path");
 
 const esbuildOpts = {
   entryPoints: glob.sync(['src/scripts/jsx/render.jsx', 'src/scripts/js/*.js', 'dist/app/*.css']), // include css so that its in the manifest.json
-  //entryNames: isProd ? '[name]-[hash]' : '[name]',
-  outExtension: isProd ? {'.js': '.min.js', '.css': '.min.css'} : {'.js': '.js', '.css': '.css'},
+  entryNames: isProd ? '[name]-[hash]' : '[name]',
+  //outExtension: isProd ? {'.js': '.min.js', '.css': '.min.css'} : {'.js': '.js', '.css': '.css'},
   allowOverwrite: !isProd,  // overwrite dist/app/style.css when in dev mode
   bundle: true,
   minify: isProd,
-  //write: !isProd,  // this is required for the gzipPlugin to work
+  write: !isProd,  // this is required for the gzipPlugin to work
   treeShaking: isProd,
   outdir: './dist/app',
   sourcemap: !isProd,
@@ -37,7 +37,7 @@ const esbuildOpts = {
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
-      hash: isProd ? '[name]-[hash]' : '[name]',
+      //hash: isProd ? '[name]-[hash]' : '[name]',
       shortNames: true,
       extensionless: 'input',
       // Generate manifest.json - https://github.com/pellebjerkestrand/pokesite/blob/main/source/build/build-client.js
@@ -52,7 +52,7 @@ const esbuildOpts = {
   ]
 }
 
-/* If isProd include gzipPlugin. This is pushed into esBuildOpts.plugins because in dev/staging mode the esBuild's write api must be true. But the gzipPlugin requires it to be false.
+// If isProd include gzipPlugin. This is pushed into esBuildOpts.plugins because in dev/staging mode the esBuild's write api must be true. But the gzipPlugin requires it to be false.
 if (isProd) {
   esbuildOpts.plugins.push(gzipPlugin({
     uncompressed: !isProd,
@@ -60,7 +60,6 @@ if (isProd) {
     brotli: isProd,
   }));
 }
-*/
 
 module.exports = async () => {
   let ctx = await esbuild.context({
