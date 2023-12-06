@@ -39,7 +39,7 @@ const esbuildOpts = {
       filename: '../../src/_data/manifest.json',
       //useEntrypointKeys: true,
       shortNames: true,
-      extensionless: 'output',
+      extensionless: 'input',
       // Generate manifest.json - https://github.com/pellebjerkestrand/pokesite/blob/main/source/build/build-client.js
       generate: (entries) =>
         Object.fromEntries(
