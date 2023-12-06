@@ -34,14 +34,10 @@ const esbuildOpts = {
       cache: cacheMap
     }),
     solidPlugin(),
-    gzipPlugin({
-      uncompressed: !isProd,
-      gzip: isProd
-    }),
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
-      useEntrypointKeys: true,
+      //useEntrypointKeys: true,
       shortNames: true,
       extensionless: 'input',
       // Generate manifest.json - https://github.com/pellebjerkestrand/pokesite/blob/main/source/build/build-client.js
