@@ -19,7 +19,7 @@ const esbuildOpts = {
   allowOverwrite: !isProd,  // overwrite dist/app/style.css when in dev mode
   bundle: true,
   minify: isProd,
-  //write: !isProd,  // this is required for the gzipPlugin to work
+  write: !isProd,  // this is required for the gzipPlugin to work
   treeShaking: isProd,
   outdir: './dist/app',
   sourcemap: !isProd,
@@ -52,14 +52,14 @@ const esbuildOpts = {
 }
 
 // If isProd include gzipPlugin. This is pushed into esBuildOpts.plugins because in dev/staging mode the esBuild's write api must be true. But the gzipPlugin requires it to be false.
-/*if (isProd) {
+*if (isProd) {
   esbuildOpts.plugins.push(gzipPlugin({
     uncompressed: !isProd,
     gzip: isProd,
     brotli: isProd,
   }));
 }
-*/
+
 
 module.exports = async () => {
   let ctx = await esbuild.context({
