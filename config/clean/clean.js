@@ -22,7 +22,7 @@ console.log("Cleaning working tree...");
 
 // Add any folers here you want to delete prior to build
 
-deleteFolderRecursive("./dist");
+deleteFolderRecursive("./dist/app");
 deleteFolderRecursive("./_tmp");
 
 console.log("Successfully cleaned working tree!");
