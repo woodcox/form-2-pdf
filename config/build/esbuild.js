@@ -11,6 +11,12 @@ const { http, default_schemes } = require('@hyrious/esbuild-plugin-http');
 let cacheMap = new Map();
 const fs = require('fs');
 const path = require("path");
+// pathPrefix and defineEnv const's access the environment variable PATHPREFIX set by the npm scripts (in the package.json) which is passed to solid-js by esbuild.js. Esbuild defines the environmental variables to pass through to solid-js app using the define config.
+const pathPrefix = process.env.PATHPREFIX || ''; 
+const defineEnv = {
+  'process.env.PATHPREFIX': JSON.stringify(pathPrefix),
+  // Add other environment variables as needed
+};
 
 const esbuildOpts = {
   entryPoints: glob.sync(['src/scripts/jsx/render.jsx', 'src/scripts/js/*.js', 'dist/app/*.css']), // include css so that its in the manifest.json
@@ -25,6 +31,7 @@ const esbuildOpts = {
   sourcemap: !isProd,
   target: isProd ? 'es6' : 'esnext',
   metafile: true,
+  define: defineEnv,
   plugins: [
     // To run development/staging build (skips purgingcss) if isProd = false when ELEVENTY_ENV != 'prod'. 
     // This is implimented in the package.json scripts
