@@ -11,7 +11,7 @@ console.log('pathPrefix:', pathPrefix);
 render(
     () => (
         <Router>
-            <Route path={pathPrefix}> {/* solid-js router uses pathPrefix here to set the url path */}
+            <Route path="/${pathPrefix}"> {/* solid-js router uses pathPrefix here to set the url path */}
                 <Route path="/" component={PdfmeGenerator} /> {/* Define the home page route */}
                 <Route path="/name" component={yourName} /> 
                 <Route path="/partner" component={yourPartner} />
