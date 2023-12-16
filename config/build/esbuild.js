@@ -11,8 +11,24 @@ const { http, default_schemes } = require('@hyrious/esbuild-plugin-http');
 let cacheMap = new Map();
 const fs = require('fs');
 const path = require("path");
+
+// Get arguments from npm script (such as --pathprefix) - https://reflect.run/articles/sending-command-line-arguments-to-an-npm-script/
+const parseArgs = (args) => {
+  const parsedArgs = {};
+
+  args.forEach((arg) => {
+    const parts = arg.split("=");
+
+    parsedArgs[parts[0].slice(2)] = parts[1];
+  });
+
+  return parsedArgs;
+};
+
+const args = parseArgs(process.argv);
 // pathPrefix and defineEnv const's access the environment variable PATHPREFIX set by the npm scripts (in the package.json) which is passed to solid-js by esbuild.js. Esbuild defines the environmental variables to pass through to solid-js app using the define config.
-const pathPrefix = process.env.PATHPREFIX || ''; 
+const pathPrefix = process.argv.pathprefix || '';
+
 const defineEnv = {
   'process.env.PATHPREFIX': JSON.stringify(pathPrefix),
   // Add other environment variables as needed
