@@ -27,8 +27,8 @@ const parseArgs = (args) => {
 
 const args = parseArgs(process.argv);
 // pathPrefix and defineEnv const's access the environment variable PATHPREFIX set by the npm scripts (in the package.json) which is passed to solid-js by esbuild.js. Esbuild defines the environmental variables to pass through to solid-js app using the define config.
-const pathPrefix = process.argv.pathprefix || '';
-
+const pathPrefix = args[pathprefix] || '';
+console.log("url path:", pathPrefix);
 const defineEnv = {
   'process.env.PATHPREFIX': JSON.stringify(pathPrefix),
   // Add other environment variables as needed
