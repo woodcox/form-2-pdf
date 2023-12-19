@@ -21,11 +21,6 @@ function PdfmeGenerator() {
 
   return (
     <>
-        {/*<Form 
-          template={template()}
-          inputs={inputs()}
-          onInputsChange={(newInputs) => setInputs(newInputs)}
-        />*/}
         <CreatePdf 
           generatePdf={generatePdf}
         />
