@@ -1,10 +1,12 @@
-import { CEREMONY_PDF } from './basePdf.jsx';
+import { createSignal } from 'solid-js';
+import { CEREMONY_PDF } from './basePdf.js';
 
-export const schema = { 
+const schema = { 
   basePdf: CEREMONY_PDF,
   schemas: [
     {
       YourFirstName: {
+        page: 'yourDetails',
         label: 'Your first name',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -16,6 +18,7 @@ export const schema = {
         autofocus: true,
       },
       YourSurname: {
+        page: 'yourDetails',
         label: 'Your surname',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -27,6 +30,7 @@ export const schema = {
         autofocus: true,
       },
       PartnerFirstName: {
+        page: 'partnerDetails',
         label: 'Your partners first name',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -38,6 +42,7 @@ export const schema = {
         autofocus: true,
       },
       PartnerSurname: {
+        page: 'partnerDetails',
         label: 'Your partners surname',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -49,6 +54,7 @@ export const schema = {
         autofocus: true,
       },
       Email: {
+        page: 'yourDetails',
         label: 'Your email',
         type: 'text',
         position: { x: 52.4, y: 69.55 },
@@ -59,6 +65,7 @@ export const schema = {
         required: false,
       },
       Phone: {
+        page: 'yourDetails',
         label: 'Your telephone number',
         type: 'text',
         position: { x: 53.76, y: 80.54 },
@@ -98,3 +105,5 @@ export const schema = {
     }
   ]
 }
+
+export const [template, setTemplate] = createSignal(schema);

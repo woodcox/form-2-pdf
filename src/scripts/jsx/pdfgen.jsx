@@ -1,21 +1,7 @@
-import { createSignal } from 'solid-js';
 import { generate } from '@pdfme/generator';
-import { schema } from './pdfme/schema.jsx';
-
-const defaultValues = { 
-  YourFirstName: '',
-  YourSurname: '',
-  PartnerFirstName: '',
-  PartnerSurname: '',
-  Email: '', 
-  Phone: '', 
-  Date: '', 
-  Mother: '' 
-}
-
-const [inputs, setInputs] = createSignal(defaultValues);
-
-const [template, setTemplate] = createSignal(schema); // use schema.jsx
+import { createSignal } from 'solid-js';
+import { template, setTemplate } from './pdfme/schema.jsx';
+import { inputs, setInputs } from './state/formInputs.jsx';
 
 function PdfmeGenerator() {
 
@@ -34,25 +20,32 @@ function PdfmeGenerator() {
   }
 
   return (
-    <div>
-      <Form 
-        template={template()}
-        inputs={inputs()}
-        onInputsChange={(newInputs) => setInputs(newInputs)}
-      />
-
-      <dialog id="pdfDialog">
-        <form>
-          <p>Please generate your ceremony options as a pdf. Then email it to ....</p>
-          <button formmethod="dialog" autofocus type="reset" onclick={generatePdf}>Generate PDF</button>
-          <button onclick="this.closest('dialog').close('Cancel')">Cancel</button>
-        </form>
-      </dialog>
-    </div>
+    <>
+        {/*<Form 
+          template={template()}
+          inputs={inputs()}
+          onInputsChange={(newInputs) => setInputs(newInputs)}
+        />*/}
+        <CreatePdf 
+          generatePdf={generatePdf}
+        />
+    </>
   );
 }
 
-function Form(props) {
+function CreatePdf(props) {
+  return (
+    <article>
+      <p>Please generate your ceremony options as a PDF. Then email it to ....</p>
+      <button type="reset" onClick={props.generatePdf}>Create PDF</button>
+      <a href="/">
+        <i>Cancel</i>
+      </a>
+    </article>
+  );
+}
+
+function YourDetails(props) {
   return (
     <form>
       {Object.entries(props.template.schemas[0]).map(([property, config]) => (
@@ -62,7 +55,6 @@ function Form(props) {
           <input
             name={property}
             id={property}
-            class="pagination-list"
             type={config.fieldType}
             title={config.errormessage}
             required={config.required}
@@ -80,7 +72,10 @@ function Form(props) {
           />
         </label>
       ))}
-      <button type="submit" onclick="pdfDialog.showModal()">Continue</button>
+      <nav>
+        <a href="/partner">Back</a>
+        <a href="/partner">Next</a>
+      </nav>
     </form>
   );
 }
