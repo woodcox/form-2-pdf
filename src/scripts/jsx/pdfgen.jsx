@@ -40,39 +40,4 @@ function CreatePdf(props) {
   );
 }
 
-function YourDetails(props) {
-  return (
-    <form>
-      {Object.entries(props.template.schemas[0]).map(([property, config]) => (
-        <label for={property}>
-          {config.label}
-          {!config.required && <span> (optional)</span>}:
-          <input
-            name={property}
-            id={property}
-            type={config.fieldType}
-            title={config.errormessage}
-            required={config.required}
-            placeholder={config.placeholder}
-            pattern={config.pattern}
-            autocomplete={config.autocomplete}
-            autofocus={config.autofocus}
-            value={props.inputs[property]}
-            onChange={(e) =>
-              props.onInputsChange({
-                ...props.inputs,
-                [property]: e.target.value,
-              })
-            }
-          />
-        </label>
-      ))}
-      <nav>
-        <a href="/partner">Back</a>
-        <a href="/partner">Next</a>
-      </nav>
-    </form>
-  );
-}
-
 export default PdfmeGenerator;
