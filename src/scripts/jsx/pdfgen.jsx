@@ -3,7 +3,7 @@ import { createSignal } from 'solid-js';
 import { template, setTemplate } from './pdfme/schema.jsx';
 import { inputs, setInputs } from './state/formInputs.jsx';
 const pathPrefix = process.env.PATHPREFIX;
-const urlPrefix = pathPrefix ? `/${pathPrefix}` : "";
+let urlPrefix = pathPrefix ? `/${pathPrefix}` : "";
 
 function PdfmeGenerator() {
 
@@ -35,7 +35,7 @@ function CreatePdf(props) {
     <article>
       <p>Please generate your ceremony options as a PDF. Then email it to ....</p>
       <button type="reset" onClick={props.generatePdf}>Create PDF</button>
-      <a href="{urlPrefix}/">
+      <a href={urlPrefix}>
         <i>Cancel</i>
       </a>
     </article>
