@@ -1,4 +1,6 @@
 import { createSignal } from 'solid-js';
+const pathPrefix = process.env.PATHPREFIX;
+const urlPrefix = pathPrefix ? `/${pathPrefix}` : "";
 
 export default function Form(props) {
   const [localInputs, setLocalInputs] = createSignal(props.inputs);
@@ -7,6 +9,11 @@ export default function Form(props) {
     setLocalInputs({ ...localInputs(), [property]: value });
     props.onInputsChange({ ...props.inputs, [property]: value });
   };
+
+  // Add urlPrefix to navigation links
+  const prefixedPrevPage = `${urlPrefix}${props.prevPage}`;
+  const prefixedNextPage = `${urlPrefix}${props.nextPage}`;
+
 
   return (
     <form>
@@ -34,10 +41,10 @@ export default function Form(props) {
         );
       })}
       <nav>
-        <a href={props.prevPage}>
+        <a href={prefixedPrevPage}>
           <i>Back</i>
         </a>
-        <a href={props.nextPage}>
+        <a href={prefixedNextPage}>
           <b>Next</b>
         </a>
       </nav>
