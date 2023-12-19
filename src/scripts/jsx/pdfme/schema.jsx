@@ -6,7 +6,7 @@ const schema = {
   schemas: [
     {
       YourFirstName: {
-        page: 'yourDetails',
+        pageUrl: '/your-details',
         label: 'Your first name',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -18,7 +18,7 @@ const schema = {
         autofocus: true,
       },
       YourSurname: {
-        page: 'yourDetails',
+        pageUrl: '/your-details',
         label: 'Your surname',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -30,7 +30,7 @@ const schema = {
         autofocus: true,
       },
       PartnerFirstName: {
-        page: 'partnerDetails',
+        pageUrl: '/partner',
         label: 'Your partners first name',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -42,7 +42,7 @@ const schema = {
         autofocus: true,
       },
       PartnerSurname: {
-        page: 'partnerDetails',
+        pageUrl: '/partner',
         label: 'Your partners surname',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -54,7 +54,7 @@ const schema = {
         autofocus: true,
       },
       Email: {
-        page: 'yourDetails',
+        pageUrl: '/your-details',
         label: 'Your email',
         type: 'text',
         position: { x: 52.4, y: 69.55 },
@@ -65,7 +65,7 @@ const schema = {
         required: false,
       },
       Phone: {
-        page: 'yourDetails',
+        pageUrl: '/your-details',
         label: 'Your telephone number',
         type: 'text',
         position: { x: 53.76, y: 80.54 },

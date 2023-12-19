@@ -15,8 +15,9 @@ render(
         <Router>
             <Route path={urlPrefix}> {/* solid-js router uses urlPrefix here to set the url path */}
                 <Route path="/" component={Test} /> {/* Define the home page route */}
-                <Route path="/pdf" component={PdfmeGenerator} /> 
                 <Route path="/partner" component={yourPartner} />
+                <Route path="/pdf" component={PdfmeGenerator} /> 
+                
             </Route>
         </Router>
     ), 
