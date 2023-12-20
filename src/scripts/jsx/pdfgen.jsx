@@ -1,9 +1,8 @@
 import { generate } from '@pdfme/generator';
-import { createSignal } from 'solid-js';
 import { template, setTemplate } from './pdfme/schema.jsx';
 import { inputs, setInputs } from './state/formInputs.jsx';
 const pathPrefix = process.env.PATHPREFIX;
-let urlPrefix = pathPrefix ? `/${pathPrefix}` : "";
+let urlPrefix = pathPrefix ? `/${pathPrefix}` : "/";
 
 function PdfmeGenerator() {
 
