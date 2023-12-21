@@ -47,7 +47,7 @@ let purgecssPlugin = function purgecssPlugin(options) {
 
 module.exports = async () => {
   let result = await esbuild.build({
-    entryPoints: 'dist/app/*.css',
+    entryPoints: ['dist/app/*.css'],
     allowOverwrite: true,
     minify: true,
     outdir: './dist/app',
