@@ -1,6 +1,6 @@
 // https://www.seancdavis.com/posts/javascript-for-11ty-with-esbuild/
 const esbuild = require('esbuild');
-const glob = require('glob-all'); // to enable * glob pattern in esbuild
+//const glob = require('glob-all'); // to enable * glob pattern in esbuild
 const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
 const isDev = process.env.ELEVENTY_ENV === 'dev' ? true : false;
 const { solidPlugin } = require('esbuild-plugin-solid');
@@ -36,7 +36,7 @@ const defineEnv = {
 };
 
 const esbuildOpts = {
-  entryPoints: glob.sync(['src/scripts/jsx/render.jsx', 'src/scripts/js/*.js', 'dist/app/*.css']), // include css so that its in the manifest.json
+  entryPoints: ['src/scripts/jsx/render.jsx', 'src/scripts/js/*.js', 'dist/app/*.css'], // include css so that its in the manifest.json
   entryNames: isProd ? '[name]-[hash]' : '[name]',
   outExtension: isProd ? {'.js': '.min.js', '.css': '.min.css'} : {'.js': '.js', '.css': '.css'},
   allowOverwrite: !isProd,  // overwrite dist/app/style.css when in dev mode

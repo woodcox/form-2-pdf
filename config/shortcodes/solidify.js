@@ -1,5 +1,5 @@
 const esbuild = require("esbuild");
-const glob = require('glob-all'); // to enable * glob pattern in esbuild
+//const glob = require('glob-all'); // to enable * glob pattern in esbuild
 const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false
 const { solidPlugin } = require('esbuild-plugin-solid');
 const fsPromises = require('fs').promises;
@@ -11,7 +11,7 @@ module.exports = async (code, filename, bundled) => {
   
   // esm version
   await esbuild.build({
-    entryPoints: glob.sync(['_tmp/solid-*.jsx']),
+    entryPoints: ['_tmp/solid-*.jsx'],
     entryNames: '[name]',
     // write: false,
     outdir: './_tmp/app',
