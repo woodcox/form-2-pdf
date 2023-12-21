@@ -1,14 +1,14 @@
-import Form from './../state/Form.jsx';
-import { template, setTemplate } from './../pdfme/schema.jsx';
-import { inputs, setInputs } from './../state/formInputs.jsx';
+import Form from './../factory/Form.jsx';
+import { template } from './../pdfme/schema.jsx';
+import { inputState, setInputState } from './../pdfme/formInputs.jsx';
 
 export default function YourDetails() {
   return (
     <>
       <Form
         template={template()}
-        inputs={inputs()}
-        onInputsChange={(newInputs) => setInputs(newInputs)}
+        inputs={inputState}
+        onInputsChange={(newInputs) => setInputState(newInputs)}
         currentPage="/your-details"
         prevPage="/"
         nextPage="/partner"

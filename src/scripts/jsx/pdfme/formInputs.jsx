@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js';
+import { createStore } from 'solid-js/store';
 
 const formDefaultValues = { 
   YourFirstName: '',
@@ -11,4 +11,4 @@ const formDefaultValues = {
   Mother: '' 
 }
 
-export const [inputs, setInputs] = createSignal(formDefaultValues);
+export const [inputState, setInputState] = createStore(formDefaultValues);
