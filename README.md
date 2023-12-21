@@ -7,6 +7,15 @@ Using:
 
 See [pdfme.com](https://pdfme.com) for instructions on how to create the pdf. This is just a proof of concept.
 
+## Esbuild
+The glob pattern works in esbuild - see [v0.19 release notes](https://github.com/evanw/esbuild/releases/tag/v0.19.0). This pattern can be used in the `config/build/esbuild`, `config/build/purgecss`, and `config/shortcodes/solidify`, for example:
+
+~~~js
+{
+  entryPoints: ['src/scripts/jsx/render.jsx', 'src/scripts/js/*.js', 'dist/app/*.css'],
+}
+~~~
+
 ## Compile Solidjs to js
 Add `your_solid.jsx` file to the `src/scripts/jsx` or the `src/scripts/js` folders. Esbuild will output a minified js file. To configure esbuild modify `config/build/esbuild.js`. The `jsx` app entry point is configured to `render.jsx`. But you may wish to change this.
 
