@@ -11,7 +11,7 @@ export default function YourPartner() {
         onInputsChange={(newInputs) => setInputState(newInputs)}
         currentPage="/partner"
         prevPage="/your-details"
-        nextPage="/pdf"
+        nextPage="/ceremony"
       />
     </>
   );

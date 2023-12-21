@@ -6,8 +6,13 @@ const formDefaultValues = {
   PartnerFirstName: '',
   PartnerSurname: '',
   Email: '', 
-  Phone: '', 
-  Date: '', 
+  Phone: '',
+  Day: '',
+  Month: '',
+  Year: '',
+  get Date() {
+    return `${this.day}` +"/"+ `${this.month}` +"/"+ `${this.year}`;
+  },
   Mother: '' 
 }
 

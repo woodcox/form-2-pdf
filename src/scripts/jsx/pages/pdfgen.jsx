@@ -4,7 +4,7 @@ import { inputState, setInputState } from './../pdfme/formInputs.jsx';
 const pathPrefix = process.env.PATHPREFIX;
 let urlPrefix = pathPrefix ? `/${pathPrefix}` : "";
 
-function PdfmeGenerator() {
+export default function PdfmeGenerator() {
   
   async function generatePdf() {
     console.log(template());
@@ -38,15 +38,15 @@ function CreatePdf(props) {
   return (
     <article>
       <p>Please generate your ceremony options as a PDF. Then email it to ....</p>
-      <a href={prevPagePrefix}>
-        <i>Back</i>
-      </a>
-      <button type="reset" onClick={props.generatePdf}>Create PDF</button>
-      <a href={cancelPagePrefix}>
-        <i>Cancel</i>
-      </a>
+      <nav>
+        <a href={prevPagePrefix}>
+          <i>Back</i>
+        </a>
+        <button type="reset" onClick={props.generatePdf}>Create PDF</button>
+        <a href={cancelPagePrefix}>
+          <i>Cancel</i>
+        </a>
+      </nav>
     </article>
   );
 }
-
-export default PdfmeGenerator;

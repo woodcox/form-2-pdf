@@ -76,16 +76,31 @@ const schema = {
         autocomplete: 'tel',
         required: true,
       },
-      /* Date: {
-        label: 'Date of event',
+      Day: {
+        pageUrl: '/ceremony',
+        label: 'Day',
+        fieldType: 'text',
+        required: true,
+      },
+      Month: {
+        pageUrl: '/ceremony',
+        label: 'Month',
+        fieldType: 'text',
+        required: true,
+      },
+      Year: {
+        pageUrl: '/ceremony',
+        label: 'Year',
+        fieldType: 'text',
+        required: true,
+      },
+      Date: {
+        // calculated field
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
         height: 10,
-        fieldType: 'date',
-        required: true,
-        placeholder: 'dd/mm/yyyy',
-      }*/
+      }
     },
     // PAGE 2
     // need new array for a new page
