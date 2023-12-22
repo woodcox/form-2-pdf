@@ -1,7 +1,7 @@
 import { createSignal } from 'solid-js';
 import { CEREMONY_PDF } from './basePdf.js';
 
-const schema = { 
+const schema = {
   basePdf: CEREMONY_PDF,
   schemas: [
     {
@@ -82,45 +82,46 @@ const schema = {
         position: { x: 33.65, y: 104.63 },
         width: 100,
         height: 10,
+        pageUrl: '/ceremony',
         multiInput: {
           Day: {
-            pageUrl: '/ceremony',
             label: 'Day',
             fieldType: 'text',
+            errormessage: 'Please enter the day',
             required: true,
           },
           Month: {
-            pageUrl: '/ceremony',
             label: 'Month',
             fieldType: 'text',
+            errormessage: 'Please enter the month',
             required: true,
           },
           Year: {
-            pageUrl: '/ceremony',
             label: 'Year',
             fieldType: 'text',
+            errormessage: 'Please enter the year',
             required: true,
-          }
-        }
-      }
+          },
+        },
+      },
     },
     // PAGE 2
     // need new array for a new page
     {
       Mother: {
-        type: "text",
+        type: 'text',
         position: {
           x: 101.34,
-          y: 30.69
+          y: 30.69,
         },
         width: 45,
         height: 10,
         rotate: 0,
-        alignment: "left",
-        verticalAlignment: "top"
-      }
-    }
-  ]
-}
+        alignment: 'left',
+        verticalAlignment: 'top',
+      },
+    },
+  ],
+};
 
 export const [template, setTemplate] = createSignal(schema);
