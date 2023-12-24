@@ -15,6 +15,7 @@ export default function Form(props) {
     props.onInputsChange({ ...props.inputs, [property]: value });
   };
 
+  // Handle multi inputs into one field
   const handleMultiInputChange = (property, subfield, value) => {
     const updatedInputs = { ...localInputs() };
 
@@ -23,6 +24,12 @@ export default function Form(props) {
     }
 
     updatedInputs[property][subfield] = value;
+
+    if (property === 'Date') {
+      // Concatenate 'Day', 'Month', and 'Year' into the 'Date' property
+      updatedInputs[property] = `${updatedInputs[property]['Day']}/${updatedInputs[property]['Month']}/${updatedInputs[property]['Year']}`;
+    }
+
     setLocalInputs(updatedInputs);
 
     const updatedProps = {
@@ -35,6 +42,15 @@ export default function Form(props) {
 
     props.onInputsChange(updatedProps);
   };
+
+
+
+  
+
+
+
+
+
 
   return (
     <form>
@@ -58,11 +74,9 @@ export default function Form(props) {
                     pattern={subconfig.pattern}
                     autocomplete={subconfig.autocomplete}
                     autofocus={subconfig.autofocus}
-                    value={JSON.stringify(
-                      localInputs()[property]?.[subfield] || ''
-                    )}
+                    value={localInputs()[property]?.[subfield] || ''}
                     onChange={(e) =>
-                      handleMultiInputChange(property, subfield, e.target.value)
+                      {handleMultiInputChange(property, subfield, e.target.value)}
                     }
                   />
                 </label>
