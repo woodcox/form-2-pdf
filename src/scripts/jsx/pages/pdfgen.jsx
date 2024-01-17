@@ -24,7 +24,7 @@ export default function PdfmeGenerator() {
     <>
         <CreatePdf 
           generatePdf={generatePdf}
-          prevPage="/partner"
+          prevPage="/ceremony"
           cancel="/"
         />
     </>

@@ -15,97 +15,32 @@ export default function Form(props) {
     props.onInputsChange({ ...props.inputs, [property]: value });
   };
 
-  // Handle multi inputs into one field
-  const handleMultiInputChange = (property, subfield, value) => {
-    const updatedInputs = { ...localInputs() };
-
-    if (!updatedInputs[property]) {
-      updatedInputs[property] = {};
-    }
-
-    updatedInputs[property][subfield] = value;
-
-    if (property === 'Date') {
-      // Concatenate 'Day', 'Month', and 'Year' into the 'Date' property
-      updatedInputs[property] = `${updatedInputs[property]['Day']}/${updatedInputs[property]['Month']}/${updatedInputs[property]['Year']}`;
-    }
-
-    setLocalInputs(updatedInputs);
-
-    const updatedProps = {
-      ...props.inputs,
-      [property]: {
-        ...(props.inputs[property] || {}),
-        [subfield]: value,
-      },
-    };
-
-    props.onInputsChange(updatedProps);
-  };
-
-
-
-  
-
-
-
-
-
-
   return (
     <form>
       {Object.entries(props.template.schemas[0]).map(([property, config]) => {
         if (config.pageUrl !== props.currentPage) return null;
 
-        if (config.multiInput) {
-          return Object.entries(config.multiInput).map(
-            ([subfield, subconfig]) => (
-              <div>
-                <label for={property.subfield}>
-                  {subconfig.label}
-                  {!subconfig.required && <span> (optional)</span>}:
-                  <input
-                    name={property.subfield}
-                    id={property.subfield}
-                    type={subconfig.fieldType}
-                    title={subconfig.errormessage}
-                    required={subconfig.required}
-                    placeholder={subconfig.placeholder}
-                    pattern={subconfig.pattern}
-                    autocomplete={subconfig.autocomplete}
-                    autofocus={subconfig.autofocus}
-                    value={localInputs()[property]?.[subfield] || ''}
-                    onChange={(e) =>
-                      {handleMultiInputChange(property, subfield, e.target.value)}
-                    }
-                  />
-                </label>
-              </div>
-            )
-          );
-        } else {
-          return (
-            <div>
-              <label for={property}>
-                {config.label}
-                {!config.required && <span> (optional)</span>}:
-                <input
-                  name={property}
-                  id={property}
-                  type={config.fieldType}
-                  title={config.errormessage}
-                  required={config.required}
-                  placeholder={config.placeholder}
-                  pattern={config.pattern}
-                  autocomplete={config.autocomplete}
-                  autofocus={config.autofocus}
-                  value={localInputs()[property]}
-                  onChange={(e) => handleChange(property, e.target.value)}
-                />
-              </label>
-            </div>
-          );
-        }
+        return (
+          <div>
+            <label for={property}>
+              {config.label}
+              {!config.required && <span> (optional)</span>}:
+              <input
+                name={property}
+                id={property}
+                type={config.fieldType}
+                title={config.errormessage}
+                required={config.required}
+                placeholder={config.placeholder}
+                pattern={config.pattern}
+                autocomplete={config.autocomplete}
+                autofocus={config.autofocus}
+                value={localInputs()[property]}
+                onChange={(e) => handleChange(property, e.target.value)}
+              />
+            </label>
+          </div>
+        );
       })}
       <nav>
         <Show when={props.currentPage != '/'}>

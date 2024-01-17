@@ -78,31 +78,16 @@ const schema = {
       },
       Date: {
         // calculated field
+        pageUrl:'/ceremony',
+        label: 'Ceremony date',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
         height: 10,
         pageUrl: '/ceremony',
-        multiInput: {
-          Day: {
-            label: 'Day',
-            fieldType: 'text',
-            errormessage: 'Please enter the day',
-            required: true,
-          },
-          Month: {
-            label: 'Month',
-            fieldType: 'text',
-            errormessage: 'Please enter the month',
-            required: true,
-          },
-          Year: {
-            label: 'Year',
-            fieldType: 'text',
-            errormessage: 'Please enter the year',
-            required: true,
-          },
-        },
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
       },
     },
     // PAGE 2
