@@ -8,6 +8,9 @@ const formDefaultValues = {
   Email: '',
   Phone: '',
   Date: '',
+  Day: '',
+  Month: '',
+  Year: '',
   //get Date() {
   //  return `${this.Day}` +"/"+ `${this.Month}` +"/"+ `${this.Year}`;
   //},

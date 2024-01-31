@@ -18,7 +18,10 @@ export default function Form(props) {
   return (
     <form>
       {Object.entries(props.template.schemas[0]).map(([property, config]) => {
-        if (config.pageUrl !== props.currentPage) return null;
+        // filter out input field that are not on the currentPage unless the current page is '/summary'
+        if (config.pageUrl !== props.currentPage && props.currentPage !== '/summary') return null;
+
+        const isSummaryPage = props.currentPage === '/summary';
 
         return (
           <div>
@@ -33,6 +36,7 @@ export default function Form(props) {
                 required={config.required}
                 placeholder={config.placeholder}
                 pattern={config.pattern}
+                readonly={isSummaryPage ? 'readonly' : null} // form becomes readonly if currentPage = '/summary'
                 autocomplete={config.autocomplete}
                 autofocus={config.autofocus}
                 value={localInputs()[property]}

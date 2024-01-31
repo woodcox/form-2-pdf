@@ -2,16 +2,16 @@ import Form from './../factory/Form.jsx';
 import { template } from './../pdfme/schema.jsx';
 import { inputState, setInputState } from './../pdfme/formInputs.jsx';
 
-export default function Ceremony() {
+export default function Summary() {
   return (
     <>
       <Form
         template={template()}
         inputs={inputState}
         onInputsChange={(newInputs) => setInputState(newInputs)}
-        currentPage="/ceremony"
-        prevPage="/partner"
-        nextPage="/summary"
+        currentPage="/summary"
+        prevPage="/ceremony"
+        nextPage="/pdf"
       />
     </>
   );
