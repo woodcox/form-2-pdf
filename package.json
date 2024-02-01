@@ -38,7 +38,7 @@
     "lightningcss-cli": "^1.22.1",
     "mvp.css": "1.14.0",
     "purgecss": "^5.0.0",
-    "sass": "^1.69.5",
+    "sass": "^1.70.0",
     "solid-js": "^1.8.7"
   },
   "browserslist": [
