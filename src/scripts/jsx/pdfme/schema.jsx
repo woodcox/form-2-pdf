@@ -87,6 +87,8 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: '<Date />',
+        componentInputs: { day: 3 },
       },
       Day: {
         pageUrl:'/ceremony',

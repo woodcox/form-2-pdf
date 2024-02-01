@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js';
+import DateInput from './DateInput.jsx';
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 
