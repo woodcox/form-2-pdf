@@ -1,4 +1,5 @@
 @use 'mvp.scss';
+@use 'date-input.scss';
 
 input:required:user-invalid,
   input:focus:user-invalid {
