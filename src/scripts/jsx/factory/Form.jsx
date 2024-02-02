@@ -48,9 +48,7 @@ export default function Form(props) {
         );
       })}
       <Show when={props.currentPage === '/ceremony'}>
-        {
         <DateInput heading="What date is your ceremony?" />
-        }
       </Show>
       <nav>
         <Show when={props.currentPage != '/'}>

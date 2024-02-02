@@ -1,5 +1,5 @@
 import { createStore } from 'solid-js/store';
-import { createSignal } from 'solid-js';
+import formatDate from '../factory/DateInput.jsx';
 
 const formDefaultValues = {
   YourFirstName: '',
@@ -8,7 +8,7 @@ const formDefaultValues = {
   PartnerSurname: '',
   Email: '',
   Phone: '',
-  Date: '',
+  Date: formatDate(),
   Day: '',
   Month: '',
   Year: '',
