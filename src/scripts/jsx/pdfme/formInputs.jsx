@@ -1,5 +1,4 @@
 import { createStore } from 'solid-js/store';
-import formatDate from '../factory/DateInput.jsx';
 
 const formDefaultValues = {
   YourFirstName: '',
@@ -8,13 +7,8 @@ const formDefaultValues = {
   PartnerSurname: '',
   Email: '',
   Phone: '',
-  Date: formatDate(),
+  CeremonyDate: '',
   Day: '',
-  Month: '',
-  Year: '',
-  //get Date() {
-  //  return `${this.Day}` +"/"+ `${this.Month}` +"/"+ `${this.Year}`;
-  //},
   Mother: '',
 };
 

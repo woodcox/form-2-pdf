@@ -1,32 +1,31 @@
 import { createSignal } from 'solid-js';
 
-export const [day, setDay] = createSignal('');
-export const [month, setMonth] = createSignal('');
-export const [year, setYear] = createSignal('');
+export function DateInput(props) {
+  const [day, setDay] = createSignal('');
+  const [month, setMonth] = createSignal('');
+  const [year, setYear] = createSignal('');
 
-export function formatDate() {
-  const dayValue = day() || '';
-  const monthValue = month() || '';
-  const yearValue = year() || '';
+  function formatDate() {
+    const dayValue = day() || '';
+    const monthValue = month() || '';
+    const yearValue = year() || '';
 
-  if (dayValue === '' || monthValue === '' || yearValue === '') {
+    if (dayValue === '' || monthValue === '' || yearValue === '') {
       return ''; // Return an empty string if any value is null
-  }
+    }
 
-  const date = new Date(yearValue, monthValue - 1, dayValue);
+    const date = new Date(yearValue, monthValue - 1, dayValue);
 
-  const options = {
+    const options = {
       weekday: 'long', // Full day of the week (e.g., "Saturday")
       day: 'numeric', // Day of the month (e.g., "3")
       month: 'long', // Full month name (e.g., "February")
       year: 'numeric', // Full year (e.g., "2024")
       // dayPeriod: 'long', // AM/PM (not needed for this format)
-  };
+    };
 
-  return new Intl.DateTimeFormat('en-UK', options).format(date);
-}
-
-export default function DateInput(props) {
+    return new Intl.DateTimeFormat('en-UK', options).format(date);
+  }
 
   return (
     <fieldset role="group" aria-describedby="date-input-help-text">

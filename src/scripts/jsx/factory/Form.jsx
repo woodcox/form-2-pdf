@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js';
-import DateInput from './DateInput.jsx';
+import { DateInput } from './DateInput.jsx';
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 
@@ -25,7 +25,7 @@ export default function Form(props) {
         const isSummaryPage = props.currentPage === '/summary';
 
         return (
-          <div>
+          <>
             <label for={property}>
               {config.label}
               {!config.required && <span> (optional)</span>}:
@@ -44,7 +44,7 @@ export default function Form(props) {
                 onChange={(e) => handleChange(property, e.target.value)}
               />
             </label>
-          </div>
+          </>
         );
       })}
       <Show when={props.currentPage === '/ceremony'}>
@@ -52,11 +52,9 @@ export default function Form(props) {
       </Show>
       <nav>
         <Show when={props.currentPage != '/'}>
-          {
             <a href={prevPagePrefix}>
               <i>Back</i>
             </a>
-          }
         </Show>
         <a href={nextPagePrefix}>
           <b>Next</b>
