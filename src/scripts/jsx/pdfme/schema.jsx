@@ -76,7 +76,7 @@ const schema = {
         autocomplete: 'tel',
         required: true,
       },
-      Date: {
+      CeremonyDate: {
         // calculated field
         pageUrl:'/ceremony',
         label: 'Ceremony date',
@@ -92,7 +92,7 @@ const schema = {
       },
       Day: {
         pageUrl:'/ceremony',
-        label: 'Ceremony Day',
+        label: 'Ceremony day',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,

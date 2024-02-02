@@ -8,13 +8,8 @@ const formDefaultValues = {
   PartnerSurname: '',
   Email: '',
   Phone: '',
-  Date: '',
+  CeremonyDate: '',
   Day: '',
-  Month: '',
-  Year: '',
-  //get Date() {
-  //  return `${this.Day}` +"/"+ `${this.Month}` +"/"+ `${this.Year}`;
-  //},
   Mother: '',
 };
 
