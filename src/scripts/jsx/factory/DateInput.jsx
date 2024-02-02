@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
 
-function DateInput() {
+export default function DateInput() {
   const [day, setDay] = createSignal('');
   const [month, setMonth] = createSignal('');
   const [year, setYear] = createSignal('');

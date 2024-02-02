@@ -47,6 +47,11 @@ export default function Form(props) {
           </div>
         );
       })}
+      <Show when={props.currentPage === '/ceremony'}>
+        {
+        <DateInput />
+        }
+      </Show>
       <nav>
         <Show when={props.currentPage != '/'}>
           {
