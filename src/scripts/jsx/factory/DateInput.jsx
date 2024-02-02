@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js';
+import { inputState, setInputState } from './../pdfme/formInputs.jsx';
 
 
 export function DateInput(props) {
@@ -29,6 +30,11 @@ export function DateInput(props) {
     };
 
     return new Intl.DateTimeFormat('en-UK', options).format(date);
+
+    // Set the formatted date to the state
+    props.onInputsChange({ ...props.inputState, CeremonyDate: formattedDate });
+
+    return formattedDate;
   }
 
   function formatDate() {

@@ -2,6 +2,7 @@ import { createSignal } from 'solid-js';
 import { DateInput } from './DateInput.jsx';
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
+import { inputState, setInputState } from './../pdfme/formInputs.jsx';
 
 export default function Form(props) {
   // Add urlPrefix to navigation links
@@ -48,7 +49,7 @@ export default function Form(props) {
         );
       })}
       <Show when={props.currentPage === '/ceremony'}>
-        <DateInput heading="What date is your ceremony?" />
+        <DateInput onInputsChange={(newInputs) => setInputState(newInputs)} heading="What date is your ceremony?" />
       </Show>
       <nav>
         <Show when={props.currentPage != '/'}>
