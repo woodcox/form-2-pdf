@@ -1,19 +1,50 @@
 import { createSignal } from 'solid-js';
 
-export default function DateInput() {
+export default function DateInput(props) {
+  
   const [day, setDay] = createSignal('');
   const [month, setMonth] = createSignal('');
   const [year, setYear] = createSignal('');
 
-  function formatDate() {
-    const date = new Date(year(), month() - 1, day());
+  function formatDated() {
+    const dayValue = day() || ''; // If day() is null, set an empty string
+    const monthValue = month() || ''; // If month() is null, set an empty string
+    const yearValue = year() || ''; // If year() is null, set an empty string
+
+    if (dayValue === '' || monthValue === '' || yearValue === '') {
+      return ''; // Return an empty string if any value is null
+    }
+
+    const date = new Date(yearValue, monthValue - 1, dayValue);
     return date.toLocaleDateString();
+  }
+
+  function formatDate() {
+    const dayValue = day() || '';
+    const monthValue = month() || '';
+    const yearValue = year() || '';
+
+    if (dayValue === '' || monthValue === '' || yearValue === '') {
+        return ''; // Return an empty string if any value is null
+    }
+
+    const date = new Date(yearValue, monthValue - 1, dayValue);
+
+    const options = {
+        weekday: 'long', // Full day of the week (e.g., "Saturday")
+        day: 'numeric', // Day of the month (e.g., "3")
+        month: 'long', // Full month name (e.g., "February")
+        year: 'numeric', // Full year (e.g., "2024")
+        // dayPeriod: 'long', // AM/PM (not needed for this format)
+    };
+
+    return new Intl.DateTimeFormat('en-UK', options).format(date);
   }
 
   return (
     <fieldset role="group" aria-describedby="date-input-help-text">
       <legend>
-        <h1>When was your passport issued?</h1>
+        <h2>{props.heading}</h2>
       </legend>
       <p>
         <strong id="date-input-help-text">For example, 27 3 2024</strong>
@@ -26,6 +57,9 @@ export default function DateInput() {
             name="date-input-day"
             type="text"
             inputmode="numeric"
+            maxlength="2"
+            min="1"
+            max="31"
             onInput={(e) => setDay(e.target.value)}
             value={day()}
           />
@@ -37,6 +71,9 @@ export default function DateInput() {
             name="date-input-month"
             type="text"
             inputmode="numeric"
+            maxlength="2"
+            min="1"
+            max="12"
             onInput={(e) => setMonth(e.target.value)}
             value={month()}
           />
@@ -44,18 +81,20 @@ export default function DateInput() {
         <div class="date-input-group">
           <label for="date-input-year">Year</label>
           <input
-            class="govuk-input govuk-date-input__input govuk-input--width-4"
             id="date-input-year"
             name="date-input-year"
             type="text"
             inputmode="numeric"
+            maxlength="4"
+            min="2000"
+            max="2099"
             onInput={(e) => setYear(e.target.value)}
             value={year()}
           />
         </div>
       </div>
       <div>
-        <label for="date-input-date">Date</label>
+        <label for="date-input-date">Date:</label>
         <input
           id="date-input-date"
           name="date-input-date"

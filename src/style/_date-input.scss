@@ -1,0 +1,31 @@
+:root {
+  --date-input-grid-cols: 3.5em 3.5em 6em;
+  --date-input-gap: 0% 1em;
+  --date-input-margin: 0;
+  --date-input-padding: 0;
+}
+
+.date-input-group-wrapper {
+  --_date-input-grid-cols: var(--date-input-grid-cols, 2.75em 2.75em 4em);
+  --_date-input-gap: var(--date-input-gap, 0% 1em);
+  display: grid;
+  grid-template-columns: var(--_date-input-grid-cols);
+  gap: var(--_date-input-gap); 
+}
+
+fieldset {
+  --_date-input-margin: var(--date-input-margin, 0);
+  --_date-input-padding: var(--date-input-padding, 0);
+  border: none;
+  margin: var(--_date-input-margin);
+  padding: var(--_date-input-padding);
+}
+
+legend {
+  padding-inline-start: 0;
+}
+
+.date-input-group {
+  display: flex;
+  flex-direction: column;
+}
