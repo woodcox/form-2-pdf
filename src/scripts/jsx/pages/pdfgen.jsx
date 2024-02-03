@@ -23,6 +23,7 @@ export default function PdfmeGenerator() {
   return (
     <>
         <CreatePdf 
+          heading="Ceremony options pdf"
           generatePdf={generatePdf}
           prevPage="/summary"
           cancel="/"
@@ -37,7 +38,8 @@ function CreatePdf(props) {
   const cancelPagePrefix = `${urlPrefix}${props.cancel}`;
   return (
     <article>
-      <p>Please generate your ceremony options as a PDF. Then email it to ....</p>
+      <h1>{props.heading}</h1>
+      <p>Please generate your ceremony options. This will create a pdf. Please save the pdf and then email it to ....</p>
       <nav>
         <a href={prevPagePrefix}>
           <i>Back</i>
