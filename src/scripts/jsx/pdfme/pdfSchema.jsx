@@ -90,17 +90,6 @@ const schema = {
         component: '<Date />',
         componentInputs: { day: 3 },
       },
-      Day: {
-        pageUrl:'/ceremony',
-        label: 'Ceremony day',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-      },
     },
     // PAGE 2
     // need new array for a new page

@@ -1,6 +1,6 @@
 import { createStore } from 'solid-js/store';
 
-const formDefaultValues = {
+const pdfDefaultValues = {
   YourFirstName: '',
   YourSurname: '',
   PartnerFirstName: '',
@@ -9,7 +9,9 @@ const formDefaultValues = {
   Phone: '',
   CeremonyDate: '',
   Day: '',
+  Month: '',
+  Year: '',
   Mother: '',
 };
 
-export const [inputState, setInputState] = createStore(formDefaultValues);
+export const [pdfState, setPdfState] = createStore(pdfDefaultValues);

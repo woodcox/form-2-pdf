@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js';
-import { inputState, setInputState } from './../pdfme/formInputs.jsx';
+import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 
 export function DateInput(props) {

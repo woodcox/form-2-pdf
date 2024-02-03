@@ -1,6 +1,6 @@
 import { generate } from '@pdfme/generator';
-import { template, setTemplate } from './../pdfme/schema.jsx';
-import { inputState, setInputState } from './../pdfme/formInputs.jsx';
+import { template, setTemplate } from './../pdfme/pdfSchema.jsx';
+import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 const pathPrefix = process.env.PATHPREFIX;
 let urlPrefix = pathPrefix ? `/${pathPrefix}` : "";
 
@@ -8,11 +8,11 @@ export default function PdfmeGenerator() {
   
   async function generatePdf() {
     console.log(template());
-    console.log(inputState);
+    console.log(pdfState);
 
     const pdf = await generate({
       template: template(),  // using signals
-      inputs: [inputState],  // using state
+      inputs: [pdfState],  // using state
     });
 
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });

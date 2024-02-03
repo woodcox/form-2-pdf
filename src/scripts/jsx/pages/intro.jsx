@@ -1,14 +1,14 @@
 import Form from './../factory/Form.jsx';
-import { template } from './../pdfme/schema.jsx';
-import { inputState, setInputState } from './../pdfme/formInputs.jsx';
+import { template } from './../pdfme/pdfSchema.jsx';
+import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 export default function Intro() {
   return (
     <>
       <Form
         template={template()}
-        inputs={inputState}
-        onInputsChange={(newInputs) => setInputState(newInputs)}
+        inputs={pdfState}
+        onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="Ceremony options"
         currentPage="/"
         prevPage="/"

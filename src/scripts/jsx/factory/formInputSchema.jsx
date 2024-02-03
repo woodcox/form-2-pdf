@@ -3,7 +3,6 @@ const formSchemas = [
     YourFirstName: {
       pageUrl: '/your-details',
       label: 'Your first name',
-      type: 'text',
       fieldType: 'text',
       errormessage: 'Please enter your first name',
       required: true,
@@ -12,7 +11,6 @@ const formSchemas = [
     YourSurname: {
       pageUrl: '/your-details',
       label: 'Your surname',
-      type: 'text',
       fieldType: 'text',
       errormessage: 'Please enter your surname',
       required: true,
@@ -21,7 +19,6 @@ const formSchemas = [
     PartnerFirstName: {
       pageUrl: '/partner',
       label: 'Your partners first name',
-      type: 'text',
       fieldType: 'text',
       errormessage: 'Please enter your partners first name',
       required: true,
@@ -30,7 +27,6 @@ const formSchemas = [
     PartnerSurname: {
       pageUrl: '/partner',
       label: 'Your partners surname',
-      type: 'text',
       fieldType: 'text',
       errormessage: 'Please enter your name',
       required: true,
@@ -39,7 +35,6 @@ const formSchemas = [
     Email: {
       pageUrl: '/your-details',
       label: 'Your email',
-      type: 'text',
       fieldType: 'text',
       errormessage: 'Enter your full address',
       required: false,
@@ -47,7 +42,6 @@ const formSchemas = [
     Phone: {
       pageUrl: '/your-details',
       label: 'Your telephone number',
-      type: 'text',
       fieldType: 'tel',
       errormessage: 'Enter a UK phone number',
       autocomplete: 'tel',
@@ -57,7 +51,6 @@ const formSchemas = [
       // calculated field
       pageUrl:'/ceremony',
       label: 'Ceremony date',
-      type: 'text',
       pageUrl: '/ceremony',
       fieldType: 'text',
       errormessage: 'Please enter the day',
