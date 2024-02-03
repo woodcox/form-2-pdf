@@ -19,6 +19,7 @@ export default function Form(props) {
 
   return (
     <form>
+      <h1>{props.heading}</h1>
       {Object.entries(props.template.schemas[0]).map(([property, config]) => {
         // filter out input field that are not on the currentPage unless the current page is '/summary'
         if (config.pageUrl !== props.currentPage && props.currentPage !== '/summary') return null;
