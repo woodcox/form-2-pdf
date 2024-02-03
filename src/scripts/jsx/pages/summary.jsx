@@ -9,6 +9,7 @@ export default function Summary() {
         template={template()}
         inputs={inputState}
         onInputsChange={(newInputs) => setInputState(newInputs)}
+        heading="Summary"
         currentPage="/summary"
         prevPage="/ceremony"
         nextPage="/pdf"
