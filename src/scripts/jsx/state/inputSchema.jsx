@@ -1,4 +1,4 @@
-const formSchemas = [
+const inputSchemas = [
   {
     YourFirstName: {
       pageUrl: '/your-details',
@@ -48,12 +48,35 @@ const formSchemas = [
       required: true,
     },
     Date: {
-      // calculated field
       pageUrl:'/ceremony',
       label: 'Ceremony date',
       pageUrl: '/ceremony',
       fieldType: 'text',
       errormessage: 'Please enter the day',
+      required: true,
+    },
+    Day: {
+      pageUrl:'/ceremony',
+      label: 'Day',
+      pageUrl: '/ceremony',
+      fieldType: 'text',
+      errormessage: 'Please enter the day',
+      required: true,
+    },
+    Month: {
+      pageUrl:'/ceremony',
+      label: 'Month',
+      pageUrl: '/ceremony',
+      fieldType: 'text',
+      errormessage: 'Please enter the month',
+      required: true,
+    },
+    Year: {
+      pageUrl:'/ceremony',
+      label: 'Year',
+      pageUrl: '/ceremony',
+      fieldType: 'text',
+      errormessage: 'Please enter the year',
       required: true,
     },
   },

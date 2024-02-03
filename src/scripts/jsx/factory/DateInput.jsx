@@ -1,23 +1,23 @@
-import { createSignal } from 'solid-js';
-import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
+import { createSignal, createEffect } from 'solid-js';
 
+const [day, setDay] = createSignal('');
+const [month, setMonth] = createSignal('');
+const [year, setYear] = createSignal('');
 
 export function DateInput(props) {
-
-  const [day, setDay] = createSignal('');
-  const [month, setMonth] = createSignal('');
-  const [year, setYear] = createSignal('');
-  const [longDate, setLongDate] = createSignal('');
-
-
-  function formatDate() {
-    const dayValue = day() || '';
-    const monthValue = month() || '';
-    const yearValue = year() || '';
-
+  
+  // Create an effect that runs whenever day(), month(), or year() changes
+  createEffect(() => {
+    const dayValue = day();
+    const monthValue = month();
+    const yearValue = year();
 
     if (dayValue === '' || monthValue === '' || yearValue === '') {
-      return ''; // Return an empty string if any value is null
+      props.onInputsChange((prevInputs) => ({
+        ...prevInputs,
+        CeremonyDate: '',
+      }));
+      return; // Return if any value is null
     }
 
     const date = new Date(yearValue, monthValue - 1, dayValue);
@@ -27,21 +27,16 @@ export function DateInput(props) {
       day: 'numeric', // Day of the month (e.g., "3")
       month: 'long', // Full month name (e.g., "February")
       year: 'numeric', // Full year (e.g., "2024")
-      // dayPeriod: 'long', // AM/PM (not needed for this format)
     };
 
     const formattedDate = new Intl.DateTimeFormat('en-UK', options).format(date);
 
-    setLongDate(formattedDate);
-
-    // Call the callback to notify the parent about the updated state
-    props.onInputsChange((prevInputs) => {
-      const newInputs = { ...prevInputs, CeremonyDate: longDate() };
-
-      return newInputs;
-    });
-    return longDate();
-  }
+    // Notify the parent component about the updated state
+    props.onInputsChange((prevInputs) => ({
+      ...prevInputs,
+      CeremonyDate: formattedDate,
+    }));
+  });
 
   return (
     <fieldset role="group" aria-describedby="date-input-help-text">
@@ -94,16 +89,6 @@ export function DateInput(props) {
             value={year()}
           />
         </div>
-      </div>
-      <div>
-        <label for="date-input-date">Date:</label>
-        <input
-          id="date-input-date"
-          name="date-input-date"
-          type="text"
-          value={formatDate()}
-          readonly
-        />
       </div>
     </fieldset>
   );

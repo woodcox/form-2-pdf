@@ -2,7 +2,7 @@ import { createSignal } from 'solid-js';
 import { DateInput } from './DateInput.jsx';
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
-import { inputState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
+import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 export default function Form(props) {
   // Add urlPrefix to navigation links
