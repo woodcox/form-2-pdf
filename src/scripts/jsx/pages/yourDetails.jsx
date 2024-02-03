@@ -9,6 +9,7 @@ export default function YourDetails() {
         template={template()}
         inputs={inputState}
         onInputsChange={(newInputs) => setInputState(newInputs)}
+        heading="Your details"
         currentPage="/your-details"
         prevPage="/"
         nextPage="/partner"
