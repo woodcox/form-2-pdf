@@ -29,6 +29,8 @@ export function DateInput(props) {
       year: 'numeric', // Full year (e.g., "2024")
     };
 
+
+    // TO DO: add date validation date-fns?
     const formattedDate = new Intl.DateTimeFormat('en-UK', options).format(date);
 
     // Notify the parent component about the updated state

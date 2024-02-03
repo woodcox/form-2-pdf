@@ -1,5 +1,6 @@
 import { createSignal } from 'solid-js';
 import { DateInput } from './DateInput.jsx';
+import JoinFields from './Join.jsx';
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
@@ -23,9 +24,22 @@ export default function Form(props) {
       <Show when={props.headline}>
         <p>{props.headline}</p>
       </Show>
+      <Show when={props.currentPage === '/your-details'}>
+        <JoinFields
+          props={{
+            yourFirstname: 'Your first name',
+            yourLastname: 'Your last name',
+          }}
+          onResultChange={(result) => setPdfState({ YourFullName: result })}
+        />
+      </Show>
       {Object.entries(props.template.schemas[0]).map(([property, config]) => {
         // filter out input field that are not on the currentPage unless the current page is '/summary'
-        if (config.pageUrl !== props.currentPage && props.currentPage !== '/summary') return null;
+        if (
+          config.pageUrl !== props.currentPage &&
+          props.currentPage !== '/summary'
+        )
+          return null;
 
         const isSummaryPage = props.currentPage === '/summary';
 
@@ -53,13 +67,16 @@ export default function Form(props) {
         );
       })}
       <Show when={props.currentPage === '/ceremony'}>
-        <DateInput onInputsChange={(newInputs) => setPdfState(newInputs)} heading="What date is your ceremony?" />
+        <DateInput
+          onInputsChange={(newInputs) => setPdfState(newInputs)}
+          heading="What date is your ceremony?"
+        />
       </Show>
       <nav>
         <Show when={props.currentPage != '/'}>
-            <a href={prevPagePrefix}>
-              <i>Back</i>
-            </a>
+          <a href={prevPagePrefix}>
+            <i>Back</i>
+          </a>
         </Show>
         <a href={nextPagePrefix}>
           <b>Next</b>

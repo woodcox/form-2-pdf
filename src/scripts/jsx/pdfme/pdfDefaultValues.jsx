@@ -1,13 +1,13 @@
 import { createStore } from 'solid-js/store';
 
 const pdfDefaultValues = {
-  YourFirstName: '',
-  YourSurname: '',
-  PartnerFirstName: '',
-  PartnerSurname: '',
+  YourFullName: '',
+  PartnerFullName: '',
   Email: '',
   Phone: '',
+  CeremonyVenue: '',
   CeremonyDate: '',
+  CeremonyTime: '',
   Day: '',
   Month: '',
   Year: '',
