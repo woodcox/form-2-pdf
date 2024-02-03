@@ -9,6 +9,7 @@ export default function Ceremony() {
         template={template()}
         inputs={inputState}
         onInputsChange={(newInputs) => setInputState(newInputs)}
+        heading="Ceremony details"
         currentPage="/ceremony"
         prevPage="/partner"
         nextPage="/summary"
