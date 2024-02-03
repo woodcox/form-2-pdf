@@ -5,15 +5,15 @@ import { inputState, setInputState } from './../pdfme/formInputs.jsx';
 export default function Intro() {
   return (
     <>
-      <p>This is the start of the form. Write some intro text here</p>
       <Form
         template={template()}
         inputs={inputState}
         onInputsChange={(newInputs) => setInputState(newInputs)}
-        heading="Select your ceremony options"
+        heading="Ceremony options"
         currentPage="/"
         prevPage="/"
         nextPage="/your-details"
+        headline="Choose your ceremony options for your marriage or civil partnership. This form will create a pdf which you can save. Then you will need to email the pdf to Leeds Register Office."
       />
     </>
   );
