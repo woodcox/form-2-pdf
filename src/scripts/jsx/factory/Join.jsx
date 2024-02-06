@@ -1,5 +1,7 @@
 import { createSignal, createEffect } from 'solid-js';
 
+// TO DO: work out how to preserve the state of the value signal and result signal
+// Probably need to lift them out of the function in a way that does not break the function
 let fieldStates = {};
 
 function JoinFields({ props, onResultChange }) {
@@ -7,8 +9,6 @@ function JoinFields({ props, onResultChange }) {
     // Handle the case where props is not defined
     return null;
   }
-
-  
 
   Object.keys(props).forEach((field) => {
     const [value, setValue] = createSignal('');

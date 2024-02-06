@@ -10,8 +10,9 @@ export default function Summary() {
         inputs={pdfState}
         onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="Summary"
+        headline="You have not completed the form yet. Please check the details are correct before clicking next."
         currentPage="/summary"
-        prevPage="/ceremony"
+        prevPage="/partner-parents"
         nextPage="/pdf"
       />
     </>
