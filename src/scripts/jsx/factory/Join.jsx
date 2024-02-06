@@ -1,12 +1,14 @@
 import { createSignal, createEffect } from 'solid-js';
 
+let fieldStates = {};
+
 function JoinFields({ props, onResultChange }) {
   if (!props) {
     // Handle the case where props is not defined
     return null;
   }
 
-  const fieldStates = {};
+  
 
   Object.keys(props).forEach((field) => {
     const [value, setValue] = createSignal('');

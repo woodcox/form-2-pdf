@@ -1,6 +1,7 @@
 import { createSignal } from 'solid-js';
 import { DateInput } from './DateInput.jsx';
 import JoinFields from './Join.jsx';
+//import After from './After.jsx';
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
@@ -28,45 +29,61 @@ export default function Form(props) {
         <JoinFields
           props={{
             yourFirstname: 'Your first name',
-            yourLastname: 'Your last name',
+            yourMiddlename: 'Your middle names (optional)',
+            yourLastname: 'Your surname',
           }}
           onResultChange={(result) => setPdfState({ YourFullName: result })}
         />
       </Show>
-      {Object.entries(props.template.schemas[0]).map(([property, config]) => {
-        // filter out input field that are not on the currentPage unless the current page is '/summary'
-        if (
-          config.pageUrl !== props.currentPage &&
-          props.currentPage !== '/summary'
-        )
-          return null;
+      <Show when={props.currentPage === '/partner'}>
+        <JoinFields
+          props={{
+            partnerFirstname: 'Their firstname',
+            partnerMiddlename: 'Their middle names (optional)',
+            partnerLastname: 'Their surname',
+          }}
+          onResultChange={(result) => setPdfState({ PartnerFullName: result })}
+        />
+      </Show>
 
-        const isSummaryPage = props.currentPage === '/summary';
+      <For each={Object.entries(props.template.schemas[0])}>
+        {(entry) => {
+          const [property, config] = entry;
+          const isSummaryPage = props.currentPage === '/summary';
 
-        return (
-          <>
-            <label for={property}>
-              {config.label}
-              {!config.required && <span> (optional)</span>}:
-              <input
-                name={property}
-                id={property}
-                type={config.fieldType}
-                title={config.errormessage}
-                required={config.required}
-                placeholder={config.placeholder}
-                pattern={config.pattern}
-                readonly={isSummaryPage ? 'readonly' : null} // form becomes readonly if currentPage = '/summary'
-                autocomplete={config.autocomplete}
-                autofocus={config.autofocus}
-                value={localInputs()[property]}
-                onChange={(e) => handleChange(property, e.target.value)}
-              />
-            </label>
-          </>
-        );
-      })}
-      <Show when={props.currentPage === '/ceremony'}>
+          // filter out input field that are not on the currentPage unless the current page is '/summary'
+          if (
+            config.pageUrl !== props.currentPage &&
+            props.currentPage !== '/summary'
+          ) {
+            return null;
+          }
+
+          return (
+            <>
+              <label for={property}>
+                {config.label}
+                {!config.required && <span> (optional)</span>}:
+                <input
+                  name={property}
+                  id={property}
+                  type={config.fieldType}
+                  title={config.errormessage}
+                  required={config.required}
+                  placeholder={config.placeholder}
+                  pattern={config.pattern}
+                  readonly={isSummaryPage ? 'readonly' : null} // form becomes readonly if currentPage = '/summary'
+                  autocomplete={config.autocomplete}
+                  autofocus={config.autofocus}
+                  value={localInputs()[property]}
+                  onChange={(e) => handleChange(property, e.target.value)}
+                />
+              </label>
+            </>
+          );
+        }}
+      </For>
+      <Show when={props.currentPage === '/venue'}>
         <DateInput
           onInputsChange={(newInputs) => setPdfState(newInputs)}
           heading="What date is your ceremony?"

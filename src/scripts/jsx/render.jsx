@@ -3,7 +3,11 @@ import { Router, Route, Navigate } from '@solidjs/router';
 import Intro from './pages/intro.jsx';
 import YourDetails from './pages/yourDetails.jsx';
 import YourPartner from './pages/yourPartner.jsx';
+import Venue from './pages/venue.jsx';
 import Ceremony from './pages/ceremony.jsx';
+import Witness from './pages/witness.jsx';
+import YourParents from './pages/yourParents.jsx';
+import PartnerParents from './pages/partnerParents.jsx';
 import Summary from './pages/summary.jsx';
 import PdfmeGenerator from './pages/pdfgen.jsx';
 /* Use the environment variable PATHPREFIX. This is set by the npm scripts (in the package.json) which is passed to solid-js by the esbuild config - `define:`. 
@@ -21,7 +25,11 @@ render(
                 <Route path="/" component={Intro} /> {/* The home page route */}
                 <Route path="/your-details" component={YourDetails} />
                 <Route path="/partner" component={YourPartner} />
+                <Route path="/venue" component={Venue} />
                 <Route path="/ceremony" component={Ceremony} />
+                <Route path="/witness" component={Witness} />
+                <Route path="/your-parents" component={YourParents} />
+                <Route path="/partner-parents" component={PartnerParents} />
                 <Route path="/summary" component={Summary} />
                 <Route path="/pdf" component={PdfmeGenerator} />
                 <Route path="/redirect" component={() => <Navigate href="/" />} /> {/* Redirects need to be set up in deployed environments */}
