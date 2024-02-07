@@ -12,7 +12,7 @@ export default function YourPartner() {
         heading="About your partner"
         currentPage="/partner"
         prevPage="/your-details"
-        nextPage="/venue"
+        nextPage="/booking"
       />
     </>
   );

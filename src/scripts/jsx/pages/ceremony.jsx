@@ -11,7 +11,7 @@ export default function Ceremony() {
         onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="Your ceremony"
         currentPage="/ceremony"
-        prevPage="/venue"
+        prevPage="/booking"
         nextPage="/witness"
       />
     </>

@@ -5,6 +5,7 @@ const pdfDefaultValues = {
   PartnerFullName: '',
   Email: '',
   Phone: '',
+  BookingRef: '',
   CeremonyType: '',
   CeremonyVenue: '',
   CeremonyDateTime: '',

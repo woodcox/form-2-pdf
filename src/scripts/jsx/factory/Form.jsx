@@ -1,7 +1,16 @@
 import { createSignal } from 'solid-js';
 import { DateInput } from './DateInput.jsx';
 import JoinFields from './Join.jsx';
-//import After from './After.jsx';
+import Dropdown from './Dropdown.jsx';
+
+// Map of components to import dynamically
+const componentMap = {
+  DateInput,
+  JoinFields,
+  Dropdown, // Add the Dropdown component to the component map
+  // Add more components here as needed
+};
+
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
@@ -59,6 +68,19 @@ export default function Form(props) {
             return null;
           }
 
+          // Check if a component is specified in the schema entry
+          if (config.component) {
+            // Dynamically render the specified component
+            const DynamicComponent = componentMap[config.component];
+            if (DynamicComponent) {
+              const { componentProps } = config.componentProps;
+              return <DynamicComponent {...componentProps} />;
+            } else {
+              console.error(`Component '${config.component}' not found.`);
+              return null;
+            }
+          }
+
           return (
             <>
               <label for={property}>
@@ -83,7 +105,7 @@ export default function Form(props) {
           );
         }}
       </For>
-      <Show when={props.currentPage === '/venue'}>
+      <Show when={props.currentPage === '/booking'}>
         <DateInput
           onInputsChange={(newInputs) => setPdfState(newInputs)}
           heading="What date is your ceremony?"
