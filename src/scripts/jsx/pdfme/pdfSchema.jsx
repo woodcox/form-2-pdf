@@ -34,10 +34,10 @@ const schema = {
         position: { x: 52.4, y: 69.55 },
         width: 140,
         height: 10,
-        fieldType: 'text',
-        errormessage: 'Enter your full address',
+        fieldType: 'email',
+        errormessage: 'Enter your email address',
         autocomplete: 'email',
-        required: false,
+        required: true,
         autofocus: true,
       },
       Phone: {
@@ -54,8 +54,29 @@ const schema = {
         autofocus: true,
       },
       CeremonyType: {
-        pageUrl: '/ceremony',
+        pageUrl: '/booking',  
         label: 'Ceremony type',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: '',
+        required: true,
+        component: 'Dropdown',
+        componentProps: {
+          name: 'ceremonyType"',
+          label: 'What type of ceremony have you booked?',
+          initialOption: 'Select the ceremony type',
+          options: [
+            { value: 'Marriage', label: 'Marriage' },
+            { value: 'Civil Partnership', label: 'Civil Partnership' }
+          ]
+        }
+      },
+      BookingRef: {
+        pageUrl: '/booking',
+        label: 'Ceremony booking reference',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -65,7 +86,7 @@ const schema = {
         required: true,
       },
       CeremonyVenue: {
-        pageUrl: '/venue',
+        pageUrl: '/booking',
         label: 'Venue',
         type: 'text',
         position: { x: 33.65, y: 104.63 },

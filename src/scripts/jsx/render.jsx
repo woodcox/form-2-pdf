@@ -3,7 +3,7 @@ import { Router, Route, Navigate } from '@solidjs/router';
 import Intro from './pages/intro.jsx';
 import YourDetails from './pages/yourDetails.jsx';
 import YourPartner from './pages/yourPartner.jsx';
-import Venue from './pages/venue.jsx';
+import Booking from './pages/booking.jsx';
 import Ceremony from './pages/ceremony.jsx';
 import Witness from './pages/witness.jsx';
 import YourParents from './pages/yourParents.jsx';
@@ -25,7 +25,7 @@ render(
                 <Route path="/" component={Intro} /> {/* The home page route */}
                 <Route path="/your-details" component={YourDetails} />
                 <Route path="/partner" component={YourPartner} />
-                <Route path="/venue" component={Venue} />
+                <Route path="/booking" component={Booking} />
                 <Route path="/ceremony" component={Ceremony} />
                 <Route path="/witness" component={Witness} />
                 <Route path="/your-parents" component={YourParents} />
