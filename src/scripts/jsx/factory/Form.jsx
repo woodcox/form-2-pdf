@@ -67,13 +67,13 @@ export default function Form(props) {
           ) {
             return null;
           }
-
+          
           // Check if a component is specified in the schema entry
           if (config.component) {
             // Dynamically render the specified component
             const DynamicComponent = componentMap[config.component];
             if (DynamicComponent) {
-              const { componentProps } = config.componentProps;
+              const { componentProps } = config; // Get all componentProps
               return <DynamicComponent {...componentProps} />;
             } else {
               console.error(`Component '${config.component}' not found.`);

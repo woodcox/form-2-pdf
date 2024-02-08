@@ -65,8 +65,9 @@ const schema = {
         required: true,
         component: 'Dropdown',
         componentProps: {
-          name: 'name="ceremonyType"',
-          label: 'label="What type of ceremony have you booked"',
+          name: 'ceremonyType"',
+          label: 'What type of ceremony have you booked?',
+          initialOption: 'Select the ceremony type',
           options: [
             { value: 'Marriage', label: 'Marriage' },
             { value: 'Civil Partnership', label: 'Civil Partnership' }
