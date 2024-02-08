@@ -6,7 +6,7 @@ on:
 
 # Conditional environmental if's      
 env:
-  UPDATE_NPM: false # false = deploy eleventy , true = update npm
+  UPDATE_NPM: true # false = deploy eleventy , true = update npm
 
 jobs:
   build_deploy_eleventy:
@@ -57,7 +57,7 @@ jobs:
           
       - name: pull request on npm update
         if: env.UPDATE_NPM == 'true'
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Update dependencies
