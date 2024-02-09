@@ -6,7 +6,7 @@ import Dropdown from './Dropdown.jsx';
 
 // Map of components to import dynamically
 const componentMap = {
-  DateInput,
+  Date,
   JoinFields,
   Dropdown, // Add the Dropdown component to the component map
   // Add more components here as needed
