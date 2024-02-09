@@ -70,7 +70,7 @@ export default function Form(props) {
           }
           
           // Check if a component is specified in the schema entry
-          if (config.component) {
+          if (config.component && props.currentPage !== '/summary' ) {
             // Dynamically render the specified component
             const DynamicComponent = componentMap[config.component];
             if (DynamicComponent) {
