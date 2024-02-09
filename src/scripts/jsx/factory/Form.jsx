@@ -1,5 +1,6 @@
 import { createSignal } from 'solid-js';
 import { DateInput } from './DateInput.jsx';
+import Date from './Date.jsx';
 import JoinFields from './Join.jsx';
 import Dropdown from './Dropdown.jsx';
 

@@ -106,6 +106,23 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
+      DateTime: {
+        pageUrl: '/booking',
+        label: 'Ceremony date',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+        component: 'Date',
+        componentProps: {
+          name: 'date-input',
+          heading: 'What date is the ceremony?',
+          helpText: 'For example, 27 3 2024',
+        }
+      },
       WordingOption: {
         pageUrl: '/ceremony',
         label: 'Wording option',

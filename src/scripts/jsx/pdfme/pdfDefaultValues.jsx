@@ -1,6 +1,7 @@
 import { createStore } from 'solid-js/store';
 
 const pdfDefaultValues = {
+  DateTime: '',
   YourFullName: '',
   PartnerFullName: '',
   Email: '',
