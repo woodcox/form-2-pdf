@@ -4,20 +4,17 @@ const [day, setDay] = createSignal('');
 const [month, setMonth] = createSignal('');
 const [year, setYear] = createSignal('');
 
-export function DateInput(props) {
-  
+export default function DateInput(props) {
   // Create an effect that runs whenever day(), month(), or year() changes
   createEffect(() => {
     const dayValue = day();
     const monthValue = month();
     const yearValue = year();
 
+    // pdfState stays empty string until all field filled in
     if (dayValue === '' || monthValue === '' || yearValue === '') {
-      props.onInputsChange((prevInputs) => ({
-        ...prevInputs,
-        CeremonyDate: '',
-      }));
-      return; // Return if any value is null
+      props.onChange('');
+      return;
     }
 
     const date = new Date(yearValue, monthValue - 1, dayValue);
@@ -29,31 +26,29 @@ export function DateInput(props) {
       year: 'numeric', // Full year (e.g., "2024")
     };
 
-
     // TO DO: add date validation date-fns?
-    const formattedDate = new Intl.DateTimeFormat('en-UK', options).format(date);
+    const formattedDate = new Intl.DateTimeFormat('en-UK', options).format(
+      date
+    );
 
-    // Notify the parent component about the updated state
-    props.onInputsChange((prevInputs) => ({
-      ...prevInputs,
-      CeremonyDate: formattedDate,
-    }));
+    // Notify the parent component about the updated pdfState
+    props.onChange(formattedDate);
   });
 
   return (
-    <fieldset role="group" aria-describedby="date-input-help-text">
+    <fieldset role="group" aria-describedby={`${props.name}-help-text`}>
       <legend>
         <h2>{props.heading}</h2>
       </legend>
       <p>
-        <strong id="date-input-help-text">For example, 27 3 2024</strong>
+        <strong id={`${props.name}-help-text`}>{props.helpText}</strong>
       </p>
-      <div class="date-input-group-wrapper" id="date-input">
+      <div class="date-input-group-wrapper" id={props.name}>
         <div class="date-input-group">
-          <label for="date-input-day">Day</label>
+          <label for={`${props.name}-day`}>Day</label>
           <input
-            id="date-input-day"
-            name="date-input-day"
+            id={`${props.name}-day`}
+            name={`${props.name}-day`}
             type="text"
             inputmode="numeric"
             maxlength="2"
@@ -64,10 +59,10 @@ export function DateInput(props) {
           />
         </div>
         <div class="date-input-group">
-          <label for="date-input-month">Month</label>
+          <label for={`${props.name}-month`}>Month</label>
           <input
-            id="date-input-month"
-            name="date-input-month"
+            id={`${props.name}-month`}
+            name={`${props.name}-month`}
             type="text"
             inputmode="numeric"
             maxlength="2"
@@ -78,15 +73,15 @@ export function DateInput(props) {
           />
         </div>
         <div class="date-input-group">
-          <label for="date-input-year">Year</label>
+          <label for={`${props.name}-year`}>Year</label>
           <input
-            id="date-input-year"
-            name="date-input-year"
+            id={`${props.name}-year`}
+            name={`${props.name}-year`}
             type="text"
             inputmode="numeric"
             maxlength="4"
             min="2000"
-            max="2099"
+            max="2199"
             onInput={(e) => setYear(e.target.value)}
             value={year()}
           />
