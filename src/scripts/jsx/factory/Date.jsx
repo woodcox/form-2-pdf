@@ -4,24 +4,34 @@ const [day, setDay] = createSignal('');
 const [month, setMonth] = createSignal('');
 const [year, setYear] = createSignal('');
 
-export default function Date(props) {
-  
+export default function getDate(props) {
   // Create an effect that runs whenever day(), month(), or year() changes
   createEffect(() => {
     const dayValue = day();
     const monthValue = month();
     const yearValue = year();
 
-    // TO DO: as the data is now in the schema, this need reworking to show long date in the summary 
-    if (dayValue === '' || monthValue === '' || yearValue === '') {
-      props.onInputsChange((prevInputs) => ({
+    // TO DO: as the data is now in the schema, this need reworking to show long date in the summary
+    /*if (dayValue === '' || monthValue === '' || yearValue === '') {
+      props.onChange((prevInputs) => ({
         ...prevInputs,
-        CeremonyDate: '',
       }));
-      return; // Return if any value is null
+      return;
+    }*/
+
+    let result = '';
+    if (yearValue && monthValue && dayValue) {
+      result = `${yearValue.toString().padStart(4, '0')}-${monthValue
+        .toString()
+        .padStart(2, '0')}-${dayValue.toString().padStart(2, '0')}`;
+      console.log('result:', result);
+    } else {
+      result = '';
     }
 
-    const date = new Date(yearValue, monthValue - 1, dayValue);
+    const date = new Date(result);
+    //const date = new Date(yearValue, monthValue - 1, dayValue);
+    console.log('Date:', date);
 
     const options = {
       weekday: 'long', // Full day of the week (e.g., "Saturday")
@@ -30,16 +40,15 @@ export default function Date(props) {
       year: 'numeric', // Full year (e.g., "2024")
     };
 
-
     // TO DO: add date validation date-fns?
-    const formattedDate = new Intl.DateTimeFormat('en-UK', options).format(date);
+    const formattedDate = new Intl.DateTimeFormat('en-UK', options).format(
+      date
+    );
+    console.log('formattedDate:', formattedDate);
 
-    // TO DO: as the data is now in the schema, this need reworking to show long date in the summary 
+    // TO DO: as the data is now in the schema, this need reworking to show long date in the summary
     // Notify the parent component about the updated state
-    props.onInputsChange((prevInputs) => ({
-      ...prevInputs,
-      CeremonyDate: formattedDate,
-    }));
+    onChange(formattedDate);
   });
 
   return (

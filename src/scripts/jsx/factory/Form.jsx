@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
-import { DateInput } from './DateInput.jsx';
-import Date from './Date.jsx';
+//import { DateInput } from './DateInput.jsx';
+import getDate from './Date.jsx';
 import JoinFields from './Join.jsx';
 import Dropdown from './Dropdown.jsx';
 
@@ -112,12 +112,12 @@ export default function Form(props) {
           );
         }}
       </For>
-      <Show when={props.currentPage === '/booking'}>
+      {/*<Show when={props.currentPage === '/booking'}>
         <DateInput
           onInputsChange={(newInputs) => setPdfState(newInputs)}
           heading="What date is your ceremony?"
         />
-      </Show>
+      </Show> */}
       <nav>
         <Show when={props.currentPage != '/'}>
           <a href={prevPagePrefix}>

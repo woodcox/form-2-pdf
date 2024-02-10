@@ -109,7 +109,7 @@ const schema = {
       },
       DateTime: {
         pageUrl: '/booking',
-        label: 'Ceremony date',
+        label: 'Date',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -120,7 +120,7 @@ const schema = {
         component: 'Date',
         componentProps: {
           name: 'date-input',
-          heading: 'What date is the ceremony?',
+          heading: 'What date is the wedding?',
           helpText: 'For example, 27 3 2024',
         }
       },

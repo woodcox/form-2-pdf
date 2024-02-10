@@ -12,7 +12,7 @@ export default function Booking() {
         heading="Your booking"
         currentPage="/booking"
         prevPage="/partner"
-        nextPage="/ceremony"
+        nextPage="/summary"
       />
     </>
   );

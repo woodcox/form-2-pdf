@@ -12,7 +12,7 @@ export default function Summary() {
         heading="Summary"
         headline="You have not completed the form yet. Please check the details are correct before clicking next."
         currentPage="/summary"
-        prevPage="/partner-parents"
+        prevPage="/booking"
         nextPage="/pdf"
       />
     </>
