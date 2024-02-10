@@ -1,12 +1,12 @@
 import { createSignal } from 'solid-js';
-//import { DateInput } from './DateInput.jsx';
-import getDate from './Date.jsx';
+import DateInput from './DateInput.jsx';
 import JoinFields from './Join.jsx';
 import Dropdown from './Dropdown.jsx';
+import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // Map of components to import dynamically
 const componentMap = {
-  Date,
+  DateInput,
   JoinFields,
   Dropdown, // Add the Dropdown component to the component map
   // Add more components here as needed
@@ -14,7 +14,7 @@ const componentMap = {
 
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
-import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
+
 
 export default function Form(props) {
   // Add urlPrefix to navigation links
@@ -78,7 +78,7 @@ export default function Form(props) {
               return (
                 <DynamicComponent
                   {...componentProps}
-                  // All components imported via dynamic components must us the onChange attribute to call the function. As this will update the pdfState via the Form component. Look in the Dropdown component for an example.
+                  // All components imported via dynamic components must use the onChange attribute to call the function. As this will update the pdfState via the Form component. Look in the Dropdown component for an example.
                   onChange={(result) => setPdfState((prev) => ({ ...prev, [property]: result }))}
                 />
               );
@@ -112,12 +112,6 @@ export default function Form(props) {
           );
         }}
       </For>
-      {/*<Show when={props.currentPage === '/booking'}>
-        <DateInput
-          onInputsChange={(newInputs) => setPdfState(newInputs)}
-          heading="What date is your ceremony?"
-        />
-      </Show> */}
       <nav>
         <Show when={props.currentPage != '/'}>
           <a href={prevPagePrefix}>

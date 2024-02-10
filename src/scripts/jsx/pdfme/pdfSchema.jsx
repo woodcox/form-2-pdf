@@ -117,7 +117,7 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-        component: 'Date',
+        component: 'DateInput',
         componentProps: {
           name: 'date-input',
           heading: 'What date is the wedding?',
