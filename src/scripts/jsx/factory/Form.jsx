@@ -68,14 +68,20 @@ export default function Form(props) {
           ) {
             return null;
           }
-          
+
           // Check if a component is specified in the schema entry
-          if (config.component && props.currentPage !== '/summary' ) {
+          if (config.component && props.currentPage !== '/summary') {
             // Dynamically render the specified component
             const DynamicComponent = componentMap[config.component];
             if (DynamicComponent) {
               const { componentProps } = config; // Get all componentProps
-              return <DynamicComponent {...componentProps} />;
+              return (
+                <DynamicComponent
+                  {...componentProps}
+                  // All components imported via dynamic components must us the onChange attribute to call the function. As this will update the pdfState via the Form component. Look in the Dropdown component for an example.
+                  onChange={(result) => setPdfState((prev) => ({ ...prev, [property]: result }))}
+                />
+              );
             } else {
               console.error(`Component '${config.component}' not found.`);
               return null;

@@ -67,6 +67,7 @@ const schema = {
         componentProps: {
           name: 'ceremonyType"',
           label: 'What type of ceremony have you booked?',
+          value: '',
           initialOption: 'Select the ceremony type',
           options: [
             { value: 'Marriage', label: 'Marriage' },
