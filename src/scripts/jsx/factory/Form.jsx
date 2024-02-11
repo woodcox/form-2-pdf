@@ -1,13 +1,14 @@
 import { createSignal } from 'solid-js';
 import DateInput from './DateInput.jsx';
 import JoinFields from './Join.jsx';
+import AppendFields from './AppendFields.jsx';
 import Dropdown from './Dropdown.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // Map of components to import dynamically
 const componentMap = {
   DateInput,
-  JoinFields,
+  AppendFields,
   Dropdown, // Add the Dropdown component to the component map
   // Add more components here as needed
 };

@@ -16,6 +16,26 @@ const schema = {
         required: true,
         autofocus: true,
       },
+      YourTestName: {
+        pageUrl: '/your-details',
+        label: 'Your testname',
+        type: 'text',
+        position: { x: 68.28, y: 60.66 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter your fullname',
+        required: true,
+        autofocus: true,
+        component: 'AppendFields',
+        componentProps: {
+          fields: [
+            { name: 'yourFirstname', label: 'Your first name' },
+            { name: 'yourMiddlename', label: 'Your middle names (optional)' },
+            { name: 'yourLastname', label: 'Your surname' }
+          ]
+        }
+      },
       PartnerFullName: {
         label: 'Your partners fullname',
         type: 'text',
