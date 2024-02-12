@@ -21,18 +21,18 @@ console.log('urlPrefix:', urlPrefix);
 render(
     () => (
         <Router>
-            <Route path={urlPrefix}> {/* solid-js router uses urlPrefix here to set the url path */}
+            <Route path={urlPrefix}> {/* solid-js router uses urlPrefix here to set the base url path */}
                 <Route path="/" component={Intro} /> {/* The home page route */}
-                <Route path="/your-details" component={YourDetails} />
-                <Route path="/partner" component={YourPartner} />
-                <Route path="/booking" component={Booking} />
-                <Route path="/ceremony" component={Ceremony} />
-                <Route path="/witness" component={Witness} />
-                <Route path="/your-parents" component={YourParents} />
-                <Route path="/partner-parents" component={PartnerParents} />
-                <Route path="/summary" component={Summary} />
-                <Route path="/pdf" component={PdfmeGenerator} />
-                <Route path="/redirect" component={() => <Navigate href="/" />} /> {/* Redirects need to be set up in deployed environments */}
+                <Route path="/your-details/" component={YourDetails} />
+                <Route path="/partner/" component={YourPartner} />
+                <Route path="/booking/" component={Booking} />
+                <Route path="/ceremony/" component={Ceremony} />
+                <Route path="/witness/" component={Witness} />
+                <Route path="/your-parents/" component={YourParents} />
+                <Route path="/partner-parents/" component={PartnerParents} />
+                <Route path="/summary/" component={Summary} />
+                <Route path="/pdf/" component={PdfmeGenerator} />
+                <Route path="/redirect/" component={() => <Navigate href="/" />} /> {/* Redirects need to be set up in deployed environments */}
             </Route>
         </Router>
     ), 

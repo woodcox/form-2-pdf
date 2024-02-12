@@ -36,16 +36,6 @@ export default function Form(props) {
       <Show when={props.headline}>
         <p>{props.headline}</p>
       </Show>
-      <Show when={props.currentPage === '/your-details'}>
-        <JoinFields
-          props={{
-            yourFirstname: 'Your first name',
-            yourMiddlename: 'Your middle names (optional)',
-            yourLastname: 'Your surname',
-          }}
-          onResultChange={(result) => setPdfState({ YourFullName: result })}
-        />
-      </Show>
       <Show when={props.currentPage === '/partner'}>
         <JoinFields
           props={{

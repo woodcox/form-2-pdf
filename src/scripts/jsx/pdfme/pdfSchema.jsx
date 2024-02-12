@@ -6,6 +6,7 @@ const schema = {
   schemas: [
     {
       YourFullName: {
+        pageUrl: '/your-details',
         label: 'Your fullname',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -15,6 +16,15 @@ const schema = {
         errormessage: 'Please enter your fullname',
         required: true,
         autofocus: true,
+        component: 'AppendFields',
+        componentProps: {
+          componentId: 'YourFullName',
+          fields: [
+            { name: 'yourFirstname', label: 'Your first name' },
+            { name: 'yourMiddlename', label: 'Your middle names (optional)' },
+            { name: 'yourLastname', label: 'Your surname' }
+          ]
+        }
       },
       YourTestName: {
         pageUrl: '/your-details',
@@ -29,10 +39,11 @@ const schema = {
         autofocus: true,
         component: 'AppendFields',
         componentProps: {
+          componentId: 'YourTestName',
           fields: [
-            { name: 'yourFirstname', label: 'Your first name' },
-            { name: 'yourMiddlename', label: 'Your middle names (optional)' },
-            { name: 'yourLastname', label: 'Your surname' }
+            { name: 'testFirstname', label: 'Your first name' },
+            { name: 'testMiddlename', label: 'Your middle names (optional)' },
+            { name: 'testLastname', label: 'Your surname' }
           ]
         }
       },
