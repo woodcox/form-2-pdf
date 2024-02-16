@@ -1,15 +1,15 @@
 import { createSignal } from 'solid-js';
 import DateInput from './DateInput.jsx';
-import JoinFields from './Join.jsx';
+import InputEdit from './InputEdit.jsx';
 import AppendFields from './AppendFields.jsx';
-import Dropdown from './Dropdown.jsx';
+import Radio from './Radio.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // Map of components to import dynamically
 const componentMap = {
   DateInput,
   AppendFields,
-  Dropdown, // Add the Dropdown component to the component map
+  Radio, // Add the Dropdown component to the component map
   // Add more components here as needed
 };
 
@@ -36,14 +36,13 @@ export default function Form(props) {
       <Show when={props.headline}>
         <p>{props.headline}</p>
       </Show>
-      <Show when={props.currentPage === '/partner'}>
-        <JoinFields
-          props={{
-            partnerFirstname: 'Their firstname',
-            partnerMiddlename: 'Their middle names (optional)',
-            partnerLastname: 'Their surname',
-          }}
-          onResultChange={(result) => setPdfState({ PartnerFullName: result })}
+
+      <Show when={props.currentPage === '/your-details'}>
+        <InputEdit 
+          name="test"
+          label="Test field"
+          value=""
+          button="Edit"
         />
       </Show>
 

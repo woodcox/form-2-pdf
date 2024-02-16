@@ -7,6 +7,7 @@ const InputEdit = (props) => {
                 name={props.name}
                 id={props.name}
                 value={props.value}
+                type="text"
             />
             <button>{props.button}</button>
         </div>

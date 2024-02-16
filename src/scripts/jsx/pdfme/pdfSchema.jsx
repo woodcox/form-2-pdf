@@ -18,7 +18,7 @@ const schema = {
         autofocus: true,
         component: 'AppendFields',
         componentProps: {
-          componentId: 'YourFullName',
+          componentId: 'YourFullName', // this must be unique if you don't want multiple AppendFields components sharing the same state
           fields: [
             { name: 'yourFirstname', label: 'Your first name' },
             { name: 'yourMiddlename', label: 'Your middle names (optional)' },
@@ -26,28 +26,8 @@ const schema = {
           ]
         }
       },
-      YourTestName: {
-        pageUrl: '/your-details',
-        label: 'Your testname',
-        type: 'text',
-        position: { x: 68.28, y: 60.66 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter your fullname',
-        required: true,
-        autofocus: true,
-        component: 'AppendFields',
-        componentProps: {
-          componentId: 'YourTestName',
-          fields: [
-            { name: 'testFirstname', label: 'Your first name' },
-            { name: 'testMiddlename', label: 'Your middle names (optional)' },
-            { name: 'testLastname', label: 'Your surname' }
-          ]
-        }
-      },
       PartnerFullName: {
+        pageUrl: '/partner',
         label: 'Your partners fullname',
         type: 'text',
         position: { x: 68.28, y: 60.66 },
@@ -57,6 +37,15 @@ const schema = {
         errormessage: 'Please enter your partners fullname',
         required: true,
         autofocus: true,
+        component: 'AppendFields',
+        componentProps: {
+          componentId: 'PartnerFullName',
+          fields: [
+            { name: 'partnerFirstname', label: 'Their first name' },
+            { name: 'partnerMiddlename', label: 'Their middle names (optional)' },
+            { name: 'partnerLastname', label: 'Their surname' }
+          ]
+        }
       },
       Email: {
         pageUrl: '/your-details',
@@ -94,15 +83,15 @@ const schema = {
         fieldType: 'text',
         errormessage: '',
         required: true,
-        component: 'Dropdown',
+        component: 'Radio',
         componentProps: {
-          name: 'ceremonyType"',
+          name: 'ceremonyType',
           label: 'What type of ceremony have you booked?',
           value: '',
           initialOption: 'Select the ceremony type',
           options: [
-            { value: 'Marriage', label: 'Marriage' },
-            { value: 'Civil Partnership', label: 'Civil Partnership' }
+            { name: 'ceremonyType', value: 'Marriage', id: 'Marriage' },
+            { name: 'ceremonyType', value: 'Civil Partnership', id: 'CivilPartnership' }
           ]
         }
       },
