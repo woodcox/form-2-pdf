@@ -3,12 +3,14 @@ import DateInput from './DateInput.jsx';
 import InputEdit from './InputEdit.jsx';
 import AppendFields from './AppendFields.jsx';
 import Radio from './Radio.jsx';
+import Dropdown from './Dropdown.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // Map of components to import dynamically
 const componentMap = {
   DateInput,
   AppendFields,
+  Dropdown,
   Radio, // Add the Dropdown component to the component map
   // Add more components here as needed
 };

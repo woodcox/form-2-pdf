@@ -463,8 +463,8 @@ input[type='radio']:disabled:checked {
 
 @media (hover: hover) {
   input[type='radio']:not(:disabled):hover {
-    background-color: var(--radio-hover-color);
-    outline: 6px solid var(--radio-hover-color);
+    background-color: var(--color-accent);  //var(--radio-hover-color);
+    outline: 6px solid var(--color-accent);  //var(--radio-hover-color);
     transform: scale(1.05);
   }
 }
@@ -491,7 +491,7 @@ input[type='radio']:focus-visible {
   }
 }
 
-// update to radio button end
+// update to radio button en
 
 input[type='range'] {
   padding: 0.4rem 0;
@@ -506,7 +506,9 @@ textarea {
   padding: 0.4rem 0.8rem;
 }
 
-input[type='text'],
+input[type='text'], 
+input[type='email'],
+input[type='tel'],
 textarea {
   width: calc(100% - 1.6rem);
 }

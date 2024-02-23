@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
 
-const [selectedValue, setSelectedValue] = createSignal('');
+const [radioValue, setRadioValue] = createSignal('');
 
 const Radio = (props) => {
   const handleChange = (e) => {
