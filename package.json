@@ -28,7 +28,7 @@
     "@hyrious/esbuild-plugin-http": "^0.1.5",
     "@luncheon/esbuild-plugin-gzip": "^0.1.0",
     "@pdfme/generator": "3.2.2",
-    "@solidjs/router": "^0.10.10",
+    "@solidjs/router": "^0.12.4",
     "concurrently": "^8.2.2",
     "esbuild": "^0.20.0",
     "esbuild-plugin-manifest": "^1.0.3",
