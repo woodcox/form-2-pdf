@@ -1,8 +1,9 @@
 const InputEdit = (props) => {
   
     return (
-        <div class="inputEdit">
+        <>
             <label for={props.name}>{props.label}</label>
+            <div class="group">
             <input
                 name={props.name}
                 id={props.name}
@@ -10,7 +11,8 @@ const InputEdit = (props) => {
                 type="text"
             />
             <button>{props.button}</button>
-        </div>
+            </div>
+        </>
     );
 };
 
