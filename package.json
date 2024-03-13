@@ -30,16 +30,16 @@
     "@pdfme/generator": "3.2.2",
     "@solidjs/router": "^0.10.10",
     "concurrently": "^8.2.2",
-    "esbuild": "^0.20.0",
+    "esbuild": "^0.20.1",
     "esbuild-plugin-manifest": "^1.0.3",
     "esbuild-plugin-purgecss-2": "^1.0.1",
     "esbuild-plugin-solid": "^0.5.0",
     "just-validate": "^4.3.0",
-    "lightningcss-cli": "^1.23.0",
+    "lightningcss-cli": "^1.24.0",
     "mvp.css": "1.14.0",
     "purgecss": "^5.0.0",
-    "sass": "^1.70.0",
-    "solid-js": "^1.8.14"
+    "sass": "^1.71.1",
+    "solid-js": "^1.8.15"
   },
   "browserslist": [
     "> 0.2%",
