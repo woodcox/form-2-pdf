@@ -63,6 +63,8 @@ module.exports = function (eleventyConfig) {
     return promise;
   });
 
+  eleventyConfig.addPassthroughCopy({'../node_modules/govuk-frontend/dist/govuk/assets': '/app/assets'});
+
   eleventyConfig.addPairedShortcode("solid", solidShortcode);
  
   // Let Eleventy transform HTML files as liquidjs
