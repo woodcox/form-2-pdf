@@ -63,7 +63,8 @@ module.exports = function (eleventyConfig) {
     return promise;
   });
 
-  eleventyConfig.addPassthroughCopy({'../node_modules/govuk-frontend/dist/govuk/assets': '/app/assets'});
+  // Gov.uk fonts and images
+  eleventyConfig.addPassthroughCopy({'node_modules/govuk-frontend/dist/govuk/assets/fonts': 'app/fonts'});
 
   eleventyConfig.addPairedShortcode("solid", solidShortcode);
  

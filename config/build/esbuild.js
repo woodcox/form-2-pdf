@@ -49,6 +49,14 @@ const esbuildOpts = {
   target: isProd ? 'es6' : 'esnext',
   metafile: true,
   define: defineEnv,
+  loader: {
+    '.png': 'dataurl',
+    '.woff': 'dataurl',
+    '.woff2': 'dataurl',
+    '.eot': 'dataurl',
+    '.ttf': 'dataurl',
+    '.svg': 'dataurl',
+  },
   plugins: [
     // To run development/staging build (skips purgingcss) if isProd = false when ELEVENTY_ENV != 'prod'. 
     // This is implimented in the package.json scripts
