@@ -63,9 +63,6 @@ module.exports = function (eleventyConfig) {
     return promise;
   });
 
-  // Gov.uk fonts and images
-  eleventyConfig.addPassthroughCopy({'node_modules/govuk-frontend/dist/govuk/assets/fonts': 'app/fonts'});
-
   eleventyConfig.addPairedShortcode("solid", solidShortcode);
  
   // Let Eleventy transform HTML files as liquidjs

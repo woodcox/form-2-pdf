@@ -49,6 +49,7 @@ const esbuildOpts = {
   target: isProd ? 'es6' : 'esnext',
   metafile: true,
   define: defineEnv,
+  // 
   loader: {
     '.png': 'dataurl',
     '.woff': 'dataurl',

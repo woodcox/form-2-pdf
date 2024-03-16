@@ -18,7 +18,6 @@ const componentMap = {
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 
-
 export default function Form(props) {
   // Add urlPrefix to navigation links
   const prevPagePrefix = `${urlPrefix}${props.prevPage}`;
@@ -40,12 +39,7 @@ export default function Form(props) {
       </Show>
 
       <Show when={props.currentPage === '/your-details'}>
-        <InputEdit 
-          name="test"
-          label="Test field"
-          value=""
-          button="Edit"
-        />
+        <InputEdit name="test" label="Test field" value="" button="Edit" />
       </Show>
 
       <For each={Object.entries(props.template.schemas[0])}>
@@ -71,7 +65,9 @@ export default function Form(props) {
                 <DynamicComponent
                   {...componentProps}
                   // All components imported via dynamic components must use the onChange attribute to call the function. As this will update the pdfState via the Form component. Look in the Dropdown component for an example.
-                  onChange={(result) => setPdfState((prev) => ({ ...prev, [property]: result }))}
+                  onChange={(result) =>
+                    setPdfState((prev) => ({ ...prev, [property]: result }))
+                  }
                 />
               );
             } else {
@@ -104,15 +100,53 @@ export default function Form(props) {
           );
         }}
       </For>
-      <nav>
+      <nav class="govuk-button-group">
         <Show when={props.currentPage != '/'}>
-          <a href={prevPagePrefix}>
-            <i>Back</i>
+          <a
+            role="button"
+            draggable="false"
+            class="govuk-button govuk-button--secondary"
+            data-module="govuk-button"
+            href={prevPagePrefix}
+          >
+            Back
           </a>
         </Show>
-        <a href={nextPagePrefix}>
-          <b>Next</b>
-        </a>
+        <Show
+          when={props.currentPage == '/'}
+          fallback={
+            <a
+              role="button"
+              draggable="false"
+              class="govuk-button"
+              data-module="govuk-button"
+              href={nextPagePrefix}
+            >
+              Next
+            </a>
+          }
+        >
+          <a
+            role="button"
+            draggable="false"
+            class="govuk-button govuk-button--start"
+            data-module="govuk-button"
+            href={nextPagePrefix}
+          >
+            Start
+            <svg
+              class="govuk-button__start-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="17.5"
+              height="19"
+              viewBox="0 0 33 40"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+            </svg>
+          </a>
+        </Show>
       </nav>
     </form>
   );

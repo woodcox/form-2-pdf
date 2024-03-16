@@ -1,50 +1,14 @@
 @use 'mvp.scss';
 @use 'date-input.scss';
 @use 'group.scss';
+
 $govuk-assets-path: "./";
+$govuk-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 @import '../../node_modules/govuk-frontend/dist/govuk/base';
 @import '../../node_modules/govuk-frontend/dist/govuk/core/all';
 @import '../../node_modules/govuk-frontend/dist/govuk/objects/all';
-
-
-// GOV UK Components - except footer or header components
-@import "../../node_modules/govuk-frontend/dist/govuk/components/accordion/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/back-link/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/breadcrumbs/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/button/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/character-count/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/checkboxes/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/cookie-banner/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/date-input/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/details/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/error-message/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/error-summary/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/exit-this-page/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/fieldset/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/file-upload/index";
-
-// no footer or header
-@import "../../node_modules/govuk-frontend/dist/govuk/components/hint/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/input/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/inset-text/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/label/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/notification-banner/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/pagination/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/panel/index";
-//@import "../../node_modules/govuk-frontend/dist/govuk/components/password-input/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/phase-banner/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/radios/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/select/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/skip-link/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/summary-list/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/table/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/tabs/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/tag/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/task-list/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/textarea/index";
-@import "../../node_modules/govuk-frontend/dist/govuk/components/warning-text/index";
-
-
+@import 'gov-uk-components.scss';
 @import '../../node_modules/govuk-frontend/dist/govuk/utilities/all';
 @import '../../node_modules/govuk-frontend/dist/govuk/overrides/all';
 
