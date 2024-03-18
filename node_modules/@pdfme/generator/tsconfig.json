@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.esm",
+  "compilerOptions": {
+    "outDir": "./dist",
+  },
+  "paths": {
+    "@pdfme/common": [
+      "packages/common/dist/esm/src"
+    ],
+    "@pdfme/schemas": [
+      "packages/schemas/dist/esm/src"
+    ]
+  },
+}
