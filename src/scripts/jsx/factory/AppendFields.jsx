@@ -40,15 +40,16 @@ function AppendFields(props) {
     <>
       <For each={props.fields}>
         {(field) => (
-          <>
-            <label for={field.name}>{field.label}:</label>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for={field.name}>{field.label}</label>
             <input
+              class="govuk-input"
               type="text"
               id={field.name}
               value={fieldValues[field.name]}
               onInput={(e) => setFieldValues((prev) => ({ ...prev, [field.name]: e.target.value }))}
             />
-          </>
+          </div>
         )}
       </For>
     </>

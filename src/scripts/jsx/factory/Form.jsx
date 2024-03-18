@@ -33,7 +33,10 @@ export default function Form(props) {
 
   return (
     <form>
-      <h1>{props.heading}</h1>
+      <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">{props.heading}</h1>
+      </legend>
       <Show when={props.headline}>
         <p>{props.headline}</p>
       </Show>
@@ -77,11 +80,12 @@ export default function Form(props) {
           }
 
           return (
-            <>
-              <label for={property}>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for={property}>
                 {config.label}
-                {!config.required && <span> (optional)</span>}:
+                {!config.required && <span> (optional)</span>}
                 <input
+                  class="govuk-input"
                   name={property}
                   id={property}
                   type={config.fieldType}
@@ -96,10 +100,11 @@ export default function Form(props) {
                   onChange={(e) => handleChange(property, e.target.value)}
                 />
               </label>
-            </>
+            </div>
           );
         }}
       </For>
+      </fieldset>
       <nav class="govuk-button-group">
         <Show when={props.currentPage != '/'}>
           <a

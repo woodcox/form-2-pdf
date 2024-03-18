@@ -10,7 +10,7 @@ const InputEdit = (props) => {
                 value={props.value}
                 type="text"
             />
-            <button>{props.button}</button>
+            <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">{props.button}</button>
             </div>
         </>
     );

@@ -9,25 +9,32 @@ const Radio = (props) => {
   };
 
   return (
-    <fieldset>
-      <legend>
-        <h2>{props.label}</h2>
-      </legend>
-      <For each={props.options}>
-        {(option) => (
-          <>
-            <input
-              type="radio"
-              name={option.name}
-              id={option.id}
-              value={option.value}
-              onChange={handleChange}
-            />
-            <label for={option.id}>{option.value}</label>
-          </>
-        )}
-      </For>
-    </fieldset>
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h2 class="govuk-fieldset__heading">{props.label}</h2>
+        </legend>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <For each={props.options}>
+            {(option) => (
+              <div class="govuk-radios__item">
+                <input
+                  class="govuk-radios__input"
+                  type="radio"
+                  name={option.name}
+                  id={option.id}
+                  value={option.value}
+                  onChange={handleChange}
+                />
+                <label class="govuk-label govuk-radios__label" for={option.id}>
+                  {option.value}
+                </label>
+              </div>
+            )}
+          </For>
+        </div>
+      </fieldset>
+    </div>
   );
 };
 

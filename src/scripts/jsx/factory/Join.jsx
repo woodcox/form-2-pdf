@@ -38,8 +38,9 @@ function JoinFields({ props, onResultChange }) {
     <>
       {Object.entries(props).map(([field, label]) => (
         <>
-          <label for={field}>{label}:</label>
+          <label class="govuk-label" for={field}>{label}</label>
           <input
+            class="govuk-input"
             type="text"
             id={field}
             value={fieldValues[field]}

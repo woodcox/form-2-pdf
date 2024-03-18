@@ -36,57 +36,87 @@ export default function DateInput(props) {
   });
 
   return (
-    <fieldset role="group" aria-describedby={`${props.name}-help-text`}>
-      <legend>
-        <h2>{props.heading}</h2>
-      </legend>
-      <p>
-        <strong id={`${props.name}-help-text`}>{props.helpText}</strong>
-      </p>
-      <div class="date-input-group-wrapper" id={props.name}>
-        <div class="date-input-group">
-          <label for={`${props.name}-day`}>Day</label>
-          <input
-            id={`${props.name}-day`}
-            name={`${props.name}-day`}
-            type="text"
-            inputmode="numeric"
-            maxlength="2"
-            min="1"
-            max="31"
-            onInput={(e) => setDay(e.target.value)}
-            value={day()}
-          />
+    <div class="govuk-form-group">
+      <fieldset
+        class="govuk-fieldset"
+        role="group"
+        aria-describedby={`${props.name}-help-text`}
+      >
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--2">
+          <h2>{props.heading}</h2>
+        </legend>
+        <div class="govuk-hint" id={`${props.name}-help-text`}>
+          {props.helpText}
         </div>
-        <div class="date-input-group">
-          <label for={`${props.name}-month`}>Month</label>
-          <input
-            id={`${props.name}-month`}
-            name={`${props.name}-month`}
-            type="text"
-            inputmode="numeric"
-            maxlength="2"
-            min="1"
-            max="12"
-            onInput={(e) => setMonth(e.target.value)}
-            value={month()}
-          />
+        <div class="govuk-date-input" id={props.name}>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label
+                class="govuk-label govuk-date-input__label"
+                for={`${props.name}-day`}
+              >
+                Day
+              </label>
+              <input
+                class="govuk-input govuk-date-input__input govuk-input--width-2"
+                id={`${props.name}-day`}
+                name={`${props.name}-day`}
+                type="text"
+                inputmode="numeric"
+                maxlength="2"
+                min="1"
+                max="31"
+                onInput={(e) => setDay(e.target.value)}
+                value={day()}
+              />
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label
+                class="govuk-label govuk-date-input__label"
+                for={`${props.name}-month`}
+              >
+                Month
+              </label>
+              <input
+                class="govuk-input govuk-date-input__input govuk-input--width-2"
+                id={`${props.name}-month`}
+                name={`${props.name}-month`}
+                type="text"
+                inputmode="numeric"
+                maxlength="2"
+                min="1"
+                max="12"
+                onInput={(e) => setMonth(e.target.value)}
+                value={month()}
+              />
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label
+                class="govuk-label govuk-date-input__label"
+                for={`${props.name}-year`}
+              >
+                Year
+              </label>
+              <input
+                class="govuk-input govuk-date-input__input govuk-input--width-4"
+                id={`${props.name}-year`}
+                name={`${props.name}-year`}
+                type="text"
+                inputmode="numeric"
+                maxlength="4"
+                min="2000"
+                max="2199"
+                onInput={(e) => setYear(e.target.value)}
+                value={year()}
+              />
+            </div>
+          </div>
         </div>
-        <div class="date-input-group">
-          <label for={`${props.name}-year`}>Year</label>
-          <input
-            id={`${props.name}-year`}
-            name={`${props.name}-year`}
-            type="text"
-            inputmode="numeric"
-            maxlength="4"
-            min="2000"
-            max="2199"
-            onInput={(e) => setYear(e.target.value)}
-            value={year()}
-          />
-        </div>
-      </div>
-    </fieldset>
+      </fieldset>
+    </div>
   );
 }
