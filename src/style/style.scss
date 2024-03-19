@@ -2,14 +2,24 @@
 //@use 'date-input.scss';
 @use 'group.scss';
 
+
+// Leeds colors map
 $leeds-colors: (
-  "blue": #007299,
-) !default;
+  "lcc-blue": #007299,
+);
+
+// Function to call the color from the $leeds-colors map
+@function color($key) {
+  @return map-get($leeds-colors, $key);
+}
+
+$govuk-button-background-colour: color("lcc-blue"); // alter the gov-uk
+
 
 $govuk-assets-path: "./";
 $govuk-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-//$govuk-button-background-colour: leeds-colors("blue");
+
 
 
 @import '../../node_modules/govuk-frontend/dist/govuk/base';

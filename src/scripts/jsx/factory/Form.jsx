@@ -34,56 +34,57 @@ export default function Form(props) {
   return (
     <form>
       <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-      <h1 class="govuk-fieldset__heading">{props.heading}</h1>
-      </legend>
-      <Show when={props.headline}>
-        <p>{props.headline}</p>
-      </Show>
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">{props.heading}</h1>
+        </legend>
+        <Show when={props.headline}>
+          <p>{props.headline}</p>
+        </Show>
 
-      <Show when={props.currentPage === '/your-details'}>
-        <InputEdit name="test" label="Test field" value="" button="Edit" />
-      </Show>
+        <Show when={props.currentPage === '/your-details'}>
+          <InputEdit name="test" label="Test field" value="" button="Edit" />
+        </Show>
 
-      <For each={Object.entries(props.template.schemas[0])}>
-        {(entry) => {
-          const [property, config] = entry;
-          const isSummaryPage = props.currentPage === '/summary';
+        <For each={Object.entries(props.template.schemas[0])}>
+          {(entry) => {
+            const [property, config] = entry;
+            const isSummaryPage = props.currentPage === '/summary';
 
-          // filter out input field that are not on the currentPage unless the current page is '/summary'
-          if (
-            config.pageUrl !== props.currentPage &&
-            props.currentPage !== '/summary'
-          ) {
-            return null;
-          }
-
-          // Check if a component is specified in the schema entry
-          if (config.component && props.currentPage !== '/summary') {
-            // Dynamically render the specified component
-            const DynamicComponent = componentMap[config.component];
-            if (DynamicComponent) {
-              const { componentProps } = config; // Get all componentProps
-              return (
-                <DynamicComponent
-                  {...componentProps}
-                  // All components imported via dynamic components must use the onChange attribute to call the function. As this will update the pdfState via the Form component. Look in the Dropdown component for an example.
-                  onChange={(result) =>
-                    setPdfState((prev) => ({ ...prev, [property]: result }))
-                  }
-                />
-              );
-            } else {
-              console.error(`Component '${config.component}' not found.`);
+            // filter out input field that are not on the currentPage unless the current page is '/summary'
+            if (
+              config.pageUrl !== props.currentPage &&
+              props.currentPage !== '/summary'
+            ) {
               return null;
             }
-          }
 
-          return (
-            <div class="govuk-form-group">
-              <label class="govuk-label" for={property}>
-                {config.label}
-                {!config.required && <span> (optional)</span>}
+            // Check if a component is specified in the schema entry
+            if (config.component && props.currentPage !== '/summary') {
+              // Dynamically render the specified component
+              const DynamicComponent = componentMap[config.component];
+              if (DynamicComponent) {
+                const { componentProps } = config; // Get all componentProps
+                return (
+                  <DynamicComponent
+                    {...componentProps}
+                    // All components imported via dynamic components must use the onChange attribute to call the function. As this will update the pdfState via the Form component. Look in the Dropdown component for an example.
+                    onChange={(result) =>
+                      setPdfState((prev) => ({ ...prev, [property]: result }))
+                    }
+                  />
+                );
+              } else {
+                console.error(`Component '${config.component}' not found.`);
+                return null;
+              }
+            }
+
+            return (
+              <div class="govuk-form-group">
+                <label class="govuk-label" for={property}>
+                  {config.label}
+                  {!config.required && <span> (optional)</span>}
+                </label>
                 <input
                   class="govuk-input"
                   name={property}
@@ -99,11 +100,10 @@ export default function Form(props) {
                   value={localInputs()[property]}
                   onChange={(e) => handleChange(property, e.target.value)}
                 />
-              </label>
-            </div>
-          );
-        }}
-      </For>
+              </div>
+            );
+          }}
+        </For>
       </fieldset>
       <nav class="govuk-button-group">
         <Show when={props.currentPage != '/'}>

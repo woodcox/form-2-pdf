@@ -11,8 +11,8 @@ const Radio = (props) => {
   return (
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <h2 class="govuk-fieldset__heading">{props.label}</h2>
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--2">
+          <h2>{props.label}</h2>
         </legend>
         <div class="govuk-radios" data-module="govuk-radios">
           <For each={props.options}>

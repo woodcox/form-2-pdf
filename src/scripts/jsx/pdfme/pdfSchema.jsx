@@ -15,7 +15,6 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter your fullname',
         required: true,
-        autofocus: true,
         component: 'AppendFields',
         componentProps: {
           componentId: 'YourFullName', // this must be unique if you don't want multiple AppendFields components sharing the same state
@@ -36,7 +35,6 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter your partners fullname',
         required: true,
-        autofocus: true,
         component: 'AppendFields',
         componentProps: {
           componentId: 'PartnerFullName',
@@ -58,7 +56,6 @@ const schema = {
         errormessage: 'Enter your email address',
         autocomplete: 'email',
         required: true,
-        autofocus: true,
       },
       Phone: {
         pageUrl: '/your-details',
@@ -71,7 +68,6 @@ const schema = {
         errormessage: 'Enter a UK phone number',
         autocomplete: 'tel',
         required: true,
-        autofocus: true,
       },
       CeremonyType: {
         pageUrl: '/booking',  
