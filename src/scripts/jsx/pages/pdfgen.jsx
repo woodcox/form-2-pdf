@@ -2,17 +2,16 @@ import { generate } from '@pdfme/generator';
 import { template, setTemplate } from './../pdfme/pdfSchema.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 const pathPrefix = process.env.PATHPREFIX;
-let urlPrefix = pathPrefix ? `/${pathPrefix}` : "";
+let urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 
 export default function PdfmeGenerator() {
-  
   async function generatePdf() {
     console.log(template());
     console.log(pdfState);
 
     const pdf = await generate({
-      template: template(),  // using signals
-      inputs: [pdfState],  // using state
+      template: template(), // using signals
+      inputs: [pdfState], // using state
     });
 
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
@@ -22,12 +21,12 @@ export default function PdfmeGenerator() {
 
   return (
     <>
-        <CreatePdf 
-          heading="Ceremony options pdf"
-          generatePdf={generatePdf}
-          prevPage="/summary"
-          cancel="/"
-        />
+      <CreatePdf
+        heading="Ceremony options pdf"
+        generatePdf={generatePdf}
+        prevPage="/summary"
+        cancel="/"
+      />
     </>
   );
 }
@@ -39,14 +38,38 @@ function CreatePdf(props) {
   return (
     <article>
       <h1>{props.heading}</h1>
-      <p>Please generate your ceremony options. This will create a pdf. Please save the pdf and then email it to ....</p>
-      <nav>
-        <a href={prevPagePrefix}>
-          <i>Back</i>
+      <p>
+        Please generate your ceremony options. This will create a pdf. Please
+        save the pdf and then email it to ....
+      </p>
+      <nav class="govuk-button-group">
+        <a
+          role="button"
+          draggable="false"
+          class="govuk-button govuk-button--secondary"
+          data-module="govuk-button"
+          href={prevPagePrefix}
+        >
+          Back
         </a>
-        <button type="reset" onClick={props.generatePdf}>Create PDF</button>
-        <a href={cancelPagePrefix}>
-          <i>Cancel</i>
+        <button
+          role="button"
+          draggable="false"
+          class="govuk-button"
+          data-module="govuk-button"
+          type="reset"
+          onClick={props.generatePdf}
+        >
+          Create PDF
+        </button>
+        <a
+          role="button"
+          draggable="false"
+          class="govuk-button govuk-button--secondary"
+          data-module="govuk-button"
+          href={cancelPagePrefix}
+        >
+          Cancel
         </a>
       </nav>
     </article>
