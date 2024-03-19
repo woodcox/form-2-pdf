@@ -113,19 +113,9 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      CeremonyDateTime: {
-        label: 'Ceremony date',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-      },
-      DateTime: {
+      CeremonyDate: {
         pageUrl: '/booking',
-        label: 'Date',
+        label: 'Ceremony date',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,

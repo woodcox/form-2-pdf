@@ -15,9 +15,6 @@ Esbuild defines the environmental variables to pass through to solid-js app.*/
 const pathPrefix = process.env.PATHPREFIX;
 const urlPrefix = pathPrefix ? `/${pathPrefix}` : "";
 
-console.log('pathPrefix:', pathPrefix);
-console.log('urlPrefix:', urlPrefix);
-
 render(
     () => (
         <Router>

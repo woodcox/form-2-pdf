@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
 import DateInput from './DateInput.jsx';
-import InputEdit from './InputEdit.jsx';
+import SummaryEdit from './SummaryEdit.jsx';
 import AppendFields from './AppendFields.jsx';
 import Radio from './Radio.jsx';
 import Dropdown from './Dropdown.jsx';
@@ -38,11 +38,11 @@ export default function Form(props) {
           <h1 class="govuk-fieldset__heading">{props.heading}</h1>
         </legend>
         <Show when={props.headline}>
-          <p>{props.headline}</p>
+          <p class="govuk-body">{props.headline}</p>
         </Show>
 
         <Show when={props.currentPage === '/your-details'}>
-          <InputEdit name="test" label="Test field" value="" button="Edit" />
+          <SummaryEdit name="test" label="Test field" value="" button="Edit" />
         </Show>
 
         <For each={Object.entries(props.template.schemas[0])}>

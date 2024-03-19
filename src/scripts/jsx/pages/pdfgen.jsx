@@ -37,8 +37,8 @@ function CreatePdf(props) {
   const cancelPagePrefix = `${urlPrefix}${props.cancel}`;
   return (
     <article>
-      <h1>{props.heading}</h1>
-      <p>
+      <h1 class="govuk-heading-l">{props.heading}</h1>
+      <p class="govuk-body">
         Please generate your ceremony options. This will create a pdf. Please
         save the pdf and then email it to ....
       </p>

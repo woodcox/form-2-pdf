@@ -1,7 +1,6 @@
 import { createStore } from 'solid-js/store';
 
 const pdfDefaultValues = {
-  DateTime: '',
   YourFullName: '',
   PartnerFullName: '',
   Email: '',
@@ -9,7 +8,7 @@ const pdfDefaultValues = {
   BookingRef: '',
   CeremonyType: '',
   CeremonyVenue: '',
-  CeremonyDateTime: '',
+  CeremonyDate: '',
   WordingOption: '',
   Rings: '',
   RoomEntrance: '',
