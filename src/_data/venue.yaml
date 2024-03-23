@@ -1,0 +1,142 @@
+---
+
+venue:
+  registeroffice:
+  	- room: Civic Hall - Banqueting Suite
+      weekday: 
+      	- day: Saturday
+        	time:
+          	- 9:15
+            - 10:00
+            - 10:45
+            - 11:30
+            - 13:15
+            - 14:00
+            - 14:45
+            - 15:30
+  	- room: Civic Hall - Council Chamber
+    	weekday: 
+      	- day: Saturday
+        	time:	
+  	- room: Civic Hall - Conference Room
+      weekday: 
+      	- day: Saturday
+        	time:
+  	- room: Civic Hall - West Room
+      weekday: 
+      	- day: Monday
+          time:
+          	- 9:30
+            - 10:00
+            - 10:30
+            - 11:00
+            - 11:30
+            - 14:00
+            - 14:30
+            - 15:00
+            - 15:30
+            - 16:00
+      	- day: Tuesday
+        	time:
+          	- 9:30
+            - 10:00
+            - 10:30
+            - 11:00
+            - 11:30
+            - 14:00
+            - 14:30
+            - 15:00
+            - 15:30
+            - 16:00
+      	- day: Wednesday
+        	time:
+          	- 9:30
+            - 10:00
+            - 10:30
+            - 11:00
+            - 11:30
+            - 14:00
+            - 14:30
+            - 15:00
+            - 15:30
+            - 16:00
+      	- day: Thursday
+        	time:
+          	- 9:30
+            - 10:00
+            - 10:30
+            - 11:00
+            - 11:30
+            - 14:00
+            - 14:30
+            - 15:00
+            - 15:30
+            - 16:00
+      	- day: Friday
+        	time:
+          	- 9:15
+            - 10:00
+            - 10:45
+            - 11:30
+            - 13:15
+            - 14:00
+            - 14:45
+            - 15:30
+      	- day: Saturday
+        	time:
+   
+	hotel:
+  - Aagrah
+  - Adelphi
+  - Aspire
+  - Bowcliffe Hall
+  - Britannia Hotel
+  - Castle Grove Masonic Hall
+  - Chequers Inn
+  - Chevin Country Park Hotel
+  - Chilli Barn
+  - City Varieties Music Hall
+  - Clayton Hotel
+  - Cookridge Hall
+  - Cornmill Lodge
+  - Crowne Plaza
+  - Doubletree by Hilton
+  - Engine Shed
+  - Faversham Hotel
+  - Guiseley Theatre
+  - Haley's Hotel
+  - Harewood House
+  - Headingley Stadium
+  - Holiday Inn Leeds-Garforth  
+  - Hyde Park Picture House
+  - Iveridge Hall
+  - Kirkstall Abbey
+  - Leeds Library
+  - Leeds Marriott Hotel
+  - Leeds United Stadium
+  - Lineham Farm
+  - Lotherton Hall
+  - Malmaison Hotel
+  - Manor Golf Club
+  - Mercure Leeds Parkway Hotel
+  - Mercure Wetherby Hotel
+  - Morley Town Hall
+  - New Craven Hall   
+  - Oulton Hall   
+  - Park Plaza Hotel	
+  - Queens Hotel   
+  - Radisson Blu Hotel	   	   
+  - Royal Armouries Museum   
+  - Temple Newsam House   
+  - The Courtyard, Harewood House  
+  - The Hovels   
+  - The Mansion   
+  - The Met Hotel   	   
+  - Village Hotel Club North Leeds   
+  - Windmill Inn  
+  - Thornfield House
+  - Thorpe Park Hotel
+  - Village Hotel, Tingley  
+  - Weetwood Hall	   
+  - Woodkirk Valley Country Club	   
+  - Woodlands Hotel
