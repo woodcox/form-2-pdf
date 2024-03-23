@@ -86,57 +86,68 @@ venue:
         	time:
    
 	hotel:
-  - Aagrah
-  - Adelphi
-  - Aspire
-  - Bowcliffe Hall
-  - Britannia Hotel
-  - Castle Grove Masonic Hall
-  - Chequers Inn
-  - Chevin Country Park Hotel
-  - Chilli Barn
-  - City Varieties Music Hall
-  - Clayton Hotel
-  - Cookridge Hall
-  - Cornmill Lodge
-  - Crowne Plaza
-  - Doubletree by Hilton
-  - Engine Shed
-  - Faversham Hotel
-  - Guiseley Theatre
-  - Haley's Hotel
-  - Harewood House
-  - Headingley Stadium
-  - Holiday Inn Leeds-Garforth  
-  - Hyde Park Picture House
-  - Iveridge Hall
-  - Kirkstall Abbey
-  - Leeds Library
-  - Leeds Marriott Hotel
-  - Leeds United Stadium
-  - Lineham Farm
-  - Lotherton Hall
-  - Malmaison Hotel
-  - Manor Golf Club
-  - Mercure Leeds Parkway Hotel
-  - Mercure Wetherby Hotel
-  - Morley Town Hall
-  - New Craven Hall   
-  - Oulton Hall   
-  - Park Plaza Hotel	
-  - Queens Hotel   
-  - Radisson Blu Hotel	   	   
-  - Royal Armouries Museum   
-  - Temple Newsam House   
-  - The Courtyard, Harewood House  
-  - The Hovels   
-  - The Mansion   
-  - The Met Hotel   	   
-  - Village Hotel Club North Leeds   
-  - Windmill Inn  
-  - Thornfield House
-  - Thorpe Park Hotel
-  - Village Hotel, Tingley  
-  - Weetwood Hall	   
-  - Woodkirk Valley Country Club	   
-  - Woodlands Hotel
+  - name: Aagrah
+    time:
+    - 10:00
+    - 11:00
+    - 11:30
+    - 12:00
+    - 13:00
+    - 13:30
+    - 14:00
+    - 15:00
+    - 15:30
+    - 16:00
+    - 17:00
+  - name: Adelphi
+  - name: Aspire
+  - name: Bowcliffe Hall
+  - name: Britannia Hotel
+  - name: Castle Grove Masonic Hall
+  - name: Chequers Inn
+  - name: Chevin Country Park Hotel
+  - name: Chilli Barn
+  - name: City Varieties Music Hall
+  - name: Clayton Hotel
+  - name: Cookridge Hall
+  - name: Cornmill Lodge
+  - name: Crowne Plaza
+  - name: Doubletree by Hilton
+  - name: Engine Shed
+  - name: Faversham Hotel
+  - name: Guiseley Theatre
+  - name: Haley's Hotel
+  - name: Harewood House
+  - name: Headingley Stadium
+  - name: Holiday Inn Leeds-Garforth  
+  - name: Hyde Park Picture House
+  - name: Iveridge Hall
+  - name: Kirkstall Abbey
+  - name: Leeds Library
+  - name: Leeds Marriott Hotel
+  - name: Leeds United Stadium
+  - name: Lineham Farm
+  - name: Lotherton Hall
+  - name: Malmaison Hotel
+  - name: Manor Golf Club
+  - name: Mercure Leeds Parkway Hotel
+  - name: Morley Town Hall
+  - name: New Craven Hall   
+  - name: Oulton Hall   
+  - name: Park Plaza Hotel	
+  - name: Queens Hotel   
+  - name: Radisson Blu Hotel	   	   
+  - name: Royal Armouries Museum   
+  - name: Temple Newsam House   
+  - name: The Courtyard, Harewood House  
+  - name: The Hovels   
+  - name: The Mansion   
+  - name: The Met Hotel   	   
+  - name: Village Hotel Club North Leeds     
+  - name: Thornfield House
+  - name: Thorpe Park Hotel
+  - name: Village Hotel, Tingley  
+  - name: Weetwood Hall
+  - name: Windmill Inn 
+  - name: Woodkirk Valley Country Club	   
+  - name: Woodlands Hotel
