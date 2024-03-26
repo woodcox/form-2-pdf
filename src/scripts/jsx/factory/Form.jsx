@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
 import DateInput from './DateInput.jsx';
-import SummaryEdit from './SummaryEdit.jsx';
+import SummaryList from './SummaryList.jsx';
 import AppendFields from './AppendFields.jsx';
 import Radio from './Radio.jsx';
 import Dropdown from './Dropdown.jsx';
@@ -42,7 +42,7 @@ export default function Form(props) {
         </Show>
 
         <Show when={props.currentPage === '/your-details'}>
-          <SummaryEdit name="test" label="Test field" value="" button="Edit" />
+          <SummaryList name="test" label="Test field" value="" button="Edit" />
         </Show>
 
         <For each={Object.entries(props.template.schemas[0])}>
