@@ -41,10 +41,6 @@ export default function Form(props) {
           <p class="govuk-body">{props.headline}</p>
         </Show>
 
-        <Show when={props.currentPage === '/your-details'}>
-          <SummaryList name="test" label="Test field" value="" button="Edit" />
-        </Show>
-
         <For each={Object.entries(props.template.schemas[0])}>
           {(entry) => {
             const [property, config] = entry;
@@ -79,29 +75,55 @@ export default function Form(props) {
               }
             }
 
-            return (
-              <div class="govuk-form-group">
-                <label class="govuk-label" for={property}>
-                  {config.label}
-                  {!config.required && <span> (optional)</span>}
-                </label>
-                <input
-                  class="govuk-input"
-                  name={property}
-                  id={property}
-                  type={config.fieldType}
-                  title={config.errormessage}
-                  required={config.required}
-                  placeholder={config.placeholder}
-                  pattern={config.pattern}
-                  readonly={isSummaryPage ? 'readonly' : null} // form becomes readonly if currentPage = '/summary'
-                  autocomplete={config.autocomplete}
-                  autofocus={config.autofocus}
-                  value={localInputs()[property]}
-                  onChange={(e) => handleChange(property, e.target.value)}
-                />
-              </div>
-            );
+            if (props.currentPage !== '/summary') {
+              return (
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for={property}>
+                    {config.label}
+                    {!config.required && <span> (optional)</span>}
+                  </label>
+                  <input
+                    class="govuk-input"
+                    name={property}
+                    id={property}
+                    type={config.fieldType}
+                    title={config.errormessage}
+                    required={config.required}
+                    placeholder={config.placeholder}
+                    pattern={config.pattern}
+                    //readonly={isSummaryPage ? 'readonly' : null} // form becomes readonly if currentPage = '/summary'
+                    autocomplete={config.autocomplete}
+                    autofocus={config.autofocus}
+                    value={localInputs()[property]}
+                    onChange={(e) => handleChange(property, e.target.value)}
+                  />
+                </div>
+              );
+            } else {
+              // Summary page uses check answers pattern - https://design-system.service.gov.uk/patterns/check-answers/
+              return (
+                <>
+                  <h2 class="govuk-heading-m">{config.pageUrl}</h2>
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">{config.label}</dt>
+                      <dd class="govuk-summary-list__value">
+                        {localInputs()[property]}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href={config.pageUrl}>
+                          Change
+                          <span class="govuk-visually-hidden">
+                            {' '}
+                            {localInputs()[property]}
+                          </span>
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
+                </>
+              );
+            }
           }}
         </For>
       </fieldset>

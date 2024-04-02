@@ -1,7 +1,7 @@
 ---
 
 venue:
-  name: Civic Hall
+  - name: Civic Hall
   	- room: Banqueting Suite
       weekday: 
       	- day: Saturday

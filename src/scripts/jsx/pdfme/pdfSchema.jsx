@@ -20,7 +20,7 @@ const schema = {
           componentId: 'YourFullName', // this must be unique if you don't want multiple AppendFields components sharing the same state
           fields: [
             { name: 'yourFirstname', label: 'Your first name' },
-            { name: 'yourMiddlename', label: 'Your middle names (optional)' },
+            { name: 'yourMiddlename', label: 'Your middle names' },
             { name: 'yourLastname', label: 'Your surname' }
           ]
         }
@@ -40,7 +40,7 @@ const schema = {
           componentId: 'PartnerFullName',
           fields: [
             { name: 'partnerFirstname', label: 'Their first name' },
-            { name: 'partnerMiddlename', label: 'Their middle names (optional)' },
+            { name: 'partnerMiddlename', label: 'Their middle names' },
             { name: 'partnerLastname', label: 'Their surname' }
           ]
         }
