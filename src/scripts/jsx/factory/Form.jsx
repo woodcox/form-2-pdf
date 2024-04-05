@@ -115,50 +115,55 @@ export default function Form(props) {
         {/* Render grouped fields for summary page */}
         {props.currentPage === '/summary' && (
           <>
-            {/* Group fields by pageUrl */}
-            {
-              (groupedInputs = Object.values(props.template.schemas[0]).reduce(
-                (group, input) => {
-                  const { pageUrl } = input;
-                  group[pageUrl] = group[pageUrl] ?? [];
-                  group[pageUrl].push(input);
-                  return group;
+            {/* Define and execute the assignment outside of JSX */}
+            {() => {
+              const groupedInputs = Object.values(
+                props.template.schemas[0]
+              ).reduce((group, input) => {
+                const { pageUrl } = input;
+                if (!group.has(pageUrl)) {
+                  group.set(pageUrl, []);
                 }
-              ))
-            }
-            {console.log(groupedInputs)}
+                group.get(pageUrl).push(input);
+                return group;
+              }, new Map());
+              console.log(groupedInputs); // You can uncomment this line for debugging
 
-            <For each={Object.entries(groupedInputs)}>
-              {(entry) => {
-                const [pageUrl, fields] = entry;
-                return (
-                  <>
-                    <h2 class="govuk-heading-m">{pageUrl}</h2>
-                    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                      <For each={fields}>
-                        {(field) => {
-                          return (
-                            <div class="govuk-summary-list__row">
-                              <dt class="govuk-summary-list__key">
-                                {field.label}
-                              </dt>
-                              <dd class="govuk-summary-list__value">
-                                {localInputs()[field.property]}
-                              </dd>
-                              <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href={field.pageUrl}>
-                                  Change
-                                </a>
-                              </dd>
-                            </div>
-                          );
-                        }}
-                      </For>
-                    </dl>
-                  </>
-                );
-              }}
-            </For>
+              return (
+                <For each={Array.from(groupedInputs.entries())}>
+                  {(entry) => {
+                    const [pageUrl, fields] = entry;
+                    return (
+                      <>
+                        <h2 class="govuk-heading-m">{pageUrl}</h2>
+                        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                          <For each={fields}>
+                            {(field) => {
+                              const { label, property } = field;
+                              return (
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    {label}
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {localInputs()[property]}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href={pageUrl}>
+                                      Change
+                                    </a>
+                                  </dd>
+                                </div>
+                              );
+                            }}
+                          </For>
+                        </dl>
+                      </>
+                    );
+                  }}
+                </For>
+              );
+            }}
           </>
         )}
       </fieldset>
