@@ -311,6 +311,7 @@ const schema = {
     // need new array for a new page
     {
       Mother: {
+        pageUrl: '/test',
         type: 'text',
         position: {
           x: 101.34,

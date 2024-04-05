@@ -31,7 +31,7 @@ export default function Form(props) {
     props.onInputsChange({ ...props.inputs, [property]: value });
   };
 
-  let groupedFields = '';
+  let groupedInputs = '';
 
   return (
     <form>
@@ -117,45 +117,37 @@ export default function Form(props) {
           <>
             {/* Group fields by pageUrl */}
             {
-              (groupedFields = Object.entries(props.template.schemas[0]).reduce(
-                (aggregate, [property, config]) => {
-                  if (config.pageUrl) {
-                    if (!aggregate[config.pageUrl]) {
-                      aggregate[config.pageUrl] = [];
-                    }
-                    aggregate[config.pageUrl].push({ property, config });
-                  }
-                  return aggregate;
+              (groupedInputs = Object.values(props.template.schemas[0]).reduce(
+                (group, input) => {
+                  const { pageUrl } = input;
+                  group[pageUrl] = group[pageUrl] ?? [];
+                  group[pageUrl].push(input);
+                  return group;
                 }
               ))
             }
+            {console.log(groupedInputs)}
 
-            <For each={Object.entries(groupedFields)}>
+            <For each={Object.entries(groupedInputs)}>
               {(entry) => {
-                 const [pageUrl, fields] = entry;
+                const [pageUrl, fields] = entry;
                 return (
-                  <div>
+                  <>
                     <h2 class="govuk-heading-m">{pageUrl}</h2>
                     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                       <For each={fields}>
-                        {(fieldEntry) => {
-                          if (!fieldEntry[1]) return null; // Skip if fieldEntry[1] is undefined
-                          const { property, config } = fieldEntry[1]; // Use fieldEntry[1] since it's an array of [property, config]
+                        {(field) => {
                           return (
                             <div class="govuk-summary-list__row">
                               <dt class="govuk-summary-list__key">
-                                {config.label}
+                                {field.label}
                               </dt>
                               <dd class="govuk-summary-list__value">
-                                {localInputs()[property]}
+                                {localInputs()[field.property]}
                               </dd>
                               <dd class="govuk-summary-list__actions">
-                                <a class="govuk-link" href={pageUrl}>
+                                <a class="govuk-link" href={field.pageUrl}>
                                   Change
-                                  <span class="govuk-visually-hidden">
-                                    {' '}
-                                    {localInputs()[property]}
-                                  </span>
                                 </a>
                               </dd>
                             </div>
@@ -163,7 +155,7 @@ export default function Form(props) {
                         }}
                       </For>
                     </dl>
-                  </div>
+                  </>
                 );
               }}
             </For>
