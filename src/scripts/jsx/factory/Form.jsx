@@ -31,6 +31,8 @@ export default function Form(props) {
     props.onInputsChange({ ...props.inputs, [property]: value });
   };
 
+  let groupedFields = '';
+
   return (
     <form>
       <fieldset class="govuk-fieldset">
@@ -44,9 +46,8 @@ export default function Form(props) {
         <For each={Object.entries(props.template.schemas[0])}>
           {(entry) => {
             const [property, config] = entry;
-            const isSummaryPage = props.currentPage === '/summary';
 
-            // filter out input field that are not on the currentPage unless the current page is '/summary'
+            // Filter out input fields that are not on the currentPage unless the current page is '/summary'
             if (
               config.pageUrl !== props.currentPage &&
               props.currentPage !== '/summary'
@@ -99,33 +100,75 @@ export default function Form(props) {
                   />
                 </div>
               );
-            } else {
-              // Summary page uses check answers pattern - https://design-system.service.gov.uk/patterns/check-answers/
-              return (
-                <>
-                  <h2 class="govuk-heading-m">{config.pageUrl}</h2>
-                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">{config.label}</dt>
-                      <dd class="govuk-summary-list__value">
-                        {localInputs()[property]}
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href={config.pageUrl}>
-                          Change
-                          <span class="govuk-visually-hidden">
-                            {' '}
-                            {localInputs()[property]}
-                          </span>
-                        </a>
-                      </dd>
-                    </div>
-                  </dl>
-                </>
-              );
             }
           }}
         </For>
+
+        {/* Grouped Fields for summary list
+  This function groups fields based on their pageUrl property.
+  It iterates through each entry in the props.template.schemas[0] object, where each entry represents a field property and its configuration.
+  For each field, it checks if a pageUrl property is defined in its configuration.
+  If a pageUrl property is found, it initializes an array in the acc object with the pageUrl as the key if it doesn't already exist.
+  It then pushes an object containing the field's property and configuration to the array corresponding to the pageUrl.
+        Finally, it returns the acc object, which contains the fields grouped by their pageUrl. */}
+
+        {/* Render grouped fields for summary page */}
+        {props.currentPage === '/summary' && (
+          <>
+            {/* Group fields by pageUrl */}
+            {
+              (groupedFields = Object.entries(props.template.schemas[0]).reduce(
+                (aggregate, [property, config]) => {
+                  if (config.pageUrl) {
+                    if (!aggregate[config.pageUrl]) {
+                      aggregate[config.pageUrl] = [];
+                    }
+                    aggregate[config.pageUrl].push({ property, config });
+                  }
+                  return aggregate;
+                }
+              ))
+            }
+
+            <For each={Object.entries(groupedFields)}>
+              {(entry) => {
+                 const [pageUrl, fields] = entry;
+                return (
+                  <div>
+                    <h2 class="govuk-heading-m">{pageUrl}</h2>
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                      <For each={fields}>
+                        {(fieldEntry) => {
+                          if (!fieldEntry[1]) return null; // Skip if fieldEntry[1] is undefined
+                          const { property, config } = fieldEntry[1]; // Use fieldEntry[1] since it's an array of [property, config]
+                          return (
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                {config.label}
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                {localInputs()[property]}
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href={pageUrl}>
+                                  Change
+                                  <span class="govuk-visually-hidden">
+                                    {' '}
+                                    {localInputs()[property]}
+                                  </span>
+                                </a>
+                              </dd>
+                            </div>
+                          );
+                        }}
+                      </For>
+                    </dl>
+                  </div>
+                );
+              }}
+            </For>
+          </>
+        )}
       </fieldset>
       <nav class="govuk-button-group">
         <Show when={props.currentPage != '/'}>
