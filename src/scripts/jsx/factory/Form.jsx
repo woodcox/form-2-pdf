@@ -175,7 +175,7 @@ export default function Form(props) {
                                     {localInputs()[schemaKey]}
                                   </dd>
                                   <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href={pageUrl}>
+                                    <a class="govuk-link" href={`${urlPrefix}${pageUrl}`}>
                                       Change
                                     </a>
                                   </dd>
