@@ -117,14 +117,15 @@ export default function Form(props) {
           <>
             {/* Define and execute the assignment outside of JSX */}
             {() => {
-              const groupedInputs = Object.values(
+              const groupedInputs = Object.entries(
                 props.template.schemas[0]
-              ).reduce((group, input) => {
+              ).reduce((group, [key, input]) => {
                 const { pageUrl } = input;
                 if (!group.has(pageUrl)) {
                   group.set(pageUrl, []);
                 }
-                group.get(pageUrl).push(input);
+                const pageGroup = group.get(pageUrl);
+                pageGroup.push({ [key]: input });
                 return group;
               }, new Map());
               console.log(groupedInputs); // You can uncomment this line for debugging
@@ -135,18 +136,43 @@ export default function Form(props) {
                     const [pageUrl, fields] = entry;
                     return (
                       <>
-                        <h2 class="govuk-heading-m">{pageUrl}</h2>
+                      {/* TO DO: Update if add more pageUrls */}
+                      <Switch fallback="">
+                        <Match when={pageUrl === "/your-details"}>
+                          <h2 class="govuk-heading-m">Personal details</h2>
+                        </Match>
+                        <Match when={pageUrl === "/partner"}>
+                          <h2 class="govuk-heading-m">Your partner's details</h2>
+                        </Match>
+                        <Match when={pageUrl === "/booking"}>
+                          <h2 class="govuk-heading-m">Your booking</h2>
+                        </Match>
+                        <Match when={pageUrl === "/ceremony"}>
+                          <h2 class="govuk-heading-m">Ceremony details</h2>
+                        </Match>
+                        <Match when={pageUrl === "/witness"}>
+                          <h2 class="govuk-heading-m">Your witnesses</h2>
+                        </Match>
+                        <Match when={pageUrl === "/your-parents"}>
+                          <h2 class="govuk-heading-m">Your parents</h2>
+                        </Match>
+                        <Match when={pageUrl === "/partner-parents"}>
+                          <h2 class="govuk-heading-m">Your partners parents</h2>
+                        </Match>
+                      </Switch>
                         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                           <For each={fields}>
-                            {(field) => {
-                              const { label, property } = field;
+                            {(fieldEntry) => {
+                              const [schemaKey, schemaObject] =
+                                Object.entries(fieldEntry)[0]; // Get the schema key and schema object
+                              const { label } = schemaObject;
                               return (
                                 <div class="govuk-summary-list__row">
                                   <dt class="govuk-summary-list__key">
                                     {label}
                                   </dt>
                                   <dd class="govuk-summary-list__value">
-                                    {localInputs()[property]}
+                                    {localInputs()[schemaKey]}
                                   </dd>
                                   <dd class="govuk-summary-list__actions">
                                     <a class="govuk-link" href={pageUrl}>
