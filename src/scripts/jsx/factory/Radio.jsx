@@ -4,7 +4,7 @@ const [radioValue, setRadioValue] = createSignal('');
 
 const Radio = (props) => {
   const handleChange = (e) => {
-    setSelectedValue(e.target.value);
+    setRadioValue(e.target.value);
     props.onChange && props.onChange(e.target.value);
   };
 
