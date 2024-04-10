@@ -151,6 +151,18 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Radio',
+        componentProps: {
+          name: 'WordingOption',
+          label: 'Which ceremony wording?',
+          value: '',
+          initialOption: 'Choose your ceremony wording',
+          options: [
+            { name: 'wordingOption', value: 'Option 1', id: 'Option1' },
+            { name: 'wordingOption', value: 'Option 2', id: 'Option2' },
+            { name: 'wordingOption', value: 'Option 3', id: 'Option3' }
+          ]
+        }
       },
       Rings: {
         pageUrl: '/ceremony',
