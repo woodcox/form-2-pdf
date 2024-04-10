@@ -1,5 +1,5 @@
 @use "sass:string";
-$id: string.unique-id();
+// $id: string.unique-id(); cannot use unique ID in current set up as it breaks the manifest.json file keeps changing in a prod build
 
 .spin-loader {
   font-size: 5px;
@@ -9,11 +9,11 @@ $id: string.unique-id();
   border-radius: 50%;
   position: relative;
   text-indent: -9999em;
-  animation: spinner-#{$id} 1.1s infinite ease;
+  animation: __spinner-load 1.1s infinite ease;
   transform: translateZ(0);
 }
 
-@keyframes spinner-#{$id} {
+@keyframes __spinner-load {
   $white: #ffffff;
   $grey-point2: rgba(255, 255, 255, 0.2);
   $grey-point5: rgba(255, 255, 255, 0.5);
