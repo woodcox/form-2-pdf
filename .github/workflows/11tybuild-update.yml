@@ -43,9 +43,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Npm Rebuild # for buildmeta and manifest changes to take effect 
-        if: env.UPDATE_NPM != 'true'
-        run: npm run minify
+      #- name: Npm Rebuild # for buildmeta and manifest changes to take effect 
+      #  if: env.UPDATE_NPM != 'true'
+      #  run: npm run minify
         
       - name: Deploy
         if: env.UPDATE_NPM != 'true'
