@@ -20,7 +20,6 @@
     "url": "git+https://github.com/woodcox/11ty-solid-base.git"
   },
   "author": "woodcox",
-  "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-webc": "^0.11.2",
