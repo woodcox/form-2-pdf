@@ -9,16 +9,16 @@ const Dropdown = (props) => {
   };
 
   return (
-    <>
-      <label for={props.name}>{props.label}</label>
-      <select
+    <div class="govuk-form-group">
+      <label class="govuk-label" for={props.name}>{props.label}</label>
+      <select class="govuk-select"
         name={props.name}
         id={props.name}
         value={props.value}
         checked={selectedValue() === props.value}
         onChange={handleChange}
       >
-        <option value="" selected disabled hidden>
+        <option value="" selected disabled>
           {props.initialOption}
         </option>
         <For each={props.options}>
@@ -29,7 +29,7 @@ const Dropdown = (props) => {
           )}
         </For>
       </select>
-    </>
+    </div>
   );
 };
 

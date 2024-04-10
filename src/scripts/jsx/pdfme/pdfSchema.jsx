@@ -83,7 +83,7 @@ const schema = {
         componentProps: {
           name: 'ceremonyType',
           label: 'What type of ceremony have you booked?',
-          value: 'radioValue()',
+          value: '',
           initialOption: 'Select the ceremony type',
           options: [
             { name: 'ceremonyType', value: 'Marriage', id: 'Marriage' },
@@ -112,6 +112,17 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Dropdown',
+        componentProps: {
+          name: 'venue',
+          label: 'Where is your ceremony taking place?',
+          value: '',
+          initialOption: 'Select your venue',
+          options: [
+            { label: 'Civic Hall', value: 'Civic Hall' },
+            { label: 'Leeds Town Hall', value: 'Leeds Town Hall' }
+          ]
+        }
       },
       CeremonyDate: {
         pageUrl: '/booking',
