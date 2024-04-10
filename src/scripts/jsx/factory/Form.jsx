@@ -105,14 +105,16 @@ export default function Form(props) {
         </For>
 
         {/* Grouped Fields for summary list
-  This function groups fields based on their pageUrl property.
-  It iterates through each entry in the props.template.schemas[0] object, where each entry represents a field property and its configuration.
-  For each field, it checks if a pageUrl property is defined in its configuration.
-  If a pageUrl property is found, it initializes an array in the acc object with the pageUrl as the key if it doesn't already exist.
-  It then pushes an object containing the field's property and configuration to the array corresponding to the pageUrl.
+        This function groups fields based on their pageUrl property.
+        It iterates through each entry in the props.template.schemas[0] object, where each entry represents a field property and its configuration.
+        For each field, it checks if a pageUrl property is defined in its configuration.
+        If a pageUrl property is found, it initializes an array in the acc object with the pageUrl as the key if it doesn't already exist.
+        It then pushes an object containing the field's property and configuration to the array corresponding to the pageUrl.
         Finally, it returns the acc object, which contains the fields grouped by their pageUrl. */}
 
-        {/* Render grouped fields for summary page */}
+        {/* Render grouped fields for summary page 
+        PATTERN - https://design-system.service.gov.uk/patterns/check-answers/*/
+        }
         {props.currentPage === '/summary' && (
           <>
             {/* Define and execute the assignment outside of JSX */}

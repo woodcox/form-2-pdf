@@ -15,6 +15,7 @@ const Dropdown = (props) => {
         name={props.name}
         id={props.name}
         value={props.value}
+        checked={selectedValue() === props.value}
         onChange={handleChange}
       >
         <option value="" selected disabled hidden>

@@ -24,6 +24,7 @@ const Radio = (props) => {
                   name={option.name}
                   id={option.id}
                   value={option.value}
+                  checked={radioValue() === option.value}
                   onChange={handleChange}
                 />
                 <label class="govuk-label govuk-radios__label" for={option.id}>
