@@ -117,8 +117,8 @@ const schema = {
           name: 'venue',
           label: 'Where is your ceremony taking place?',
           value: '',
-          initialOption: 'Select your venue',
           options: [
+            { label: 'Select your venue', value: '' , placeholder: true },
             { label: 'Civic Hall', value: 'Civic Hall' },
             { label: 'Leeds Town Hall', value: 'Leeds Town Hall' }
           ]

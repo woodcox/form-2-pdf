@@ -3,6 +3,7 @@ import { createSignal } from 'solid-js';
 const [selectedValue, setSelectedValue] = createSignal('');
 
 const Dropdown = (props) => {
+  
   const handleChange = (e) => {
     setSelectedValue(e.target.value);
     props.onChange && props.onChange(e.target.value);
@@ -14,16 +15,12 @@ const Dropdown = (props) => {
       <select class="govuk-select"
         name={props.name}
         id={props.name}
-        value={props.value}
-        checked={selectedValue() === props.value}
+        value={props.value || selectedValue()}
         onChange={handleChange}
       >
-        <option value="" selected disabled>
-          {props.initialOption}
-        </option>
         <For each={props.options}>
           {(option) => (
-            <option key={option.value} value={option.value}>
+            <option key={option.value} value={option.value} disabled={option.placeholder}>
               {option.label}
             </option>
           )}
