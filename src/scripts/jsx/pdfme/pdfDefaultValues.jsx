@@ -18,13 +18,21 @@ const pdfDefaultValues = {
   Witness1: '',
   Witness2: '',
   YourParent1: '',
+  YourParent1Dead: '',
   YourParent1Job: '',
+  YourParent1Retired: '',
   YourParent2: '',
+  YourParent2Dead: '',
   YourParent2Job: '',
+  YourParent2Retired: '',
   PartnerParent1: '',
+  PartnerParent1Dead: '',
   PartnerParent1Job: '',
+  PartnerParent1Retired: '',
   PartnerParent2: '',
+  PartnerParent2Dead: '',
   PartnerParent2Job: '',
+  PartnerParent2Retired: '',
 };
 
 export const [pdfState, setPdfState] = createStore(pdfDefaultValues);

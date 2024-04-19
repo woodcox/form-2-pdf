@@ -229,6 +229,15 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'AppendFields',
+        componentProps: {
+          componentId: 'Witness1',
+          fields: [
+            { name: 'witnessFirstname', label: 'Witness 1 first name' },
+            { name: 'witnessMiddlename', label: 'Witness 1 middle names' },
+            { name: 'witnessLastname', label: 'Witness 1 surname' }
+          ]
+        }
       },
       Witness2: {
         pageUrl: '/witness',
@@ -240,6 +249,15 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'AppendFields',
+        componentProps: {
+          componentId: 'Witness2',
+          fields: [
+            { name: 'witness2Firstname', label: 'Witness 2 first name' },
+            { name: 'witness2Middlename', label: 'Witness 2 middle names' },
+            { name: 'witness2Lastname', label: 'Witness 2 surname' }
+          ]
+        }
       },
       YourParent1: {
         pageUrl: '/your-parents',
@@ -284,6 +302,17 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Radio',
+        componentProps: {
+          name: 'Parent1Retired',
+          label: 'Are they retired?',
+          value: '',
+          initialOption: 'Select...',
+          options: [
+            { name: 'parent1Retired', value: 'No', id: 'parent1Working' },
+            { name: 'parent1Retired', value: 'Yes, retired', id: 'parent1Retired' }
+          ]
+        }
       },
       YourParent2: {
         pageUrl: '/your-parents',
@@ -328,6 +357,17 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Radio',
+        componentProps: {
+          name: 'Parent2Retired',
+          label: 'Are they retired?',
+          value: '',
+          initialOption: '',
+          options: [
+            { name: 'parent2Retired', value: 'No', id: 'parent2Working' },
+            { name: 'parent2Retired', value: 'Yes, retired', id: 'parent2Retired' }
+          ]
+        }
       },
       PartnerParent1: {
         pageUrl: '/partner-parents',
