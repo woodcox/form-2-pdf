@@ -1,10 +1,20 @@
-import { createSignal } from 'solid-js';
+import { createStore } from 'solid-js/store';
 
-const [radioValue, setRadioValue] = createSignal('');
+const globalRadioValues = {};
 
 const Radio = (props) => {
+  // Derive the store name from the componentId prop
+  const storeName = `radioValues_${props.componentId}`;
+
+  // Check if the store for this component instance exists, if not, create a new one
+  if (!globalRadioValues[storeName]) {
+    globalRadioValues[storeName] = createStore({ value: '' });
+  }
+
+  const [radioState, setRadioState] = globalRadioValues[storeName];
+
   const handleChange = (e) => {
-    setRadioValue(e.target.value);
+    setRadioState({ value: e.target.value });
     props.onChange && props.onChange(e.target.value);
   };
 
@@ -21,10 +31,10 @@ const Radio = (props) => {
                 <input
                   class="govuk-radios__input"
                   type="radio"
-                  name={option.name}
+                  name={props.componentId}
                   id={option.id}
                   value={option.value}
-                  checked={radioValue() === option.value}
+                  checked={radioState.value === option.value}
                   onChange={handleChange}
                 />
                 <label class="govuk-label govuk-radios__label" for={option.id}>

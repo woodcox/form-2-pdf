@@ -304,6 +304,7 @@ const schema = {
         required: true,
         component: 'Radio',
         componentProps: {
+          componentId: 'Parent1Retired',
           name: 'Parent1Retired',
           label: 'Are they retired?',
           value: '',
@@ -359,6 +360,7 @@ const schema = {
         required: true,
         component: 'Radio',
         componentProps: {
+          componentId: 'Parent2Retired',
           name: 'Parent2Retired',
           label: 'Are they retired?',
           value: '',
