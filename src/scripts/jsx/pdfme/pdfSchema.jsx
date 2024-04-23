@@ -259,6 +259,62 @@ const schema = {
           ]
         }
       },
+      YourMum: {
+        pageUrl: '/your-mum',
+        label: 'Your mums fullname',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+      },
+      YourMumDead: {
+        pageUrl: '/your-mum',
+        label: 'Is your mum alive?',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: '',
+        required: true,
+      },
+      YourMumJob: {
+        pageUrl: '/your-mum',
+        label: 'Your mums current or last job',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+      },
+      YourMumRetired: {
+        pageUrl: '/your-mum',
+        label: 'Has your mum retired?',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+        component: 'Radio',
+        componentProps: {
+          componentId: 'MumRetired',
+          name: 'MumRetired',
+          label: 'Has your mum retired?',
+          value: '',
+          initialOption: 'Select...',
+          options: [
+            { name: 'mumRetired', value: 'No', id: 'mumWorking' },
+            { name: 'mumRetired', value: 'Yes, retired', id: 'mumRetired' }
+          ]
+        }
+      },
       YourParent1: {
         pageUrl: '/your-parents',
         label: 'Your parents fullname',
