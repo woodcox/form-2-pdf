@@ -1,10 +1,12 @@
 import { createSignal } from 'solid-js';
 import DateInput from './DateInput.jsx';
-import SummaryList from './SummaryList.jsx';
+//import SummaryList from './SummaryList.jsx';
 import AppendFields from './AppendFields.jsx';
 import Radio from './Radio.jsx';
 import Dropdown from './Dropdown.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
+import { Button } from 'govuk-frontend';
+import { onMount, onCleanup } from 'solid-js';
 
 // Map of components to import dynamically
 const componentMap = {
@@ -32,6 +34,17 @@ export default function Form(props) {
   };
 
   let groupedInputs = '';
+
+    // Initialize the buttons component when the component mounts
+    onMount(() => {
+      const buttonElements = document.querySelectorAll('[data-module="govuk-button"]');
+      const buttonInstances = Array.from(buttonElements).map((element) => new Radios(element));
+  
+      // Cleanup function to destroy the buttons instances when the component unmounts
+      onCleanup(() => {
+        buttonInstances.forEach((instance) => instance.destroy());
+      });
+    });
 
   return (
     <form>
