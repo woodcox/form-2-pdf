@@ -1,5 +1,5 @@
 import { createStore } from 'solid-js/store';
-import { Radios } from 'govuk-frontend';
+import { Radios } from 'govuk-frontend/dist/govuk/components/radios/radios.mjs';
 import { onMount, onCleanup } from 'solid-js';
 
 const globalRadioValues = {};
@@ -11,8 +11,10 @@ const Radio = (props) => {
   // Initialize the radios component when the component mounts
   onMount(() => {
     const radiosElements = document.querySelectorAll('[data-module="govuk-radios"]');
-    const radiosInstances = Array.from(radiosElements).map((element) => new Radios(element));
+    const radiosInstances = Array.from(radiosElements).map((element) => new Radios(element)); // Radio used here
 
+
+  
     // Cleanup function to destroy the radios instances when the component unmounts
     onCleanup(() => {
       radiosInstances.forEach((instance) => instance.destroy());
@@ -61,5 +63,6 @@ const Radio = (props) => {
     </div>
   );
 };
+
 
 export default Radio;
