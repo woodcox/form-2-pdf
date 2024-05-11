@@ -26,8 +26,9 @@
     "@11ty/is-land": "^4.0.0",
     "@hyrious/esbuild-plugin-http": "^0.1.5",
     "@luncheon/esbuild-plugin-gzip": "^0.1.0",
-    "@pdfme/generator": "4.0.1",
+    "@pdfme/generator": "^4.0.1",
     "@solidjs/router": "^0.13.3",
+    "accessible-autocomplete": "^3.0.0",
     "concurrently": "^8.2.2",
     "esbuild": "^0.21.1",
     "esbuild-plugin-manifest": "^1.0.3",
@@ -36,10 +37,11 @@
     "govuk-frontend": "^5.3.1",
     "just-validate": "^4.3.0",
     "lightningcss-cli": "^1.24.1",
-    "mvp.css": "1.15.0",
+    "mvp.css": "^1.15.0",
     "purgecss": "^6.0.0",
     "sass": "^1.77.1",
-    "solid-js": "^1.8.17"
+    "solid-js": "^1.8.17",
+    "valibot": "^0.30.0"
   },
   "browserslist": [
     "> 0.2%",
