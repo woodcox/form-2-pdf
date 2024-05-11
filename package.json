@@ -28,6 +28,7 @@
     "@luncheon/esbuild-plugin-gzip": "^0.1.0",
     "@pdfme/generator": "^4.0.1",
     "@solidjs/router": "^0.13.3",
+    "@thisbeyond/solid-select": "^0.14.0",
     "accessible-autocomplete": "^3.0.0",
     "concurrently": "^8.2.2",
     "esbuild": "^0.21.1",
