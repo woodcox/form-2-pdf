@@ -1,10 +1,6 @@
 {
-  "render.map": "render.js.map",
-  "render": "render.js",
-  "gov-uk.map": "gov-uk.js.map",
-  "gov-uk": "gov-uk.js",
-  "is-land.map": "is-land.js.map",
-  "is-land": "is-land.js",
-  "style.map": "style.css.map",
-  "style": "style.css"
+  "render": "render-25EVQCA2.min.js",
+  "gov-uk": "gov-uk-FFPQZVC4.min.js",
+  "is-land": "is-land-TXS7GROR.min.js",
+  "style": "style-NTHFLHBM.min.css"
 }
