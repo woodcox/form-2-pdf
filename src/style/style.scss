@@ -2,6 +2,7 @@
 //@use 'date-input.scss';
 @use 'group';
 @use 'gov-uk';
+@use 'autocomplete';
 @use 'animations';
 
 input:required:user-invalid, input:focus:user-invalid {

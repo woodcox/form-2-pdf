@@ -1,5 +1,8 @@
 {
-  "render": "render-IEFWI2NJ.min.js",
-  "is-land": "is-land-QW2FAGVS.min.js",
-  "style": "style-RKYJ3EGO.min.css"
+  "render.map": "render.js.map",
+  "render": "render.js",
+  "is-land.map": "is-land.js.map",
+  "is-land": "is-land.js",
+  "style.map": "style.css.map",
+  "style": "style.css"
 }
