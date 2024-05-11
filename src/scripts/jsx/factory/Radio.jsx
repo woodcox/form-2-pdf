@@ -1,7 +1,5 @@
 import { createStore } from 'solid-js/store';
 
-import { onMount, onCleanup } from 'solid-js';
-
 const globalRadioValues = {};
 
 const Radio = (props) => {

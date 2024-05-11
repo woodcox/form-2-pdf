@@ -1,13 +1,12 @@
-import { createSignal } from 'solid-js';
-import DateInput from './DateInput.jsx';
+import { createSignal, onMount, onCleanup } from 'solid-js';
 import { Radios } from 'govuk-frontend/dist/govuk/components/radios/radios.mjs';
-//import SummaryList from './SummaryList.jsx';
+import { Button } from 'govuk-frontend/dist/govuk/components/button/button.mjs';
+import { Accordion } from 'govuk-frontend/dist/govuk/components/accordion/accordion.mjs';
+import DateInput from './DateInput.jsx';
 import AppendFields from './AppendFields.jsx';
 import Radio from './Radio.jsx';
 import Dropdown from './Dropdown.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
-import { Button } from 'govuk-frontend';
-import { onMount, onCleanup } from 'solid-js';
 
 // Map of components to import dynamically
 const componentMap = {
@@ -34,26 +33,30 @@ export default function Form(props) {
     props.onInputsChange({ ...props.inputs, [property]: value });
   };
 
-  //let groupedInputs = '';
+  //let groupedInputs = ''; TO DO: check this it seems to be not needed
 
-    // Initialize the buttons component when the component mounts
-    onMount(() => {
+  onMount(() => {
+    // Initialize the Govuk components when the component mounts
 
+    // RADIOS
+    const radioElements = document.querySelectorAll('[data-module="govuk-radios"]');
+    const radioInstances = Array.from(radioElements).map((element) => new Radios(element));
 
-      // Initialize the Govuk components when the component mounts
-  
-      const radiosElements = document.querySelectorAll('[data-module="govuk-radios"]');
-      const radiosInstances = Array.from(radiosElements).map((element) => new Radios(element));
-   
-      const buttonElements = document.querySelectorAll('[data-module="govuk-button"]');
-      const buttonInstances = Array.from(buttonElements).map((element) => new Radios(element));
-  
-      // Cleanup function to destroy the govuk instances when the component unmounts
-      onCleanup(() => {
-        buttonInstances.forEach((instance) => instance.destroy());
-        radiosInstances.forEach((instance) => instance.destroy());
-      });
+    // ACCORDIONS
+    const accordionElements = document.querySelectorAll('[data-module="govuk-accordion"]');
+    const accordionInstances = Array.from(accordionElements).map((element) => new Accordion(element));
+ 
+    // BUTTONS
+    const buttonElements = document.querySelectorAll('[data-module="govuk-button"]');
+    const buttonInstances = Array.from(buttonElements).map((element) => new Button(element));
+
+    // Cleanup function to destroy the govuk instances when the component unmounts
+    onCleanup(() => {
+      buttonInstances.forEach((instance) => instance.destroy());
+      radioInstances.forEach((instance) => instance.destroy());
+      accordionInstances.forEach((instance) => instance.destroy());
     });
+  });
 
   return (
     <form>
@@ -135,8 +138,7 @@ export default function Form(props) {
         Finally, it returns the acc object, which contains the fields grouped by their pageUrl. */}
 
         {/* Render grouped fields for summary page 
-        PATTERN - https://design-system.service.gov.uk/patterns/check-answers/*/
-        }
+        PATTERN - https://design-system.service.gov.uk/patterns/check-answers/*/}
         {props.currentPage === '/summary' && (
           <>
             {/* Define and execute the assignment outside of JSX */}
@@ -160,30 +162,34 @@ export default function Form(props) {
                     const [pageUrl, fields] = entry;
                     return (
                       <>
-                      {/* TO DO: Update if add more pageUrls */}
-                      <Switch fallback="">
-                        <Match when={pageUrl === "/your-details"}>
-                          <h2 class="govuk-heading-m">Personal details</h2>
-                        </Match>
-                        <Match when={pageUrl === "/partner"}>
-                          <h2 class="govuk-heading-m">Your partner's details</h2>
-                        </Match>
-                        <Match when={pageUrl === "/booking"}>
-                          <h2 class="govuk-heading-m">Your booking</h2>
-                        </Match>
-                        <Match when={pageUrl === "/ceremony"}>
-                          <h2 class="govuk-heading-m">Ceremony details</h2>
-                        </Match>
-                        <Match when={pageUrl === "/witness"}>
-                          <h2 class="govuk-heading-m">Your witnesses</h2>
-                        </Match>
-                        <Match when={pageUrl === "/your-parents"}>
-                          <h2 class="govuk-heading-m">Your parents</h2>
-                        </Match>
-                        <Match when={pageUrl === "/partner-parents"}>
-                          <h2 class="govuk-heading-m">Your partners parents</h2>
-                        </Match>
-                      </Switch>
+                        {/* TO DO: Update if add more pageUrls */}
+                        <Switch fallback="">
+                          <Match when={pageUrl === '/your-details'}>
+                            <h2 class="govuk-heading-m">Personal details</h2>
+                          </Match>
+                          <Match when={pageUrl === '/partner'}>
+                            <h2 class="govuk-heading-m">
+                              Your partner's details
+                            </h2>
+                          </Match>
+                          <Match when={pageUrl === '/booking'}>
+                            <h2 class="govuk-heading-m">Your booking</h2>
+                          </Match>
+                          <Match when={pageUrl === '/ceremony'}>
+                            <h2 class="govuk-heading-m">Ceremony details</h2>
+                          </Match>
+                          <Match when={pageUrl === '/witness'}>
+                            <h2 class="govuk-heading-m">Your witnesses</h2>
+                          </Match>
+                          <Match when={pageUrl === '/your-parents'}>
+                            <h2 class="govuk-heading-m">Your parents</h2>
+                          </Match>
+                          <Match when={pageUrl === '/partner-parents'}>
+                            <h2 class="govuk-heading-m">
+                              Your partners parents
+                            </h2>
+                          </Match>
+                        </Switch>
                         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                           <For each={fields}>
                             {(fieldEntry) => {
@@ -199,7 +205,10 @@ export default function Form(props) {
                                     {localInputs()[schemaKey]}
                                   </dd>
                                   <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href={`${urlPrefix}${pageUrl}`}>
+                                    <a
+                                      class="govuk-link"
+                                      href={`${urlPrefix}${pageUrl}`}
+                                    >
                                       Change
                                     </a>
                                   </dd>
@@ -264,6 +273,90 @@ export default function Form(props) {
             </svg>
           </a>
         </Show>
+        <div
+          class="govuk-accordion"
+          data-module="govuk-accordion"
+          id="accordion-default"
+        >
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span
+                  class="govuk-accordion__section-button"
+                  id="accordion-default-heading-1"
+                >
+                  Writing well for the web
+                </span>
+              </h2>
+            </div>
+            <div
+              id="accordion-default-content-1"
+              class="govuk-accordion__section-content"
+            >
+              <p class="govuk-body">
+                This is the content for Writing well for the web.
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span
+                  class="govuk-accordion__section-button"
+                  id="accordion-default-heading-2"
+                >
+                  Writing well for specialists
+                </span>
+              </h2>
+            </div>
+            <div
+              id="accordion-default-content-2"
+              class="govuk-accordion__section-content"
+            >
+              <p class="govuk-body">
+                This is the content for Writing well for specialists.
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span
+                  class="govuk-accordion__section-button"
+                  id="accordion-default-heading-3"
+                >
+                  Know your audience
+                </span>
+              </h2>
+            </div>
+            <div
+              id="accordion-default-content-3"
+              class="govuk-accordion__section-content"
+            >
+              <p class="govuk-body">
+                This is the content for Know your audience.
+              </p>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span
+                  class="govuk-accordion__section-button"
+                  id="accordion-default-heading-4"
+                >
+                  How people read
+                </span>
+              </h2>
+            </div>
+            <div
+              id="accordion-default-content-4"
+              class="govuk-accordion__section-content"
+            >
+              <p class="govuk-body">This is the content for How people read.</p>
+            </div>
+          </div>
+        </div>
       </nav>
     </form>
   );
