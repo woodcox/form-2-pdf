@@ -1,9 +1,14 @@
 import { createSignal } from 'solid-js';
+import { Select, createOptions } from '@thisbeyond/solid-select';
 
 const [autocompleteValue, setAutocompleteValue] = createSignal('');
 
 const Autocomplete = (props) => {
-  
+  const optionSets = {
+    [
+      "apple", "banana", "pear", "pineapple", "kiwi"
+    ]
+  };
   const handleChange = (e) => {
     setAutocompleteValue(e.target.value);
     props.onChange && props.onChange(e.target.value);
@@ -11,21 +16,16 @@ const Autocomplete = (props) => {
 
   return (
     <div class="govuk-form-group">
-      <label class="govuk-label" for={props.name}>{props.label}</label>
-      <select class="govuk-select"
+      <label class="govuk-label" for={props.name}>
+        {props.label}
+      </label>
+      <Select
+        class="govuk-select"
         name={props.name}
         id={props.name}
-        value={props.value || autocompleteValue()}
+        options={props.value || optionSets[autocompleteValue()]}
         onChange={handleChange}
-      >
-        <For each={props.options}>
-          {(option) => (
-            <option key={option.value} value={option.value} disabled={option.placeholder}>
-              {option.label}
-            </option>
-          )}
-        </For>
-      </select>
+      />
     </div>
   );
 };
