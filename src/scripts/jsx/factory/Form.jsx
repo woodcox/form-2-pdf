@@ -31,7 +31,7 @@ export default function Form(props) {
     props.onInputsChange({ ...props.inputs, [property]: value });
   };
 
-  //let groupedInputs = ''; TO DO: check this it seems to be not needed
+  let groupedInputs = ''; // REQUIRED TO PERSERVE STATE OF RADIOS
 
   // Initialize the Govuk components when the component mounts
   <MountGovUk />
