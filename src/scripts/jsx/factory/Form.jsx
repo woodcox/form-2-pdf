@@ -1,5 +1,6 @@
 import { createSignal } from 'solid-js';
 import DateInput from './DateInput.jsx';
+import { Radios } from 'govuk-frontend/dist/govuk/components/radios/radios.mjs';
 //import SummaryList from './SummaryList.jsx';
 import AppendFields from './AppendFields.jsx';
 import Radio from './Radio.jsx';
@@ -33,16 +34,24 @@ export default function Form(props) {
     props.onInputsChange({ ...props.inputs, [property]: value });
   };
 
-  let groupedInputs = '';
+  //let groupedInputs = '';
 
     // Initialize the buttons component when the component mounts
     onMount(() => {
+
+
+      // Initialize the Govuk components when the component mounts
+  
+      const radiosElements = document.querySelectorAll('[data-module="govuk-radios"]');
+      const radiosInstances = Array.from(radiosElements).map((element) => new Radios(element));
+   
       const buttonElements = document.querySelectorAll('[data-module="govuk-button"]');
       const buttonInstances = Array.from(buttonElements).map((element) => new Radios(element));
   
-      // Cleanup function to destroy the buttons instances when the component unmounts
+      // Cleanup function to destroy the govuk instances when the component unmounts
       onCleanup(() => {
         buttonInstances.forEach((instance) => instance.destroy());
+        radiosInstances.forEach((instance) => instance.destroy());
       });
     });
 
@@ -143,7 +152,7 @@ export default function Form(props) {
                 pageGroup.push({ [key]: input });
                 return group;
               }, new Map());
-              console.log(groupedInputs); // You can uncomment this line for debugging
+              // console.log(groupedInputs); // You can uncomment this line for debugging
 
               return (
                 <For each={Array.from(groupedInputs.entries())}>

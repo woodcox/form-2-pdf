@@ -9,7 +9,7 @@ export default function Summary() {
         template={template()}
         inputs={pdfState}
         onInputsChange={(newInputs) => setPdfState(newInputs)}
-        heading="Check your answers before completing the ceremony options"
+        heading="Check your answers"
         headline="You have not completed the form yet. Please check the details are correct before clicking next."
         currentPage="/summary"
         prevPage="/partner-parents"
