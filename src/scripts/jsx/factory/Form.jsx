@@ -1,7 +1,5 @@
-import { createSignal, onMount, onCleanup } from 'solid-js';
-import { Radios } from 'govuk-frontend/dist/govuk/components/radios/radios.mjs';
-import { Button } from 'govuk-frontend/dist/govuk/components/button/button.mjs';
-import { Accordion } from 'govuk-frontend/dist/govuk/components/accordion/accordion.mjs';
+import { createSignal } from 'solid-js';
+import MountGovUk from './MountGovUk.jsx';
 import DateInput from './DateInput.jsx';
 import AppendFields from './AppendFields.jsx';
 import Radio from './Radio.jsx';
@@ -35,29 +33,9 @@ export default function Form(props) {
 
   //let groupedInputs = ''; TO DO: check this it seems to be not needed
 
-  onMount(() => {
-    // Initialize the Govuk components when the component mounts
-
-    // RADIOS
-    const radioElements = document.querySelectorAll('[data-module="govuk-radios"]');
-    const radioInstances = Array.from(radioElements).map((element) => new Radios(element));
-
-    // ACCORDIONS
-    const accordionElements = document.querySelectorAll('[data-module="govuk-accordion"]');
-    const accordionInstances = Array.from(accordionElements).map((element) => new Accordion(element));
- 
-    // BUTTONS
-    const buttonElements = document.querySelectorAll('[data-module="govuk-button"]');
-    const buttonInstances = Array.from(buttonElements).map((element) => new Button(element));
-
-    // Cleanup function to destroy the govuk instances when the component unmounts
-    onCleanup(() => {
-      buttonInstances.forEach((instance) => instance.destroy());
-      radioInstances.forEach((instance) => instance.destroy());
-      accordionInstances.forEach((instance) => instance.destroy());
-    });
-  });
-
+  // Initialize the Govuk components when the component mounts
+  <MountGovUk />
+  
   return (
     <form>
       <fieldset class="govuk-fieldset">
@@ -273,90 +251,6 @@ export default function Form(props) {
             </svg>
           </a>
         </Show>
-        <div
-          class="govuk-accordion"
-          data-module="govuk-accordion"
-          id="accordion-default"
-        >
-          <div class="govuk-accordion__section">
-            <div class="govuk-accordion__section-header">
-              <h2 class="govuk-accordion__section-heading">
-                <span
-                  class="govuk-accordion__section-button"
-                  id="accordion-default-heading-1"
-                >
-                  Writing well for the web
-                </span>
-              </h2>
-            </div>
-            <div
-              id="accordion-default-content-1"
-              class="govuk-accordion__section-content"
-            >
-              <p class="govuk-body">
-                This is the content for Writing well for the web.
-              </p>
-            </div>
-          </div>
-          <div class="govuk-accordion__section">
-            <div class="govuk-accordion__section-header">
-              <h2 class="govuk-accordion__section-heading">
-                <span
-                  class="govuk-accordion__section-button"
-                  id="accordion-default-heading-2"
-                >
-                  Writing well for specialists
-                </span>
-              </h2>
-            </div>
-            <div
-              id="accordion-default-content-2"
-              class="govuk-accordion__section-content"
-            >
-              <p class="govuk-body">
-                This is the content for Writing well for specialists.
-              </p>
-            </div>
-          </div>
-          <div class="govuk-accordion__section">
-            <div class="govuk-accordion__section-header">
-              <h2 class="govuk-accordion__section-heading">
-                <span
-                  class="govuk-accordion__section-button"
-                  id="accordion-default-heading-3"
-                >
-                  Know your audience
-                </span>
-              </h2>
-            </div>
-            <div
-              id="accordion-default-content-3"
-              class="govuk-accordion__section-content"
-            >
-              <p class="govuk-body">
-                This is the content for Know your audience.
-              </p>
-            </div>
-          </div>
-          <div class="govuk-accordion__section">
-            <div class="govuk-accordion__section-header">
-              <h2 class="govuk-accordion__section-heading">
-                <span
-                  class="govuk-accordion__section-button"
-                  id="accordion-default-heading-4"
-                >
-                  How people read
-                </span>
-              </h2>
-            </div>
-            <div
-              id="accordion-default-content-4"
-              class="govuk-accordion__section-content"
-            >
-              <p class="govuk-body">This is the content for How people read.</p>
-            </div>
-          </div>
-        </div>
       </nav>
     </form>
   );
