@@ -42,7 +42,7 @@
     "mvp.css": "^1.15.0",
     "purgecss": "^6.0.0",
     "sass": "^1.77.1",
-    "solid-dexie": "^0.05",
+    "solid-dexie": "^0.0.5",
     "solid-js": "^1.8.17",
     "valibot": "^0.30.0"
   },
