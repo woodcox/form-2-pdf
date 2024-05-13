@@ -5,9 +5,7 @@ const [autocompleteValue, setAutocompleteValue] = createSignal('');
 
 const Autocomplete = (props) => {
   const optionSets = {
-    [
-      "apple", "banana", "pear", "pineapple", "kiwi"
-    ]
+    
   };
   const handleChange = (e) => {
     setAutocompleteValue(e.target.value);
