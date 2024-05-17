@@ -12,8 +12,7 @@ const template = {
         position: { x: 28.706846058368317, y: 37.85750960310253 },
         width: 150,
         height: 57.5184,
-        content:
-          '[["Alice","New York","Alice is a freelance web designer and developer"],["Bob","Paris","Bob is a freelance illustrator and graphic designer"]]',
+        content: '[["Alice","New York","Alice is a freelance web designer and developer"],["Bob","Paris","Bob is a freelance illustrator and graphic designer"]]',
         showHead: true,
         head: ['Name', 'City', 'Description'],
         headWidthPercentages: [30, 30, 40],
@@ -52,15 +51,17 @@ const template = {
   basePdf: { width: 210, height: 297, padding: [10, 10, 10, 10] },
 };
 
-const inputs = JSON.stringify([
+
+const inputs = [
   {
-    mytable: [
-      ['Alice', 'New York', 'Alice is a freelance web designer and developer'],
-      ['Bob', 'Paris', 'Bob is a freelance illustrator and graphic designer'],
-      ['James', 'London', 'James is a frontend developer'],
-    ],
-  },
-]);
+    mytable: JSON.stringify([
+      ["Alice", "New York", "Alice is a freelance web designer and developer"],
+      ["Bob", "Paris", "Bob is a freelance illustrator and graphic designer"],
+      ["James", "London", "James is a frontend developer"]
+    ])
+  }
+]
+
 
 const pathPrefix = process.env.PATHPREFIX;
 let urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
