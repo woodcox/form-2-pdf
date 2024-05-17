@@ -52,14 +52,15 @@ const template = {
   basePdf: { width: 210, height: 297, padding: [10, 10, 10, 10] },
 };
 
-const inputs = [
+const inputs = JSON.stringify([
   {
-    mytable: JSON.stringify([
-      ["Alice", "New York", "Alice is a freelance web designer and developer"],
-      ["Bob", "Paris", "Bob is a freelance illustrator and graphic designer"],
-    ]),
+    mytable: [
+      ['Alice', 'New York', 'Alice is a freelance web designer and developer'],
+      ['Bob', 'Paris', 'Bob is a freelance illustrator and graphic designer'],
+      ['James', 'London', 'James is a frontend developer'],
+    ],
   },
-];
+]);
 
 const pathPrefix = process.env.PATHPREFIX;
 let urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
