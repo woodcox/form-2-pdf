@@ -1,12 +1,13 @@
+import { createMemo } from 'solid-js';
 import { tableBeta, text, readOnlyText, readOnlyImage } from '@pdfme/schemas';
 import { generate } from '@pdfme/generator';
 import { templateSchema } from './../pdfme/templateSchema.js';
 //import { template, setTemplate } from './../pdfme/pdfSchema.jsx';
-//import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
+import { pdfState } from './../pdfme/pdfDefaultValues.jsx';
 
-const template = templateSchema;
 
-const inputs = [
+
+/*const inputs = [
   {
     ceremonyOptions: JSON.stringify([
       ['Alice', 'New York', 'Alice is a freelance web designer and developer'],
@@ -15,19 +16,27 @@ const inputs = [
     ]),
   },
 ];
+*/
 
 const pathPrefix = process.env.PATHPREFIX;
 let urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 
 export default function TablePdf() {
+  const inputs = createMemo(() => [
+    {
+      ceremonyOptions: JSON.stringify(
+        Object.entries(pdfState).map(([key, value]) => [key, value])
+      ),
+    },
+  ]);
+
   async function generatePdf() {
-    //console.log(template());
     //console.log(pdfState);
 
     const pdf = await generate({
-      template: template, // this is static with the pdfme v4 dynamic tables
+      template: templateSchema, // this is static with the pdfme v4 dynamic tables
       plugins: { text, readOnlyText, readOnlyImage, Table: tableBeta }, // add the pdfme plugin schemas
-      inputs: inputs, // [pdfState], using state
+      inputs: inputs(), // [pdfState], using state
     });
 
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
