@@ -1,4 +1,5 @@
 import { generate } from '@pdfme/generator';
+import TablePdf from './tablepdf.jsx';
 import { template, setTemplate } from './../pdfme/pdfSchema.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 const pathPrefix = process.env.PATHPREFIX;
@@ -37,6 +38,7 @@ function CreatePdf(props) {
   const prevPagePrefix = `${urlPrefix}${props.prevPage}`;
   const cancelPagePrefix = `${urlPrefix}${props.cancel}`;
   return (
+    <>
     <article>
       <h1 class="govuk-heading-l">{props.heading}</h1>
       <p class="govuk-body">
@@ -74,5 +76,7 @@ function CreatePdf(props) {
         </a>
       </nav>
     </article>
+    <TablePdf/>
+    </>
   );
 }

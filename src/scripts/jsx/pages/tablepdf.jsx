@@ -2,7 +2,7 @@ import { createMemo } from 'solid-js';
 import { tableBeta, text, readOnlyText, readOnlyImage, line } from '@pdfme/schemas';
 import { generate } from '@pdfme/generator';
 import { templateSchema } from './../pdfme/templateSchema.js';
-//import { template, setTemplate } from './../pdfme/pdfSchema.jsx';
+//import { template } from './../pdfme/pdfSchema.jsx';
 import { pdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 /*const inputs = [
@@ -47,12 +47,12 @@ export default function TablePdf() {
 
   return (
     <>
-      <CreatePdf heading="Testing tables" generatePdf={generatePdf} />
+      <CreateTablePdf heading="Testing tables" generatePdf={generatePdf} />
     </>
   );
 }
 
-function CreatePdf(props) {
+function CreateTablePdf(props) {
   // Add urlPrefix to navigation links
   const prevPagePrefix = `${urlPrefix}${props.prevPage}`;
   const cancelPagePrefix = `${urlPrefix}${props.cancel}`;
@@ -69,7 +69,7 @@ function CreatePdf(props) {
           type="reset"
           onClick={props.generatePdf}
         >
-          Create PDF
+          Download Table PDF
         </button>
       </nav>
     </article>

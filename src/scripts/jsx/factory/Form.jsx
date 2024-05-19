@@ -1,5 +1,4 @@
 import { createSignal } from 'solid-js';
-import TablePdf from '../pages/tablepdf.jsx';
 import MountGovUk from './MountGovUk.jsx';
 import DateInput from './DateInput.jsx';
 import AppendFields from './AppendFields.jsx';
@@ -254,7 +253,6 @@ export default function Form(props) {
             </svg>
           </a>
         </Show>
-        <TablePdf/>
       </nav>
     </form>
   );
