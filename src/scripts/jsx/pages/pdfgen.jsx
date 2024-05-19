@@ -12,7 +12,6 @@ export default function PdfmeGenerator() {
 
     const pdf = await generate({
       template: template(), // using signals
-      plugins: { Table: tableBeta }, // add the pdfme dynamic table plugin schemas
       inputs: [pdfState], // using state
     });
 
