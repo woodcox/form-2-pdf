@@ -5,30 +5,29 @@ import { templateSchema } from './../pdfme/templateSchema.js';
 //import { template, setTemplate } from './../pdfme/pdfSchema.jsx';
 import { pdfState } from './../pdfme/pdfDefaultValues.jsx';
 
-
-
-/*const inputs = [
+const inputs = [
   {
     ceremonyOptions: JSON.stringify([
-      ['Alice', 'New York', 'Alice is a freelance web designer and developer'],
-      ['Bob', 'Paris', 'Bob is a freelance illustrator and graphic designer'],
-      ['James', 'London', 'James is a frontend developer'],
+      ['Alice', 'Alice is a freelance web designer and developer'],
+      ['Bob', 'Bob is a freelance illustrator and graphic designer'],
+      ['James', 'James is a frontend developer'],
     ]),
   },
 ];
-*/
 
 const pathPrefix = process.env.PATHPREFIX;
 let urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 
 export default function TablePdf() {
-  const inputs = createMemo(() => [
+
+  /*const inputs = createMemo(() => [
     {
       ceremonyOptions: JSON.stringify(
         Object.entries(pdfState).map(([key, value]) => [key, value])
       ),
     },
   ]);
+  */
 
   async function generatePdf() {
     //console.log(pdfState);
