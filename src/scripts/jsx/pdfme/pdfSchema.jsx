@@ -112,7 +112,7 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-        component: 'Autocomplete',
+        component: 'Dropdown',
         componentProps: {
           name: 'venue',
           label: 'Where is your ceremony taking place?',
