@@ -5,8 +5,6 @@ import { templateSchema } from './../pdfme/templateSchema.js';
 //import { template, setTemplate } from './../pdfme/pdfSchema.jsx';
 import { pdfState } from './../pdfme/pdfDefaultValues.jsx';
 
-
-
 const inputs = [
   {
     ceremonyOptions: JSON.stringify([
@@ -17,11 +15,11 @@ const inputs = [
   },
 ];
 
-
 const pathPrefix = process.env.PATHPREFIX;
 let urlPrefix = pathPrefix ? `/${pathPrefix}` : '';
 
 export default function TablePdf() {
+
   /*const inputs = createMemo(() => [
     {
       ceremonyOptions: JSON.stringify(
@@ -37,7 +35,7 @@ export default function TablePdf() {
     const pdf = await generate({
       template: templateSchema, // this is static with the pdfme v4 dynamic tables
       plugins: { text, readOnlyText, readOnlyImage, Table: tableBeta }, // add the pdfme plugin schemas
-      inputs: inputs, // [pdfState], using state
+      inputs: inputs(), // [pdfState], using state
     });
 
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
