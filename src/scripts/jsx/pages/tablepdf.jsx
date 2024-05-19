@@ -24,7 +24,9 @@ export default function TablePdf() {
   const inputs = createMemo(() => [
     {
       ceremonyOptions: JSON.stringify(
-        Object.entries(pdfState).map(([key, value]) => [key, value])
+        Object.entries(pdfState)
+          .filter(([key, value]) => value !== '')
+          .map(([key, value]) => [key, value])
       ),
     },
   ]);
