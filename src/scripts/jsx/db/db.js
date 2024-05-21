@@ -1,10 +1,12 @@
 import Dexie from 'dexie';
 
 // Declare database
-export const db = new Dexie('ceremonyLandDB');
+const db = new Dexie('ceremonyLandDB');
 db.version(1).stores({
   ceremonyOptions: '++id, key, value', // Primary key '++id' and indexed props
 });
+
+export default db;
 
 
 /* Seed database

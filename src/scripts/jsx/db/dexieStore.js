@@ -1,15 +1,17 @@
 import db from './db';
-import { liveQuery } from 'dexie';
 import { createDexieArray } from './solid-dexie';
+
+
+// Dexie functions
+export const options = createDexieArray(() => db.ceremonyOptions.toArray());
 
 export async function addOption(key, value) {
   await db.ceremonyOptions.add({ key, value });
 }
 
-export function getCeremonyOptions() {
-  return liveQuery(() => db.ceremonyOptions.toArray());
+export async function deleteOption(id) {
+  await db.ceremonyOptions.delete(id);
 }
-
 
 
 /* Dexie functions
@@ -23,9 +25,5 @@ export async function getAllOptions() {
 
 export async function updateOption(id, newValue) {
   await db.ceremonyOptions.update(id, { value: newValue });
-}
-
-export async function deleteOption(id) {
-  await db.ceremonyOptions.delete(id);
 }
 */

@@ -1,4 +1,6 @@
 import { createStore } from 'solid-js/store';
+import { liveQuery } from 'dexie';
+import db from './../db/db.js';
 
 const pdfDefaultValues = {
   YourFullName: '',
@@ -66,3 +68,10 @@ const pdfDefaultValues = {
 };
 
 export const [pdfState, setPdfState] = createStore(pdfDefaultValues);
+
+// Sync with Dexie
+liveQuery(async () => db.ceremonyOptions.toArray()).subscribe(options => {
+  options.forEach(({ key, value}) => {
+    setPdfState(key, value);
+  });
+});

@@ -23,6 +23,7 @@ function fromReconcileStore(producer, store, setStore, options = { key: "id" }) 
   return store;
 }
 
+/*
 function createDexieStore(querier) {
     const [store, setStore] = createStore({
         __loading: true,
@@ -55,5 +56,6 @@ function createDexieResource(querier) {
         return Promise.resolve(store);
     });
 }
+*/
 
-export { createDexieArray, createDexieSignal, createDexieStore, createDexieResource };
+export { createDexieArray, createDexieSignal };
