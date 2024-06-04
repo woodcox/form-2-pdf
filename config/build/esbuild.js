@@ -1,16 +1,16 @@
 // https://www.seancdavis.com/posts/javascript-for-11ty-with-esbuild/
-const esbuild = require('esbuild');
+import esbuild from 'esbuild';
 //const glob = require('glob-all'); // to enable * glob pattern in esbuild
 const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
 const isDev = process.env.ELEVENTY_ENV === 'dev' ? true : false;
-const { solidPlugin } = require('esbuild-plugin-solid');
-const manifestPlugin = require('esbuild-plugin-manifest');
-const gzipPlugin = require('@luncheon/esbuild-plugin-gzip');
-const { http, default_schemes } = require('@hyrious/esbuild-plugin-http');
+import { solidPlugin } from 'esbuild-plugin-solid';
+import manifestPlugin from 'esbuild-plugin-manifest';
+import gzipPlugin from '@luncheon/esbuild-plugin-gzip';
+import { http, default_schemes } from '@hyrious/esbuild-plugin-http';
 // cacheMap stores { url => contents }, you can easily persist it in file system - see https://github.com/hyrious/esbuild-plugin-http
 let cacheMap = new Map();
-const fs = require('fs');
-const path = require("path");
+import fs from 'fs';
+import path from "path";
 
 // Get arguments from npm script (such as --pathprefix) - https://reflect.run/articles/sending-command-line-arguments-to-an-npm-script/
 const parseArgs = (args) => {
@@ -94,7 +94,7 @@ if (isProd) {
 }
 
 
-module.exports = async () => {
+export default esbuildPipeline = async () => {
   let ctx = await esbuild.context({
     ...esbuildOpts,
   }).catch((error) => {

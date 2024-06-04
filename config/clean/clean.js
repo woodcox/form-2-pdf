@@ -1,5 +1,5 @@
 // script to delete files from ./dist/app & ./_tmp folders prior to build
-const fs = require('fs');
+import fs from 'fs';
 
 function deleteFolderRecursive(path) {
   if (fs.existsSync(path) && fs.lstatSync(path).isDirectory()) {

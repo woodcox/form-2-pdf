@@ -1,10 +1,11 @@
-const esbuild = require("esbuild");
+import esbuild from "esbuild";
 const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false
-const { solidPlugin } = require('esbuild-plugin-solid');
-const fsPromises = require('fs').promises;
-const { http, default_schemes } = require('@hyrious/esbuild-plugin-http');
+import { solidPlugin } from 'esbuild-plugin-solid';
+import {default as fsWithCallbacks} from 'fs';
+const fsPromises = fsWithCallbacks.promises;
+import { http, default_schemes } from '@hyrious/esbuild-plugin-http';
 
-module.exports = async (code, filename, bundled) => {
+export default solidShortcode = async (code, filename, bundled) => {
   let bundleJsx = bundled !== 'bundleOff' ? true : false;
   await fsPromises.writeFile('./_tmp/solid-' + filename + '.jsx', code),
   

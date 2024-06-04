@@ -1,9 +1,9 @@
 // A modified version of https://github.com/arslanakram/esbuild-plugin-purgecss-2.0
-const esbuild = require('esbuild');
+import esbuild from 'esbuild';
 //const glob = require('glob-all');
-const fs = require('fs');
-const { PurgeCSS } = require('purgecss');
-const path = require('path');
+import fs from 'fs';
+import { PurgeCSS } from 'purgecss';
+import path from 'path';
 const buildMetafile = JSON.parse(fs.readFileSync('./src/_data/buildmeta.json', 'utf8'));
 
 let purgecssPlugin = function purgecssPlugin(options) {
@@ -45,7 +45,7 @@ let purgecssPlugin = function purgecssPlugin(options) {
 };
 
 
-module.exports = async () => {
+export default purgecssPipeline = async () => {
   let result = await esbuild.build({
     entryPoints: ['dist/app/*.css'],
     allowOverwrite: true,
