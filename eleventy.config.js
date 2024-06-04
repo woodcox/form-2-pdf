@@ -1,18 +1,27 @@
-const sass = require("sass");
-const pluginWebc = require("@11ty/eleventy-plugin-webc");
-const { EleventyRenderPlugin } = require("@11ty/eleventy");
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+/**
+ * Configures Eleventy with various settings, collections, plugins, filters, shortcodes, and more.
+ * Hint VS Code for eleventyConfig autocompletion.
+ * © Henry Desroches - https://gist.github.com/xdesro/69583b25d281d055cd12b144381123bf
+ * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig -
+ * @returns {Object} -
+ */
+
+
+import sass from "sass";
+import pluginWebc from "@11ty/eleventy-plugin-webc";
+import { EleventyRenderPlugin } from "@11ty/eleventy";
+import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
 const now = String(Date.now());
-const solidShortcode = require('./config/shortcodes/solidify.js');
-const esbuildPipeline = require('./config/build/esbuild.js');
-const purgecssPipeline = require('./config/build/purgecss.js');
-const path = require("path");
-const manifest = require('./src/_data/manifest.json');
+import solidShortcode from './config/shortcodes/solidify.js';
+import esbuildPipeline from './config/build/esbuild.js';
+import purgecssPipeline from './config/build/purgecss.js';
+import path from "path";
+import manifest from './src/_data/manifest.json';
 const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
 
 const TEMPLATE_ENGINE = "liquid";
 
-module.exports = function (eleventyConfig) {
+export default async function (eleventyConfig) {
   // DEV SERVER
   eleventyConfig.setServerOptions({
     port: 8080,
