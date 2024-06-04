@@ -93,7 +93,7 @@ if (isProd) {
   }));
 }
 
-export default async function (esbuildPipeline) {
+export const esbuildPipeline = async () => {
   let ctx = await esbuild.context({
     ...esbuildOpts,
   }).catch((error) => {

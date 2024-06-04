@@ -44,7 +44,7 @@ let purgecssPlugin = function purgecssPlugin(options) {
   };
 };
 
-export default async function (purgecssPipeline) {
+export const purgecssPipeline = async () => {
   let result = await esbuild.build({
     entryPoints: ['dist/app/*.css'],
     allowOverwrite: true,

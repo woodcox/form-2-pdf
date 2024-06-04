@@ -5,7 +5,7 @@ import { default as fsWithCallbacks } from 'fs';
 const fsPromises = fsWithCallbacks.promises;
 import { http, default_schemes } from '@hyrious/esbuild-plugin-http';
 
-export default solidShortcode = async (code, filename, bundled) => {
+export const solidShortcode = async (code, filename, bundled) => {
   let bundleJsx = bundled !== 'bundleOff' ? true : false;
   await fsPromises.writeFile('./_tmp/solid-' + filename + '.jsx', code),
   
