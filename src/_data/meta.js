@@ -17,4 +17,4 @@ const meta = {
   environment: process.env.ELEVENTY_ENV
 }
 
-module.exports = meta;
+export default meta;
