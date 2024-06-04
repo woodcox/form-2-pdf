@@ -16,7 +16,7 @@ import solidShortcode from './config/shortcodes/solidify.js';
 import esbuildPipeline from './config/build/esbuild.js';
 import purgecssPipeline from './config/build/purgecss.js';
 import path from "path";
-import manifest from './src/_data/manifest.json';
+import manifest from './src/_data/manifest.json' with { "type": "json" };
 const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
 
 const TEMPLATE_ENGINE = "liquid";
