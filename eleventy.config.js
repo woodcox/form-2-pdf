@@ -12,7 +12,7 @@ import pluginWebc from "@11ty/eleventy-plugin-webc";
 import { EleventyRenderPlugin } from "@11ty/eleventy";
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
 const now = String(Date.now());
-import solidShortcode from './config/shortcodes/solidify.js';
+//import solidShortcode from './config/shortcodes/solidify.js';
 import esbuildPipeline from './config/build/esbuild.js';
 import purgecssPipeline from './config/build/purgecss.js';
 import path from "path";
