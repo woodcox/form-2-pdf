@@ -1,5 +1,4 @@
 import { createSignal } from 'solid-js';
-import { Select, createOptions } from '@thisbeyond/solid-select';
 
 const [autocompleteValue, setAutocompleteValue] = createSignal('');
 
@@ -17,11 +16,11 @@ const Autocomplete = (props) => {
       <label class="govuk-label" for={props.name}>
         {props.label}
       </label>
-      <Select
+      <select
         class="govuk-select"
         name={props.name}
         id={props.name}
-        options={props.value || optionSets[autocompleteValue()]}
+        options={props.value }
         onChange={handleChange}
       />
     </div>
