@@ -6,20 +6,25 @@
  * @returns {Object} -
  */
 
-
 import sass from "sass";
 import pluginWebc from "@11ty/eleventy-plugin-webc";
 import { EleventyRenderPlugin } from "@11ty/eleventy";
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
-const now = String(Date.now());
 import { solidShortcode } from './config/shortcodes/solidify.js';
 import { esbuildPipeline } from './config/build/esbuild.js';
 import { purgecssPipeline } from './config/build/purgecss.js';
 import path from "path";
-import manifest from './src/_data/manifest.json' with { "type": "json" };
+const now = String(Date.now());
 const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
-
 const TEMPLATE_ENGINE = "liquid";
+
+// Currently Stackblitz does not like Import attributes. Hopefully will be able to write the following soon:
+// import manifest from './src/_data/manifest.json' with { "type": "json" };
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const manifest = require('./src/_data/manifest.json');
+
+
 
 export default async function (eleventyConfig) {
   // DEV SERVER
