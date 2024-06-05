@@ -10,7 +10,11 @@ function DeleteStorageButton() {
   };
 
   return (
-    <button type="submit" class="govuk-button govuk-button--warning" data-module="govuk-button" onClick={handleClearStorage}>
+    <button 
+      type="submit" 
+      class="govuk-button govuk-button--warning" data-module="govuk-button" 
+      onClick={handleClearStorage}
+    >
       Delete
     </button>
   );

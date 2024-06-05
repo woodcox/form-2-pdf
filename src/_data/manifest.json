@@ -3,6 +3,8 @@
   "render": "render.js",
   "is-land.map": "is-land.js.map",
   "is-land": "is-land.js",
+  "sw.map": "sw.js.map",
+  "sw": "sw.js",
   "style.map": "style.css.map",
   "style": "style.css"
 }
