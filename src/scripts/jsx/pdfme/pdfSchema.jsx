@@ -81,6 +81,7 @@ const schema = {
         required: true,
         component: 'Radio',
         componentProps: {
+          componentId: 'ceremonyType',
           name: 'ceremonyType',
           label: 'What type of ceremony have you booked?',
           value: '',
@@ -153,6 +154,7 @@ const schema = {
         required: true,
         component: 'Radio',
         componentProps: {
+          componentId: 'WordingOption',
           name: 'WordingOption',
           label: 'Which ceremony wording?',
           value: '',

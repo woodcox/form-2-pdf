@@ -1,5 +1,7 @@
 import { createStore } from 'solid-js/store';
+import { makePersisted } from './makePersisted.jsx';
 
+// Define a global object to store the state of all instances of Radios
 const globalRadioValues = {};
 
 const Radio = (props) => {
@@ -8,13 +10,13 @@ const Radio = (props) => {
 
   // Check if the store for this component instance exists, if not, create a new one
   if (!globalRadioValues[storeName]) {
-    globalRadioValues[storeName] = createStore({ value: '' });
+    globalRadioValues[storeName] = createStore({ [storeName]: '' });
   }
 
   const [radioState, setRadioState] = globalRadioValues[storeName];
 
   const handleChange = (e) => {
-    setRadioState({ value: e.target.value });
+    setRadioState({ [storeName]: e.target.value });
     props.onChange && props.onChange(e.target.value);
   };
 
@@ -34,7 +36,7 @@ const Radio = (props) => {
                   name={props.componentId}
                   id={option.id}
                   value={option.value}
-                  checked={radioState.value === option.value}
+                  checked={radioState[storeName] === option.value}
                   onChange={handleChange}
                 />
                 <label class="govuk-label govuk-radios__label" for={option.id}>

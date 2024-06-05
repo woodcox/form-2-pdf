@@ -1,6 +1,7 @@
 import { createSignal } from 'solid-js';
+import { makePersisted } from './makePersisted.jsx';
 
-const [selectedValue, setSelectedValue] = createSignal('');
+const [selectedValue, setSelectedValue] = makePersisted(createSignal(''), {name: "select"});
 
 const Dropdown = (props) => {
   

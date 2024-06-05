@@ -1,8 +1,9 @@
 import { createSignal, createEffect } from 'solid-js';
+import { makePersisted } from './makePersisted.jsx';
 
-const [day, setDay] = createSignal('');
-const [month, setMonth] = createSignal('');
-const [year, setYear] = createSignal('');
+const [day, setDay] = makePersisted(createSignal(''), {name: "day"});
+const [month, setMonth] = makePersisted(createSignal(''), {name: "month"});
+const [year, setYear] = makePersisted(createSignal(''), {name: "year"});
 
 export default function DateInput(props) {
   // Create an effect that runs whenever day(), month(), or year() changes

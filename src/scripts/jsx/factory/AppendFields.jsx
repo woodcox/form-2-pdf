@@ -1,5 +1,6 @@
 import { createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import { makePersisted } from './makePersisted.jsx';
 
 // Define a global object to store the state of all instances of AppendFields
 const globalFieldValues = {};
@@ -10,7 +11,7 @@ function AppendFields(props) {
 
   // Check if the store for this component instance exists, if not, create a new one
   if (!globalFieldValues[storeName]) {
-    globalFieldValues[storeName] = createStore({});
+    globalFieldValues[storeName] = makePersisted(createStore({}), {name: storeName});
   }
 
   // Get the field values store for this component instance
