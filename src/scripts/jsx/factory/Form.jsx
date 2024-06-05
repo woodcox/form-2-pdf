@@ -5,6 +5,7 @@ import AppendFields from './AppendFields.jsx';
 import Radio from './Radio.jsx';
 import Dropdown from './Dropdown.jsx';
 import Autocomplete  from './Autocomplete.jsx';
+import DeleteStorageButton from './DeleteStorageButton';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // Map of components to import dynamically
@@ -252,6 +253,7 @@ export default function Form(props) {
               <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
             </svg>
           </a>
+          <DeleteStorageButton/>
         </Show>
       </nav>
     </form>
