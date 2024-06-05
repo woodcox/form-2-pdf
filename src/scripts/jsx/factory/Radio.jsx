@@ -10,13 +10,13 @@ const Radio = (props) => {
 
   // Check if the store for this component instance exists, if not, create a new one
   if (!globalRadioValues[storeName]) {
-    globalRadioValues[storeName] = createStore({ [storeName]: '' });
+    globalRadioValues[storeName] = makePersisted(createStore({ value: '' }), {name: storeName});
   }
 
   const [radioState, setRadioState] = globalRadioValues[storeName];
 
   const handleChange = (e) => {
-    setRadioState({ [storeName]: e.target.value });
+    setRadioState({ value: e.target.value });
     props.onChange && props.onChange(e.target.value);
   };
 
@@ -36,7 +36,7 @@ const Radio = (props) => {
                   name={props.componentId}
                   id={option.id}
                   value={option.value}
-                  checked={radioState[storeName] === option.value}
+                  checked={radioState.value === option.value}
                   onChange={handleChange}
                 />
                 <label class="govuk-label govuk-radios__label" for={option.id}>
