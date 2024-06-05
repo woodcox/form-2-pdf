@@ -14,7 +14,13 @@ const meta = {
   absoluteUrl,
   baseUrl,
   pathPrefix,
-  environment: process.env.ELEVENTY_ENV
+  environment: process.env.ELEVENTY_ENV,
+  pathToSvgLogo: 'src/assets/svg/misc/logo.svg', // used for favicon generation
+  themeColor: '#DD4462', //  Manifest: defines the default theme color for the application
+  themeBgColor: '#FBFBFB', // Manifest: defines a placeholder background color for the application page to display before its stylesheet is loaded
+  opengraph_default: '/assets/images/template/opengraph-default.jpg', // fallback/default meta image
+  opengraph_default_alt:
+  "Visible content: A progressive web app made with 11ty and Solid JS" // alt text for default meta image"
 }
 
 export default meta;
