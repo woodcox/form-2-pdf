@@ -6,6 +6,7 @@ import Radio from './Radio.jsx';
 import Dropdown from './Dropdown.jsx';
 import Autocomplete  from './Autocomplete.jsx';
 import DeleteStorageButton from './DeleteStorageButton';
+import AddAnother from './AddAnother.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // Map of components to import dynamically
