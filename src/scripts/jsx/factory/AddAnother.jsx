@@ -32,7 +32,7 @@ function AddAnother() {
                 class="govuk-input"
                 type="text"
                 value={item.fields.field1}
-                onChange={(e) => handleChange(item.id, 'field1', e.target.value)}
+                on:Change={(e) => handleChange(item.id, 'field1', e.target.value)}
               />
             </div>
             <div class="govuk-form-group">
@@ -42,7 +42,7 @@ function AddAnother() {
                 class="govuk-input"
                 type="text"
                 value={item.fields.field2}
-                onChange={(e) => handleChange(item.id, 'field2', e.target.value)}
+                on:Change={(e) => handleChange(item.id, 'field2', e.target.value)}
               />
             </div>
             <div class="govuk-form-group">
@@ -52,7 +52,7 @@ function AddAnother() {
                 class="govuk-input"
                 type="text"
                 value={item.fields.field3}
-                onChange={(e) => handleChange(item.id, 'field3', e.target.value)}
+                on:Change={(e) => handleChange(item.id, 'field3', e.target.value)}
               />
             </div>
             <div class="govuk-form-group">
@@ -62,7 +62,7 @@ function AddAnother() {
                 class="govuk-input"
                 type="text"
                 value={item.fields.field4}
-                onChange={(e) => handleChange(item.id, 'field4', e.target.value)}
+                on:Change={(e) => handleChange(item.id, 'field4', e.target.value)}
               />
             </div>
             <div class="govuk-button-group">
