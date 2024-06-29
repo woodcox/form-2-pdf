@@ -28,7 +28,7 @@ export default function PdfmeGenerator() {
           title: 'Generated PDF',
           text: 'Here is the PDF you generated.',
           url: pdfUrl,
-          files: [new File([blob], 'generated.pdf', { type: 'application/pdf' })],
+          //files: [new File([blob], 'generated.pdf', { type: 'application/pdf' })],
         });
       } catch (error) {
         console.log('Error sharing', error);
