@@ -6,6 +6,7 @@ import Radio from './Radio.jsx';
 import Dropdown from './Dropdown.jsx';
 import Autocomplete  from './Autocomplete.jsx';
 import DeleteStorageButton from './DeleteStorageButton';
+
 import AddAnother from './AddAnother.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
@@ -254,7 +255,7 @@ export default function Form(props) {
               <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
             </svg>
           </a>
-          <DeleteStorageButton/>
+          <DeleteStorageButton />
         </Show>
       </nav>
     </form>

@@ -16,8 +16,27 @@ export default function PdfmeGenerator() {
     });
 
     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
-    window.open(URL.createObjectURL(blob));
+    const pdfUrl = URL.createObjectURL(blob);
+    //window.open(URL.createObjectURL(blob));
     //setInputState(defaultValues); // Reset inputs to default state after pdf generated
+
+
+    // If on a mobile device that supports the web share API the navigator.share is used to open the Web Share API. This invokes the native share mechanism of the device and allows users to share text, URLs or files.
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Generated PDF',
+          text: 'Here is the PDF you generated.',
+          url: pdfUrl,
+          files: [new File([blob], 'generated.pdf', { type: 'application/pdf' })],
+        });
+      } catch (error) {
+        console.log('Error sharing', error);
+      }
+    } else {
+      // If the device does not support the web share API, the pdf is created in a new tab.
+      window.open(pdfUrl);
+    }
   }
 
   return (
