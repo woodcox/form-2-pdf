@@ -1,6 +1,10 @@
 {
-  "render": "render-JIMDKANA.min.js",
-  "is-land": "is-land-A64GZ26V.min.js",
-  "sw": "sw-FMLKYSFU.min.js",
-  "style": "style-O7XXXHLT.min.css"
+  "render.map": "render.js.map",
+  "render": "render.js",
+  "is-land.map": "is-land.js.map",
+  "is-land": "is-land.js",
+  "sw.map": "sw.js.map",
+  "sw": "sw.js",
+  "style.map": "style.css.map",
+  "style": "style.css"
 }

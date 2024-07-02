@@ -255,6 +255,12 @@ export default function Form(props) {
               <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
             </svg>
           </a>
+          <AddAnother 
+            title="Parent"
+          />
+          <AddAnother 
+            title="Step-parent"
+          />
           <DeleteStorageButton />
         </Show>
       </nav>
