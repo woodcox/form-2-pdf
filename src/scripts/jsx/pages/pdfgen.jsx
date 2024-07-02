@@ -25,9 +25,9 @@ export default function PdfmeGenerator() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Generated PDF',
-          text: 'Here is the PDF you generated.',
-          files: [new File([blob], 'generated.pdf', { type: 'application/pdf' })],
+          title: 'Ceremony Options PDF',
+          text: 'The ceremony options PDF.',
+          files: [new File([blob], 'ceremony-options.pdf', { type: 'application/pdf' })],
         });
       } catch (error) {
         console.log('Error sharing', error);
