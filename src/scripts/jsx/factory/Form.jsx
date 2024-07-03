@@ -256,11 +256,13 @@ export default function Form(props) {
             </svg>
           </a>
           <AddAnother 
-            title="Parent"
+            title="parent"
+            grammar="Your"
             visible={true}
           />
           <AddAnother 
-            title="Step-parent"
+            title="step-parent"
+            grammar="Your"
           />
           <DeleteStorageButton />
         </Show>

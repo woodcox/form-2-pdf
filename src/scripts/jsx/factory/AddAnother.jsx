@@ -1,16 +1,24 @@
 import { createSignal, For, Show, onCleanup } from 'solid-js';
 import { makePersisted } from './makePersisted.jsx';
 
+// Capitalise the first letter of a string. This is used in the AddAnother component to adjust the {prop.title}.
+function capFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function AddAnother(props) {
   /* Conditionslly render if the first group of fields is visible based on the visible prop passed into the component.
   Example:
   <AddAnother
-    visible=true
+    title="parent"
+    grammar="Your"
+    visible={true}   // If true render the first field group, if null or false don't render the fields
   />
   */
   const [items, setItems] = createSignal(props.visible ? [{ id: 1, fields: { field1: '', field2: '', field3: '', field4: '' } }] : []);
   let nextId = 2;
 
+  // Only add a max of 2 parents
   const addItem = () => {
     if (items().length < 2) {
       setItems([...items(), { id: nextId++, fields: { field1: '', field2: '', field3: '', field4: '' } }]);
@@ -34,9 +42,9 @@ function AddAnother(props) {
       <For each={items()}>
         {(item, index) => (
           <div key={item.id} class="govuk-form-group">
-            <h2>{props.title} {index() + 1}</h2>
+            <h2>{props.grammar} {props.title} {index() + 1}</h2>
             <div class="govuk-form-group">
-              <label for={`input-${item.id}-field1`} class="govuk-label">{props.title} {index() + 1} Full Name</label>
+              <label for={`input-${item.id}-field1`} class="govuk-label">{capFirstLetter(props.title)} {index() + 1} Full Name</label>
               <input
                 id={`input-${item.id}-field1`}
                 class="govuk-input"
@@ -56,7 +64,7 @@ function AddAnother(props) {
               />
             </div>
             <div class="govuk-form-group">
-              <label for={`input-${item.id}-field3`} class="govuk-label">{props.title} {index() + 1} Job</label>
+              <label for={`input-${item.id}-field3`} class="govuk-label">{capFirstLetter(props.title)} {index() + 1}'s current or last job</label>
               <input
                 id={`input-${item.id}-field3`}
                 class="govuk-input"
@@ -66,7 +74,7 @@ function AddAnother(props) {
               />
             </div>
             <div class="govuk-form-group">
-              <label for={`input-${item.id}-field4`} class="govuk-label">Has {props.title} {index() + 1} retired?</label>
+              <label for={`input-${item.id}-field4`} class="govuk-label">Is {props.title} {index() + 1} retired?</label>
               <input
                 id={`input-${item.id}-field4`}
                 class="govuk-input"
@@ -81,6 +89,7 @@ function AddAnother(props) {
           </div>
         )}
       </For>
+      {/* Hide Add button if there are 2 parents already added */}
       <Show when={items().length < 2}>
         <button type="button" class="govuk-button" onClick={addItem}>Add {props.title}</button>
       </Show>
