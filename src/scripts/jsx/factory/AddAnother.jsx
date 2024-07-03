@@ -2,12 +2,14 @@ import { createSignal, For, Show, onCleanup } from 'solid-js';
 import { makePersisted } from './makePersisted.jsx';
 
 function AddAnother(props) {
-  const [items, setItems] = createSignal([{ id: 1, fields: { field1: '', field2: '', field3: '', field4: '' } }]);
+  /* Conditionslly render if the first group of fields is visible based on the visible prop passed into the component.
+  Example:
+  <AddAnother
+    visible=true
+  />
+  */
+  const [items, setItems] = createSignal(props.visible ? [{ id: 1, fields: { field1: '', field2: '', field3: '', field4: '' } }] : []);
   let nextId = 2;
-
-  const handleChange = (id, field, value) => {
-    setItems(items => items.map(item => item.id === id ? { ...item, fields: { ...item.fields, [field]: value } } : item));
-  };
 
   const addItem = () => {
     if (items().length < 2) {
@@ -19,6 +21,14 @@ function AddAnother(props) {
     setItems(items().filter(item => item.id !== id));
   };
 
+  const handleChange = (id, field, newValue) => {
+    setItems(items().map(item => 
+      item.id === id 
+        ? { ...item, fields: { ...item.fields, [field]: newValue } } 
+        : item
+    ));
+  };
+  
   return (
     <div>
       <For each={items()}>
