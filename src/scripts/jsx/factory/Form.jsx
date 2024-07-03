@@ -257,7 +257,7 @@ export default function Form(props) {
           </a>
           <AddAnother 
             title="Parent"
-            visible=true
+            visible={true}
           />
           <AddAnother 
             title="Step-parent"
