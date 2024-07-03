@@ -259,10 +259,12 @@ export default function Form(props) {
             title="parent"
             grammar="Your"
             visible={true}
+            hintText="For example, your mother, father or parent"
           />
           <AddAnother 
             title="step-parent"
             grammar="Your"
+            hintText="For example, your step-mother, step-father or step-parent"
           />
           <DeleteStorageButton />
         </Show>

@@ -43,6 +43,9 @@ function AddAnother(props) {
         {(item, index) => (
           <div key={item.id} class="govuk-form-group">
             <h2>{props.grammar} {props.title} {index() + 1}</h2>
+            <div id="parents-hint" class="govuk-hint">
+              {props.hintText}
+            </div>
             <div class="govuk-form-group">
               <label for={`input-${item.id}-field1`} class="govuk-label">{capFirstLetter(props.title)} {index() + 1} Full Name</label>
               <input
@@ -54,6 +57,26 @@ function AddAnother(props) {
               />
             </div>
             <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">Is {props.title} {index() + 1} alive?</h1>
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="isAlive" name="isAlive" type="radio" value="Yes, they are alive">
+                    <label class="govuk-label govuk-radios__label" for="isAlive">
+                      Yes, they are alive
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="isAlive-2" name="isAlive" type="radio" value="No, they have died">
+                    <label class="govuk-label govuk-radios__label" for="isAlive-2">
+                      No, they have died
+                    </label>
+      </div>
+
+
+
               <label for={`input-${item.id}-field2`} class="govuk-label">Is {props.title} {index() + 1} alive?</label>
               <input
                 id={`input-${item.id}-field2`}
