@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js';
+import { createSignal, ErrorBoundary } from 'solid-js';
 import MountGovUk from './MountGovUk.jsx';
 import DateInput from './DateInput.jsx';
 import AppendFields from './AppendFields.jsx';
@@ -6,7 +6,6 @@ import Radio from './Radio.jsx';
 import Dropdown from './Dropdown.jsx';
 import Autocomplete  from './Autocomplete.jsx';
 import DeleteStorageButton from './DeleteStorageButton';
-
 import AddAnother from './AddAnother.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
@@ -42,6 +41,8 @@ export default function Form(props) {
   <MountGovUk />
   
   return (
+    <>
+    <ErrorBoundary fallback={(e) => <p>{e.message}</p>}>
     <form>
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -270,5 +271,7 @@ export default function Form(props) {
         </Show>
       </nav>
     </form>
+    </ErrorBoundary>
+    </>
   );
 }
