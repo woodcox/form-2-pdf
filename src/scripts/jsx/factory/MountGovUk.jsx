@@ -24,7 +24,7 @@ const MountGovUk = () => {
         // See - https://frontend.design-system.service.gov.uk/configure-components/#with-configuration-object
         // And - https://frontend.design-system.service.gov.uk/javascript-api-reference/#button
         // Prevent accidental double clicks on submit buttons from submitting forms multiple times.
-        preventDoubleClick: true
+        preventDoubleClick: false
       }
     ));
 
