@@ -21,6 +21,8 @@ function AddAnother(props) {
       : []
   );
   let nextId = 2;
+  // This is for setting focus to the new input fields when add (parent or step-parent) button is clicked 
+  let newInputRef = null;
 
   // Only add a max of 2 parents
   const addItem = () => {
@@ -32,6 +34,13 @@ function AddAnother(props) {
           fields: { field1: '', field2: '', field3: '', field4: '' },
         },
       ]);
+
+      // Set a timeout to focus the new field1 input when add button is clicked
+      setTimeout(() => {
+        if (newInputRef) {
+          newInputRef.focus();
+        }
+      }, 0);
     }
   };
 
@@ -69,6 +78,7 @@ function AddAnother(props) {
                 class="govuk-input"
                 type="text"
                 value={item.fields.field1}
+                ref={el => { if (index() === items().length - 1) newInputRef = el; }  /* The field to focus on when the add button is clicked */}
                 on:Change={(e) =>
                   handleChange(item.id, 'field1', e.target.value)
                 }
