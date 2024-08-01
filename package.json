@@ -28,7 +28,7 @@
     "@hyrious/esbuild-plugin-http": "^0.1.5",
     "@luncheon/esbuild-plugin-gzip": "^0.1.0",
     "@pdfme/generator": "^4.0.2",
-    "@solid-primitives/storage": "^3.7.1",
+    "@solid-primitives/storage": "^3.8.0",
     "@solidjs/router": "^0.14.1",
     "accessible-autocomplete": "^3.0.0",
     "concurrently": "^8.2.2",
