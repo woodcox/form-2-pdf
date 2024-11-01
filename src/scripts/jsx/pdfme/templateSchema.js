@@ -98,6 +98,6 @@ export const templateSchema = {
       },
     },
   ],
-  basePdf: { width: 210, height: 297, padding: [number, number, number, number] },
+  basePdf: { width: 210, height: 297, padding: [0, 0, 0, 0] },
   pdfmeVersion: '4.5.0',
 };
