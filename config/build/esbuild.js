@@ -68,10 +68,6 @@ const esbuildOpts = {
       cache: cacheMap
     }),
     solidPlugin(),
-    cc({ 
-      language_out: 'ECMASCRIPT_2020',
-      js: 'src/scripts/jsx/**.js'  // Ensures only JS files in the JSX folder are passed
-    }),
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
@@ -85,7 +81,11 @@ const esbuildOpts = {
             `${path.basename(to)}`,
           ])
         ),
-      })
+      }),
+    cc({ 
+      language_out: 'ECMASCRIPT_2020',
+      js: 'src/scripts/jsx/**.js'  // Ensures only JS files in the JSX folder are passed
+    })
   ]
 }
 
