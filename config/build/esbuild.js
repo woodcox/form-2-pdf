@@ -68,7 +68,10 @@ const esbuildOpts = {
       cache: cacheMap
     }),
     solidPlugin(),
-    cc({ language_out: 'ECMASCRIPT_2020' }),
+    cc({ 
+      language_out: 'ECMASCRIPT_2020',
+      filter: /\.js$/  // Ensures only JS files are passed and no CSS
+    }),
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
