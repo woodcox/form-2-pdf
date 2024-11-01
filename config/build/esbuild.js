@@ -6,6 +6,7 @@ const isDev = process.env.ELEVENTY_ENV === 'dev' ? true : false;
 import { solidPlugin } from 'esbuild-plugin-solid';
 import manifestPlugin from 'esbuild-plugin-manifest';
 import gzipPlugin from '@luncheon/esbuild-plugin-gzip';
+import cc from '@apeleghq/esbuild-plugin-closure-compiler';
 import { http, default_schemes } from '@hyrious/esbuild-plugin-http';
 // cacheMap stores { url => contents }, you can easily persist it in file system - see https://github.com/hyrious/esbuild-plugin-http
 let cacheMap = new Map();
@@ -67,6 +68,7 @@ const esbuildOpts = {
       cache: cacheMap
     }),
     solidPlugin(),
+    cc({ language_out: 'ECMASCRIPT_2020' }),
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
       filename: '../../src/_data/manifest.json',
