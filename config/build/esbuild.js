@@ -112,9 +112,22 @@ export const esbuildPipeline = async () => {
     console.log("[esbuild] is watching for changes...");
   } else {
     // Build once and exit if not watch mode
-    await ctx.rebuild().then(result => {
+    await ctx.rebuild({
+      bundle: false,
+      plugins: [
+        cc({
+          language_in: 'ECMASCRIPT_2020',
+          language_out: 'ECMASCRIPT_2020',
+          compilation_level: 'ADVANCED',
+        }),
+      ],
+    })
+    .then(result => {
       ctx.dispose();
       fs.writeFileSync('./src/_data/buildmeta.json', JSON.stringify(result.metafile));
     })
-  }
+    .catch(error => {
+      console.error("[closure-compiler] Error during minification:", error);
+      process.exitCode = 1;
+  });
 }
