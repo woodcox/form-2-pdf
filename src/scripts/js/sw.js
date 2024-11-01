@@ -1,3 +1,13 @@
+/**
+ * @define {Object}
+ */
+var caches;
+
+/**
+ * @define {Object}
+ */
+var self;
+
 // Activate event: Clean up old caches
 // Define the cache name
 const cacheName = 'your-app-cache-v1';
