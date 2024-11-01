@@ -81,11 +81,7 @@ const esbuildOpts = {
             `${path.basename(to)}`,
           ])
         ),
-      }),
-    cc({ 
-      language_out: 'ECMASCRIPT_2020',
-      js: 'src/scripts/jsx/**.js'  // Ensures only JS files in the JSX folder are passed
-    })
+      })
   ]
 }
 
