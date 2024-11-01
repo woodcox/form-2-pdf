@@ -123,6 +123,10 @@ export const esbuildPipeline = async () => {
             language_out: 'ECMASCRIPT_2020',
             compilation_level: 'ADVANCED',
             warning_level: 'QUIET',
+            define: {
+              'caches': 'window.caches',
+              'self': 'self',  // self is also a global in service workers
+            },
           }),
         ],
         outdir: './dist/app', // Specify the output directory for Closure Compiler
