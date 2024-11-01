@@ -129,5 +129,6 @@ export const esbuildPipeline = async () => {
     .catch(error => {
       console.error("[closure-compiler] Error during minification:", error);
       process.exitCode = 1;
-  });
-}
+    });
+  }
+};
