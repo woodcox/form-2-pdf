@@ -1,5 +1,5 @@
 import { createMemo } from 'solid-js';
-import { tableBeta, text, readOnlyText, readOnlyImage, line } from '@pdfme/schemas';
+import { table, text, readOnlyText, readOnlyImage, line } from '@pdfme/schemas';
 import { generate } from '@pdfme/generator';
 import { templateSchema } from './../pdfme/templateSchema.js';
 //import { template } from './../pdfme/pdfSchema.jsx';
@@ -36,7 +36,7 @@ export default function TablePdf() {
 
     const pdf = await generate({
       template: templateSchema, // this is static with the pdfme v4 dynamic tables
-      plugins: { text, readOnlyText, readOnlyImage, line, Table: tableBeta }, // add the pdfme plugin schemas
+      plugins: { text, readOnlyText, readOnlyImage, line, Table: table }, // add the pdfme plugin schemas
       inputs: inputs(), // [pdfState], using state
     });
 
