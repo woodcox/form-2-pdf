@@ -70,7 +70,7 @@ const esbuildOpts = {
     solidPlugin(),
     cc({ 
       language_out: 'ECMASCRIPT_2020',
-      js: '**.js'  // Ensures only JS files are passed and no CSS
+      js: 'src/scripts/jsx/**.js'  // Ensures only JS files in the JSX folder are passed
     }),
     manifestPlugin({
       // NOTE: Save to src/_data. This is always relative to `outdir`.
