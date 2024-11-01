@@ -107,20 +107,25 @@ export const esbuildPipeline = async () => {
     await ctx.watch();
     console.log("[esbuild] is watching for changes...");
   } else {
-    // Build once and exit if not watch mode
-    await ctx.rebuild({
-      bundle: false,
-      plugins: [
-        cc({
-          language_in: 'ECMASCRIPT_2020',
-          language_out: 'ECMASCRIPT_2020',
-          compilation_level: 'ADVANCED',
-        }),
-      ],
-    })
+    // Prod Step 1: Build once and exit if not watch mode
+    await ctx.rebuild()
     .then(result => {
       ctx.dispose();
       fs.writeFileSync('./src/_data/buildmeta.json', JSON.stringify(result.metafile));
+
+      // Prod Step 2: Run Closure Compiler on the bundled output in './dist/app/*.js'
+      return esbuild.build({
+        entryPoints: ['./dist/app/*.js'],
+        bundle: false,
+        plugins: [
+          cc({
+            language_in: 'ECMASCRIPT_2020',
+            language_out: 'ECMASCRIPT_2020',
+            compilation_level: 'ADVANCED',
+          }),
+        ],
+        outdir: './dist/app', // Specify the output directory for Closure Compiler
+      });
     })
     .catch(error => {
       console.error("[closure-compiler] Error during minification:", error);
