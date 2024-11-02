@@ -94,6 +94,25 @@ if (isProd) {
   }));
 }
 
+async function runClosureCompiler() {
+  await esbuild.build({
+    entryPoints: ['./dist/app/*.js'],
+    bundle: false,
+    allowOverwrite: true,
+    plugins: [
+      cc({
+        language_in: 'ECMASCRIPT_NEXT',
+        language_out: 'ECMASCRIPT_NEXT',
+        compilation_level: 'ADVANCED',
+        warning_level: 'QUIET',
+        js: ['dist/app/*.js', '!dist/app/is-land-*.min.js', '!dist/app/is-land.js'],
+        externs: 'config/build/externs.js',
+      }),
+    ],
+    outdir: './dist/app',
+  });
+}
+
 export const esbuildPipeline = async () => {
   let ctx = await esbuild.context({
     ...esbuildOpts,
@@ -112,29 +131,10 @@ export const esbuildPipeline = async () => {
     .then(async (result) => {
       ctx.dispose();
       fs.writeFileSync('./src/_data/buildmeta.json', JSON.stringify(result.metafile));
-
-      // Prod Step 2: Run Closure Compiler on the bundled output in './dist/app/*.js'
-     /* return esbuild.build({
-        entryPoints: ['./dist/app/*.js'],
-        bundle: false,
-        allowOverwrite: true,
-        plugins: [
-          cc({
-            language_in: 'ECMASCRIPT_NEXT',
-            language_out: 'ECMASCRIPT_NEXT',
-            compilation_level: 'ADVANCED',
-            warning_level: 'QUIET',
-            js: ['dist/app/*.js', '!dist/app/is-land-*.min.js', '!dist/app/is-land.js'],  // all js files except is-land.js
-            externs: 'config/build/externs.js',
-          }),
-        ],
-        outdir: './dist/app', // Specify the output directory for Closure Compiler
-      });
-    })
-    .catch(error => {
-      console.error("[closure-compiler] Error during minification:", error);
+      await runClosureCompiler();
+    }).catch(error => {
+      console.error("[closure-compiler] Error:", error);
       process.exitCode = 1;
-    }); */
-    })
+    });
   }
 };
