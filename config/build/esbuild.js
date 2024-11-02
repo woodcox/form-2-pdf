@@ -81,6 +81,14 @@ const esbuildOpts = {
             `${path.basename(to)}`,
           ])
         ),
+      }),
+    cc({
+        language_in: 'ECMASCRIPT_NEXT',
+        language_out: 'ECMASCRIPT_NEXT',
+        compilation_level: 'ADVANCED',
+        warning_level: 'QUIET',
+        js: ['dist/app/*.js', '!dist/app/is-land-*.min.js', '!dist/app/is-land.js'],
+        externs: 'config/build/externs.js',
       })
   ]
 }
