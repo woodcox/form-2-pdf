@@ -123,6 +123,7 @@ export const esbuildPipeline = async () => {
             language_out: 'ECMASCRIPT_NEXT',
             compilation_level: 'ADVANCED',
             warning_level: 'QUIET',
+            js: './dist/app/render-*.js',
             externs: 'config/build/externs.js',
           }),
         ],
