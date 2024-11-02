@@ -123,8 +123,8 @@ export const esbuildPipeline = async () => {
             language_out: 'ECMASCRIPT_NEXT',
             compilation_level: 'ADVANCED',
             warning_level: 'QUIET',
-            js: './dist/app/render-*.js',
-            externs: 'config/build/externs.js',
+            js: '!is-land-**.js',  // all js files except is-land.js
+            //externs: 'config/build/externs.js',
           }),
         ],
         outdir: './dist/app', // Specify the output directory for Closure Compiler
