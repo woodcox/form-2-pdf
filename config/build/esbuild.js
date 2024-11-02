@@ -123,7 +123,7 @@ export const esbuildPipeline = async () => {
             language_out: 'ECMASCRIPT_NEXT',
             compilation_level: 'ADVANCED',
             warning_level: 'QUIET',
-            js: '!is-land-*.js',  // all js files except is-land.js
+            js: 'render-**.js',  // all js files except is-land.js
             //externs: 'config/build/externs.js',
           }),
         ],
