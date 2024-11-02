@@ -131,7 +131,7 @@ export const esbuildPipeline = async () => {
     .then(async (result) => {
       ctx.dispose();
       fs.writeFileSync('./src/_data/buildmeta.json', JSON.stringify(result.metafile));
-      await runClosureCompiler();
+      //await runClosureCompiler();
     }).catch(error => {
       console.error("[closure-compiler] Error:", error);
       process.exitCode = 1;
