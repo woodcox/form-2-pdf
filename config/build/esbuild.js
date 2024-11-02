@@ -119,14 +119,14 @@ export const esbuildPipeline = async () => {
         bundle: false,
         plugins: [
           cc({
-            language_in: 'ECMASCRIPT_2020',
-            language_out: 'ECMASCRIPT_2020',
+            language_in: 'ECMASCRIPT_NEXT',
+            language_out: 'ECMASCRIPT_NEXT',
             compilation_level: 'ADVANCED',
             warning_level: 'QUIET',
-            define: {
+            define: [
               'caches': 'window.caches',
-              'self': 'self',  // self is also a global in service workers
-            },
+              'self': 'self',  // in service workers
+            ],
           }),
         ],
         outdir: './dist/app', // Specify the output directory for Closure Compiler
