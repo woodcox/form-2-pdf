@@ -114,7 +114,7 @@ export const esbuildPipeline = async () => {
       fs.writeFileSync('./src/_data/buildmeta.json', JSON.stringify(result.metafile));
 
       // Prod Step 2: Run Closure Compiler on the bundled output in './dist/app/*.js'
-      return esbuild.build({
+     /* return esbuild.build({
         entryPoints: ['./dist/app/*.js'],
         bundle: false,
         allowOverwrite: true,
@@ -134,6 +134,6 @@ export const esbuildPipeline = async () => {
     .catch(error => {
       console.error("[closure-compiler] Error during minification:", error);
       process.exitCode = 1;
-    });
+    }); */
   }
 };
