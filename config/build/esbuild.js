@@ -94,6 +94,7 @@ if (isProd) {
   }));
 }
 
+/*
 async function runClosureCompiler() {
   await esbuild.build({
     entryPoints: ['./dist/app/*.js'],
@@ -111,7 +112,7 @@ async function runClosureCompiler() {
     ],
     outdir: './dist/app',
   });
-}
+} */
 
 export const esbuildPipeline = async () => {
   let ctx = await esbuild.context({
