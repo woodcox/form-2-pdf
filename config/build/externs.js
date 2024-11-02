@@ -8,44 +8,44 @@
  * @constructor
  * @extends {HTMLElement}
  */
-class Island extends HTMLElement {
-  /**
-   * @type {string}
-   */
-  static tagName;
+var Island = function() {};
 
-  /**
-   * @type {string}
-   */
-  static prefix;
+/**
+ * @type {string}
+ */
+Island.tagName;
 
-  /**
-   * @type {Object}
-   */
-  static attr;
+/**
+ * @type {string}
+ */
+Island.prefix;
 
-  /**
-   * @type {Map}
-   */
-  static onceCache;
+/**
+ * @type {Object}
+ */
+Island.attr;
 
-  /**
-   * @type {Map}
-   */
-  static onReady;
+/**
+ * @type {Map}
+ */
+Island.onceCache;
 
-  /**
-   * @type {Object}
-   */
-  static fallback;
-}
+/**
+ * @type {Map}
+ */
+Island.onReady;
+
+/**
+ * @type {Object}
+ */
+Island.fallback;
 
 /**
  * @constructor
  */
-class Conditions {
-  /**
-   * @type {Object}
-   */
-  static map;
-}
+var Conditions = function() {};
+
+/**
+ * @type {Object<string, Function>}
+ */
+Conditions.map;
