@@ -109,7 +109,7 @@ export const esbuildPipeline = async () => {
   } else {
     // Prod Step 1: Build once and exit if not watch mode
     await ctx.rebuild()
-    .then(result => {
+    .then(async (result) => {
       ctx.dispose();
       fs.writeFileSync('./src/_data/buildmeta.json', JSON.stringify(result.metafile));
 
