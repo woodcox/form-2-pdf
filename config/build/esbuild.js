@@ -124,7 +124,7 @@ export const esbuildPipeline = async () => {
             compilation_level: 'ADVANCED',
             warning_level: 'QUIET',
             js: ['dist/app/*.js', '!dist/app/is-land-*.min.js', '!dist/app/is-land.js'],  // all js files except is-land.js
-            //externs: 'config/build/externs.js',
+            externs: 'config/build/externs.js',
           }),
         ],
         outdir: './dist/app', // Specify the output directory for Closure Compiler

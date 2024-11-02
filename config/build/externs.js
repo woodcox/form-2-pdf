@@ -1,51 +1,26 @@
 /**
- * @fileoverview Externs for the Island class from 11ty is-lands.
+ * @fileoverview Externs for defining vars for google closure compiler.
  * 
  * @externs
  */
 
-/**
- * @constructor
- * @extends {HTMLElement}
- */
-var Island = function() {};
+/** @type {string} */
+var entityName;
 
-/**
- * @type {string}
- */
-Island.tagName;
+/** @type {*} */
+var val;
 
-/**
- * @type {string}
- */
-Island.prefix;
+/** @type {*} */
+var _$HY;
 
-/**
- * @type {Object}
- */
-Island.attr;
+/** @type {boolean} */
+var isDev;
 
-/**
- * @type {Map}
- */
-Island.onceCache;
+/** @type {boolean} */
+var isServer;
 
-/**
- * @type {Map}
- */
-Island.onReady;
+/** @type {Storage} */
+var localStorage;
 
-/**
- * @type {Object}
- */
-Island.fallback;
-
-/**
- * @constructor
- */
-var Conditions = function() {};
-
-/**
- * @type {Object<string, Function>}
- */
-Conditions.map;
+/** @type {*} */
+var UZIP;
