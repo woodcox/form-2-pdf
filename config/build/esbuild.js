@@ -123,6 +123,7 @@ export const esbuildPipeline = async () => {
             language_out: 'ECMASCRIPT_NEXT',
             compilation_level: 'ADVANCED',
             warning_level: 'QUIET',
+            externs: ['./externs.js'],
           }),
         ],
         outdir: './dist/app', // Specify the output directory for Closure Compiler
