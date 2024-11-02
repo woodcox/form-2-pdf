@@ -117,6 +117,7 @@ export const esbuildPipeline = async () => {
       return esbuild.build({
         entryPoints: ['./dist/app/*.js'],
         bundle: false,
+        allowOverwrite: true,
         plugins: [
           cc({
             language_in: 'ECMASCRIPT_NEXT',
