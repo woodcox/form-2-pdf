@@ -70,11 +70,11 @@ function AddAnother(props) {
               {props.hintText}
             </div>
             <div class="govuk-form-group">
-              <label for={`input-${item.id}-field1`} class="govuk-label">
+              <label for={`input-${item.id}-${props.title}-name`} class="govuk-label">
                 {capFirstLetter(props.title)} {index() + 1} Full Name
               </label>
               <input
-                id={`input-${item.id}-field1`}
+                id={`input-${item.id}-${props.title}-name`}
                 class="govuk-input"
                 type="text"
                 value={item.fields.field1}
@@ -94,8 +94,8 @@ function AddAnother(props) {
                   <input
                     class="govuk-radios__input"
                     type="radio"
-                    name="{`input-${item.id}-isAlive`}"
-                    id="{`input-${item.id}-isAlive`}"
+                    name="{`input-${item.id}-${props.title-isAlive`}"
+                    id="{`input-${item.id}-${props.title}-isAlive`}"
                     value="Yes, they are alive"
                     checked={item.fields.field2 === 'Yes, they are alive'}
                     onChange={(e) =>
@@ -104,7 +104,7 @@ function AddAnother(props) {
                   />
                   <label
                     class="govuk-label govuk-radios__label"
-                    for="{`input-${item.id}-isAlive`}"
+                    for="{`input-${item.id}-${props.title}-isAlive`}"
                   >
                     Yes, they are alive
                   </label>
@@ -112,8 +112,8 @@ function AddAnother(props) {
                 <div class="govuk-radios__item">
                   <input
                     class="govuk-radios__input"
-                    id="{`input-${item.id}-isAlive-2`}"
-                    name="{`input-${item.id}-isAlive`}"
+                    id="{`input-${item.id}-${props.title}-isAlive-2`}"
+                    name="{`input-${item.id}-${props.title}-isAlive`}"
                     type="radio"
                     value="No, they have died"
                     checked={item.fields.field2 === 'No, they have died'}
@@ -123,7 +123,7 @@ function AddAnother(props) {
                   />
                   <label
                     class="govuk-label govuk-radios__label"
-                    for="{`input-${item.id}-isAlive-2`}"
+                    for="{`input-${item.id}-${props.title}-isAlive-2`}"
                   >
                     No, they have died
                   </label>
@@ -132,14 +132,14 @@ function AddAnother(props) {
             </fieldset>
             </div>
             <div class="govuk-form-group">
-              <label for={`input-${item.id}-field3`} class="govuk-label">
+              <label for={`input-${item.id}-${props.title}-job`} class="govuk-label">
               {// Question varies depending if dead or alive
               item.fields.field2 === 'No, they have died'
                   ? `${capFirstLetter(props.title)} ${index() + 1}'s last job`
                   : `${capFirstLetter(props.title)} ${index() + 1}'s current or last job`}
               </label>
               <input
-                id={`input-${item.id}-field3`}
+                id={`input-${item.id}-${props.title}-job`}
                 class="govuk-input"
                 type="text"
                 value={item.fields.field3}
@@ -161,8 +161,8 @@ function AddAnother(props) {
                   <input
                     class="govuk-radios__input"
                     type="radio"
-                    name="{`input-${item.id}-isRetired`}"
-                    id="{`input-${item.id}-isRetired`}"
+                    name="{`input-${item.id}-${props.title}-isRetired`}"
+                    id="{`input-${item.id}-${props.title}-isRetired`}"
                     value="Yes"
                     checked={item.fields.field4 === 'Yes'}
                     on:Change={(e) =>
@@ -171,7 +171,7 @@ function AddAnother(props) {
                   />
                   <label
                     class="govuk-label govuk-radios__label"
-                    for="{`input-${item.id}-isRetired`}"
+                    for="{`input-${item.id}-${props.title}-isRetired`}"
                   >
                     Yes
                   </label>
@@ -179,8 +179,8 @@ function AddAnother(props) {
                 <div class="govuk-radios__item">
                   <input
                     class="govuk-radios__input"
-                    id="{`input-${item.id}-isRetired-2`}"
-                    name="{`input-${item.id}-isRetired`}"
+                    id="{`input-${item.id}-${props.title}-isRetired-2`}"
+                    name="{`input-${item.id}-${props.title}-isRetired`}"
                     type="radio"
                     value="No"
                     checked={item.fields.field4 === 'No'}
@@ -190,7 +190,7 @@ function AddAnother(props) {
                   />
                   <label
                     class="govuk-label govuk-radios__label"
-                    for="{`input-${item.id}-isRetired-2`}"
+                    for="{`input-${item.id}-${props.title}-isRetired-2`}"
                   >
                     No
                   </label>
