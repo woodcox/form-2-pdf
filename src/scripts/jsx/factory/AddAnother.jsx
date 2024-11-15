@@ -94,7 +94,7 @@ function AddAnother(props) {
                   <input
                     class="govuk-radios__input"
                     type="radio"
-                    name="{`input-${item.id}-${props.title-isAlive`}"
+                    name="{`input-${item.id}-${props.title}-isAlive`}"
                     id="{`input-${item.id}-${props.title}-isAlive`}"
                     value="Yes, they are alive"
                     checked={item.fields.field2 === 'Yes, they are alive'}
