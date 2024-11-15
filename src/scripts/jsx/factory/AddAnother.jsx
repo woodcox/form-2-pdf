@@ -97,7 +97,8 @@ function AddAnother(props) {
                     name="{`input-${item.id}-isAlive`}"
                     id="{`input-${item.id}-isAlive`}"
                     value="Yes, they are alive"
-                    on:Change={(e) =>
+                    checked={item.fields.field2 === 'Yes, they are alive'}
+                    onChange={(e) =>
                       handleChange(item.id, 'field2', e.target.value)
                     }
                   />
@@ -115,7 +116,8 @@ function AddAnother(props) {
                     name="{`input-${item.id}-isAlive`}"
                     type="radio"
                     value="No, they have died"
-                    on:Change={(e) =>
+                    checked={item.fields.field2 === 'No, they have died'}
+                    onChange={(e) =>
                       handleChange(item.id, 'field2', e.target.value)
                     }
                   />
@@ -131,8 +133,10 @@ function AddAnother(props) {
             </div>
             <div class="govuk-form-group">
               <label for={`input-${item.id}-field3`} class="govuk-label">
-                {capFirstLetter(props.title)} {index() + 1}'s current or last
-                job
+              {// Question varies depending if dead or alive
+              item.fields.field2 === 'No, they have died'
+                  ? `${capFirstLetter(props.title)} ${index() + 1}'s last job`
+                  : `${capFirstLetter(props.title)} ${index() + 1}'s current or last job`}
               </label>
               <input
                 id={`input-${item.id}-field3`}
@@ -147,7 +151,10 @@ function AddAnother(props) {
             <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend">
-                  Is {props.title} {index() + 1} retired?
+              {// Question varies depending if dead or alive
+                item.fields.field2 === 'No, they have died'
+                    ? `Had ${props.title} ${index() + 1} retired before they died?`
+                    : `Is ${props.title} ${index() + 1} retired?`}
               </legend>
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
@@ -157,6 +164,7 @@ function AddAnother(props) {
                     name="{`input-${item.id}-isRetired`}"
                     id="{`input-${item.id}-isRetired`}"
                     value="Yes"
+                    checked={item.fields.field4 === 'Yes'}
                     on:Change={(e) =>
                       handleChange(item.id, 'field4', e.target.value)
                     }
@@ -175,6 +183,7 @@ function AddAnother(props) {
                     name="{`input-${item.id}-isRetired`}"
                     type="radio"
                     value="No"
+                    checked={item.fields.field4 === 'No'}
                     on:Change={(e) =>
                       handleChange(item.id, 'field4', e.target.value)
                     }
