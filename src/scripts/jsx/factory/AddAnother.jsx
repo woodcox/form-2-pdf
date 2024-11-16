@@ -1,10 +1,35 @@
-import { createSignal, For, Show, onCleanup } from 'solid-js';
+import { createSignal, For, Show, onCleanup, createEffect } from 'solid-js';
+import { createStore } from "solid-js/store"
 import { makePersisted } from './makePersisted.jsx';
 
 // Capitalise the first letter of a string. This is used in the AddAnother component to adjust the {prop.title}.
 function capFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+// Initialize store
+const [parentInput, setParentInput] = createStore({
+  inputValues: [
+    {
+      id: 1,
+      fullName: "",
+      isAlive: "",
+      jobTitle: "",
+      isRetired: "",
+    },
+    {
+      id: 2,
+      fullName: "",
+      isAlive: "",
+      jobTitle: "",
+      isRetired: "",
+    }
+  ]
+})
+
+const updateField = (id, field, value) => {
+  setParentInput("inputValues", (item) => item.id === id, field, value);
+};
 
 function AddAnother(props) {
   /* Conditionslly render if the first group of fields is visible based on the visible prop passed into the component.
@@ -46,7 +71,6 @@ function AddAnother(props) {
 
   const removeItem = (id) => {
     setItems(items().filter((item) => item.id !== id));
-    console.log(`After removing item ${id}:`, items());
   };
 
   const handleChange = (id, field, newValue) => {
@@ -60,12 +84,14 @@ function AddAnother(props) {
     console.log('Updated items:', items());
   };
 
+  createEffect(() => {
+    console.log('Current state of items:', items());
+  });
+
   return (
     <div>
       <For each={items()}>
-        {(item, index) => { 
-          console.log(`Rendering item ${item.id} with fields:`, item.fields);
-          return (
+        {(item, index) => (
           <div key={item.id} class="govuk-form-group">
             <h2>
               {props.grammar} {props.title} {index() + 1}
@@ -84,15 +110,14 @@ function AddAnother(props) {
                 id={`input-${item.id}-${props.title}-name`}
                 class="govuk-input"
                 type="text"
-                value={item.fields.fullName}
+                value={parentInput.inputValues.find((i) => i.id === item.id)?.fullName || ""}
                 ref={
                   (el) => {
                     if (index() === items().length - 1) newInputRef = el;
                   } /* The field to focus on when the add button is clicked */
                 }
                 on:Change={(e) =>
-                  handleChange(item.id, 'fullName', e.target.value)
-                }
+                  updateField(item.id, "fullName", e.target.value)}
               />
             </div>
             <div class="govuk-form-group">
@@ -110,8 +135,7 @@ function AddAnother(props) {
                       value="Yes, they are alive"
                       //checked={item.fields.isAlive === 'Yes, they are alive'}
                       on:Change={(e) =>
-                        handleChange(item.id, 'isAlive', e.target.value)
-                      }
+                        updateField(item.id, "isAlive", e.target.value)}
                     />
                     <label
                       class="govuk-label govuk-radios__label"
@@ -129,7 +153,7 @@ function AddAnother(props) {
                       value="No, they have died"
                       //checked={item.fields.isAlive === 'No, they have died'}
                       on:Change={(e) =>
-                        handleChange(item.id, 'isAlive', e.target.value)
+                        updateField(item.id, "isAlive", e.target.value)
                       }
                     />
                     <label
@@ -143,7 +167,7 @@ function AddAnother(props) {
               </fieldset>
             </div>
             <Show
-              when={item.fields.isAlive === 'No, they have died'}
+              when={() => item.fields.isAlive === 'No, they have died'}
               fallback={<div></div>}
             >
               <div class="govuk-form-group">
@@ -159,9 +183,9 @@ function AddAnother(props) {
                   id={`input-${item.id}-${props.title}-job`}
                   class="govuk-input"
                   type="text"
-                  value={item.fields.jobTitle}
+                  value={parentInput.inputValues.find((i) => i.id === item.id)?.jobTitle || ""}
                   on:Change={(e) =>
-                    handleChange(item.id, 'jobTitle', e.target.value)
+                    updateField(item.id, "jobTitle", e.target.value)
                   }
                 />
               </div>
@@ -180,7 +204,7 @@ function AddAnother(props) {
                         value="Yes"
                         //checked={item.fields.isRetired === 'Yes'}
                         on:Change={(e) =>
-                          handleChange(item.id, 'isRetired', e.target.value)
+                          updateField(item.id, "isRetired", e.target.value)
                         }
                       />
                       <label
@@ -199,8 +223,7 @@ function AddAnother(props) {
                         value="No"
                         //checked={item.fields.isRetired === 'No'}
                         on:Change={(e) =>
-                          handleChange(item.id, 'isRetired', e.target.value)
-                        }
+                          updateField(item.id, "isRetired", e.target.value)}
                       />
                       <label
                         class="govuk-label govuk-radios__label"
@@ -223,7 +246,7 @@ function AddAnother(props) {
               </button>
             </div>
           </div>
-        );}}
+        )}
       </For>
       {/* Hide Add button if there are 2 parents already added */}
       <Show when={items().length < 2}>
