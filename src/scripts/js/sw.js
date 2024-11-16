@@ -8,6 +8,7 @@ var caches;
  */
 var self;
 
+/*
 // Activate event: Clean up old caches
 // Define the cache name
 const cacheName = 'your-app-cache-v1';
@@ -78,3 +79,4 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
+*/

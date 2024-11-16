@@ -135,15 +135,10 @@ export const esbuildPipeline = async () => {
     await ctx.watch();
     console.log("[esbuild] is watching for changes...");
   } else {
-    // Prod Step 1: Build once and exit if not watch mode
-    await ctx.rebuild()
-    .then(async (result) => {
+    // Build once and exit if not watch mode
+    await ctx.rebuild().then(result => {
       ctx.dispose();
       fs.writeFileSync('./src/_data/buildmeta.json', JSON.stringify(result.metafile));
-      //await runClosureCompiler();
-    }).catch(error => {
-      console.error("[closure-compiler] Error:", error);
-      process.exitCode = 1;
-    });
+    })
   }
 };

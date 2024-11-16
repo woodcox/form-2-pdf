@@ -17,11 +17,11 @@ function AddAnother(props) {
   */
   const [items, setItems] = createSignal(
     props.visible
-      ? [{ id: 1, fields: { field1: '', field2: '', field3: '', field4: '' } }]
+      ? [{ id: 1, fields: { fullName: '', isAlive: '', jobTitle: '', isRetired: '' } }]
       : []
   );
   let nextId = 2;
-  // This is for setting focus to the new input fields when add (parent or step-parent) button is clicked 
+  // This is for setting focus to the new input fields when add (parent or step-parent) button is clicked
   let newInputRef = null;
 
   // Only add a max of 2 parents
@@ -31,11 +31,11 @@ function AddAnother(props) {
         ...items(),
         {
           id: nextId++,
-          fields: { field1: '', field2: '', field3: '', field4: '' },
+          fields: { fullName: '', isAlive: '', jobTitle: '', isRetired: '' },
         },
       ]);
 
-      // Set a timeout to focus the new field1 input when add button is clicked
+      // Set a timeout to focus the new fullName input when add button is clicked
       setTimeout(() => {
         if (newInputRef) {
           newInputRef.focus();
@@ -46,6 +46,7 @@ function AddAnother(props) {
 
   const removeItem = (id) => {
     setItems(items().filter((item) => item.id !== id));
+    console.log(`After removing item ${id}:`, items());
   };
 
   const handleChange = (id, field, newValue) => {
@@ -56,12 +57,15 @@ function AddAnother(props) {
           : item
       )
     );
+    console.log('Updated items:', items());
   };
 
   return (
     <div>
       <For each={items()}>
-        {(item, index) => (
+        {(item, index) => { 
+          console.log(`Rendering item ${item.id} with fields:`, item.fields);
+          return (
           <div key={item.id} class="govuk-form-group">
             <h2>
               {props.grammar} {props.title} {index() + 1}
@@ -70,134 +74,145 @@ function AddAnother(props) {
               {props.hintText}
             </div>
             <div class="govuk-form-group">
-              <label for={`input-${item.id}-${props.title}-name`} class="govuk-label">
+              <label
+                for={`input-${item.id}-${props.title}-name`}
+                class="govuk-label"
+              >
                 {capFirstLetter(props.title)} {index() + 1} Full Name
               </label>
               <input
                 id={`input-${item.id}-${props.title}-name`}
                 class="govuk-input"
                 type="text"
-                value={item.fields.field1}
-                ref={el => { if (index() === items().length - 1) newInputRef = el; }  /* The field to focus on when the add button is clicked */}
+                value={item.fields.fullName}
+                ref={
+                  (el) => {
+                    if (index() === items().length - 1) newInputRef = el;
+                  } /* The field to focus on when the add button is clicked */
+                }
                 on:Change={(e) =>
-                  handleChange(item.id, 'field1', e.target.value)
+                  handleChange(item.id, 'fullName', e.target.value)
                 }
               />
             </div>
             <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend">
                   Is {props.title} {index() + 1} alive?
-              </legend>
-              <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input
-                    class="govuk-radios__input"
-                    type="radio"
-                    name="{`input-${item.id}-${props.title}-isAlive`}"
-                    id="{`input-${item.id}-${props.title}-isAlive`}"
-                    value="Yes, they are alive"
-                    checked={item.fields.field2 === 'Yes, they are alive'}
-                    onChange={(e) =>
-                      handleChange(item.id, 'field2', e.target.value)
-                    }
-                  />
-                  <label
-                    class="govuk-label govuk-radios__label"
-                    for="{`input-${item.id}-${props.title}-isAlive`}"
-                  >
-                    Yes, they are alive
-                  </label>
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input
+                      class="govuk-radios__input"
+                      type="radio"
+                      name={`input-${item.id}-${props.title}-isAlive`}
+                      id={`input-${item.id}-${props.title}-isAlive`}
+                      value="Yes, they are alive"
+                      //checked={item.fields.isAlive === 'Yes, they are alive'}
+                      on:Change={(e) =>
+                        handleChange(item.id, 'isAlive', e.target.value)
+                      }
+                    />
+                    <label
+                      class="govuk-label govuk-radios__label"
+                      for={`input-${item.id}-${props.title}-isAlive`}
+                    >
+                      Yes, they are alive
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input
+                      class="govuk-radios__input"
+                      id={`input-${item.id}-${props.title}-isAlive-2`}
+                      name={`input-${item.id}-${props.title}-isAlive`}
+                      type="radio"
+                      value="No, they have died"
+                      //checked={item.fields.isAlive === 'No, they have died'}
+                      on:Change={(e) =>
+                        handleChange(item.id, 'isAlive', e.target.value)
+                      }
+                    />
+                    <label
+                      class="govuk-label govuk-radios__label"
+                      for={`input-${item.id}-${props.title}-isAlive-2`}
+                    >
+                      No, they have died
+                    </label>
+                  </div>
                 </div>
-                <div class="govuk-radios__item">
-                  <input
-                    class="govuk-radios__input"
-                    id="{`input-${item.id}-${props.title}-isAlive-2`}"
-                    name="{`input-${item.id}-${props.title}-isAlive`}"
-                    type="radio"
-                    value="No, they have died"
-                    checked={item.fields.field2 === 'No, they have died'}
-                    onChange={(e) =>
-                      handleChange(item.id, 'field2', e.target.value)
-                    }
-                  />
-                  <label
-                    class="govuk-label govuk-radios__label"
-                    for="{`input-${item.id}-${props.title}-isAlive-2`}"
-                  >
-                    No, they have died
-                  </label>
-                </div>
+              </fieldset>
+            </div>
+            <Show
+              when={item.fields.isAlive === 'No, they have died'}
+              fallback={<div></div>}
+            >
+              <div class="govuk-form-group">
+                <label
+                  for={`input-${item.id}-${props.title}-job`}
+                  class="govuk-label"
+                >
+                  {`${capFirstLetter(props.title)} ${
+                    index() + 1
+                  }'s currrent or last job`}
+                </label>
+                <input
+                  id={`input-${item.id}-${props.title}-job`}
+                  class="govuk-input"
+                  type="text"
+                  value={item.fields.jobTitle}
+                  on:Change={(e) =>
+                    handleChange(item.id, 'jobTitle', e.target.value)
+                  }
+                />
               </div>
-            </fieldset>
-            </div>
-            <div class="govuk-form-group">
-              <label for={`input-${item.id}-${props.title}-job`} class="govuk-label">
-              {// Question varies depending if dead or alive
-              item.fields.field2 === 'No, they have died'
-                  ? `${capFirstLetter(props.title)} ${index() + 1}'s last job`
-                  : `${capFirstLetter(props.title)} ${index() + 1}'s current or last job`}
-              </label>
-              <input
-                id={`input-${item.id}-${props.title}-job`}
-                class="govuk-input"
-                type="text"
-                value={item.fields.field3}
-                on:Change={(e) =>
-                  handleChange(item.id, 'field3', e.target.value)
-                }
-              />
-            </div>
-            <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend">
-              {// Question varies depending if dead or alive
-                item.fields.field2 === 'No, they have died'
-                    ? `Had ${props.title} ${index() + 1} retired before they died?`
-                    : `Is ${props.title} ${index() + 1} retired?`}
-              </legend>
-              <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input
-                    class="govuk-radios__input"
-                    type="radio"
-                    name="{`input-${item.id}-${props.title}-isRetired`}"
-                    id="{`input-${item.id}-${props.title}-isRetired`}"
-                    value="Yes"
-                    checked={item.fields.field4 === 'Yes'}
-                    on:Change={(e) =>
-                      handleChange(item.id, 'field4', e.target.value)
-                    }
-                  />
-                  <label
-                    class="govuk-label govuk-radios__label"
-                    for="{`input-${item.id}-${props.title}-isRetired`}"
-                  >
-                    Yes
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input
-                    class="govuk-radios__input"
-                    id="{`input-${item.id}-${props.title}-isRetired-2`}"
-                    name="{`input-${item.id}-${props.title}-isRetired`}"
-                    type="radio"
-                    value="No"
-                    checked={item.fields.field4 === 'No'}
-                    on:Change={(e) =>
-                      handleChange(item.id, 'field4', e.target.value)
-                    }
-                  />
-                  <label
-                    class="govuk-label govuk-radios__label"
-                    for="{`input-${item.id}-${props.title}-isRetired-2`}"
-                  >
-                    No
-                  </label>
-                </div>
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend">
+                    {`Is ${props.title} ${index() + 1} retired?`}
+                  </legend>
+                  <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input
+                        class="govuk-radios__input"
+                        type="radio"
+                        name={`input-${item.id}-${props.title}-isRetired`}
+                        id={`input-${item.id}-${props.title}-isRetired`}
+                        value="Yes"
+                        //checked={item.fields.isRetired === 'Yes'}
+                        on:Change={(e) =>
+                          handleChange(item.id, 'isRetired', e.target.value)
+                        }
+                      />
+                      <label
+                        class="govuk-label govuk-radios__label"
+                        for={`input-${item.id}-${props.title}-isRetired`}
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input
+                        class="govuk-radios__input"
+                        id={`input-${item.id}-${props.title}-isRetired-2`}
+                        name={`input-${item.id}-${props.title}-isRetired`}
+                        type="radio"
+                        value="No"
+                        //checked={item.fields.isRetired === 'No'}
+                        on:Change={(e) =>
+                          handleChange(item.id, 'isRetired', e.target.value)
+                        }
+                      />
+                      <label
+                        class="govuk-label govuk-radios__label"
+                        for={`input-${item.id}-${props.title}-isRetired-2`}
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
               </div>
-            </fieldset>
-            </div>
+            </Show>
             <div class="govuk-button-group">
               <button
                 type="button"
@@ -208,7 +223,7 @@ function AddAnother(props) {
               </button>
             </div>
           </div>
-        )}
+        );}}
       </For>
       {/* Hide Add button if there are 2 parents already added */}
       <Show when={items().length < 2}>

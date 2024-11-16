@@ -19,7 +19,7 @@ const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
 const TEMPLATE_ENGINE = "liquid";
 
 // Currently Stackblitz does not like Import attributes. Hopefully will be able to write the following soon:
-// import manifest from './src/_data/manifest.json' with { "type": "json" };
+//import manifest from './src/_data/manifest.json' with { "type": "json" };
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const manifest = require('./src/_data/manifest.json');
