@@ -16,6 +16,9 @@
     "build": "npm run clean && npm run build:sass && npm run prefix && NODE_ENV=staging ELEVENTY_ENV=staging npm run build:eleventy -- --incremental --pathprefix=form-2-pdf",
     "minify": "npm run clean && npm run build:sass && npm run prefix -- --minify && NODE_ENV=production ELEVENTY_ENV=prod npm run build:eleventy -- --incremental --pathprefix=form-2-pdf"
   },
+  "stackblitz": {
+    "startCommand": "npm run clean && npm run start"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/woodcox/form-2-pdf.git"

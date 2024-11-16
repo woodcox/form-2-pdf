@@ -24,7 +24,7 @@ title: Form to pdf
   </form-component>
   <template data-island="replace">
     <div id="pdfapp"></div>
-    <script type="module" src="{{ '/app/render.js' | hash }}"></script>
+    <script type="module" src="{{ '/app/app.js' | hash }}"></script>
   </template>
 </is-land>
 

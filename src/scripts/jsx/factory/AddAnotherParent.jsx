@@ -7,7 +7,22 @@ function capFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Initialize store
+// Define a global object to store the state of all instances of AddAnotherParent
+const globalParentValues = {};
+
+
+
+function AddAnotherParent(props) {
+  /* Conditionslly render if the first group of fields is visible based on the visible prop passed into the component.
+  Example:
+  <AddAnotherParent
+    title="parent"
+    grammar="Your"
+    visible={true}   // If true render the first field group, if null or false don't render the fields
+  />
+  */
+
+  // Initialize store
 const [parentInput, setParentInput] = createStore({
   inputValues: [
     {
@@ -31,15 +46,7 @@ const updateField = (id, field, value) => {
   setParentInput("inputValues", (item) => item.id === id, field, value);
 };
 
-function AddAnother(props) {
-  /* Conditionslly render if the first group of fields is visible based on the visible prop passed into the component.
-  Example:
-  <AddAnother
-    title="parent"
-    grammar="Your"
-    visible={true}   // If true render the first field group, if null or false don't render the fields
-  />
-  */
+  // Signal to render the number of parents to add
   const [items, setItems] = createSignal(
     props.visible
       ? [{ id: 1, fields: { fullName: '', isAlive: '', jobTitle: '', isRetired: '' } }]
@@ -258,4 +265,4 @@ function AddAnother(props) {
   );
 }
 
-export default AddAnother;
+export default AddAnotherParent;

@@ -6,7 +6,7 @@ import Radio from './Radio.jsx';
 import Dropdown from './Dropdown.jsx';
 import Autocomplete  from './Autocomplete.jsx';
 import DeleteStorageButton from './DeleteStorageButton';
-import AddAnother from './AddAnother.jsx';
+import AddAnotherParent from './AddAnotherParent.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // Map of components to import dynamically
@@ -256,13 +256,13 @@ export default function Form(props) {
               <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
             </svg>
           </a>
-          <AddAnother 
+          <AddAnotherParent
             title="parent"
             grammar="Your"
             visible={true}
             hintText="For example, your mother, father or parent"
           />
-          <AddAnother 
+          <AddAnotherParent
             title="step-parent"
             grammar="Your"
             hintText="For example, your step-mother, step-father or step-parent"
