@@ -30,15 +30,19 @@ export default async function (eleventyConfig) {
   // DEV SERVER
   eleventyConfig.setServerOptions({
     port: 8080,
-    watch: ["dist/app/*.css", "dist/app/*.js"],
+    watch: ["dist/app/*.css"], // sass is watching the scss (see package.json) & esbuild will incrementally rebuild on change
     liveReload: true,
     domDiff: true,
   });
   
   // WATCH
-  // esbuild is also watching the js & jsx files
+  eleventyConfig.addWatchTarget("./src/");
+
   eleventyConfig.watchIgnores.add("./src/_data/manifest.json");
   eleventyConfig.watchIgnores.add("./src/_data/buildmeta.json");
+  eleventyConfig.watchIgnores.add("./src/style/**"); // Sass is watching for changes already
+
+  eleventyConfig.setWatchThrottleWaitTime(200); // slow the rebuild
 
   // BUILD HOOK
   eleventyConfig.on("eleventy.before", esbuildPipeline);

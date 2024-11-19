@@ -262,8 +262,8 @@ const schema = {
         }
       },
       YourMum: {
-        pageUrl: '/your-mum',
-        label: 'Your mums fullname',
+        pageUrl: '/your-parents',
+        label: 'Parent 1 fullname',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -273,8 +273,8 @@ const schema = {
         required: true,
       },
       YourMumDead: {
-        pageUrl: '/your-mum',
-        label: 'Is your mum alive?',
+        pageUrl: '/your-parents',
+        label: 'Is parent 1 alive?',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -282,10 +282,22 @@ const schema = {
         fieldType: 'text',
         errormessage: '',
         required: true,
+        component: 'Radio',
+        componentProps: {
+          componentId: 'mumIsALive',
+          name: 'mumIsAlive',
+          label: 'Is parent 1 alive?',
+          value: '',
+          initialOption: 'Select...',
+          options: [
+            { name: 'mumIsAlive', value: 'Yes, they are alive', id: 'mumAlive' },
+            { name: 'mumIsAlive', value: 'No, they have died', id: 'mumDead' }
+          ]
+        }
       },
       YourMumJob: {
-        pageUrl: '/your-mum',
-        label: 'Your mums current or last job',
+        pageUrl: '/your-parents',
+        label: "Parent 1's current or last job",
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -295,8 +307,8 @@ const schema = {
         required: true,
       },
       YourMumRetired: {
-        pageUrl: '/your-mum',
-        label: 'Has your mum retired?',
+        pageUrl: '/your-parents',
+        label: 'Is parent 1 alive?',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -308,7 +320,7 @@ const schema = {
         componentProps: {
           componentId: 'MumRetired',
           name: 'MumRetired',
-          label: 'Has your mum retired?',
+          label: 'Is parent 1 retired?',
           value: '',
           initialOption: 'Select...',
           options: [
@@ -317,9 +329,9 @@ const schema = {
           ]
         }
       },
-      YourParent1: {
+      YourDad: {
         pageUrl: '/your-parents',
-        label: 'Your parents fullname',
+        label: 'Parent 2 fullname?',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -328,9 +340,9 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      YourParent1Dead: {
+      YourDadDead: {
         pageUrl: '/your-parents',
-        label: 'Is your parent alive?',
+        label: 'Is parent 2 alive?',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -338,10 +350,22 @@ const schema = {
         fieldType: 'text',
         errormessage: '',
         required: true,
+        component: 'Radio',
+        componentProps: {
+          componentId: 'DadIsALive',
+          name: 'DadIsAlive',
+          label: 'Is parent 2 alive?',
+          value: '',
+          initialOption: 'Select...',
+          options: [
+            { name: 'dadIsAlive', value: 'Yes, they are alive', id: 'dadAlive' },
+            { name: 'dadIsAlive', value: 'No, they have died', id: 'dadDead' }
+          ]
+        }
       },
-      YourParent1Job: {
+      YourDadJob: {
         pageUrl: '/your-parents',
-        label: 'Your parents current or last job',
+        label: "Parent 2's current or last job",
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -350,9 +374,9 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      YourParent1Retired: {
+      YourDadRetired: {
         pageUrl: '/your-parents',
-        label: 'Are they retired?',
+        label: 'Is parent 2 retired?',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -362,18 +386,18 @@ const schema = {
         required: true,
         component: 'Radio',
         componentProps: {
-          componentId: 'Parent1Retired',
-          name: 'Parent1Retired',
-          label: 'Are they retired?',
+          componentId: 'DadIsRetired',
+          name: 'dadIsRetired',
+          label: 'Is parent 2 retired?',
           value: '',
           initialOption: 'Select...',
           options: [
-            { name: 'parent1Retired', value: 'No', id: 'parent1Working' },
-            { name: 'parent1Retired', value: 'Yes, retired', id: 'parent1Retired' }
+            { name: 'dadIsRetired', value: 'No', id: 'dadWorking' },
+            { name: 'dadIsRetired', value: 'Yes, retired', id: 'dadRetired' }
           ]
         }
       },
-      YourParent2: {
+      YourStepParent1: {
         pageUrl: '/your-parents',
         label: 'Your parents fullname',
         type: 'text',
@@ -384,7 +408,7 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      YourParent2Dead: {
+      YourStepParent1Dead: {
         pageUrl: '/your-parents',
         label: 'Is your parent alive?',
         type: 'text',
@@ -395,7 +419,7 @@ const schema = {
         errormessage: '',
         required: true,
       },
-      YourParent2Job: {
+      YourStepParent1Job: {
         pageUrl: '/your-parents',
         label: 'Your parents current or last job',
         type: 'text',
@@ -406,7 +430,7 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      YourParent2Retired: {
+      YourStepParent1Retired: {
         pageUrl: '/your-parents',
         label: 'Are they retired?',
         type: 'text',
@@ -429,7 +453,7 @@ const schema = {
           ]
         }
       },
-      PartnerParent1: {
+      PartnerMum: {
         pageUrl: '/partner-parents',
         label: 'Your partners parent fullname',
         type: 'text',
@@ -440,7 +464,7 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      PartnerParent1Dead: {
+      PartnerMumDead: {
         pageUrl: '/partner-parents',
         label: 'Is your parent alive?',
         type: 'text',
@@ -451,7 +475,7 @@ const schema = {
         errormessage: '',
         required: true,
       },
-      PartnerParent1Job: {
+      PartnerMumJob: {
         pageUrl: '/partner-parents',
         label: 'Your partners parents current or last job',
         type: 'text',
@@ -462,7 +486,7 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      PartnerParent1Retired: {
+      PartnerMumRetired: {
         pageUrl: '/partner-parents',
         label: 'Are they retired?',
         type: 'text',
@@ -473,7 +497,7 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      PartnerParent2: {
+      PartnerDad: {
         pageUrl: '/partner-parents',
         label: 'Your partners parent fullname',
         type: 'text',
@@ -484,7 +508,7 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      PartnerParent2Dead: {
+      PartnerDadDead: {
         pageUrl: '/partner-parents',
         label: 'Is your partners parent alive?',
         type: 'text',
@@ -495,7 +519,7 @@ const schema = {
         errormessage: '',
         required: true,
       },
-      PartnerParent2Job: {
+      PartnerDadJob: {
         pageUrl: '/partner-parents',
         label: 'Your partners parents current or last job',
         type: 'text',
@@ -506,7 +530,7 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      PartnerParent2Retired: {
+      PartnerDadRetired: {
         pageUrl: '/partner-parents',
         label: 'Are they retired?',
         type: 'text',
@@ -516,23 +540,6 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-      },
-    },
-    // PAGE 2
-    // need new array for a new page
-    {
-      Mother: {
-        pageUrl: '/test',
-        type: 'text',
-        position: {
-          x: 101.34,
-          y: 30.69,
-        },
-        width: 45,
-        height: 10,
-        rotate: 0,
-        alignment: 'left',
-        verticalAlignment: 'top',
       },
     },
   ],

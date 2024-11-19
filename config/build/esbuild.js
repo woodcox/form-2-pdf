@@ -130,10 +130,9 @@ export const esbuildPipeline = async () => {
     process.exitCode = 1;
   })
   if (isDev === true){
-    // Enable watch mode - NOTE buildmeta.json is not generated when watching
-    // Need to limit esbuild so only watching js & jsx
-    await ctx.watch();
-    console.log("[esbuild] is watching for changes...");
+    // Enable rebuild when 11ty in watch mode - NOTE buildmeta.json is not generated when watching
+    await ctx.rebuild(); // Use 11ty to watch and esbuild to rebuild incrementally
+    console.log("[esbuild] will rebuild when 11ty detects a change...");
   } else {
     // Build once and exit if not watch mode
     await ctx.rebuild().then(result => {

@@ -1,6 +1,6 @@
 {
-  "render.map": "render.js.map",
-  "render": "render.js",
+  "app.map": "app.js.map",
+  "app": "app.js",
   "is-land.map": "is-land.js.map",
   "is-land": "is-land.js",
   "sw.map": "sw.js.map",
