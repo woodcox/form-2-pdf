@@ -263,7 +263,7 @@ const schema = {
       },
       YourMum: {
         pageUrl: '/your-parents',
-        label: 'Parent 1 fullname',
+        label: 'Parent 1 full name',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,

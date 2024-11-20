@@ -10,6 +10,7 @@ export default function Booking() {
         inputs={pdfState}
         onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="Your booking"
+        pageNumber="3"
         currentPage="/booking"
         prevPage="/partner"
         nextPage="/ceremony"

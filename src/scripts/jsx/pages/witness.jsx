@@ -10,6 +10,7 @@ export default function Witness() {
         inputs={pdfState}
         onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="Your witnesses"
+        pageNumber="5"
         headline="Your witnesses must be over 16 years old and can speak and understand English."
         currentPage="/witness"
         prevPage="/ceremony"

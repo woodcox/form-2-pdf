@@ -56,27 +56,6 @@ const pdfDefaultValues = {
   PartnerStepParent2Dead: '',
   PartnerStepParent2Job: '',
   PartnerStepParent2Retired: '',
-  /*YourMum: '',
-  YourMumJob: '',
-  YourDad: '',
-  YourDadJob: '',
-  YourParent: '',
-  YourParentJob: '',
-  YourStepParent: '',
-  YourStepParentJob: '',
-  Your2ndStepParent: '',
-  Your2ndStepParentJob: '',
-  PartnerMum: '',
-  PartnerMumJob: '',
-  PartnerDad: '',
-  PartnerDadJob: '',
-  PartnerParent: '',
-  PartnerParentJob: '',
-  PartnerStepParent: '',
-  PartnerStepParentJob: '',
-  Partner2ndStepParent: '',
-  Partner2ndStepParentJob: '',
-  */
 };
 
 export const [pdfState, setPdfState] = makePersisted(createStore(pdfDefaultValues), {storage: localStorage});

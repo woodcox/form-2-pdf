@@ -10,6 +10,7 @@ export default function YourPartner() {
         inputs={pdfState}
         onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="About your partner"
+        pageNumber="2"
         currentPage="/partner"
         prevPage="/your-details"
         nextPage="/booking"

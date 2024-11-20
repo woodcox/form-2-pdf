@@ -10,6 +10,7 @@ export default function Ceremony() {
         inputs={pdfState}
         onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="Your ceremony"
+        pageNumber="4"
         currentPage="/ceremony"
         prevPage="/booking"
         nextPage="/witness"
