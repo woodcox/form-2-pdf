@@ -21,6 +21,18 @@ function AddAnotherParent(props) {
   */
 
   const [parentInput, setParentInput] = createStore({
+    inputValues: [],
+  });
+
+  createEffect(() => {
+    if (props.visible && parentInput.inputValues.length === 0) {
+      setParentInput("inputValues", [
+        { id: 1, fullName: "", isAlive: "", jobTitle: "", isRetired: "" },
+      ]);
+    }
+  });
+
+  const [parentInput, setParentInput] = createStore({
     inputValues: props.visible
       ? [{ id: 1, fullName: '', isAlive: '', jobTitle: '', isRetired: '' }]
       : [],
