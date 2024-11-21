@@ -61,18 +61,7 @@ export default function Form(props) {
             currentPage={props.currentPage}
             prevPagePrefix={prevPagePrefix}
             nextPagePrefix={nextPagePrefix}
-      />
-          <AddAnotherParent
-            title="parent"
-            grammar="Your"
-            visible={true}
-            hintText="For example, your mother, father or parent"
-          />
-          <AddAnotherParent
-            title="step-parent"
-            grammar="Your"
-            hintText="For example, your step-mother, step-father or step-parent"
-          />      
+      />     
     </form>
     </ErrorBoundaryWrapper>
     </>

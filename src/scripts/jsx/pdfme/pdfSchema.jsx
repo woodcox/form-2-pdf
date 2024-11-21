@@ -262,7 +262,7 @@ const schema = {
         }
       },
       YourMum: {
-        pageUrl: '/your-parents',
+        pageUrl: '/your-details',
         label: 'Parent 1 full name',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
@@ -271,6 +271,14 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'AddAnotherParent',
+        componentProps: {
+          componentId: 'Parents',
+          title: 'Parent',
+          grammar: 'Your',
+          visible: true,
+          hintText: "For example, your mother, father or parent"
+        }
       },
       YourMumDead: {
         pageUrl: '/your-parents',

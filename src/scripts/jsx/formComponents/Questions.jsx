@@ -3,6 +3,8 @@ import AppendFields from './../factory/AppendFields.jsx';
 import Radio from './../factory/Radio.jsx';
 import Dropdown from './../factory/Dropdown.jsx';
 import Autocomplete  from './../factory/Autocomplete.jsx';
+import AddAnotherParent  from './../factory/AddAnotherParent.jsx';
+import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // Map of components to import dynamically
 const componentMap = {
@@ -10,7 +12,8 @@ const componentMap = {
   AppendFields,
   Dropdown,
   Autocomplete,
-  Radio, // Add the Dropdown component to the component map
+  Radio,
+  AddAnotherParent, // Add the Dropdown component to the component map
   // Add more components here as needed
 };
 
