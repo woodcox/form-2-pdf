@@ -1,8 +1,8 @@
 import { createSignal } from 'solid-js';
+import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
+
 // Factory file
 import MountGovUk from './MountGovUk.jsx';
-import AddAnotherParent from './AddAnotherParent.jsx';
-
 
 // Form Component file
 import Questions from './../formComponents/Questions.jsx';
@@ -10,7 +10,6 @@ import ErrorBoundaryWrapper from './../formComponents/ErrorBoundaryWrapper.jsx';
 import LegendHeader from './../formComponents/LegendHeader.jsx';
 import NavigationButtons from './../formComponents/NavigationButtons.jsx';
 import SummaryPage from './../formComponents/SummaryPage.jsx';
-import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // URL from 11ty
 const pathPrefix = process.env.PATHPREFIX;
@@ -47,7 +46,7 @@ export default function Form(props) {
         currentPage={props.currentPage}
         localInputs={localInputs}
         handleChange={handleChange}
-        setPdfState={props.setPdfState}
+        setPdfState={setPdfState}
       />
         {props.currentPage === '/summary' && (
           <SummaryPage

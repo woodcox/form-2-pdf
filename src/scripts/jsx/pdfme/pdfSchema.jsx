@@ -273,7 +273,7 @@ const schema = {
         required: true,
         component: 'AddAnotherParent',
         componentProps: {
-          componentId: 'Parents',
+          componentId: 'YourMum',
           title: 'Parent',
           grammar: 'Your',
           visible: true,
