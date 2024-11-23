@@ -263,7 +263,7 @@ const schema = {
       },
       YourParents: {
         pageUrl: '/your-parents',
-        label: 'Parent 1 full name',
+        label: 'Your parent(s)',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -282,7 +282,7 @@ const schema = {
       },
       YourStepParents: {
         pageUrl: '/your-parents',
-        label: 'Step-parent 1 full name',
+        label: 'Your step-parent(s)',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -301,7 +301,7 @@ const schema = {
       },
       PartnerParents: {
         pageUrl: '/partner-parents',
-        label: 'Parent 1 full name',
+        label: 'Your Partners Parent(s)',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -311,16 +311,16 @@ const schema = {
         required: true,
         component: 'AddAnotherParent',
         componentProps: {
-          componentId: 'YourParents',
+          componentId: 'PartnerParents',
           title: 'Parent',
-          grammar: 'Your',
+          grammar: "Partner's",
           visible: true,
-          hintText: "For example, your mother, father or parent"
+          hintText: "For example, your partners mother, father or parent"
         }
       },
-      PartnerDadRetired: {
+      PartnerStepParents: {
         pageUrl: '/partner-parents',
-        label: 'Are they retired?',
+        label: "Your partner's step-parent(s)",
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -328,6 +328,14 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'AddAnotherParent',
+        componentProps: {
+          componentId: 'PartnerStepParents',
+          title: 'Step-parent',
+          grammar: "Partner's",
+          visible: true,
+          hintText: "For example, your partners step-mother, step-father or step-parent"
+        }
       },
     },
   ],
