@@ -4,7 +4,7 @@ import Radio from './../factory/Radio.jsx';
 import Dropdown from './../factory/Dropdown.jsx';
 import Autocomplete  from './../factory/Autocomplete.jsx';
 import AddAnotherParent  from './../factory/AddAnotherParent.jsx';
-import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
+//import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 // Map of components to import dynamically
 const componentMap = {
@@ -22,7 +22,7 @@ export default function Questions({
   currentPage,
   localInputs,
   handleChange,
-  setPdfState,
+  setPdfState = (updateFn) => {}, // Default to no-op for safety
 }) {
   return (
     <For each={Object.entries(template.schemas[0])}>
@@ -43,6 +43,13 @@ export default function Questions({
           const DynamicComponent = componentMap[config.component];
           if (DynamicComponent) {
             const { componentProps } = config; // Get all componentProps
+
+            // Add a safeguard to ensure setPdfState is defined
+            if (!setPdfState) {
+              console.error('setPdfState is not defined!');
+              return null;
+            }
+
             return (
               <DynamicComponent
                 {...componentProps}

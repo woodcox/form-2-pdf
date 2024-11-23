@@ -16,7 +16,7 @@ function AddAnotherParent(props) {
   <AddAnotherParent
     title="parent"
     grammar="Your"
-    visible={true}   // If true render the first field group, if null or false don't render the fields
+    visible=true   // If true render the first field group, if null or false don't render the fields
     hintText="For example, your mother, father or parent"
   />
   */
@@ -81,21 +81,18 @@ function AddAnotherParent(props) {
     const joinedResult = parentInput.inputValues
       .map((item) => {
         const namePart = `${item.fullName} ${
-          item.isAlive === "(deceased)" ? "(deceased)" : "alive"
+          item.isAlive === "(deceased)" ? "(deceased)" : ""
         }`;
-        const jobPart =
-          item.isAlive === "(deceased)"
-            ? `${item.jobTitle} ${item.isRetired === "(retired)" ? "(retired)" : ""}`
-            : `${item.jobTitle}`;
+        const jobPart = `${item.jobTitle} ${
+          item.isRetired === "(retired)" ? "(retired)" : ""
+        }`;
         return `${namePart}, ${jobPart}`.trim();
       })
       .filter(Boolean) // Remove empty strings
-      .join("\n"); // Join each parent on a new line or your preferred separator
+      .join("\n"); // Join each parent on a new line
   
     // Call the parent's onChange handler with the result
-    
     props.onChange(joinedResult);
-
   });
   
 
