@@ -295,7 +295,6 @@ const schema = {
           componentId: 'YourStepPartents',
           title: 'Step-parent',
           grammar: 'Your',
-          visible: true,
           hintText: "For example, your step-mother, step-father or step-parent"
         }
       },
@@ -312,10 +311,10 @@ const schema = {
         component: 'AddAnotherParent',
         componentProps: {
           componentId: 'PartnerParents',
-          title: 'Parent',
+          title: 'parent',
           grammar: "Partner's",
           visible: true,
-          hintText: "For example, your partners mother, father or parent"
+          hintText: "For example, their mother, father or parent"
         }
       },
       PartnerStepParents: {
@@ -331,10 +330,9 @@ const schema = {
         component: 'AddAnotherParent',
         componentProps: {
           componentId: 'PartnerStepParents',
-          title: 'Step-parent',
+          title: 'step-parent',
           grammar: "Partner's",
-          visible: true,
-          hintText: "For example, your partners step-mother, step-father or step-parent"
+          hintText: "For example, their step-mother, step-father or step-parent"
         }
       },
     },

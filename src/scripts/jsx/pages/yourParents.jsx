@@ -15,8 +15,6 @@ export default function YourParents() {
         currentPage="/your-parents"
         prevPage="/witness"
         nextPage="/partner-parents"
-        mumPage="/your-mum"
-        dadPage="/your-dad"
       />
     </>
   );
