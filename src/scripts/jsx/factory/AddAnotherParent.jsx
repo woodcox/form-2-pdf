@@ -32,16 +32,16 @@ function AddAnotherParent(props) {
 
   const [parentInput, setParentInput] = globalParentValues[storeName];
 
-  createEffect(() => {
-    if (props.visible && parentInput.inputValues.length === 0) {
-      setParentInput("inputValues", [
-        { id: 1, fullName: "", isAlive: "", jobTitle: "", isRetired: "" },
-      ]);
-    }
-  });
-
-  let nextId = 2;
+  let nextId = 1;
   let newInputRef = null;
+
+   // Fields to be initialized for each addAnother component
+   const defaultInputs = {
+    fullName: '',
+    isAlive: '',
+    jobTitle: '',
+    isRetired: '',
+  };
 
   // Add a new parent
   const addItem = () => {
@@ -50,10 +50,7 @@ function AddAnotherParent(props) {
         ...prev,
         {
           id: nextId++,
-          fullName: '',
-          isAlive: '',
-          jobTitle: '',
-          isRetired: '',
+          ...defaultInputs,
         },
       ]);
 
@@ -76,6 +73,21 @@ function AddAnotherParent(props) {
   const updateField = (id, field, value) => {
     setParentInput('inputValues', (item) => item.id === id, field, value);
   };
+
+  let initialRender = false; // Track the initial render for when props.visible = true so the Parent 1 details can still be removed from the dom if the client wishes
+
+  createEffect(() => {
+    console.log("Current inputValues:", parentInput.inputValues);
+    if (!initialRender && props.visible && parentInput.inputValues.length === 0) {
+      setParentInput("inputValues", [
+        { id: 0, ...defaultInputs },
+      ]);
+      initialRender = true; // Mark initialization as complete
+    }
+    if (parentInput.inputValues.length === 0) {
+      console.log("No parents present.");
+    }
+  });
 
   createEffect(() => {
     const joinedResult = parentInput.inputValues
