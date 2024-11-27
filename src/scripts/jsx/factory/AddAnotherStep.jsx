@@ -10,7 +10,7 @@ function capFirstLetter(string) {
 // Define a global object to store the state of all instances of AddAnotherParent
 const globalParentValues = {};
 
-function AddAnotherParent(props) {
+function AddAnotherStep(props) {
   /* Conditionslly render if the first group of fields is visible based on the visible prop passed into the component.
   Example:
   <AddAnotherParent
@@ -42,6 +42,21 @@ function AddAnotherParent(props) {
     jobTitle: '',
     isRetired: '',
   };
+
+  function initializeState() {
+    if (parentInput.inputValues.length === 0 && props.visible) {
+      setParentInput('inputValues', [{ id: 0, ...defaultInputs }]);
+    }
+  }
+
+  function validateState() {
+    setParentInput('inputValues', (prev) =>
+      prev.map((item) => ({ ...defaultInputs, ...item }))
+    );
+  }
+
+  initializeState();
+  validateState(); 
 
   // Add a new parent
   const addItem = () => {
@@ -349,4 +364,4 @@ function AddAnotherParent(props) {
   );
 }
 
-export default AddAnotherParent;
+export default AddAnotherStep;
