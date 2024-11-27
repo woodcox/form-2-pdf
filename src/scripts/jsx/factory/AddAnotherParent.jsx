@@ -76,7 +76,24 @@ function AddAnotherParent(props) {
 
   let initialRender = false; // Track the initial render for when props.visible = true so the Parent 1 details can still be removed from the dom if the client wishes
 
+   // Dedicated function: Initialize state
+   const initializeState = () => {
+    if (parentInput.inputValues.length === 0 && props.visible) {
+      setParentInput("inputValues", [{ id: 0, ...defaultInputs }]);
+    }
+  };
+
+  // Dedicated function: Validate state
+  const validateState = () => {
+    setParentInput("inputValues", (prev) =>
+      prev.map((item) => ({ ...defaultInputs, ...item }))
+    );
+  };
+
   createEffect(() => {
+    //initializeState();
+    //validateState();
+  
     console.log("Current inputValues:", parentInput.inputValues);
 
     // If inputValues already exist in the store

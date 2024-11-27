@@ -42,7 +42,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.watchIgnores.add("./src/_data/buildmeta.json");
   eleventyConfig.watchIgnores.add("./src/style/**"); // Sass is watching for changes already
 
-  eleventyConfig.setWatchThrottleWaitTime(200); // slow the rebuild
+  eleventyConfig.setWatchThrottleWaitTime(300); // in millisecons slow the rebuild
 
   // BUILD HOOK
   eleventyConfig.on("eleventy.before", esbuildPipeline);
