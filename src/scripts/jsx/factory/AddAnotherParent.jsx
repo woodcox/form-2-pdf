@@ -1,6 +1,6 @@
 import { For, Show, createEffect, createUniqueId } from 'solid-js';
 import { createStore } from 'solid-js/store';
-import { makePersisted } from './makePersisted.jsx';
+//import { makePersisted } from './makePersisted.jsx';
 
 // Capitalise the first letter of a string. This is used in the AddAnother component to adjust the {prop.title}.
 function capFirstLetter(string) {
@@ -21,9 +21,9 @@ function AddAnotherParent(props) {
   />
   */
 
-  const id = createUniqueId()
+  const Uid = createUniqueId()
   // Derive the store name from the componentId prop
-  const storeName = `parentValues_${id}`;
+  const storeName = `parentValues_${Uid}`;
 
   // Check if the store for this component instance exists, if not, create a new one
   if (!globalParentValues[storeName]) {
@@ -32,11 +32,12 @@ function AddAnotherParent(props) {
 
   const [parentInput, setParentInput] = globalParentValues[storeName];
 
-  let nextId = 1;
+  let nextId = 2;
   let newInputRef = null;
 
    // Fields to be initialized for each addAnother component
    const defaultInputs = {
+    id: 1,
     fullName: '',
     isAlive: '',
     jobTitle: '',
@@ -76,37 +77,35 @@ function AddAnotherParent(props) {
 
   let initialRender = false; // Track the initial render for when props.visible = true so the Parent 1 details can still be removed from the dom if the client wishes
 
-   // Dedicated function: Initialize state
-   const initializeState = () => {
-    if (parentInput.inputValues.length === 0 && props.visible) {
-      setParentInput("inputValues", [{ id: 0, ...defaultInputs }]);
-    }
-  };
-
-  // Dedicated function: Validate state
-  const validateState = () => {
-    setParentInput("inputValues", (prev) =>
-      prev.map((item) => ({ ...defaultInputs, ...item }))
-    );
-  };
-
   createEffect(() => {
-    //initializeState();
-    //validateState();
-  
-    console.log("Current inputValues:", parentInput.inputValues);
-
+    console.log("Global:", globalParentValues);
     // If inputValues already exist in the store
+    /*
     if (parentInput.inputValues.length > 0) {
-      console.log("Existing inputValues found:", parentInput.inputValues);
+      console.log("Global:", globalParentValues);
       return;
+    }*/
+    if (
+      parentInput.inputValues.length > 0 &&
+      parentInput.inputValues.some((input) => input.fullName.trim() !== "")
+    ) {
+      console.log(
+        "Inputs already filled with values:",
+        parentInput.inputValues.map((input, index) => ({
+          [`Parent ${index + 1}`]: input,
+        }))
+      );
+      return; // Exit if inputs already have values
     }
+
+
     // Initialize default values only if no inputValues exist and it's the first render
-    else if (!initialRender && props.visible && parentInput.inputValues.length === 0) {
+    if (!initialRender && props.visible && parentInput.inputValues.length === 0) {
       setParentInput("inputValues", [
-        { id: 0, ...defaultInputs },
+        { ...defaultInputs },
       ]);
       initialRender = true; // Mark initialization as complete
+      return;
     }
     if (parentInput.inputValues.length === 0) {
       console.log("No parents present.");
@@ -136,7 +135,9 @@ function AddAnotherParent(props) {
   return (
     <div>
       <For each={parentInput.inputValues}>
-        {(item, index) => (
+        {(item, index) => {
+          console.log(`Rendering input for Parent ${index() + 1}:`, item);
+          return (
           <div key={item.id} class="govuk-form-group">
             <h2>
               {props.grammar} {props.title} {index() + 1}
@@ -161,7 +162,7 @@ function AddAnotherParent(props) {
                 ref={(el) => {
                   if (index() === parentInput.inputValues.length - 1) newInputRef = el;
                 }}
-                onInput={(e) => updateField(item.id, "fullName", e.target.value)}
+                onChange={(e) => updateField(item.id, "fullName", e.target.value)}
               />
             </div>
 
@@ -179,7 +180,7 @@ function AddAnotherParent(props) {
                       name={`input-${item.id}-${props.title}-isAlive`}
                       value="alive"
                       checked={item.isAlive === "alive"}
-                      onInput={(e) =>
+                      onChange={(e) =>
                         updateField(item.id, "isAlive", e.target.value)
                       }
                     />
@@ -194,7 +195,7 @@ function AddAnotherParent(props) {
                       name={`input-${item.id}-${props.title}-isAlive`}
                       value="(deceased)"
                       checked={item.isAlive === "(deceased)"}
-                      onInput={(e) =>
+                      onChange={(e) =>
                         updateField(item.id, "isAlive", e.target.value)
                       }
                     />
@@ -220,7 +221,7 @@ function AddAnotherParent(props) {
                   class="govuk-input"
                   type="text"
                   value={item.jobTitle}
-                  onInput={(e) => updateField(item.id, "jobTitle", e.target.value)}
+                  onChange={(e) => updateField(item.id, "jobTitle", e.target.value)}
                 />
               </div>
 
@@ -239,7 +240,7 @@ function AddAnotherParent(props) {
                         id={`input-${item.id}-${props.title}-isRetired`}
                         value="(retired)"
                         checked={item.isRetired === '(retired)'}
-                        onInput={(e) =>
+                        onChange={(e) =>
                           updateField(item.id, 'isRetired', e.target.value)
                         }
                       />
@@ -258,7 +259,7 @@ function AddAnotherParent(props) {
                         type="radio"
                         value="No"
                         checked={item.isRetired === 'No'}
-                        onInput={(e) =>
+                        onChange={(e) =>
                           updateField(item.id, 'isRetired', e.target.value)
                         }
                       />
@@ -288,7 +289,7 @@ function AddAnotherParent(props) {
                   class="govuk-input"
                   type="text"
                   value={item.jobTitle}
-                  onInput={(e) => updateField(item.id, "jobTitle", e.target.value)}
+                  onChange={(e) => updateField(item.id, "jobTitle", e.target.value)}
                 />
               </div>
 
@@ -307,7 +308,7 @@ function AddAnotherParent(props) {
                         id={`input-${item.id}-${props.title}-isRetired`}
                         value="(retired)"
                         checked={item.isRetired === '(retired)'}
-                        onInput={(e) =>
+                        onChange={(e) =>
                           updateField(item.id, 'isRetired', e.target.value)
                         }
                       />
@@ -326,7 +327,7 @@ function AddAnotherParent(props) {
                         type="radio"
                         value="No"
                         checked={item.isRetired === 'No'}
-                        onInput={(e) =>
+                        onChange={(e) =>
                           updateField(item.id, 'isRetired', e.target.value)
                         }
                       />
@@ -353,7 +354,7 @@ function AddAnotherParent(props) {
               </button>
             </div>
           </div>
-        )}
+        )}}
       </For>
 
       {/* Add Button */}
