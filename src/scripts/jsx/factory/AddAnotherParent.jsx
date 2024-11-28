@@ -87,12 +87,12 @@ function AddAnotherParent(props) {
     }*/
     if (
       parentInput.inputValues.length > 0 &&
-      parentInput.inputValues.some((input) => input.fullName.trim() !== "")
+      parentInput.inputValues.some((item) => item.fullName.trim() !== "")
     ) {
       console.log(
         "Inputs already filled with values:",
-        parentInput.inputValues.map((input, index) => ({
-          [`Parent ${index + 1}`]: input,
+        parentInput.inputValues.map((item, index) => ({
+          [`Parent ${index + 1}`]: item,
         }))
       );
       return; // Exit if inputs already have values
