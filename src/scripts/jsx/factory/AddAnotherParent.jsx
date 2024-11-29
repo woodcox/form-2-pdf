@@ -77,21 +77,20 @@ function AddAnotherParent(props) {
   let initialRender = false; // Track the initial render for when props.visible = true so the Parent 1 details can still be removed from the dom if the client wishes
 
   createEffect(() => {
-    console.log("Global:", globalParentValues);
     // If inputValues already exist in the store
     if (
       parentInput.inputValues.length > 0 &&
       parentInput.inputValues.some((item) => item.fullName.trim() !== "")
     ) {
+      /*
       console.log(
         "Inputs already have values:",
         parentInput.inputValues.map((item, index) => ({
           [`Parent ${index + 1}`]: item,
         }))
-      );
+      );*/
       return; // Exit if inputs already have values
     }
-
 
     // Initialize default values only if no inputValues exist and it's the first render
     if (!initialRender && props.visible && parentInput.inputValues.length === 0) {
@@ -100,27 +99,34 @@ function AddAnotherParent(props) {
       ]);
       initialRender = true; // Mark initialization as complete
       return;
-    } else if (parentInput.inputValues.length === 0) {
-      console.log("No parents present.");
     }
   });
 
   createEffect(() => {
+    const inputLength = parentInput.inputValues.length;
+
     const joinedResult = parentInput.inputValues
-      .map((item) => {
+      .map((item, index) => {
         const namePart = `${item.fullName} ${
           item.isAlive === "(deceased)" ? "(deceased)" : ""
-        }`;
+        }`.trim();
+
         const jobPart = `${item.jobTitle} ${
           item.isRetired === "(retired)" ? "(retired)" : ""
-        }`;
-        return `${namePart}, ${jobPart}`.trim();
-      })
-      .filter(Boolean) // Remove empty strings
-      .join("\n"); // Join each parent on a new line
-  
-    // Call the parent's onChange handler with the result
-    props.onChange(joinedResult);
+        }`.trim();
+
+        // Include "and" only for the first parent if there are multiple parents
+        const formattedJobPart = index === 0 && inputLength > 1 ? `${jobPart} and` : jobPart;
+
+      return namePart
+        ? `${namePart}, ${formattedJobPart}` // Include comma if namePart is not empty
+        : formattedJobPart; // No comma if namePart is empty
+    })
+    .filter(Boolean) // Remove empty strings
+    .join("\n"); // Join each parent on a new line
+
+  // Call the parent's onChange handler with the result
+  props.onChange(joinedResult);
   });
   
 
