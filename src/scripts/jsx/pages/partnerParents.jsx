@@ -13,7 +13,7 @@ export default function PartnerParents() {
         pageNumber="7"
         currentPage="/partner-parents"
         prevPage="/your-parents"
-        nextPage="/summary"
+        nextPage="/music"
       />
     </>
   );

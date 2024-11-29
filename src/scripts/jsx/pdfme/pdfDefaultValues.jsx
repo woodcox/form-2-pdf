@@ -28,6 +28,10 @@ const pdfDefaultValues = {
   YourStepParents: '',
   PartnerParents: '',
   PartnerStepParents: '',
+  BeforeCeremonyMusic: '',
+  EntranceMusic: '',
+  SigningMusic: '',
+  ExitMusic: '',
 };
 
 export const [pdfState, setPdfState] = makePersisted(createStore(pdfDefaultValues), {storage: localStorage});

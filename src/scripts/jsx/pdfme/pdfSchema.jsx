@@ -274,7 +274,7 @@ const schema = {
         component: 'AddAnotherParent',
         componentProps: {
           componentId: 'YourParents',
-          title: 'Parent',
+          title: 'parent',
           grammar: 'Your',
           visible: true,
           hintText: "For example, your mother, father or parent"
@@ -293,7 +293,7 @@ const schema = {
         component: 'AddAnotherParent',
         componentProps: {
           componentId: 'YourStepPartents',
-          title: 'Step-parent',
+          title: 'step-parent',
           grammar: 'Your',
           hintText: "For example, your step-mother, step-father or step-parent"
         }
@@ -333,6 +333,82 @@ const schema = {
           title: 'step-parent',
           grammar: "Partner's",
           hintText: "For example, their step-mother, step-father or step-parent"
+        }
+      },
+      BeforeCeremonyMusic: {
+        pageUrl: '/music',
+        label: "Before the ceremony",
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+        component: 'AddAnotherMusic',
+        componentProps: {
+          componentId: 'BeforeCeremonyMusic',
+          title: 'song',
+          musicSection: "Before the ceremony",
+          songNumber: 3,
+          hintText: "For example, Ella Fitzgerald At last"
+        }
+      },
+      EntranceMusic: {
+        pageUrl: '/music',
+        label: "Entrance song",
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+        component: 'AddAnotherMusic',
+        componentProps: {
+          componentId: 'EntranceMusic',
+          title: 'song',
+          songNumber: 1,
+          musicSection: "Entrance music",
+          hintText: "For example, Ella Fitzgerald At last"
+        }
+      },
+      SigningMusic: {
+        pageUrl: '/music',
+        label: "Signing the schedule and taking photos",
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+        component: 'AddAnotherMusic',
+        componentProps: {
+          componentId: 'SigningMusic',
+          title: 'song',
+          songNumber: 3,
+          musicSection: "Signing the schedule and taking photos",
+          hintText: "For example, Ella Fitzgerald At last"
+        }
+      },
+      ExitMusic: {
+        pageUrl: '/music',
+        label: "Exit song",
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+        component: 'AddAnotherMusic',
+        componentProps: {
+          componentId: 'ExitMusic',
+          title: 'song',
+          songNumber: 1,
+          musicSection: "Exit music",
+          hintText: "For example, Ella Fitzgerald At last"
         }
       },
     },

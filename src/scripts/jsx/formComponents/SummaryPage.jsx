@@ -53,6 +53,9 @@ export default function SummaryPage({ template, localInputs, urlPrefix }) {
               <Match when={pageUrl === '/partner-parents'}>
                 <h2 class="govuk-heading-m">Your partners parents</h2>
               </Match>
+              <Match when={pageUrl === '/music'}>
+                <h2 class="govuk-heading-m">Your music</h2>
+              </Match>
             </Switch>
             <dl class="govuk-summary-list govuk-!-margin-bottom-9">
               <For each={fields}>
