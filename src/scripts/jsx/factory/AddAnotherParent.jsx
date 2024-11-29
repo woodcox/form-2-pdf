@@ -21,9 +21,9 @@ function AddAnotherParent(props) {
   />
   */
 
-  const Uid = createUniqueId()
+  
   // Derive the store name from the componentId prop
-  const storeName = `parentValues_${Uid}`;
+  const storeName = `parentValues_${props.componentId}`;
 
   // Check if the store for this component instance exists, if not, create a new one
   if (!globalParentValues[storeName]) {
@@ -32,12 +32,11 @@ function AddAnotherParent(props) {
 
   const [parentInput, setParentInput] = globalParentValues[storeName];
 
-  let nextId = 2;
   let newInputRef = null;
+  const generateId = () => createUniqueId();
 
    // Fields to be initialized for each addAnother component
    const defaultInputs = {
-    id: 1,
     fullName: '',
     isAlive: '',
     jobTitle: '',
@@ -50,7 +49,7 @@ function AddAnotherParent(props) {
       setParentInput('inputValues', (prev) => [
         ...prev,
         {
-          id: nextId++,
+          id: generateId(),
           ...defaultInputs,
         },
       ]);
@@ -80,17 +79,12 @@ function AddAnotherParent(props) {
   createEffect(() => {
     console.log("Global:", globalParentValues);
     // If inputValues already exist in the store
-    /*
-    if (parentInput.inputValues.length > 0) {
-      console.log("Global:", globalParentValues);
-      return;
-    }*/
     if (
       parentInput.inputValues.length > 0 &&
       parentInput.inputValues.some((item) => item.fullName.trim() !== "")
     ) {
       console.log(
-        "Inputs already filled with values:",
+        "Inputs already have values:",
         parentInput.inputValues.map((item, index) => ({
           [`Parent ${index + 1}`]: item,
         }))
@@ -102,12 +96,11 @@ function AddAnotherParent(props) {
     // Initialize default values only if no inputValues exist and it's the first render
     if (!initialRender && props.visible && parentInput.inputValues.length === 0) {
       setParentInput("inputValues", [
-        { ...defaultInputs },
+        { id: generateId(), ...defaultInputs },
       ]);
       initialRender = true; // Mark initialization as complete
       return;
-    }
-    if (parentInput.inputValues.length === 0) {
+    } else if (parentInput.inputValues.length === 0) {
       console.log("No parents present.");
     }
   });
@@ -135,9 +128,7 @@ function AddAnotherParent(props) {
   return (
     <div>
       <For each={parentInput.inputValues}>
-        {(item, index) => {
-          console.log(`Rendering input for Parent ${index() + 1}:`, item);
-          return (
+        {(item, index) => (
           <div key={item.id} class="govuk-form-group">
             <h2>
               {props.grammar} {props.title} {index() + 1}
@@ -354,7 +345,7 @@ function AddAnotherParent(props) {
               </button>
             </div>
           </div>
-        )}}
+        )}
       </For>
 
       {/* Add Button */}

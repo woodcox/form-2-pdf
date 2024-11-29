@@ -30,7 +30,7 @@ export default async function (eleventyConfig) {
   // DEV SERVER
   eleventyConfig.setServerOptions({
     port: 8080,
-    watch: ["dist/app/*.css"], // sass is watching the scss (see package.json) & esbuild will incrementally rebuild on change
+    //watch: ["dist/app/*.css"], // sass is watching the scss (see package.json) & esbuild will incrementally rebuild on change
     liveReload: true,
     domDiff: true,
   });
