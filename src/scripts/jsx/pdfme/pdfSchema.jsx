@@ -187,6 +187,14 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Textarea',
+        componentProps: {
+          componentId: 'RoomEntrance',
+          name: 'RoomEntrance',
+          label: 'How are you planning to enter the ceremony room?',
+          value: '',
+          rows: 5,
+        }
       },
       Photographer: {
         pageUrl: '/ceremony',

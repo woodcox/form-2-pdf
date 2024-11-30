@@ -1,6 +1,7 @@
 import DateInput from './../factory/DateInput.jsx';
 import AppendFields from './../factory/AppendFields.jsx';
 import Radio from './../factory/Radio.jsx';
+import Textarea from './../factory/Textarea.jsx';
 import Dropdown from './../factory/Dropdown.jsx';
 import Autocomplete  from './../factory/Autocomplete.jsx';
 import AddAnotherParent  from './../factory/AddAnotherParent.jsx';
@@ -14,6 +15,7 @@ const componentMap = {
   Dropdown,
   Autocomplete,
   Radio,
+  Textarea,
   AddAnotherParent,
   AddAnotherMusic, // Add the Dropdown component to the component map
   // Add more components here as needed

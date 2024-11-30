@@ -44,7 +44,7 @@ function AddAnotherMusic(props) {
 
   // Add a new music choice
   const addItem = () => {
-    if (musicInput.inputValues.length < (props.songNumber || 3)) {
+    if (musicInput.inputValues.length < (props.songNumber || 1)) {
       setMusicInput('inputValues', (prev) => [
         ...prev,
         {
@@ -233,7 +233,7 @@ function AddAnotherMusic(props) {
       </For>
 
       {/* Add Button */}
-      <Show when={musicInput.inputValues.length < props.songNumber}>
+      <Show when={musicInput.inputValues.length < (props.songNumber || 1)}>
         <button type="button" class="govuk-button" onClick={addItem}>
           Add {props.title}
         </button>
