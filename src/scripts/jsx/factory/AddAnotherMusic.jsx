@@ -14,10 +14,11 @@ function AddAnotherMusic(props) {
   /* Conditionslly render if the first group of fields is visible based on the visible prop passed into the component.
   Example:
   <AddAnotherMusic
-    title="parent"
-    musicSection="Your"
-    visible=true   // If true render the first field group, if null or false don't render the fields
-    hintText="For example, your mother, father or parent"
+    componentId: 'EntranceMusic',
+    title: 'song',
+    songNumber: {3},
+    musicSection: "Entrance music",
+    hintText: "For example, Ella Fitzgerald At last"
   />
   */
 

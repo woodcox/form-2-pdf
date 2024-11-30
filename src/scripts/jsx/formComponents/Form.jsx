@@ -1,15 +1,12 @@
-import { createSignal } from 'solid-js';
+import { createSignal, ErrorBoundary } from 'solid-js';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
-// Factory file
-import MountGovUk from './MountGovUk.jsx';
-
 // Form Component file
-import Questions from './../formComponents/Questions.jsx';
-import ErrorBoundaryWrapper from './../formComponents/ErrorBoundaryWrapper.jsx';
-import LegendHeader from './../formComponents/LegendHeader.jsx';
-import NavigationButtons from './../formComponents/NavigationButtons.jsx';
-import SummaryPage from './../formComponents/SummaryPage.jsx';
+import Questions from './Questions.jsx';
+import LegendHeader from './LegendHeader.jsx';
+import NavigationButtons from './NavigationButtons.jsx';
+import SummaryPage from './SummaryPage.jsx';
+import MountGovUk from './MountGovUk.jsx';
 
 // URL from 11ty
 const pathPrefix = process.env.PATHPREFIX;
@@ -33,7 +30,7 @@ export default function Form(props) {
   
   return (
     <>
-    <ErrorBoundaryWrapper>
+    <ErrorBoundary fallback={(e) => <p>{e.message}</p>}>
     <form>
       <fieldset class="govuk-fieldset">
       <LegendHeader 
@@ -62,7 +59,7 @@ export default function Form(props) {
             nextPagePrefix={nextPagePrefix}
       />     
     </form>
-    </ErrorBoundaryWrapper>
+    </ErrorBoundary>
     </>
   );
 }

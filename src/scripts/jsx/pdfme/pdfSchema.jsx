@@ -152,9 +152,20 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-        component: 'Radio',
+        component: 'CeremonyWords',
         componentProps: {
           componentId: 'WordingOption',
+          accordName: 'CeremonyWording',
+          marriage: [
+            { label: 'Option 1 words', content: 'I give you this ring as a sign of our marriage and I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]', id: 'Option1' },
+            { label: 'Option 2 words', content: 'I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you and to be faithful to you always. [partner name] I give you this ring as a sign of our marriage, as a lasting reminder of the vows we are making today, and as a symbol of all that we share, now and always.', id: 'Option2' },
+            { label: 'Option 3 words', content: '“[partner name] I give you this ring as a sign of our marriage, as a token of my love and affection and as a symbol of our commitment to each other. I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you, honour and respect you and share with you all that I have. May we look forward to our future together with hope and happiness and always remember the feelings we share for each other on this our wedding day.', id: 'Option3' },
+          ],
+          civilPartnership: [
+            { label: 'Option 1 words', content: 'CP blah blah blah', id: 'Option1' },
+            { label: 'Option 2 words', content: 'CP blah blah blah', id: 'Option2' },
+            { label: 'Option 3 words', content: 'CP blah blah blah', id: 'Option3' },
+          ],
           name: 'WordingOption',
           label: 'Which ceremony wording?',
           value: '',

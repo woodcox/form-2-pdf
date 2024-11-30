@@ -1,18 +1,16 @@
 import { onMount } from 'solid-js';
 import { Radios } from 'govuk-frontend/dist/govuk/components/radios/radios.mjs';
 import { Button } from 'govuk-frontend/dist/govuk/components/button/button.mjs';
-//import { Accordion } from 'govuk-frontend/dist/govuk/components/accordion/accordion.mjs';
+import { Accordion } from 'govuk-frontend/dist/govuk/components/accordion/accordion.mjs';
 import { ErrorSummary } from 'govuk-frontend/dist/govuk/components/error-summary/error-summary.mjs';
 
 const MountGovUk = () => {
   onMount(() => {
     // Initialize the Govuk components when the component mounts
 
-    // ACCORDIONS FOR TESTING PURPOSES
-    /*
+    // ACCORDIONS
     const accordionElements = document.querySelectorAll('[data-module="govuk-accordion"]');
     Array.from(accordionElements).forEach((element) => new Accordion(element));
-    */
 
     // RADIOS
     const radioElements = document.querySelectorAll('[data-module="govuk-radios"]');

@@ -1,3 +1,4 @@
+import { For } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { makePersisted } from './makePersisted.jsx';
 

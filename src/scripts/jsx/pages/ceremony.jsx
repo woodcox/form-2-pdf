@@ -1,4 +1,4 @@
-import Form from './../factory/Form.jsx';
+import Form from './../formComponents/Form.jsx';
 import { template } from './../pdfme/pdfSchema.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
