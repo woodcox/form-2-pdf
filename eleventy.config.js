@@ -19,7 +19,7 @@ const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
 const TEMPLATE_ENGINE = "liquid";
 
 // Currently Stackblitz does not like Import attributes. Hopefully will be able to write the following soon:
-// import manifest from './src/_data/manifest.json' with { "type": "json" };
+//import manifest from './src/_data/manifest.json' with { "type": "json" };
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const manifest = require('./src/_data/manifest.json');
@@ -30,15 +30,19 @@ export default async function (eleventyConfig) {
   // DEV SERVER
   eleventyConfig.setServerOptions({
     port: 8080,
-    watch: ["dist/app/*.css", "dist/app/*.js"],
+    //watch: ["dist/app/*.css"], // sass is watching the scss (see package.json) & esbuild will incrementally rebuild on change
     liveReload: true,
     domDiff: true,
   });
   
   // WATCH
-  // esbuild is also watching the js & jsx files
+  eleventyConfig.addWatchTarget("./src/");
+
   eleventyConfig.watchIgnores.add("./src/_data/manifest.json");
   eleventyConfig.watchIgnores.add("./src/_data/buildmeta.json");
+  eleventyConfig.watchIgnores.add("./src/style/**"); // Sass is watching for changes already
+
+  eleventyConfig.setWatchThrottleWaitTime(300); // in millisecons slow the rebuild
 
   // BUILD HOOK
   eleventyConfig.on("eleventy.before", esbuildPipeline);

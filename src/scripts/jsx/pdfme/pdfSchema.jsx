@@ -152,9 +152,20 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-        component: 'Radio',
+        component: 'CeremonyWords',
         componentProps: {
           componentId: 'WordingOption',
+          accordName: 'CeremonyWording',
+          marriage: [
+            { label: 'Option 1 words', content: 'I give you this ring as a sign of our marriage and I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]', id: 'Option1' },
+            { label: 'Option 2 words', content: 'I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you and to be faithful to you always. [partner name] I give you this ring as a sign of our marriage, as a lasting reminder of the vows we are making today, and as a symbol of all that we share, now and always.', id: 'Option2' },
+            { label: 'Option 3 words', content: '“[partner name] I give you this ring as a sign of our marriage, as a token of my love and affection and as a symbol of our commitment to each other. I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you, honour and respect you and share with you all that I have. May we look forward to our future together with hope and happiness and always remember the feelings we share for each other on this our wedding day.', id: 'Option3' },
+          ],
+          civilPartnership: [
+            { label: 'Option 1 words', content: 'CP blah blah blah', id: 'Option1' },
+            { label: 'Option 2 words', content: 'CP blah blah blah', id: 'Option2' },
+            { label: 'Option 3 words', content: 'CP blah blah blah', id: 'Option3' },
+          ],
           name: 'WordingOption',
           label: 'Which ceremony wording?',
           value: '',
@@ -187,6 +198,14 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Textarea',
+        componentProps: {
+          componentId: 'RoomEntrance',
+          name: 'RoomEntrance',
+          label: 'How are you planning to enter the ceremony room?',
+          value: '',
+          rows: 5,
+        }
       },
       Photographer: {
         pageUrl: '/ceremony',
@@ -261,9 +280,9 @@ const schema = {
           ]
         }
       },
-      YourMum: {
-        pageUrl: '/your-mum',
-        label: 'Your mums fullname',
+      YourParents: {
+        pageUrl: '/your-parents',
+        label: 'Your parent(s)',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -271,55 +290,18 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-      },
-      YourMumDead: {
-        pageUrl: '/your-mum',
-        label: 'Is your mum alive?',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: '',
-        required: true,
-      },
-      YourMumJob: {
-        pageUrl: '/your-mum',
-        label: 'Your mums current or last job',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-      },
-      YourMumRetired: {
-        pageUrl: '/your-mum',
-        label: 'Has your mum retired?',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-        component: 'Radio',
+        component: 'AddAnotherParent',
         componentProps: {
-          componentId: 'MumRetired',
-          name: 'MumRetired',
-          label: 'Has your mum retired?',
-          value: '',
-          initialOption: 'Select...',
-          options: [
-            { name: 'mumRetired', value: 'No', id: 'mumWorking' },
-            { name: 'mumRetired', value: 'Yes, retired', id: 'mumRetired' }
-          ]
+          componentId: 'YourParents',
+          title: 'parent',
+          grammar: 'Your',
+          visible: true,
+          hintText: "For example, your mother, father or parent"
         }
       },
-      YourParent1: {
+      YourStepParents: {
         pageUrl: '/your-parents',
-        label: 'Your parents fullname',
+        label: 'Your step-parent(s)',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -327,55 +309,17 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-      },
-      YourParent1Dead: {
-        pageUrl: '/your-parents',
-        label: 'Is your parent alive?',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: '',
-        required: true,
-      },
-      YourParent1Job: {
-        pageUrl: '/your-parents',
-        label: 'Your parents current or last job',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-      },
-      YourParent1Retired: {
-        pageUrl: '/your-parents',
-        label: 'Are they retired?',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-        component: 'Radio',
+        component: 'AddAnotherParent',
         componentProps: {
-          componentId: 'Parent1Retired',
-          name: 'Parent1Retired',
-          label: 'Are they retired?',
-          value: '',
-          initialOption: 'Select...',
-          options: [
-            { name: 'parent1Retired', value: 'No', id: 'parent1Working' },
-            { name: 'parent1Retired', value: 'Yes, retired', id: 'parent1Retired' }
-          ]
+          componentId: 'YourStepPartents',
+          title: 'step-parent',
+          grammar: 'Your',
+          hintText: "For example, your step-mother, step-father or step-parent"
         }
       },
-      YourParent2: {
-        pageUrl: '/your-parents',
-        label: 'Your parents fullname',
+      PartnerParents: {
+        pageUrl: '/partner-parents',
+        label: 'Your Partners Parent(s)',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -383,55 +327,18 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-      },
-      YourParent2Dead: {
-        pageUrl: '/your-parents',
-        label: 'Is your parent alive?',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: '',
-        required: true,
-      },
-      YourParent2Job: {
-        pageUrl: '/your-parents',
-        label: 'Your parents current or last job',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-      },
-      YourParent2Retired: {
-        pageUrl: '/your-parents',
-        label: 'Are they retired?',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-        component: 'Radio',
+        component: 'AddAnotherParent',
         componentProps: {
-          componentId: 'Parent2Retired',
-          name: 'Parent2Retired',
-          label: 'Are they retired?',
-          value: '',
-          initialOption: '',
-          options: [
-            { name: 'parent2Retired', value: 'No', id: 'parent2Working' },
-            { name: 'parent2Retired', value: 'Yes, retired', id: 'parent2Retired' }
-          ]
+          componentId: 'PartnerParents',
+          title: 'parent',
+          grammar: "Partner's",
+          visible: true,
+          hintText: "For example, their mother, father or parent"
         }
       },
-      PartnerParent1: {
+      PartnerStepParents: {
         pageUrl: '/partner-parents',
-        label: 'Your partners parent fullname',
+        label: "Your partner's step-parent(s)",
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -439,32 +346,17 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'AddAnotherParent',
+        componentProps: {
+          componentId: 'PartnerStepParents',
+          title: 'step-parent',
+          grammar: "Partner's",
+          hintText: "For example, their step-mother, step-father or step-parent"
+        }
       },
-      PartnerParent1Dead: {
-        pageUrl: '/partner-parents',
-        label: 'Is your parent alive?',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: '',
-        required: true,
-      },
-      PartnerParent1Job: {
-        pageUrl: '/partner-parents',
-        label: 'Your partners parents current or last job',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-      },
-      PartnerParent1Retired: {
-        pageUrl: '/partner-parents',
-        label: 'Are they retired?',
+      BeforeCeremonyMusic: {
+        pageUrl: '/music',
+        label: "Before the ceremony",
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -472,10 +364,18 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'AddAnotherMusic',
+        componentProps: {
+          componentId: 'BeforeCeremonyMusic',
+          title: 'song',
+          musicSection: "Before the ceremony",
+          songNumber: 3,
+          hintText: "For example, Ella Fitzgerald At last"
+        }
       },
-      PartnerParent2: {
-        pageUrl: '/partner-parents',
-        label: 'Your partners parent fullname',
+      EntranceMusic: {
+        pageUrl: '/music',
+        label: "Entrance song",
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -483,32 +383,18 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'AddAnotherMusic',
+        componentProps: {
+          componentId: 'EntranceMusic',
+          title: 'song',
+          songNumber: 1,
+          musicSection: "Entrance music",
+          hintText: "For example, Ella Fitzgerald At last"
+        }
       },
-      PartnerParent2Dead: {
-        pageUrl: '/partner-parents',
-        label: 'Is your partners parent alive?',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: '',
-        required: true,
-      },
-      PartnerParent2Job: {
-        pageUrl: '/partner-parents',
-        label: 'Your partners parents current or last job',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-      },
-      PartnerParent2Retired: {
-        pageUrl: '/partner-parents',
-        label: 'Are they retired?',
+      SigningMusic: {
+        pageUrl: '/music',
+        label: "Signing the schedule and taking photos",
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -516,23 +402,33 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'AddAnotherMusic',
+        componentProps: {
+          componentId: 'SigningMusic',
+          title: 'song',
+          songNumber: 3,
+          musicSection: "Signing the schedule and taking photos",
+          hintText: "For example, Ella Fitzgerald At last"
+        }
       },
-    },
-    // PAGE 2
-    // need new array for a new page
-    {
-      Mother: {
-        pageUrl: '/test',
+      ExitMusic: {
+        pageUrl: '/music',
+        label: "Exit song",
         type: 'text',
-        position: {
-          x: 101.34,
-          y: 30.69,
-        },
-        width: 45,
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
         height: 10,
-        rotate: 0,
-        alignment: 'left',
-        verticalAlignment: 'top',
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+        component: 'AddAnotherMusic',
+        componentProps: {
+          componentId: 'ExitMusic',
+          title: 'song',
+          songNumber: 1,
+          musicSection: "Exit music",
+          hintText: "For example, Ella Fitzgerald At last"
+        }
       },
     },
   ],

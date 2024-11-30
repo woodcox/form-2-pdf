@@ -1,3 +1,4 @@
+import { For } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { makePersisted } from './makePersisted.jsx';
 
@@ -24,7 +25,7 @@ const Radio = (props) => {
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--2">
-          <h2>{props.label}</h2>
+          <h3>{props.label}</h3>
         </legend>
         <div class="govuk-radios" data-module="govuk-radios">
           <For each={props.options}>

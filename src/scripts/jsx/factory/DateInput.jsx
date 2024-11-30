@@ -44,7 +44,7 @@ export default function DateInput(props) {
         aria-describedby={`${props.name}-help-text`}
       >
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--2">
-          <h2>{props.heading}</h2>
+          <h3>{props.heading}</h3>
         </legend>
         <div class="govuk-hint" id={`${props.name}-help-text`}>
           {props.helpText}

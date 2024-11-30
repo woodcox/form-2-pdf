@@ -37,7 +37,7 @@ const defineEnv = {
 };
 
 const esbuildOpts = {
-  entryPoints: ['src/scripts/jsx/render.jsx', 'src/scripts/js/*.js', 'dist/app/*.css'], // include css so that its in the manifest.json
+  entryPoints: ['src/scripts/jsx/app.jsx', 'src/scripts/js/*.js', 'dist/app/*.css'], // include css so that its in the manifest.json
   entryNames: isProd ? '[name]-[hash]' : '[name]',
   outExtension: isProd ? {'.js': '.min.js', '.css': '.min.css'} : {'.js': '.js', '.css': '.css'},
   allowOverwrite: !isProd,  // overwrite dist/app/style.css when in dev mode
@@ -130,20 +130,14 @@ export const esbuildPipeline = async () => {
     process.exitCode = 1;
   })
   if (isDev === true){
-    // Enable watch mode - NOTE buildmeta.json is not generated when watching
-    // Need to limit esbuild so only watching js & jsx
-    await ctx.watch();
-    console.log("[esbuild] is watching for changes...");
+    // Enable rebuild when 11ty in watch mode - NOTE buildmeta.json is not generated when watching
+    await ctx.rebuild(); // Use 11ty to watch and esbuild to rebuild incrementally
+    console.log("[esbuild] will rebuild when 11ty detects a change...");
   } else {
-    // Prod Step 1: Build once and exit if not watch mode
-    await ctx.rebuild()
-    .then(async (result) => {
+    // Build once and exit if not watch mode
+    await ctx.rebuild().then(result => {
       ctx.dispose();
       fs.writeFileSync('./src/_data/buildmeta.json', JSON.stringify(result.metafile));
-      //await runClosureCompiler();
-    }).catch(error => {
-      console.error("[closure-compiler] Error:", error);
-      process.exitCode = 1;
-    });
+    })
   }
 };

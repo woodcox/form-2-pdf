@@ -1,4 +1,4 @@
-import { addClearMethod } from './makePersisted.jsx';
+import { addClearMethod } from './../factory/makePersisted.jsx';
 
 // Add clear method to localStorage
 const localStorageWithClear = addClearMethod(localStorage);
