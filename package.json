@@ -31,7 +31,7 @@
     "@apeleghq/esbuild-plugin-closure-compiler": "^1.0.6",
     "@hyrious/esbuild-plugin-http": "^0.1.5",
     "@luncheon/esbuild-plugin-gzip": "^0.1.0",
-    "@pdfme/generator": "^5.1.6",
+    "@pdfme/generator": "^5.2.8",
     "@solid-primitives/storage": "^3.8.0",
     "@solidjs/router": "^0.14.10",
     "accessible-autocomplete": "^3.0.1",
