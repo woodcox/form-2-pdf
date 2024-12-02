@@ -54,7 +54,8 @@ function AddAnotherParent(props) {
         },
       ]);
 
-      setTimeout(() => {
+      setTimeout(() => {  
+        // Set focus 
         if (newInputRef) {
           newInputRef.focus();
         }
