@@ -1,13 +1,18 @@
 import DateInput from './../factory/DateInput.jsx';
 import AppendFields from './../factory/AppendFields.jsx';
 import Radio from './../factory/Radio.jsx';
-import CeremonyWords from './../factory/CeremonyWords.jsx';
+
 import Textarea from './../factory/Textarea.jsx';
 import Dropdown from './../factory/Dropdown.jsx';
 import Autocomplete  from './../factory/Autocomplete.jsx';
 import AddAnotherParent  from './../factory/AddAnotherParent.jsx';
 import AddAnotherMusic  from './../factory/AddAnotherMusic.jsx';
-//import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
+import CeremonyWords from './../factory/CeremonyWords.jsx';
+
+// Specific to LCC 
+import Time from './../lcc/Time.jsx';
+import Room from './../lcc/Room.jsx';
+
 
 // Map of components to import dynamically
 const componentMap = {
@@ -19,7 +24,9 @@ const componentMap = {
   Textarea,
   CeremonyWords,
   AddAnotherParent,
-  AddAnotherMusic, // Add the Dropdown component to the component map
+  AddAnotherMusic,
+  Time,
+  Room, // Add the Dropdown component to the component map
   // Add more components here as needed
 };
 

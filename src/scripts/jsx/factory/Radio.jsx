@@ -2,6 +2,16 @@ import { For } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { makePersisted } from './makePersisted.jsx';
 
+ /* IMPORTANT - passing the onChange={props.onChange} is vital if your using the radio component in a parent component
+  Example:
+  <Radio 
+    label={props.label} 
+    componentId={props.componentId} 
+    options={props.licencedVenue} 
+    onChange={props.onChange}
+  />
+  */
+
 // Define a global object to store the state of all instances of Radios
 const globalRadioValues = {};
 

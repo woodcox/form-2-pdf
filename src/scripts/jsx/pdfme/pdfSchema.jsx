@@ -92,17 +92,6 @@ const schema = {
           ]
         }
       },
-      BookingRef: {
-        pageUrl: '/booking',
-        label: 'Ceremony booking reference',
-        type: 'text',
-        position: { x: 33.65, y: 104.63 },
-        width: 100,
-        height: 10,
-        fieldType: 'text',
-        errormessage: 'Please enter the day',
-        required: true,
-      },
       CeremonyVenue: {
         pageUrl: '/booking',
         label: 'Venue',
@@ -125,6 +114,29 @@ const schema = {
           ]
         }
       },
+      CeremonyRoom: {
+        pageUrl: '/booking',  
+        label: 'Ceremony type',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: '',
+        required: true,
+        component: 'Room',
+        componentProps: {
+          componentId: 'ceremonyRoom',
+          name: 'ceremonyType',
+          label: 'What room is the ceremony in?',
+          value: '',
+          initialOption: 'Select the ceremony type',
+          options: [
+            { name: 'ceremonyRoom', value: 'West Room', id: 'WestRoom' },
+            { name: 'ceremonyRoom', value: 'Banqueting Suite', id: 'banquetingSuite' }
+          ]
+        }
+      },
       CeremonyDate: {
         pageUrl: '/booking',
         label: 'Ceremony date',
@@ -142,6 +154,70 @@ const schema = {
           helpText: 'For example, 27 3 2024',
         }
       },
+      CeremonyTime: {
+        pageUrl: '/booking',
+        label: 'Ceremony time',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+        component: 'Time',
+        componentProps: {
+          componentId: 'Time',
+          name: 'Time',
+          label: 'What time is your ceremony?',
+          value: '',
+          initialOption: 'Select the ceremony type',
+          westRoom: [
+            { name: 'Time', value: '09:30', id: '9-30' },
+            { name: 'Time', value: '10:00', id: '10-00' },
+            { name: 'Time', value: '10:30', id: '10-30' },
+            { name: 'Time', value: '11:00', id: '11-00' },
+            { name: 'Time', value: '11:30', id: '11-30' },
+            { name: 'Time', value: '14:00', id: '14-00' },
+            { name: 'Time', value: '14:30', id: '14-30' },
+            { name: 'Time', value: '15:00', id: '15-00' },
+            { name: 'Time', value: '15:30', id: '15-30' },
+            { name: 'Time', value: '16:00', id: '16-00' }
+          ],
+          banquetingSuiteOrFriWestRoom: [
+            { name: 'Time', value: '09:15', id: '9-15' },
+            { name: 'Time', value: '10:00', id: '10-00' },
+            { name: 'Time', value: '10:45', id: '10-45' },
+            { name: 'Time', value: '11:30', id: '11-30' },
+            { name: 'Time', value: '13:15', id: '13-15' },
+            { name: 'Time', value: '14:00', id: '14-00' },
+            { name: 'Time', value: '14:45', id: '14-45' },
+            { name: 'Time', value: '15:30', id: '15-30' }
+          ],
+          satWestRoom: [
+            { name: 'Time', value: '09:30', id: '9-30' },
+            { name: 'Time', value: '10:15', id: '10-15' },
+            { name: 'Time', value: '11:00', id: '11-00' },
+            { name: 'Time', value: '11:45', id: '11-45' },
+            { name: 'Time', value: '13:30', id: '13-30' },
+            { name: 'Time', value: '14:15', id: '14-15' },
+            { name: 'Time', value: '15:00', id: '15-00' },
+            { name: 'Time', value: '15:45', id: '15-45' }
+          ],
+          licencedVenue: [
+            { name: 'Time', value: '10:00', id: '10-00' },
+            { name: 'Time', value: '11:00', id: '11-00' },
+            { name: 'Time', value: '11:30', id: '11-30' },
+            { name: 'Time', value: '12:00', id: '12-00' },
+            { name: 'Time', value: '13:00', id: '13-00' },
+            { name: 'Time', value: '13:30', id: '13-30' },
+            { name: 'Time', value: '14:00', id: '14-00' },
+            { name: 'Time', value: '15:00', id: '15-00' },
+            { name: 'Time', value: '15:30', id: '15-30' },
+            { name: 'Time', value: '16:00', id: '16-00' },
+            { name: 'Time', value: '17:00', id: '17-00' }
+          ]
+        }
+      },
       WordingOption: {
         pageUrl: '/ceremony',
         label: 'Wording option',
@@ -157,14 +233,14 @@ const schema = {
           componentId: 'WordingOption',
           accordName: 'CeremonyWording',
           marriage: [
-            { label: 'Option 1 words', content: 'I give you this ring as a sign of our marriage and I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]', id: 'Option1' },
+            { label: 'Option 1 words', content: 'I give you this ring as a sign of our marriage and I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband].', id: 'Option1' },
             { label: 'Option 2 words', content: 'I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you and to be faithful to you always. [partner name] I give you this ring as a sign of our marriage, as a lasting reminder of the vows we are making today, and as a symbol of all that we share, now and always.', id: 'Option2' },
-            { label: 'Option 3 words', content: '“[partner name] I give you this ring as a sign of our marriage, as a token of my love and affection and as a symbol of our commitment to each other. I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you, honour and respect you and share with you all that I have. May we look forward to our future together with hope and happiness and always remember the feelings we share for each other on this our wedding day.', id: 'Option3' },
+            { label: 'Option 3 words', content: '[partner name] I give you this ring as a sign of our marriage, as a token of my love and affection and as a symbol of our commitment to each other. I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you, honour and respect you and share with you all that I have. May we look forward to our future together with hope and happiness and always remember the feelings we share for each other on this our wedding day.', id: 'Option3' },
           ],
           civilPartnership: [
-            { label: 'Option 1 words', content: 'CP blah blah blah', id: 'Option1' },
-            { label: 'Option 2 words', content: 'CP blah blah blah', id: 'Option2' },
-            { label: 'Option 3 words', content: 'CP blah blah blah', id: 'Option3' },
+            { label: 'Option 1 words', content: '[partner name] I promise to love and care for you and to be faithful to you always.  I give you this ring as a sign of my love and commitment and as a lasting reminder of the vows we are making today.', id: 'Option1' },
+            { label: 'Option 2 words', content: 'I call upon these persons here present, to witness that I [your name], do take thee, [partner name], to be my civil partner. I promise to love and care for you and to be faithful to you always. I give you this ring as a sign of our partnership. Wear it with a feeling of love and pride, now and always.', id: 'Option2' },
+            { label: 'Option 3 words', content: 'I call upon these persons here present, to witness that I [your name], do take thee, [partner name], to be my civil partner. I promise to share my life with you, to love and care for you, honour and encourage you. Please accept this ring as a sign of my love for you, as a lasting reminder of the vows we are making today and as a symbol of all that we share, now and always. ', id: 'Option3' },
           ],
           name: 'WordingOption',
           label: 'Which ceremony wording?',
