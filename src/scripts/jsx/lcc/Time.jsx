@@ -2,6 +2,16 @@ import { Switch, Match, createEffect, createSignal  } from 'solid-js';
 import Radio from './../factory/Radio.jsx';
 import { pdfState } from './../pdfme/pdfDefaultValues.jsx';
 
+/* IMPORTANT - passing the onChange={props.onChange} is vital if your using the radio component in a parent component
+  Example:
+  <Radio 
+    label={props.label} 
+    componentId={props.componentId} 
+    options={props.licencedVenue} 
+    onChange={props.onChange}
+  />
+  */
+
 const Time = (props) => {
 
   const [getFriday, setFriday] = createSignal(false);
@@ -21,7 +31,14 @@ const Time = (props) => {
 
   return (
     <>
-      <Switch fallback={<p>Error: Please complete the venue, date and room (if applicable)</p>}>
+      <Switch fallback={
+        <>
+          <legend class="govuk-fieldset__legend">
+            What time is your ceremony?
+          </legend>
+          <p class="govuk-body">Please complete the venue, date and room (if applicable)</p>
+        </>
+        }>
 
         {/* Licenced Venue */}
         <Match when={pdfState.CeremonyVenue !== 'Civic Hall' && pdfState.CeremonyVenue !== ''}>

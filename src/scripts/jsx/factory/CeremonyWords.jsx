@@ -3,6 +3,15 @@ import Accordion from './Accordion.jsx';
 import Radio from './Radio.jsx';
 import { pdfState } from './../pdfme/pdfDefaultValues.jsx';
 
+/* IMPORTANT - passing the onChange={props.onChange} is vital if your using the radio component in a Time parent component
+  Example:
+  <Radio 
+    label={props.label} 
+    componentId={props.componentId} 
+    options={props.licencedVenue} 
+    onChange={props.onChange}
+  />
+  */
 
 const CeremonyWords = (props) => {
 

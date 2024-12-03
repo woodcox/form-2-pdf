@@ -124,7 +124,7 @@ const schema = {
         fieldType: 'text',
         errormessage: '',
         required: true,
-        component: 'Radio',
+        component: 'Room',
         componentProps: {
           componentId: 'ceremonyRoom',
           name: 'ceremonyType',
