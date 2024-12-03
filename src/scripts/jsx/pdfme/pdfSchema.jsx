@@ -171,7 +171,7 @@ const schema = {
           label: 'What time is your ceremony?',
           value: '',
           initialOption: 'Select the ceremony type',
-          civicHall: [
+          westRoom: [
             { name: 'Time', value: '09:30', id: '9-30' },
             { name: 'Time', value: '10:00', id: '10-00' },
             { name: 'Time', value: '10:30', id: '10-30' },
@@ -192,6 +192,16 @@ const schema = {
             { name: 'Time', value: '14:00', id: '14-00' },
             { name: 'Time', value: '14:45', id: '14-45' },
             { name: 'Time', value: '15:30', id: '15-30' }
+          ],
+          satWestRoom: [
+            { name: 'Time', value: '09:30', id: '9-30' },
+            { name: 'Time', value: '10:15', id: '10-15' },
+            { name: 'Time', value: '11:00', id: '11-00' },
+            { name: 'Time', value: '11:45', id: '11-45' },
+            { name: 'Time', value: '13:30', id: '13-30' },
+            { name: 'Time', value: '14:15', id: '14-15' },
+            { name: 'Time', value: '15:00', id: '15-00' },
+            { name: 'Time', value: '15:45', id: '15-45' }
           ],
           licencedVenue: [
             { name: 'Time', value: '10:00', id: '10-00' },

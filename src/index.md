@@ -3,7 +3,7 @@ layout: default.html
 title: Form to pdf
 ---
 
-<is-land on:visable>
+<is-land on:visible on:idle>
   <form-component>
     <form>
       <fieldset class="govuk-fieldset">

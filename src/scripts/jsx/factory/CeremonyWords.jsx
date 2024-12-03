@@ -5,6 +5,7 @@ import { pdfState } from './../pdfme/pdfDefaultValues.jsx';
 
 
 const CeremonyWords = (props) => {
+
   return (
     <>
       <Show
@@ -17,7 +18,7 @@ const CeremonyWords = (props) => {
         {/* Civil Partnership */}
         <Accordion name={props.accordName} sections={props.civilPartnership} />
       </Show>
-      <Radio label={props.label} componentId={props.componentId} options={props.options} />
+      <Radio label={props.label} componentId={props.componentId} options={props.options} onChange={props.onChange}/>
     </>
   );
 };

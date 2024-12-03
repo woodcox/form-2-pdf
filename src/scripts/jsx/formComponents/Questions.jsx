@@ -10,7 +10,7 @@ import AddAnotherMusic  from './../factory/AddAnotherMusic.jsx';
 
 // Specific to LCC 
 import CeremonyWords from './../factory/CeremonyWords.jsx';
-import Time from './../factory/Time.jsx';
+import Time from './../lcc/Time.jsx';
 
 
 // Map of components to import dynamically
