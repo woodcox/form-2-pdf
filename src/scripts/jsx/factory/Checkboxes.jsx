@@ -1,4 +1,4 @@
-import { For, Show, createEffect } from 'solid-js';
+import { For, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { makePersisted } from './makePersisted.jsx';
 
@@ -40,12 +40,8 @@ const Checkboxes = (props) => {
         : currentValues.filter((v) => v !== value) // Remove value if unchecked
     );
 
-    props.onChange && props.onChange(checkboxState.values);
+    props.onChange && props.onChange(checkboxState.values.join(', ')); // use join() method to convert the state to a string for the parent (in the Question component) onChange handler 
   };
-
-  createEffect(() => {
-    console.log(checkboxState.values);
-  });
 
   return (
     <>

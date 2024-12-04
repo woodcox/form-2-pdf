@@ -102,13 +102,13 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-        component: 'Dropdown',
+        component: 'Autocomplete',
         componentProps: {
           name: 'venue',
           label: 'Where is your ceremony taking place?',
           value: '',
           options: [
-            { label: 'Select your venue', value: '' , placeholder: true },
+            { label: 'Select your venue', value: '' },
             { label: 'Civic Hall', value: 'Civic Hall' },
             { label: 'Leeds Town Hall', value: 'Leeds Town Hall' }
           ]
