@@ -1,7 +1,7 @@
 import DateInput from './../factory/DateInput.jsx';
 import AppendFields from './../factory/AppendFields.jsx';
 import Radio from './../factory/Radio.jsx';
-
+import Checkboxes from './../factory/Checkboxes.jsx';
 import Textarea from './../factory/Textarea.jsx';
 import Dropdown from './../factory/Dropdown.jsx';
 import Autocomplete  from './../factory/Autocomplete.jsx';
@@ -21,6 +21,7 @@ const componentMap = {
   Dropdown,
   Autocomplete,
   Radio,
+  Checkboxes,
   Textarea,
   CeremonyWords,
   AddAnotherParent,

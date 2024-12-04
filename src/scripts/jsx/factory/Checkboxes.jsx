@@ -1,11 +1,12 @@
-import { For } from 'solid-js';
+import { For, Show, createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { makePersisted } from './makePersisted.jsx';
 
 /* IMPORTANT - passing the onChange={props.onChange} is vital if your using the checkboxes component in a parent component
   Example:
   <Checkboxes 
-    label={props.label} 
+    label={props.label}
+    hintText={props.hintText} 
     componentId={props.componentId} 
     options={props.licencedVenue} 
     onChange={props.onChange}
@@ -22,7 +23,7 @@ const Checkboxes = (props) => {
   // Check if the store for this component instance exists, if not, create a new one
   if (!globalCheckboxValues[storeName]) {
     globalCheckboxValues[storeName] = makePersisted(
-      createStore({ value: '' }),
+      createStore({ values: [] }),  // Use an array to store selected values
       { name: storeName }
     );
   }
@@ -30,18 +31,32 @@ const Checkboxes = (props) => {
   const [checkboxState, setCheckboxState] = globalCheckboxValues[storeName];
 
   const handleChange = (e) => {
-    setCheckboxState({ value: e.target.value });
-    props.onChange && props.onChange(e.target.value);
+    const value = e.target.value;
+
+    // Toggle the value in the array
+    setCheckboxState('values', (currentValues) =>
+      e.target.checked
+        ? [...currentValues, value] // Add value if checked
+        : currentValues.filter((v) => v !== value) // Remove value if unchecked
+    );
+
+    props.onChange && props.onChange(checkboxState.values);
   };
+
+  createEffect(() => {
+    console.log(checkboxState.values);
+  });
 
   return (
     <>
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
           <legend class="govuk-fieldset__legend">{props.label}</legend>
-          <div id="waste-hint" class="govuk-hint">
-            {props.hintText}
-          </div>
+          <Show when={props.hintText}>
+            <div id="waste-hint" class="govuk-hint">
+              {props.hintText}
+            </div>
+          </Show>
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
             <For each={props.options}>
               {(option) => (
@@ -52,7 +67,7 @@ const Checkboxes = (props) => {
                     id={option.id}
                     name={props.componentId}
                     value={option.value}
-                    checked={checkboxState.value === option.value}
+                    checked={checkboxState.values?.includes(option.value)}
                     onChange={handleChange}
                   />
                   <label

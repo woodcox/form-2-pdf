@@ -263,6 +263,17 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Checkboxes',
+        componentProps: { 
+          label: "How will you be exchanging rings",
+          hintText: "This is a hint",
+          componentId: "exchangeRings",
+          options: [
+            { name: 'exchangeRings', value: 'Both partners', id: 'bothPartners' },
+            { name: 'exchangeRings', value: 'One partner', id: 'onePartner' },
+            { name: 'exchangeRings', value: 'No rings', id: 'noRings' }
+          ]
+        }
       },
       RoomEntrance: {
         pageUrl: '/ceremony',
