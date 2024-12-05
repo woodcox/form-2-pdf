@@ -1,50 +1,114 @@
-import { createSignal, createUniqueId } from 'solid-js';
-import { onMount } from 'solid-js';
+import { createSignal, onMount, onCleanup } from 'solid-js';
 import accessibleAutocomplete from 'accessible-autocomplete/dist/accessible-autocomplete.min.js';
+import { makePersisted } from './makePersisted.jsx';
 
-const [autocompleteValue, setAutocompleteValue] = createSignal('');
+const [autocompleteValue, setAutocompleteValue] = makePersisted(createSignal(''), {name: "autocomplete"});
 
 const Autocomplete = (props) => {
-  let containerRef; // Reference to the container where the autocomplete will initialize
+  let containerRef;
+  let inputElement;
 
   const handleChange = (e) => {
-    setAutocompleteValue(e.target.value);
+    setSelectedValue(e.target.value);
     props.onChange && props.onChange(e.target.value);
   };
 
+  const syncInputValue = () => {
+    if (inputElement) {
+      inputElement.value = autocompleteValue() || ''; // Sync the input field with the persisted state
+    }
+  };
+
   onMount(() => {
-    // Ensure containerRef is set before calling accessibleAutocomplete
     if (containerRef) {
-      accessibleAutocomplete.enhanceSelectElement({
-        //...props, // Spread additional props like id, source, etc.
-        defaultValue: props.value || '',
-        selectElement: containerRef, // Attach autocomplete to this element
+      accessibleAutocomplete({
+        element: containerRef,
+        id: props.name,
+        source: props.options,
+        defaultValue: autocompleteValue() || '', // Use persisted value as default
+        showAllValues: true,
         onConfirm: (val) => {
-          setAutocompleteValue(val); // Update signal with confirmed value
-          props.onChange && props.onChange(val); // Notify parent component
+          setAutocompleteValue(val); // Persist the confirmed value
+          console.log('selected (onConfirm):', autocompleteValue());
+          props.onChange && props.onChange(val); // Notify parent
         },
       });
+
+      // Store a reference to the generated input element
+      inputElement = containerRef.querySelector('input');
+
+      if (inputElement) {
+        // Set initial value
+        syncInputValue();
+
+        // Listen to blur event to persist manual edits
+        inputElement.addEventListener('blur', () => {
+          setAutocompleteValue(inputElement.value);
+          props.onChange && props.onChange(inputElement.value);
+          console.log('blur (manual input):', autocompleteValue());
+        });
+      }
     } else {
       console.error('containerRef is not defined');
     }
-});
+  });
+
+  // Cleanup event listeners on component unmount
+  onCleanup(() => {
+    if (inputElement) {
+      inputElement.removeEventListener('blur', syncInputValue);
+    }
+  });
 
   return (
     <>
       <label for={props.name}>{props.label}</label>
-      <select
+      <div
         ref={(el) => (containerRef = el)}
-        name={props.name}
-        id={props.name}
-        value={props.value || setAutocompleteValue()}
-        onConfirm={handleChange}
+        id={`${props.name}-container`}
+      />
+    </>
+  );
+};
+
+export default Autocomplete;
+
+
+/*
+const Autocomplete = (props) => {
+  let containerRef;
+
+  onMount(() => {
+    if (containerRef) {
+      accessibleAutocomplete({
+        element: containerRef,
+        id: props.name,
+        source: props.options,
+        defaultValue: autocompleteValue() || '', // Use persisted value as default
+        showAllValues: true,
+        onConfirm: (val) => {
+          setAutocompleteValue(val); // Persist the confirmed value
+          console.log('selected:', autocompleteValue());
+          props.onChange && props.onChange(val); // Notify parent
+        },
+      });
+
+    } else {
+      console.error('containerRef is not defined');
+    }
+  });
+
+  return (
+    <>
+      <label for={props.name}>{props.label}</label>
+      <div ref={(el) => (containerRef = el)}
+        id={`${props.name}-container`}
+        //value={props.value || autocompleteValue()}
+        //onChange={handleChange}
       >
-        <For each={props.options}>
-          {(option) => <option value={option.value}>{option.label}</option>}
-        </For>
-      </select>
+      </div>
     </>
   );
 }
 
-export default Autocomplete;
+export default Autocomplete;*/
