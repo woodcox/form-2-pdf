@@ -1,13 +1,16 @@
-import { For } from 'solid-js';
-
+import { For, Switch, Match } from 'solid-js';
 
 /*
 Example:
+
+See GOV.UK for heading sizing scales - https://design-system.service.gov.uk/styles/headings/  
+
   <Prose
     sections={[
-      { size: 1, heading: 'This is a heading', prose: 'blah blah blah' },
-      { size: 2, heading: 'This is a heading', prose: 'blah blah blah' },
-      { size: 3, heading: 'This is a heading', prose: 'blah blah blah' },
+      { size: xl, heading: 'This is a XL heading', content: 'blah blah blah' },
+      { size: l, heading: 'This is a large heading', content: 'blah blah blah' },
+      { size: m, heading: 'This is a medium heading', content: 'blah blah blah' },
+      { size: s, heading: 'This is a small heading', content: 'blah blah blah' },
     ]}
   />
 */
@@ -18,16 +21,35 @@ const Prose = (props) => {
       <For each={props.sections}>
         {(section) => (
           <>
-            <h1 class={`govuk-heading-${section.size}`}>{`${section.heading}`}</h1>
-            <p class="govuk-body">{`${section.prose}`}</p>
+            <Switch>
+              <Match when={section.size === 'xl'}>
+                <h1 class={`govuk-heading-${section.size}`}>
+                  {`${section.heading}`}
+                </h1>
+                <p class="govuk-body">{`${section.content}`}</p>
+              </Match>
 
+              <Match when={section.size === 'l'}>
+                <h1 class={`govuk-heading-${section.size}`}>
+                  {`${section.heading}`}
+                </h1>
+                <p class="govuk-body">{`${section.content}`}</p>
+              </Match>
 
-            <h2 class={`govuk-heading-${section.size}`}>{`${section.heading}`}</h2>
-            <p class="govuk-body">{`${section.prose}`}</p>
+              <Match when={section.size === 'm'}>
+                <h2 class={`govuk-heading-${section.size}`}>
+                  {`${section.heading}`}
+                </h2>
+                <p class="govuk-body">{`${section.content}`}</p>
+              </Match>
 
-
-            <h3 class={`govuk-heading-${section.size}`}>{`${section.heading}`}</h3>
-            <p class="govuk-body">{`${section.prose}`}</p>
+              <Match when={section.size === 's'}>
+                <h3 class={`govuk-heading-${section.size}`}>
+                  {`${section.heading}`}
+                </h3>
+                <p class="govuk-body">{`${section.content}`}</p>
+              </Match>
+            </Switch>
           </>
         )}
       </For>
