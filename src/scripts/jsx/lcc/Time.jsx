@@ -18,13 +18,15 @@ const Time = (props) => {
   const [getSat, setSat] = createSignal(false);
   const [midWeek, setMidWeek] = createSignal(false);
   const [getSun, setSun] = createSignal(false);
+  const [getThu, setThu] = createSignal(false);
 
   createEffect(() => {
     const ceremonyDate = pdfState.CeremonyDate || ""; // Handles undefined gracefully
     setFriday(ceremonyDate.includes("Friday"));
     setSat(ceremonyDate.includes("Saturday"));
     setSun(ceremonyDate.includes("Sunday"));
-    setMidWeek(["Monday", "Tuesday", "Thursday"].some((day) =>
+    setThu(ceremonyDate.includes("Thursday"));
+    setMidWeek(["Monday", "Tuesday"].some((day) =>
       ceremonyDate.includes(day)
     ));
   });
@@ -65,9 +67,14 @@ const Time = (props) => {
           <Radio label={props.label} componentId={props.componentId} options={props.banquetingSuiteOrFriWestRoom} onChange={props.onChange}/>
         </Match>
 
-        {/* Civic Hall - West Room Mon - Thur */}
+        {/* Civic Hall - West Room Mon - Tues */}
         <Match when={pdfState.CeremonyVenue === 'Civic Hall' && pdfState.CeremonyRoom === 'West Room' && midWeek() === true}>
           <Radio label={props.label} componentId={props.componentId} options={props.westRoom} onChange={props.onChange}/>
+        </Match>
+
+        {/* Civic Hall - West Room Thurs */}
+        <Match when={pdfState.CeremonyVenue === 'Civic Hall' && pdfState.CeremonyRoom === 'West Room' && getThu() === true}>
+          <Radio label={props.label} componentId={props.componentId} options={props.thuWestRoom} onChange={props.onChange}/>
         </Match>
 
         {/* Civic Hall - Sunday */}

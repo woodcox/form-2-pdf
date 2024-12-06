@@ -102,7 +102,7 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-        component: 'Autocomplete',
+        component: 'Dropdown',
         componentProps: {
           name: 'venue',
           label: 'Where is your ceremony taking place?',
@@ -177,6 +177,13 @@ const schema = {
             { name: 'Time', value: '10:30', id: '10-30' },
             { name: 'Time', value: '11:00', id: '11-00' },
             { name: 'Time', value: '11:30', id: '11-30' },
+            { name: 'Time', value: '14:00', id: '14-00' },
+            { name: 'Time', value: '14:30', id: '14-30' },
+            { name: 'Time', value: '15:00', id: '15-00' },
+            { name: 'Time', value: '15:30', id: '15-30' },
+            { name: 'Time', value: '16:00', id: '16-00' }
+          ],
+          thuWestRoom: [
             { name: 'Time', value: '14:00', id: '14-00' },
             { name: 'Time', value: '14:30', id: '14-30' },
             { name: 'Time', value: '15:00', id: '15-00' },

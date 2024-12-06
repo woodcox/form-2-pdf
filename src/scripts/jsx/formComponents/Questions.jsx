@@ -4,7 +4,7 @@ import Radio from './../factory/Radio.jsx';
 import Checkboxes from './../factory/Checkboxes.jsx';
 import Textarea from './../factory/Textarea.jsx';
 import Dropdown from './../factory/Dropdown.jsx';
-import Autocomplete  from './../factory/Autocomplete.jsx';
+// import Autocomplete  from './../factory/Autocomplete.jsx';
 import AddAnotherParent  from './../factory/AddAnotherParent.jsx';
 import AddAnotherMusic  from './../factory/AddAnotherMusic.jsx';
 import CeremonyWords from './../factory/CeremonyWords.jsx';
@@ -19,7 +19,7 @@ const componentMap = {
   DateInput,
   AppendFields,
   Dropdown,
-  Autocomplete,
+  // Autocomplete,
   Radio,
   Checkboxes,
   Textarea,

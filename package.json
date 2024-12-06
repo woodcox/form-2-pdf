@@ -12,7 +12,6 @@
     "build:eleventy": "npx @11ty/eleventy",
     "prefix": "lightningcss --browserslist ./dist/app/*.css -o ./dist/app/*.css",
     "start": "NODE_ENV=dev conc --kill-others 'npm:dev:*'",
-    "cloud": "npm run clean && npm run build:sass && NODE_ENV=staging ELEVENTY_ENV=staging npm run build:eleventy -- --incremental",
     "build": "npm run clean && npm run build:sass && npm run prefix && NODE_ENV=staging ELEVENTY_ENV=staging npm run build:eleventy -- --incremental --pathprefix=form-2-pdf",
     "minify": "npm run clean && npm run build:sass && npm run prefix -- --minify && NODE_ENV=production ELEVENTY_ENV=prod npm run build:eleventy -- --incremental --pathprefix=form-2-pdf"
   },

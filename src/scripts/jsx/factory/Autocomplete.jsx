@@ -2,6 +2,12 @@ import { createSignal, onMount, onCleanup } from 'solid-js';
 import accessibleAutocomplete from 'accessible-autocomplete/dist/accessible-autocomplete.min.js';
 import { makePersisted } from './makePersisted.jsx';
 
+/**
+ * This accessible-autocomplete component does not work well with solid-js. The internal js does not seem to work well with signals.
+ * 
+ * May need to look at either converting the library to solid-js (as there is a react version) or look at other optons for an autocomplete such as https://kobalte.dev/docs/core/components/combobox then style it to look like the GOV.UK
+ */
+
 const [autocompleteValue, setAutocompleteValue] = makePersisted(createSignal(''), {name: "autocomplete"});
 
 const Autocomplete = (props) => {
