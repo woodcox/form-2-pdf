@@ -108,7 +108,7 @@ const schema = {
           label: 'Where is your ceremony taking place?',
           value: '',
           options: [
-            { label: 'Select your venue', value: '' , placeholder: true },
+            { label: 'Select your venue', value: '' },
             { label: 'Civic Hall', value: 'Civic Hall' },
             { label: 'Leeds Town Hall', value: 'Leeds Town Hall' }
           ]
@@ -177,6 +177,13 @@ const schema = {
             { name: 'Time', value: '10:30', id: '10-30' },
             { name: 'Time', value: '11:00', id: '11-00' },
             { name: 'Time', value: '11:30', id: '11-30' },
+            { name: 'Time', value: '14:00', id: '14-00' },
+            { name: 'Time', value: '14:30', id: '14-30' },
+            { name: 'Time', value: '15:00', id: '15-00' },
+            { name: 'Time', value: '15:30', id: '15-30' },
+            { name: 'Time', value: '16:00', id: '16-00' }
+          ],
+          thuWestRoom: [
             { name: 'Time', value: '14:00', id: '14-00' },
             { name: 'Time', value: '14:30', id: '14-30' },
             { name: 'Time', value: '15:00', id: '15-00' },
@@ -263,6 +270,17 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Checkboxes',
+        componentProps: { 
+          label: "How will you be exchanging rings",
+          hintText: "This is a hint",
+          componentId: "exchangeRings",
+          options: [
+            { name: 'exchangeRings', value: 'Both partners', id: 'bothPartners' },
+            { name: 'exchangeRings', value: 'One partner', id: 'onePartner' },
+            { name: 'exchangeRings', value: 'No rings', id: 'noRings' }
+          ]
+        }
       },
       RoomEntrance: {
         pageUrl: '/ceremony',
