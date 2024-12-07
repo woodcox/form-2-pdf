@@ -5,7 +5,12 @@
 The html content is sanitised to prevent XSS attacks. So you can safely use GOV.UK design system HTML components/
 Example:
 
-See GOV.UK for heading sizing scales - https://design-system.service.gov.uk/styles/headings/  
+See GOV.UK for styles - https://design-system.service.gov.uk/styles/
+
+and for components - https://design-system.service.gov.uk/components/
+
+This is intended to be used with GOV.UK components that are just html such as: Headings, paragraphs, lists, links, Details, Inset text, Notification banners, Panels, Tables, Tabs, Tags and Warning text.
+
 
 <Prose
   content={`<script>alert('XSS Attack!');</script><p>This is safe content.</p>`}
