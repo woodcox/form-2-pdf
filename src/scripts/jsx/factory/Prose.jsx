@@ -1,9 +1,15 @@
-import { For, Switch, Match } from 'solid-js';
+//import DOMPurify from 'dompurify';
 
 /*
+
+The html content is sanitised to prevent XSS attacks. So you can safely use GOV.UK design system HTML components/
 Example:
 
 See GOV.UK for heading sizing scales - https://design-system.service.gov.uk/styles/headings/  
+
+<Prose
+  content={`<script>alert('XSS Attack!');</script><p>This is safe content.</p>`}
+/>
 
   <Prose
     sections={[
@@ -14,7 +20,24 @@ See GOV.UK for heading sizing scales - https://design-system.service.gov.uk/styl
     ]}
   />
 */
+const sanitizedContent = () => 
+  DOMPurify.sanitize(props.content, {
+    ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'p'],
+    ALLOWED_ATTR: ['href', 'target'],
+  });
 
+
+const Prose = (props) => {
+  const sanitizedContent = () => DOMPurify.sanitize(props.content);
+
+  return (
+    <div innerHTML={sanitizedContent()}></div>
+  );
+};
+
+export default Prose;
+
+/** 
 const Prose = (props) => {
   return (
     <>
@@ -56,5 +79,6 @@ const Prose = (props) => {
     </>
   );
 };
+*/
 
 export default Prose;
