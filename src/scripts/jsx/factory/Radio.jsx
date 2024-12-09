@@ -1,8 +1,9 @@
 import { For } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { makePersisted } from './makePersisted.jsx';
+import * as v from 'valibot';
 
- /* IMPORTANT - passing the onChange={props.onChange} is vital if your using the radio component in a parent component
+/* IMPORTANT - passing the onChange={props.onChange} is vital if your using the radio component in a parent component
   Example:
   <Radio 
     label={props.label} 
@@ -16,12 +17,21 @@ import { makePersisted } from './makePersisted.jsx';
 const globalRadioValues = {};
 
 const Radio = (props) => {
+  // Validation
+  const radioSchema = `radioSchema_${props.componentId}`;
+
+  radioSchema = v.object({
+    radio: v.pipe(v.string(), v.nonEmpty(`${props.errorMessage}`)),
+  });
+
   // Derive the store name from the componentId prop
   const storeName = `radioValues_${props.componentId}`;
 
   // Check if the store for this component instance exists, if not, create a new one
   if (!globalRadioValues[storeName]) {
-    globalRadioValues[storeName] = makePersisted(createStore({ value: '' }), {name: storeName});
+    globalRadioValues[storeName] = makePersisted(createStore({ value: '' }), {
+      name: storeName,
+    });
   }
 
   const [radioState, setRadioState] = globalRadioValues[storeName];
@@ -38,10 +48,10 @@ const Radio = (props) => {
           <h3>{props.label}</h3>
         </legend>
         <Show when={props.hintText}>
-            <div id={`${props.name}-hint-text`} class="govuk-hint">
-              {props.hintText}
-            </div>
-          </Show>
+          <div id={`${props.name}-hint-text`} class="govuk-hint">
+            {props.hintText}
+          </div>
+        </Show>
         <div class="govuk-radios" data-module="govuk-radios">
           <For each={props.options}>
             {(option) => (
@@ -66,6 +76,5 @@ const Radio = (props) => {
     </div>
   );
 };
-
 
 export default Radio;
