@@ -5,7 +5,9 @@ import { makePersisted } from './makePersisted.jsx';
 /**
  * This accessible-autocomplete component does not work well with solid-js. The internal js does not seem to work well with signals.
  * 
- * May need to look at either converting the library to solid-js (as there is a react version) or look at other optons for an autocomplete such as https://kobalte.dev/docs/core/components/combobox then style it to look like the GOV.UK
+ * May need to look at either converting the library to solid-js (as there is a react version) or look at other optons for an autocomplete such as https://kobalte.dev/docs/core/components/combobox then style it to look like the GOV.UK.
+ * 
+ * There is an issue (235 on Github) with the Kobalte combobox: The spec for the ARIA Combobox design pattern lays out 4 levels of autocompletion. The Kobalte combobox currently supports the first two levels, but it stops there.- https://github.com/kobaltedev/kobalte/issues/235. The value highlighted in the list does not become the selected value when the combobox looses focus. 
  */
 
 const [autocompleteValue, setAutocompleteValue] = makePersisted(createSignal(''), {name: "autocomplete"});

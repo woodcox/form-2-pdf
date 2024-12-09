@@ -3,7 +3,7 @@ export default function LegendHeader({ pageNumber, heading, headline }) {
     <>
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
         <Show when={pageNumber}>
-          <span class="govuk-caption-l">Question {pageNumber} of 8</span>
+          <span class="govuk-caption-l">Question {pageNumber} of 9</span>
         </Show>
         <h1 class="govuk-fieldset__heading">{heading}</h1>
       </legend>

@@ -1,4 +1,4 @@
-import { Show, createEffect, createSignal  } from 'solid-js';
+import { Show } from 'solid-js';
 import Radio from './../factory/Radio.jsx';
 import { pdfState } from './../pdfme/pdfDefaultValues.jsx';
 
@@ -17,7 +17,7 @@ const Room = (props) => {
   return (
     <>
       <Show 
-        when={pdfState.CeremonyVenue === 'Civic Hall'}
+        when={pdfState['Ceremony venue'] === 'Civic Hall'}
       >
         <Radio label={props.label} componentId={props.componentId} options={props.options} onChange={props.onChange}/>
       </Show>

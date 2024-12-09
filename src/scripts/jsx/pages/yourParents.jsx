@@ -10,8 +10,8 @@ export default function YourParents() {
         inputs={pdfState}
         onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="Your parents"
-        pageNumber="6"
-        headline="Your parents details can be on your certificate. You can add your mother, father, parent or step-parent(s)."
+        pageNumber="7"
+        headline="Your parents details can be on your certificate."
         currentPage="/your-parents"
         prevPage="/witness"
         nextPage="/partner-parents"

@@ -31,7 +31,7 @@ export default function SummaryPage({ template, localInputs, urlPrefix }) {
         return (
           <>
             {/* TO DO: Update if add more pageUrls */}
-            <Switch fallback="/">
+            <Switch fallback="A is heading missing from summary page, please contact the developer.">
               <Match when={pageUrl === '/your-details'}>
                 <h2 class="govuk-heading-m">About you</h2>
               </Match>
@@ -43,6 +43,9 @@ export default function SummaryPage({ template, localInputs, urlPrefix }) {
               </Match>
               <Match when={pageUrl === '/ceremony'}>
                 <h2 class="govuk-heading-m">Ceremony details</h2>
+              </Match>
+              <Match when={pageUrl === '/vows'}>
+                <h2 class="govuk-heading-m">Vows</h2>
               </Match>
               <Match when={pageUrl === '/witness'}>
                 <h2 class="govuk-heading-m">Your witnesses</h2>

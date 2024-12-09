@@ -10,7 +10,7 @@ export default function PartnerParents() {
         inputs={pdfState}
         onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="Your partners parents"
-        pageNumber="7"
+        pageNumber="8"
         currentPage="/partner-parents"
         prevPage="/your-parents"
         nextPage="/music"

@@ -5,7 +5,7 @@ const schema = {
   basePdf: CEREMONY_PDF,
   schemas: [
     {
-      YourFullName: {
+      'Your full name': {
         pageUrl: '/your-details',
         label: 'Your fullname',
         type: 'text',
@@ -25,7 +25,7 @@ const schema = {
           ]
         }
       },
-      PartnerFullName: {
+      'Partner full name': {
         pageUrl: '/partner',
         label: 'Your partners fullname',
         type: 'text',
@@ -69,7 +69,7 @@ const schema = {
         autocomplete: 'tel',
         required: true,
       },
-      CeremonyType: {
+      'Ceremony type': {
         pageUrl: '/booking',  
         label: 'Ceremony type',
         type: 'text',
@@ -92,7 +92,7 @@ const schema = {
           ]
         }
       },
-      CeremonyVenue: {
+      'Ceremony venue': {
         pageUrl: '/booking',
         label: 'Venue',
         type: 'text',
@@ -114,9 +114,9 @@ const schema = {
           ]
         }
       },
-      CeremonyRoom: {
+      'Ceremony room': {
         pageUrl: '/booking',  
-        label: 'Ceremony type',
+        label: 'Room',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -130,14 +130,14 @@ const schema = {
           name: 'ceremonyType',
           label: 'What room is the ceremony in?',
           value: '',
-          initialOption: 'Select the ceremony type',
+          initialOption: 'Select the room',
           options: [
             { name: 'ceremonyRoom', value: 'West Room', id: 'WestRoom' },
             { name: 'ceremonyRoom', value: 'Banqueting Suite', id: 'banquetingSuite' }
           ]
         }
       },
-      CeremonyDate: {
+      'Ceremony date': {
         pageUrl: '/booking',
         label: 'Ceremony date',
         type: 'text',
@@ -154,7 +154,7 @@ const schema = {
           helpText: 'For example, 27 3 2024',
         }
       },
-      CeremonyTime: {
+      'Ceremony time': {
         pageUrl: '/booking',
         label: 'Ceremony time',
         type: 'text',
@@ -225,9 +225,9 @@ const schema = {
           ]
         }
       },
-      WordingOption: {
-        pageUrl: '/ceremony',
-        label: 'Wording option',
+      'Vows option': {
+        pageUrl: '/vows',
+        label: 'Vows option',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -240,17 +240,17 @@ const schema = {
           componentId: 'WordingOption',
           accordName: 'CeremonyWording',
           marriage: [
-            { label: 'Option 1 words', content: 'I give you this ring as a sign of our marriage and I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband].', id: 'Option1' },
-            { label: 'Option 2 words', content: 'I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you and to be faithful to you always. [partner name] I give you this ring as a sign of our marriage, as a lasting reminder of the vows we are making today, and as a symbol of all that we share, now and always.', id: 'Option2' },
-            { label: 'Option 3 words', content: '[partner name] I give you this ring as a sign of our marriage, as a token of my love and affection and as a symbol of our commitment to each other. I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you, honour and respect you and share with you all that I have. May we look forward to our future together with hope and happiness and always remember the feelings we share for each other on this our wedding day.', id: 'Option3' },
+            { label: 'Option 1 vows', content: 'I give you this ring as a sign of our marriage and I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband].', id: 'Option1' },
+            { label: 'Option 2 vows', content: 'I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you and to be faithful to you always. [partner name] I give you this ring as a sign of our marriage, as a lasting reminder of the vows we are making today, and as a symbol of all that we share, now and always.', id: 'Option2' },
+            { label: 'Option 3 vows', content: '[partner name] I give you this ring as a sign of our marriage, as a token of my love and affection and as a symbol of our commitment to each other. I call upon these persons here present to witness that I [your name] do take thee [partner name] to be my lawful wedded [wife/husband]. I promise to love and care for you, honour and respect you and share with you all that I have. May we look forward to our future together with hope and happiness and always remember the feelings we share for each other on this our wedding day.', id: 'Option3' },
           ],
           civilPartnership: [
             { label: 'Option 1 words', content: '[partner name] I promise to love and care for you and to be faithful to you always.  I give you this ring as a sign of my love and commitment and as a lasting reminder of the vows we are making today.', id: 'Option1' },
             { label: 'Option 2 words', content: 'I call upon these persons here present, to witness that I [your name], do take thee, [partner name], to be my civil partner. I promise to love and care for you and to be faithful to you always. I give you this ring as a sign of our partnership. Wear it with a feeling of love and pride, now and always.', id: 'Option2' },
             { label: 'Option 3 words', content: 'I call upon these persons here present, to witness that I [your name], do take thee, [partner name], to be my civil partner. I promise to share my life with you, to love and care for you, honour and encourage you. Please accept this ring as a sign of my love for you, as a lasting reminder of the vows we are making today and as a symbol of all that we share, now and always. ', id: 'Option3' },
           ],
-          name: 'WordingOption',
-          label: 'Which ceremony wording?',
+          name: 'wordingOption',
+          label: 'Which vows do you want to say?',
           value: '',
           initialOption: 'Choose your ceremony wording',
           options: [
@@ -270,21 +270,20 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
-        component: 'Checkboxes',
-        componentProps: { 
-          label: "How will you be exchanging rings",
-          hintText: "This is a hint",
+        component: 'Radio',
+        componentProps: {
+          label: "Will you be exchanging rings?",
           componentId: "exchangeRings",
           options: [
-            { name: 'exchangeRings', value: 'Both partners', id: 'bothPartners' },
-            { name: 'exchangeRings', value: 'One partner', id: 'onePartner' },
+            { name: 'exchangeRings', value: 'Yes, both partners', id: 'bothPartners' },
+            { name: 'exchangeRings', value: 'Yes, one partner', id: 'onePartner' },
             { name: 'exchangeRings', value: 'No rings', id: 'noRings' }
           ]
         }
       },
-      RoomEntrance: {
+      'Ring bearer': {
         pageUrl: '/ceremony',
-        label: 'Entrance to room',
+        label: 'Ring bearer',
         type: 'text',
         position: { x: 33.65, y: 104.63 },
         width: 100,
@@ -294,12 +293,46 @@ const schema = {
         required: true,
         component: 'Textarea',
         componentProps: {
-          componentId: 'RoomEntrance',
-          name: 'RoomEntrance',
-          label: 'How are you planning to enter the ceremony room?',
+          componentId: 'RingBearer',
+          name: 'RingBearer',
+          label: 'Who will hold the rings?',
           value: '',
-          rows: 5,
+          rows: 2,
         }
+      },
+      'Room entrance': {
+        pageUrl: '/ceremony',
+        label: 'Entrance to room',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
+        component: 'Checkboxes',
+        componentProps: {
+          label: "How are you planning to enter the ceremony room?",
+          componentId: "roomEntrance",
+          options: [
+            { name: 'roomEntrance', value: 'Together', id: 'together' },
+            { name: 'roomEntrance', value: 'With father', id: 'withFather' },
+            { name: 'roomEntrance', value: 'With mother', id: 'withMother' },
+            { name: 'roomEntrance', value: 'With another relative', id: 'withRelative' },
+            { name: 'roomEntrance', value: 'By myself', id: 'bySelf' }
+          ]
+        }
+      },
+      'Bridesmaids or attendants': {
+        pageUrl: '/ceremony',
+        label: 'How many bridesmaids or attendants will enter with you?',
+        type: 'text',
+        position: { x: 33.65, y: 104.63 },
+        width: 100,
+        height: 10,
+        fieldType: 'text',
+        errormessage: 'Please enter the day',
+        required: true,
       },
       Photographer: {
         pageUrl: '/ceremony',
@@ -311,6 +344,15 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Radio',
+        componentProps: {
+          label: "Will you have a photographer?",
+          componentId: "photographer",
+          options: [
+            { name: 'photographer', value: 'Yes', id: 'yesPhoto' },
+            { name: 'photographer', value: 'No', id: 'noPhoto' }
+          ]
+        }
       },
       Videographer: {
         pageUrl: '/ceremony',
@@ -322,8 +364,17 @@ const schema = {
         fieldType: 'text',
         errormessage: 'Please enter the day',
         required: true,
+        component: 'Radio',
+        componentProps: {
+          label: "Will you have a videographer?",
+          componentId: "videographer",
+          options: [
+            { name: 'videographer', value: 'Yes', id: 'yesVideo' },
+            { name: 'videographer', value: 'No', id: 'noVideo' }
+          ]
+        }
       },
-      GuestNumber: {
+      'Number of guests': {
         pageUrl: '/ceremony',
         label: 'Number of guests',
         type: 'text',
@@ -334,7 +385,7 @@ const schema = {
         errormessage: 'Please enter the day',
         required: true,
       },
-      Witness1: {
+      'Witness 1': {
         pageUrl: '/witness',
         label: 'Witness 1 fullname',
         type: 'text',
@@ -354,7 +405,7 @@ const schema = {
           ]
         }
       },
-      Witness2: {
+      'Witness 2': {
         pageUrl: '/witness',
         label: 'Witness 2 fullname',
         type: 'text',
@@ -374,7 +425,7 @@ const schema = {
           ]
         }
       },
-      YourParents: {
+      'Your parents': {
         pageUrl: '/your-parents',
         label: 'Your parent(s)',
         type: 'text',
@@ -393,7 +444,7 @@ const schema = {
           hintText: "For example, your mother, father or parent"
         }
       },
-      YourStepParents: {
+      'Your step-parents': {
         pageUrl: '/your-parents',
         label: 'Your step-parent(s)',
         type: 'text',
@@ -411,7 +462,7 @@ const schema = {
           hintText: "For example, your step-mother, step-father or step-parent"
         }
       },
-      PartnerParents: {
+      'Partner parents': {
         pageUrl: '/partner-parents',
         label: 'Your Partners Parent(s)',
         type: 'text',
@@ -430,7 +481,7 @@ const schema = {
           hintText: "For example, their mother, father or parent"
         }
       },
-      PartnerStepParents: {
+      'Partner step-parents': {
         pageUrl: '/partner-parents',
         label: "Your partner's step-parent(s)",
         type: 'text',
@@ -448,7 +499,7 @@ const schema = {
           hintText: "For example, their step-mother, step-father or step-parent"
         }
       },
-      BeforeCeremonyMusic: {
+      'Before ceremony music': {
         pageUrl: '/music',
         label: "Before the ceremony",
         type: 'text',
@@ -467,7 +518,7 @@ const schema = {
           hintText: "For example, Ella Fitzgerald At last"
         }
       },
-      EntranceMusic: {
+      'Entrance music': {
         pageUrl: '/music',
         label: "Entrance song",
         type: 'text',
@@ -483,10 +534,9 @@ const schema = {
           title: 'song',
           songNumber: 1,
           musicSection: "Entrance music",
-          hintText: "For example, Ella Fitzgerald At last"
         }
       },
-      SigningMusic: {
+      'Signing music': {
         pageUrl: '/music',
         label: "Signing the schedule and taking photos",
         type: 'text',
@@ -502,10 +552,9 @@ const schema = {
           title: 'song',
           songNumber: 3,
           musicSection: "Signing the schedule and taking photos",
-          hintText: "For example, Ella Fitzgerald At last"
         }
       },
-      ExitMusic: {
+      'Exit music': {
         pageUrl: '/music',
         label: "Exit song",
         type: 'text',
@@ -521,7 +570,6 @@ const schema = {
           title: 'song',
           songNumber: 1,
           musicSection: "Exit music",
-          hintText: "For example, Ella Fitzgerald At last"
         }
       },
     },

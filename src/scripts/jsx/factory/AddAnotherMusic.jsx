@@ -130,9 +130,11 @@ function AddAnotherMusic(props) {
       <h2>
         {props.musicSection}
       </h2>
+      <Show when={props.hintText}>
       <div id="music-hint" class="govuk-hint">
         {props.hintText}
       </div>
+      </Show>
       <For each={musicInput.inputValues}>
         {(item, index) => (
           <div key={item.id}>

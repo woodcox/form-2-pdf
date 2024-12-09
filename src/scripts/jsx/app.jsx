@@ -4,6 +4,7 @@ import Intro from './pages/intro.jsx';
 import YourDetails from './pages/yourDetails.jsx';
 import YourPartner from './pages/yourPartner.jsx';
 import Booking from './pages/booking.jsx';
+import Vows from './pages/vows.jsx';
 import Ceremony from './pages/ceremony.jsx';
 import Witness from './pages/witness.jsx';
 import YourParents from './pages/yourParents.jsx';
@@ -24,6 +25,7 @@ render(
                 <Route path="/your-details/" component={YourDetails} />
                 <Route path="/partner/" component={YourPartner} />
                 <Route path="/booking/" component={Booking} />
+                <Route path="/vows/" component={Vows} />
                 <Route path="/ceremony/" component={Ceremony} />
                 <Route path="/witness/" component={Witness} />
                 <Route path="/your-parents/" component={YourParents} />

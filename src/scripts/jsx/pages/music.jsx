@@ -2,7 +2,6 @@ import Form from './../formComponents/Form.jsx';
 import { template } from './../pdfme/pdfSchema.jsx';
 import { pdfState, setPdfState } from './../pdfme/pdfDefaultValues.jsx';
 
-// TO DO: https://design-system.dwp.gov.uk/patterns/add-another-thing/example
 export default function Music() {
   return (
     <>
@@ -12,7 +11,7 @@ export default function Music() {
         onInputsChange={(newInputs) => setPdfState(newInputs)}
         heading="Your music"
         headline="You cannot have any religious music"
-        pageNumber="8"
+        pageNumber="9"
         currentPage="/music"
         prevPage="/partner-parents"
         nextPage="/summary"

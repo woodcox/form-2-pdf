@@ -13,7 +13,7 @@ export default function Ceremony() {
         pageNumber="4"
         currentPage="/ceremony"
         prevPage="/booking"
-        nextPage="/witness"
+        nextPage="/vows"
       />
     </>
   );

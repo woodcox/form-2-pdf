@@ -49,7 +49,7 @@ const Checkboxes = (props) => {
         <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
           <legend class="govuk-fieldset__legend">{props.label}</legend>
           <Show when={props.hintText}>
-            <div id="waste-hint" class="govuk-hint">
+            <div id={`${props.name}-hint-text`} class="govuk-hint">
               {props.hintText}
             </div>
           </Show>
