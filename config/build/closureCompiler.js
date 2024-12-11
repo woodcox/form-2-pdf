@@ -1,4 +1,8 @@
 // A modified version of https://github.com/arslanakram/esbuild-plugin-purgecss-2.0
+
+// Pdfme has a dependency on fontkit (via pdfkit). There is a duplicate key of axisIndex: uint16, in the code. Pull request done - https://github.com/foliojs/fontkit/pull/355. See postprocessFiles() for the work a work round in the `config/bulid/esbuild.js` file
+
+
 import esbuild from 'esbuild';
 import cc from '@apeleghq/esbuild-plugin-closure-compiler';
 
