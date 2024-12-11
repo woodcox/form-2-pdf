@@ -18,7 +18,7 @@ const globalRadioValues = {};
 
 const Radio = (props) => {
   // Validation
-  const radioSchema = `radioSchema_${props.componentId}`;
+  let radioSchema = `radioSchema_${props.componentId}`;
 
   radioSchema = v.object({
     radio: v.pipe(v.string(), v.nonEmpty(`${props.errorMessage}`)),

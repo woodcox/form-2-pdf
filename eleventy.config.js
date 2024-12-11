@@ -13,7 +13,7 @@ import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import { solidShortcode } from './config/shortcodes/solidify.js';
 import { esbuildPipeline } from './config/build/esbuild.js';
 import { purgecssPipeline } from './config/build/purgecss.js';
-import path from "path";
+import { closureCompiler } from './config/build/closureCompiler.js';
 const now = String(Date.now());
 const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
 const TEMPLATE_ENGINE = "liquid";
@@ -48,6 +48,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.on("eleventy.before", esbuildPipeline);
   if (isProd){
     eleventyConfig.on("eleventy.after", purgecssPipeline);
+    eleventyConfig.on("eleventy.after", closureCompiler);
   };
 
   // PLUGINS
