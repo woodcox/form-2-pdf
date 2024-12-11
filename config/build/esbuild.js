@@ -130,7 +130,7 @@ export const esbuildPipeline = async () => {
   // Pdfme has a dependency on fontkit (via pdfkit). There is a duplicate key of axisIndex: uint16, in the code. Pull request done - https://github.com/foliojs/fontkit/pull/355. See postprocessFiles() for the work a work round.
   // Preprocess dependency files to remove duplicate keys
   const postprocessFiles = () => {
-    const dependencyFiles = ['dist/app/app.js', 'dist/app/app-*.min.js']; // Add all relevant files to this array
+    const dependencyFiles = isProd ? ['dist/app/app-*.min.js'] : ['dist/app/app.js']; // Add all relevant files to this array
     dependencyFiles.forEach((filePath) => {
       try {
         let content = fs.readFileSync(filePath, 'utf8');
