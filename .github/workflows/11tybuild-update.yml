@@ -31,7 +31,7 @@ jobs:
         
       - name: Npm Build
         if: env.UPDATE_NPM != 'true'
-        run: npm run build
+        run: npm run minify
         
       - name: Commit buildmeta and manifest changes
         if: env.UPDATE_NPM != 'true'
@@ -45,7 +45,7 @@ jobs:
       
       - name: Npm Rebuild # for buildmeta and manifest changes to take effect 
         if: env.UPDATE_NPM != 'true'
-        run: npm run build
+        run: npm run minify
         
       - name: Deploy
         if: env.UPDATE_NPM != 'true'

@@ -13,7 +13,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter your fullname',
+        errorMessage: 'Please enter your fullname',
         required: true,
         component: 'AppendFields',
         componentProps: {
@@ -33,7 +33,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter your partners fullname',
+        errorMessage: 'Please enter your partners fullname',
         required: true,
         component: 'AppendFields',
         componentProps: {
@@ -53,7 +53,7 @@ const schema = {
         width: 140,
         height: 10,
         fieldType: 'email',
-        errormessage: 'Enter your email address',
+        errorMessage: 'Enter your email address',
         autocomplete: 'email',
         required: true,
       },
@@ -65,7 +65,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'tel',
-        errormessage: 'Enter a UK phone number',
+        errorMessage: 'Enter a UK phone number',
         autocomplete: 'tel',
         required: true,
       },
@@ -77,7 +77,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: '',
+        errorMessage: '',
         required: true,
         component: 'Radio',
         componentProps: {
@@ -100,7 +100,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'Dropdown',
         componentProps: {
@@ -122,7 +122,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: '',
+        errorMessage: '',
         required: true,
         component: 'Room',
         componentProps: {
@@ -145,7 +145,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'DateInput',
         componentProps: {
@@ -162,7 +162,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'Time',
         componentProps: {
@@ -233,7 +233,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'CeremonyWords',
         componentProps: {
@@ -268,7 +268,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'Radio',
         componentProps: {
@@ -289,7 +289,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'Textarea',
         componentProps: {
@@ -308,7 +308,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'Checkboxes',
         componentProps: {
@@ -331,7 +331,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
       },
       Photographer: {
@@ -342,7 +342,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'Radio',
         componentProps: {
@@ -362,7 +362,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'Radio',
         componentProps: {
@@ -382,7 +382,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
       },
       'Witness 1': {
@@ -393,7 +393,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AppendFields',
         componentProps: {
@@ -413,7 +413,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AppendFields',
         componentProps: {
@@ -433,7 +433,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AddAnotherParent',
         componentProps: {
@@ -452,7 +452,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AddAnotherParent',
         componentProps: {
@@ -470,7 +470,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AddAnotherParent',
         componentProps: {
@@ -489,7 +489,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AddAnotherParent',
         componentProps: {
@@ -507,7 +507,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AddAnotherMusic',
         componentProps: {
@@ -526,7 +526,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AddAnotherMusic',
         componentProps: {
@@ -544,7 +544,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AddAnotherMusic',
         componentProps: {
@@ -562,7 +562,7 @@ const schema = {
         width: 100,
         height: 10,
         fieldType: 'text',
-        errormessage: 'Please enter the day',
+        errorMessage: 'Please enter the day',
         required: true,
         component: 'AddAnotherMusic',
         componentProps: {
