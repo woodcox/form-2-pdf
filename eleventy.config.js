@@ -14,6 +14,7 @@ import { solidShortcode } from './config/shortcodes/solidify.js';
 import { esbuildPipeline } from './config/build/esbuild.js';
 import { purgecssPipeline } from './config/build/purgecss.js';
 import { closureCompiler } from './config/build/closureCompiler.js';
+import path from "path";
 const now = String(Date.now());
 const isProd = process.env.ELEVENTY_ENV === 'prod' ? true : false;
 const TEMPLATE_ENGINE = "liquid";
