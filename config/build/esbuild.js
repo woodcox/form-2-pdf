@@ -131,7 +131,7 @@ export const esbuildPipeline = async () => {
 
       // Remove duplicate keys in object literals
       content = content.replace(
-        /(axisIndex:\s*uint16,)(\s*axisIndex:\s*uint16,)+/g,
+        /(axisIndex:\s*\w+,\s*)(axisIndex:\s*\w+,)+/g,
         '$1' // Retain only the first occurrence
       );
 
