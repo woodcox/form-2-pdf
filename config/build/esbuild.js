@@ -92,6 +92,7 @@ const esbuildOpts = {
 };
 
 // If isProd include gzipPlugin. This is pushed into esBuildOpts.plugins because in dev/staging mode the esBuild's write api must be true. But the gzipPlugin requires it to be false.
+/*
 if (isProd) {
   esbuildOpts.plugins.push(
     gzipPlugin({
@@ -100,27 +101,7 @@ if (isProd) {
       brotli: isProd,
     })
   );
-}
-
-/*
-async function runClosureCompiler() {
-  await esbuild.build({
-    entryPoints: ['./dist/app/*.js'],
-    bundle: false,
-    allowOverwrite: true,
-    plugins: [
-      cc({
-        language_in: 'ECMASCRIPT_NEXT',
-        language_out: 'ECMASCRIPT_NEXT',
-        compilation_level: 'ADVANCED',
-        warning_level: 'QUIET',
-        js: ['dist/app/*.js', '!dist/app/is-land-*.min.js', '!dist/app/is-land.js'],
-        externs: 'config/build/externs.js',
-      }),
-    ],
-    outdir: './dist/app',
-  });
-} */
+}*/
 
 export const esbuildPipeline = async () => {
   // ============================================
