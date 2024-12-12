@@ -107,41 +107,39 @@ export const esbuildPipeline = async () => {
   // ============================================
   // Pdfme has a dependency on fontkit (via pdfkit). There is a duplicate key of axisIndex: uint16, in the code. Pull request done - https://github.com/foliojs/fontkit/pull/355. See postprocessFiles() for the work a work round.
   const postprocessFiles = () => {
-    // Read the manifest file to get the hashed file names
-    const manifestPath = path.resolve('src/_data/manifest.json');
+      // Read the manifest file to get the hashed file names
+  const manifestPath = path.resolve('src/_data/manifest.json');
+  
+  if (!fs.existsSync(manifestPath)) {
+    console.error(`Manifest file not found at ${manifestPath}`);
+    return;
+  }
 
-    if (!fs.existsSync(manifestPath)) {
-      console.error(`Manifest file not found at ${manifestPath}`);
-      return;
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+
+  // Use the manifest to get the correct file name for app.js
+  const appJsFile = manifest['app']; // This will be the hashed file name in prod
+  
+  if (!appJsFile) {
+    console.error('No app.js entry found in the manifest.');
+    return;
+  }
+
+  const filePath = `dist/app/${appJsFile}`;
+    try {
+      let content = fs.readFileSync(filePath, 'utf8');
+
+      // Remove duplicate keys in object literals
+      content = content.replace(
+        /(axisIndex:\s*uint16,)(\s*axisIndex:\s*uint16,)+/g,
+        '$1' // Retain only the first occurrence
+      );
+
+      fs.writeFileSync(filePath, content, 'utf8');
+      console.log(`Processed ${filePath} to remove duplicate keys.`);
+    } catch (error) {
+      console.error(`Error processing ${filePath}:`, error);
     }
-
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-
-    // Use the manifest to get the correct file name for app.js
-    const appJsFile = manifest['app']; // This will be the hashed file name in prod
-
-    if (!appJsFile) {
-      console.error('No app.js entry found in the manifest.');
-      return;
-    }
-
-    const filePaths = [`dist/app/${appJsFile}`];
-    filePaths.forEach((filePath) => {
-      try {
-        let content = fs.readFileSync(filePath, 'utf8');
-
-        // Remove duplicate keys from fontKit > PdfKit > Pdfme
-        content = content.replace(
-          /(axisIndex:\s*\w+,\s*)(axisIndex:\s*\w+,)+/g,
-          '$1' // Retain only the first occurrence
-        );
-
-        fs.writeFileSync(filePath, content, 'utf8');
-        console.log(`Processed ${filePath} to remove duplicate keys.`);
-      } catch (error) {
-        console.error(`Error processing ${filePath}:`, error);
-      }
-    });
   };
   // ============================================
   // WORKAROUND FOR CLOSURE COMPILER END 1 of 2
