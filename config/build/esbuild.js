@@ -47,7 +47,7 @@ const esbuildOpts = {
   allowOverwrite: !isProd, // overwrite dist/app/style.css when in dev mode
   bundle: true,
   minify: isProd,
-  write: !isProd, // this is required for the gzipPlugin to work
+  //write: !isProd, // this is required for the gzipPlugin to work
   treeShaking: isProd,
   outdir: './dist/app',
   sourcemap: !isProd,
@@ -157,7 +157,8 @@ export const esbuildPipeline = async () => {
     // Enable rebuild when 11ty in watch mode - NOTE buildmeta.json is not generated when watching
     await ctx.rebuild(); // Use 11ty to watch and esbuild to rebuild incrementally
     console.log('[esbuild] will rebuild when 11ty detects a change...');
-    postprocessFiles();
+    await postprocessFiles();
+    ctx.dispose();
   } else {
     // Build once and exit if not watch mode
     await ctx.rebuild().then((result) => {
