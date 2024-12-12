@@ -4,6 +4,7 @@ Using:
   - [Solid-js](https://solidjs.com)
   - [esBuild](https://esbuild.github.io)
   - [11ty](http://11ty.dev)
+  - Gzip
 
 See [pdfme.com](https://pdfme.com) for instructions on how to create the pdf. This is just a proof of concept.
 
