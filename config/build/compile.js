@@ -5,8 +5,9 @@
 
 import esbuild from 'esbuild';
 import cc from '@apeleghq/esbuild-plugin-closure-compiler';
+import gzipPlugin from '@luncheon/esbuild-plugin-gzip';
 
-export const closureCompiler = async () => {
+export const compile = async () => {
   await esbuild.build({
     entryPoints: ['./dist/app/*.js'],
     bundle: false,
@@ -21,6 +22,11 @@ export const closureCompiler = async () => {
         js: ['dist/app/*.js', '!dist/app/is-land-*.min.js', '!dist/app/is-land.js'],
         externs: 'config/build/externs.js',
       }),
+      gzipPlugin({
+        uncompressed: true,
+        gzip: true,
+        brotli: false,
+      })
     ],
   })
 }
