@@ -47,6 +47,7 @@ export default async function (eleventyConfig) {
 
   // BUILD HOOK
   eleventyConfig.on("eleventy.before", esbuildPipeline);
+  eleventyConfig.on("eleventy.after", compile); // APP.JS
   if (isProd){
     eleventyConfig.on("eleventy.after", purgecssPipeline); // CSS
     eleventyConfig.on("eleventy.after", compile); // APP.JS
