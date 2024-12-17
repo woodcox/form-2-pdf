@@ -42,6 +42,7 @@
     "esbuild-plugin-manifest": "^1.0.5",
     "esbuild-plugin-purgecss-2": "^1.0.1",
     "esbuild-plugin-solid": "^0.6.0",
+    "fontkit": "git://github.com/woodcox/fontkit.git#37172e0",
     "google-closure-compiler": "^20240317.0.0",
     "govuk-frontend": "^5.7.1",
     "just-validate": "^4.3.0",
