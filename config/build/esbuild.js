@@ -8,7 +8,7 @@ import manifestPlugin from 'esbuild-plugin-manifest';
 import gzipPlugin from '@luncheon/esbuild-plugin-gzip';
 //import cc from '@apeleghq/esbuild-plugin-closure-compiler';
 import { http, default_schemes } from '@hyrious/esbuild-plugin-http';
-import { preprocessFiles } from './preprocess.js';
+//import { preprocessFiles } from './preprocess.js';
 // cacheMap stores { url => contents }, you can easily persist it in file system - see https://github.com/hyrious/esbuild-plugin-http
 let cacheMap = new Map();
 import fs from 'fs';
@@ -125,8 +125,8 @@ async function runClosureCompiler() {
 
 export const esbuildPipeline = async () => {
   // Run the pre-process step
-  console.log('[preprocess] Starting pre-processing...');
-  preprocessFiles();
+  //console.log('[preprocess] Starting pre-processing...');
+  //preprocessFiles();
 
 
   let ctx = await esbuild.context({
