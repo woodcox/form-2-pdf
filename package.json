@@ -38,7 +38,7 @@
     "concurrently": "^9.1.0",
     "dexie": "^4.0.10",
     "dompurify": "^3.2.3",
-    "esbuild": "^0.23.1",
+    "esbuild": "^0.24.0",
     "esbuild-plugin-manifest": "^1.0.5",
     "esbuild-plugin-purgecss-2": "^1.0.1",
     "esbuild-plugin-solid": "^0.6.0",
